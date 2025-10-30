@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to HTML</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/kelpui@1/css/kelp.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/kelp.js"
+    ></script>
+
+    <script type="module">
+      import prismjs from "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/+esm";
+    </script>
+
+    <!-- 
+    <script>
+      document.addEventListener("kelp:debug", (event) => {
+        console.log("KELP DEBUG", {
+          element: event.target,
+          message: event.detail,
+        });
+      });
+    </script> -->
+  </head>
+  <body class="dark flex">
+    <main class="container">
+      <h1>Start</h1>
+
+      <section>
+        <div class="callout">
+          <p>HTML stands for HyperText Markup Language.</p>
+        </div>
+
+        <p>It is often refered to as Declarative Front-end language.</p>
+
+        <dl class="margin-start-m">
+          <div class="primary callout">
+            <dt>Declarative</dt>
+            <dd>
+              <ul>
+                <li>
+                  Describe your desired result rather than outlining each step
+                  the computer should take to reach it
+                </li>
+                <li><strong>What</strong>, not <strong>how</strong></li>
+                <li>Examples: HTM, CSS, SQL</li>
+              </ul>
+            </dd>
+          </div>
+          <div class="secondary callout">
+            <dt>Imperative</dt>
+            <dd>
+              <ul>
+                <li>Describe a step-by-step process for how a program runs</li>
+                <li>
+                  Using individual statements, instructions and methods to
+                  create a Control Flow
+                </li>
+                <li>Examples: Java, Ruby, PHP, C</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        Some languages are flexible!
+
+        <h2>Front end vs. Back end</h2>
+
+        <dl class="margin-start-m">
+          <div class="primary callout">
+            <dt>Front end (client side)</dt>
+            <dd>
+              Focus on visible, user-facing aspects of a website
+              <ul>
+                <li>Layout</li>
+                <li>Design</li>
+                <li>Navigation</li>
+                <li>Text</li>
+                <li>Media</li>
+                <li>Graphics</li>
+
+                HTML • CSS • JavaScript (and its many offshoots)
+              </ul>
+            </dd>
+          </div>
+          <div class="secondary callout">
+            <dt>Back end (server side)</dt>
+            Python • PHP • JavaScript • Node.js • SQL • Java • C#
+            <dd>
+              <ul>
+                <li>
+                  Focuses on hidden, server-side parts of a website • Database
+                  management • Server architecture • Security • APIs • Debugging
+                  • Quality assurance
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        <h2>Front-end languages</h2>
+        <h3>HTML</h3>
+        Gives a webpage Content and Structure Uses elements within tags to
+        define different types of content
+
+        <h3>CSS</h3>
+        Alters a webpage’s Style and Design Uses selectors to target HTML
+        elements and give them style properties
+
+        <h3>JS</h3>
+        Adds Logic and Interactivity to a webpage Uses variables and functions
+        to create a more dynamic, functional website for users
+
+        <h2>Where do I write my code?</h2>
+        Code can be written almost anywhere! You just need to save it with the
+        correct file extension (e.g. .html for HTML files). However, a code
+        editor will make your life much easier, with features like syntax
+        highlighting, auto-completion, and error detection. Code editors with
+        many features are often referred to as Integrated Development
+        Environments (IDEs). Here are some popular code editors:
+
+        <ul class="margin-start-m">
+          <li>
+            <a target="_blank" href="https://code.visualstudio.com/"
+              >Visual Studio Code</a
+            >
+          </li>
+          <li>
+            <a target="_blank" href="https://www.jetbrains.com/webstorm/"
+              >Webstorm (Jetbrains)</a
+            >
+          </li>
+          <li>
+            <a target="_blank" href="https://notepad-plus-plus.org/"
+              >Notepad++</a
+            >
+          </li>
+        </ul>
+
+        <h2>Getting Started</h2>
+
+        <pre><code class="language-markup"><script type="prism-html-markup"><!DOCTYPE html> 
+<html>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+</head>
+<body>
+    <!-- This is an HTML comment.
+    It doesn't appear on the webpage, only in the code itself.
+    We will be using these to explain the code. -->
+    <h1>This is the first heading on the page.</h1>
+    <p>This is a paragraph.</p>
+</body>
+</html></script></code></pre>
+
+        <div class="callout">
+          <p>Let's try it out!</p>
+          <a
+            href="../playgrounds/html-1/index.html"
+            target="_blank"
+            class="primary subtle margin-start-m block"
+            >View Playground</a
+          >
+        </div>
+
+        <p>Notice how tags are nested within each other.</p>
+
+        <div class="callout">
+          <h3>Doctype Declaration</h3>
+          <p>
+            This
+            <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element
+            here at the top is called the Doctype Declaration.
+          </p>
+          <p>
+            The Doctype Declaration tells web browsers your file is HTML, so
+            that it gets displayed correctly.
+          </p>
+          <p>This is only used once, right at the top of the page.</p>
+        </div>
+
+        <div class="callout">
+          <h3>HTML Tag</h3>
+          <p>
+            The Doctype Declaration is followed by an
+            <code class="language-markup">&lt;html&gt;</code> opening tag which
+            shows when your HTML starts. The last tag on the page is a
+            <code class="language-markup">&lt;/html&gt;</code> closing tag.
+          </p>
+          <p>
+            Make sure all your content is between these
+            <code class="language-markup">&lt;html&gt;</code> and
+            <code class="language-markup">&lt;/html&gt;</code> tags, otherwise
+            it might not show up!
+          </p>
+        </div>
+
+        <div class="callout">
+          <h3>Head tag</h3>
+          <p>
+            The <code class="language-markup">&lt;html&gt;</code> tag is then
+            followed by a <code class="language-markup">&lt;head&gt;</code> tag.
+          </p>
+          <p>
+            This can be the webpage title, links to a CSS Stylesheet, references
+            to JS scripts, key metadata for search engines, or display rules for
+            the web browser.
+          </p>
+        </div>
+
+        <div class="callout">
+          <h3>Body tag</h3>
+          <p>
+            The <code class="language-markup">&lt;head&gt;</code> is followed by
+            the <code class="language-markup">&lt;body&gt;</code> tag. This is
+            where all the visible content for your webpage will go.
+          </p>
+          <p>
+            Notice how each new element is on a new line and a little bit
+            indented? We do this to make our code easier to read.
+          </p>
+        </div>
+
+        <pre><code class="language-markup"><script type="prism-html-markup"><!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+</head>
+<body>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p>This is a paragraph.</p>
+</body>
+</html></script></code></pre>
+
+        <p>
+          Let's take a look at the heading sizes on the webpage. Notice the
+          browser has some basic default styles.
+        </p>
+
+        <div class="callout primary">
+          <p>
+            We're lucky that VS Code can help us with this basic structure when
+            we create a new HTML file. Let's create a project folder for a
+            webpage now so we can see!
+          </p>
+          <ul class="margin-start-m">
+            <li>Create a new folder in your documents.</li>
+            <li>
+              In VS Code, go to <strong>File &gt; Open Folder</strong> and
+              select your new folder, or just drag &amp; drop the folder into
+              the VS Code workspace.
+            </li>
+            <li>
+              When VS Code asks if you trust the authors of this folder, choose
+              <strong>Yes</strong>.
+            </li>
+            <li>
+              You should be given an empty drop menu like this – this is the
+              inside of the folder we just made. Let's add something to it.
+            </li>
+          </ul>
+        </div>
+
+        <h2>Adding CSS/JavaScript</h2>
+        <p>
+          Our HTML file is now ready to use – but will look very plain without
+          any CSS styling or JavaScript! There are a few ways we can add extra
+          code into our HTML:
+        </p>
+
+        <div class="callout">
+          <h3>Inline</h3>
+
+          <ul>
+            <li>
+              Writing code directly into our HTML elements – often as an
+              attribute
+            </li>
+            <li>
+              Can be difficult to make and track adjustments if your page has a
+              lot of content
+            </li>
+            <li>Not ideal for code readability</li>
+          </ul>
+        </div>
+
+        <pre><code class="language-markup">&lt;body>
+    &lt;!-- Here's an inline style --&gt;
+    &lt;h1 style="color:blue;">This is a blue heading&lt;/h1>
+ 
+    &lt;!-- Here's an inline script on a button element --&gt;
+    &lt;button 
+        onclick="alert('Alert JavaScript!');">
+        Click me to alert!
+    &lt;/button>
+    
+    &lt;!-- Here's an inline script within the body --&gt;
+    &lt;script>
+        alert("Alert JavaScript!");
+    &lt;/script>
+&lt;/body></code></pre>
+
+        <div class="callout primary">
+          <h3>Internal</h3>
+
+          <p>
+            Add code between our
+            <code class="language-markup">&lt;head&gt;</code> tags
+          </p>
+          <ul>
+            <li>
+              Use <code class="language-markup">&lt;style&gt;</code> tag for
+              CSS; <code class="language-markup">&lt;script&gt;</code> for JS
+            </li>
+            <li>Useful if styling a single page</li>
+            <li>Can get tricky to manage if more pages are added</li>
+          </ul>
+        </div>
+
+        <pre><code class="language-markup">&lt;head>
+    &lt;!-- Here's an internal style --&gt;
+    &lt;style>
+        body {background-color: powderblue;} 
+        h1 {color: blue;}
+        p {color: red;}
+    &lt;/style>
+
+    &lt;!-- Here's an internal script --&gt;
+    &lt;script>
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    &lt;/script>
+&lt;/head></code></pre>
+
+        <div class="callout secondary">
+          <h3>External</h3>
+
+          <ul>
+            <li>Imports styles and scripts from separate .css and .js files</li>
+            <li>Helps keep HTML readable</li>
+            <li>Easy to make changes</li>
+            <li>
+              Can be referenced on multiple webpages – great for consistency!
+            </li>
+          </ul>
+        </div>
+
+        <pre><code class="language-markup">&lt;head>
+    &lt;!-- Here's an internal style --&gt;
+    &lt;style>
+        body {background-color: powderblue;} 
+        h1 {color: blue;}
+        p {color: red;}
+    &lt;/style>
+
+    &lt;!-- Here's an internal script --&gt;
+    &lt;script>
+        document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    &lt;/script>
+&lt;/head></code></pre>
+      </section>
+    </main>
+  </body>
+</html>
