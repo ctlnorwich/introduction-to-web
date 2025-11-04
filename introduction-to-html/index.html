@@ -20,7 +20,10 @@
       src="https://cdn.jsdelivr.net/npm/kelpui@1/js/kelp.js"
     ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/kelpui@1/js/dark-mode-auto.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/dark-mode-auto.js"
+      defer
+    ></script>
 
     <script type="module">
       import prismjs from "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/+esm";
@@ -36,120 +39,132 @@
       });
     </script> -->
   </head>
-  <body class="flex">
+  <body class="flex direction-column">
     <main class="container">
-      <h1>Start</h1>
+      <h1 class="margin-start-m">
+        HTML: The Greatest Ever Document File Format?
+      </h1>
 
-      <section>
-        <p>HTML stands for <strong>HyperText Markup Language</strong>. It was invented by Tim Berners-Lee around 1990.</p>
-        <p>It is often refered to as Declarative Front-end language.</p>
+      <p>
+        HTML stands for <strong>HyperText Markup Language</strong>. It was
+        invented around 1990 by Tim Berners-Lee as a foundational part of the
+        World Wide Web.
+      </p>
+      <p>
+        As the standard markup language for creating web pages, HTML offers one
+        of the most robust and dependable ways to structure documents in an open
+        and accessible format.
+      </p>
+      <p>
+        HTML is considered a declarative language used primarily in Front-end
+        web development.
+      </p>
 
-        <dl class="margin-start-m callout outline">
-        
-            <dt>Declarative</dt>
-            <dd>
-              <ul>
-                <li>
-                  Describe your desired result rather than outlining each step
-                  the computer should take to reach it
-                </li>
-                <li><strong>What</strong>, not <strong>how</strong></li>
-                <li>Examples: HTML, CSS, SQL</li>
-              </ul>
-            </dd>
-        
-            <dt>Imperative</dt>
-            <dd>
-              <ul>
-                <li>Describe a step-by-step process for how a program runs</li>
-                <li>
-                  Using individual statements, instructions and methods to
-                  create a Control Flow
-                </li>
-                <li>Examples: Java, Ruby, PHP, C</li>
-              </ul>
-            </dd>
-        
-        </dl>
+      <dl class="margin-start-m callout outline">
+        <dt>Declarative Languages</dt>
+        <dd>
+          <ul>
+            <li>
+              Describe your desired result rather than outlining each step the
+              computer should take to reach it.
+            </li>
+            <li><strong>What</strong>, not <strong>how</strong></li>
+            <li>Examples: HTML, CSS, SQL</li>
+          </ul>
+        </dd>
 
-        Some languages are flexible!
+        <hr />
 
-        <h2>Front end vs. Back end</h2>
+        <dt>Imperative Languages</dt>
+        <dd>
+          <ul>
+            <li>Describe a step-by-step process for how a program runs</li>
+            <li>
+              Use individual statements, instructions and methods to create a
+              control flow
+            </li>
+            <li>Examples: Java, Ruby, PHP, C</li>
+          </ul>
+        </dd>
+      </dl>
 
-        <dl class="margin-start-m">
-          <div class="primary callout outline">
-            <dt>Front end (client side)</dt>
-            <dd>
-              Focus on visible, user-facing aspects of a website
-              <ul>
-                <li>Layout</li>
-                <li>Design</li>
-                <li>Navigation</li>
-                <li>Text</li>
-                <li>Media</li>
-                <li>Graphics</li>
+      <h2>Front end vs. Back end</h2>
 
-                HTML • CSS • JavaScript (and its many offshoots)
-              </ul>
-            </dd>
-          </div>
-          <div class="secondary callout outline">
-            <dt>Back end (server side)</dt>
-            Python • PHP • JavaScript • Node.js • SQL • Java • C#
-            <dd>
-              <ul>
-                <li>
-                  Focuses on hidden, server-side parts of a website • Database
-                  management • Server architecture • Security • APIs • Debugging
-                  • Quality assurance
-                </li>
-              </ul>
-            </dd>
-          </div>
-        </dl>
+      <dl class="margin-start-m callout outline">
+        <dt>Front end (client-side)</dt>
+        <dd>
+          Focus on visible, user-facing aspects of a website<br />
+          <em>HTML, CSS, JavaScript (and its many offshoots)</em>
+          <ul>
+            <li>Layout</li>
+            <li>Design</li>
+            <li>Interaction</li>
+            <li>Media (images, videos, SVGs)</li>
+            <li>Accessibility</li>
+          </ul>
+        </dd>
+        <hr />
+        <dt>Back end (server side)</dt>
+        <dd>
+          Focuses on hidden, server-side parts of a website<br />
+          <em>PHP, Node (JavaScript), SQL, Python, Ruby, Java</em>
+          <ul>
+            <li>Application logic</li>
+            <li>Database management</li>
+            <li>Server architecture</li>
+            <li>APIs</li>
+          </ul>
+        </dd>
+      </dl>
 
-        <h2>Front-end languages</h2>
-        <h3>HTML</h3>
-        Gives a webpage Content and Structure Uses elements within tags to
+      <h2>Front-end languages</h2>
+      <h3>HTML</h3>
+      <p>
+        Gives a webpage Content and Structure. Uses elements within tags to
         define different types of content
+      </p>
 
-        <h3>CSS</h3>
-        Alters a webpage’s Style and Design Uses selectors to target HTML
+      <h3>CSS</h3>
+      <p>
+        Alters a webpage's Style and Design. Uses selectors to target HTML
         elements and give them style properties
+      </p>
 
-        <h3>JS</h3>
-        Adds Logic and Interactivity to a webpage Uses variables and functions
+      <h3>JavaScript</h3>
+      <p>
+        Adds Logic and Interactivity to a webpage. Uses variables and functions
         to create a more dynamic, functional website for users
+      </p>
 
-        <h2>Where do I write my code?</h2>
+      <h2>Where do I write my code?</h2>
+      <p>
         Code can be written almost anywhere! You just need to save it with the
         correct file extension (e.g. .html for HTML files). However, a code
         editor will make your life much easier, with features like syntax
         highlighting, auto-completion, and error detection. Code editors with
         many features are often referred to as Integrated Development
         Environments (IDEs). Here are some popular code editors:
+      </p>
 
-        <ul class="margin-start-m">
-          <li>
-            <a target="_blank" href="https://code.visualstudio.com/"
-              >Visual Studio Code</a
-            >
-          </li>
-          <li>
-            <a target="_blank" href="https://www.jetbrains.com/webstorm/"
-              >Webstorm (Jetbrains)</a
-            >
-          </li>
-          <li>
-            <a target="_blank" href="https://notepad-plus-plus.org/"
-              >Notepad++</a
-            >
-          </li>
-        </ul>
+      <ul class="margin-start-m">
+        <li>
+          <a target="_blank" href="https://code.visualstudio.com/"
+            >Visual Studio Code</a
+          >
+        </li>
+        <li>
+          <a target="_blank" href="https://www.jetbrains.com/webstorm/"
+            >Webstorm (Jetbrains)</a
+          >
+        </li>
+        <li>
+          <a target="_blank" href="https://notepad-plus-plus.org/">Notepad++</a>
+        </li>
+      </ul>
 
-        <h2>Getting Started</h2>
+      <h2>Let's Get Started!</h2>
 
-        <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
+      <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
 &lt;html&gt;    
     &lt;head&gt;
         &lt;meta charset="UTF-8"&gt;
@@ -165,76 +180,81 @@
     &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-        <p class="margin-start-m"">Notice how tags are nested within each other? Tags can have parent, child or sibling relationships and this is important for the logical coherence of the page. We can also reference these relationships in our CSS and JS to target specific elements.</p>
-        <p>The indentation is optional and is only done for readability. Some people indent 2 spaces, some 4.</p>
+      <p class="margin-start-m">
+        Notice how HTML elements are nested within each other? They can have
+        parent, child or sibling relationships. This gives our web page a
+        meaningful structure. We can also reference these relationships in our
+        CSS and JS to target specific elements.
+      </p>
+      <p>
+        The indentation is optional and is only done for readability. Some
+        people indent 2 spaces, some 4. Sometimes tabs are used, sometimes
+        spaces. This is not at all a source of immense conflict between
+        developers.
+      </p>
 
-        <div class="callout primary margin-start-m">
-          <p>Let's try it out!</p>
-          <a
-            href="../playgrounds/html-1/index.html"
-            target="_blank"
-            class="primary subtle margin-start-m block"
-            >View Playground</a
-          >
-        </div>
+      <div class="callout outline primary margin-start-m">
+        <h3>Let's try it out!</h3>
+        <p>
+          Open <code class="language-markup">playgounds/html-1/index.html</code>
+        </p>
+        <a
+          href="../playgrounds/html-1/index.html"
+          target="_blank"
+          class="primary subtle margin-start-m block"
+          >View Playground</a
+        >
+      </div>
 
-        <div class="callout outline margin-start-m">
-          <h3>Doctype Declaration</h3>
-          <p>
-            This
-            <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element
-            here at the top is called the Doctype Declaration.
-          </p>
-          <p>
-            The Doctype Declaration tells web browsers your file is HTML, so
-            that it gets displayed correctly.
-          </p>
-          <p>This is only used once, right at the top of the page.</p>
-        </div>
+      <div class="callout outline margin-start-m">
+        <h3>Doctype Declaration</h3>
+        <p>
+          The <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element
+          at the top is called the Doctype Declaration. This is only used once,
+          right at the top of the page.
+        </p>
+        <p>
+          This versiion of the declaration tells web browsers that this document
+          is written in the standard of HTML5 and above, so the browser knows
+          how to display it correctly.
+        </p>
+      </div>
 
-        <div class="callout outline margin-start-m">
-          <h3>HTML tag</h3>
-          <p>
-            The Doctype Declaration is followed by an
-            <code class="language-markup">&lt;html&gt;</code> opening tag which
-            shows when your HTML starts. The last tag on the page is a
-            <code class="language-markup">&lt;/html&gt;</code> closing tag.
-          </p>
-          <p>
-            Make sure all your content is between these
-            <code class="language-markup">&lt;html&gt;</code> and
-            <code class="language-markup">&lt;/html&gt;</code> tags, otherwise
-            it might not show up!
-          </p>
-        </div>
+      <div class="callout outline margin-start-m">
+        <h3>HTML Tag</h3>
+        <p>
+          The Doctype Declaration is followed by an
+          <code class="language-markup">&lt;html&gt;</code> opening tag which
+          marks where your HTML starts. The last tag on the page should be the
+          <code class="language-markup">&lt;/html&gt;</code> closing tag, to
+          close out the document.
+        </p>
+      </div>
 
-        <div class="callout outline margin-start-m">
-          <h3>Head tag</h3>
-          <p>
-            The <code class="language-markup">&lt;html&gt;</code> tag is then
-            followed by a <code class="language-markup">&lt;head&gt;</code> tag.
-          </p>
-          <p>
-            This can be the webpage title, links to a CSS Stylesheet, references
-            to JS scripts, key metadata for search engines, or display rules for
-            the web browser.
-          </p>
-        </div>
+      <div class="callout outline margin-start-m">
+        <h3>Head tag</h3>
+        <p>
+          The <code class="language-markup">&lt;html&gt;</code> tag is then
+          followed by a <code class="language-markup">&lt;head&gt;</code> tag.
+        </p>
+        <p>
+          The <code class="language-markup">&lt;head&gt;</code> section contains
+          information for web browsers and search engines, such as the page
+          title, links to CSS stylesheets and JavaScript files, metadata, and
+          display settings.
+        </p>
+      </div>
 
-        <div class="callout outline margin-start-m">
-          <h3>Body tag</h3>
-          <p>
-            The <code class="language-markup">&lt;head&gt;</code> is followed by
-            the <code class="language-markup">&lt;body&gt;</code> tag. This is
-            where all the visible content for your webpage will go.
-          </p>
-          <p>
-            Notice how each new element is on a new line and a little bit
-            indented? We do this to make our code easier to read.
-          </p>
-        </div>
+      <div class="callout outline margin-start-m">
+        <h3>Body tag</h3>
+        <p>
+          The <code class="language-markup">&lt;head&gt;</code> is followed by
+          the <code class="language-markup">&lt;body&gt;</code> tag. This is
+          where all the visible content for your webpage will go.
+        </p>
+      </div>
 
-        <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
+      <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
 &lt;html&gt;
     &lt;head&gt;
         &lt;meta charset="UTF-8"&gt;
@@ -248,71 +268,59 @@
         &lt;h4&gt;Heading 4&lt;/h4&gt;
         &lt;h5&gt;Heading 5&lt;/h5&gt;
         &lt;h6&gt;Heading 6&lt;/h6&gt;
-        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+        &lt;p&gt;Paragraph text.&lt;/p&gt;
     &lt;/body&gt;
  &lt;/html&gt;</code></pre>
 
-        <p>
-          Let's take a look at the heading sizes on the webpage. Notice the
-          browser has some basic default styles.
-        </p>
+      <p>
+        Let's take a look at the heading sizes on the webpage. Notice that the
+        browser already has some basic default styles to differentiate the
+        headings.
+      </p>
 
-        <div class="callout">
-            <p>Ideally, we should use only one <code class="language-markup">&lt;h1&gt;</code> element per page. This is the top-level heading; everything else is second to it.</p>
-            <ul class="margin-start-m">
-                <li>Make sure you're following the heading hierarchy. Using <code class="language-markup">&lt;h3&gt;</code> for subheadings, then <code class="language-markup">&lt;h2&gt;</code> for sub-subheadings, would look weird.</li>
-                <li>Try not to use more than 3 heading levels if you can – if you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!</li>
-            </ul>
-        </div>
+      <p>
+        Ideally, we should use only one
+        <code class="language-markup">&lt;h1&gt;</code> element per page. This
+        is the top-level heading; everything else is second to it.
+      </p>
+      <ul class="margin-start-m">
+        <li>
+          Make sure you're following the heading hierarchy. Using
+          <code class="language-markup">&lt;h3&gt;</code> for subheadings, then
+          <code class="language-markup">&lt;h2&gt;</code> for sub-subheadings,
+          would look weird.
+        </li>
+        <li>
+          Try not to use more than 3 heading levels if you can. If you're
+          creating a super deep hierarchy, it's probably a sign some of your
+          content should be on a different page!
+        </li>
+      </ul>
 
-        <div class="callout primary">
-          <p>
-            We're lucky that VS Code can help us with this basic structure when
-            we create a new HTML file. Let's create a project folder for a
-            webpage now so we can see!
-          </p>
-          <ul class="margin-start-m">
-            <li>Create a new folder in your documents.</li>
-            <li>
-              In VS Code, go to <strong>File &gt; Open Folder</strong> and
-              select your new folder, or just drag &amp; drop the folder into
-              the VS Code workspace.
-            </li>
-            <li>
-              When VS Code asks if you trust the authors of this folder, choose
-              <strong>Yes</strong>.
-            </li>
-            <li>
-              You should be given an empty drop menu like this – this is the
-              inside of the folder we just made. Let's add something to it.
-            </li>
-          </ul>
-        </div>
+      <h2>Adding CSS and JavaScript</h2>
+      <p>
+        Our HTML file is now ready to use, but ot will look very plain without
+        any CSS styling and it won't be very interactive without any JavaScript
+        (although that might be a good thing - JS is not always necessary for a
+        good web page). There are a few ways we can add other types of code to
+        our HTML:
+      </p>
 
-        <h2>Adding CSS/JavaScript</h2>
-        <p>
-          Our HTML file is now ready to use – but will look very plain without
-          any CSS styling or JavaScript! There are a few ways we can add extra
-          code into our HTML:
-        </p>
+      <div class="callout outline margin-start-m">
+        <h3>Inline</h3>
+        <ul>
+          <li>
+            Writing code directly into our HTML elements – often as an attribute
+          </li>
+          <li>
+            Can be difficult to make and track adjustments if your page has a
+            lot of content
+          </li>
+          <li>Not ideal for code readability</li>
+        </ul>
+      </div>
 
-        <div class="callout">
-          <h3>Inline</h3>
-
-          <ul>
-            <li>
-              Writing code directly into our HTML elements – often as an
-              attribute
-            </li>
-            <li>
-              Can be difficult to make and track adjustments if your page has a
-              lot of content
-            </li>
-            <li>Not ideal for code readability</li>
-          </ul>
-        </div>
-
-        <pre><code class="language-markup">&lt;body>
+      <pre><code class="language-markup">&lt;body>
     &lt;!-- Here's an inline style --&gt;
     &lt;h1 style="color:blue;">This is a blue heading&lt;/h1>
  
@@ -328,24 +336,24 @@
     &lt;/script>
 &lt;/body></code></pre>
 
-        <div class="callout primary">
-          <h3>Internal</h3>
+      <div class="callout outline margin-start-m">
+        <h3>Internal</h3>
 
-          <p>
-            Add code between our
-            <code class="language-markup">&lt;head&gt;</code> tags
-          </p>
-          <ul>
-            <li>
-              Use <code class="language-markup">&lt;style&gt;</code> tag for
-              CSS; <code class="language-markup">&lt;script&gt;</code> for JS
-            </li>
-            <li>Useful if styling a single page</li>
-            <li>Can get tricky to manage if more pages are added</li>
-          </ul>
-        </div>
+        <p>
+          Add code between our
+          <code class="language-markup">&lt;head&gt;</code> tags
+        </p>
+        <ul>
+          <li>
+            Use <code class="language-markup">&lt;style&gt;</code> tag for CSS;
+            <code class="language-markup">&lt;script&gt;</code> for JS
+          </li>
+          <li>Useful if styling a single page</li>
+          <li>Can get tricky to manage if more pages are added</li>
+        </ul>
+      </div>
 
-        <pre><code class="language-markup">&lt;head>
+      <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's an internal style in the head --&gt;
     &lt;style>
         body {background-color: powderblue;} 
@@ -359,82 +367,72 @@
     &lt;/script>
 &lt;/head></code></pre>
 
-        <div class="callout secondary">
-          <h3>External</h3>
+      <div class="callout outline margin-start-m">
+        <h3>External</h3>
 
-          <ul>
-            <li>Imports styles and scripts from separate .css and .js files</li>
-            <li>Helps keep HTML readable</li>
-            <li>Easy to make changes</li>
-            <li>
-              Can be referenced on multiple webpages – great for consistency!
-            </li>
+        <ul>
+          <li>Imports styles and scripts from separate .css and .js files</li>
+          <li>Helps keep HTML readable</li>
+          <li>Easy to make changes</li>
+          <li>
+            Can be referenced on multiple webpages – great for consistency!
+          </li>
+        </ul>
+      </div>
+
+      <div class="margin-start-m">
+        <h3>Importing External Resources</h3>
+        <kelp-tabs>
+          <ul class="list-inline" tabs>
+            <li><a href="#same-folder">Same Folder</a></li>
+            <li><a href="#sibling-folder">Sibling Folder</a></li>
+            <li><a href="#external-resource">External Resource</a></li>
           </ul>
-        </div>
 
-
-        <div class="margin-start-4xl">
-<kelp-tabs>
-	<ul class="list-inline" tabs>
-		<li><a href="#same-folder">Same Folder</a></li>
-		<li><a href="#sibling-folder">Sibling Folder</a></li>
-		<li><a href="#external-resource">External Resource</a></li>
-	</ul>
-
-	<div class="callout outline" id="same-folder">
-        <p>When your CSS and JS files are in the same folder as your HTML file, you can link to them directly by their filename.</p>
-		 <pre><code class="language-markup">&lt;head>
+          <div id="same-folder">
+            <p>
+              When your CSS and JS files are in the same folder as your HTML
+              file, you can link to them directly by their filename.
+            </p>
+            <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's how to import an external style --&gt;
     &lt;link rel="stylesheet" href="styles.css"&gt;
 
     &lt;!-- Here's how to import an external script --&gt;
     &lt;script src="script.js" defer&gt;&lt;/script&gt;
 &lt;/head></code></pre>
-	</div>
+          </div>
 
-	<div class="callout outline" id="sibling-folder">
-        <p>Navigate up and down the folder structure using ../ </p>
-			 <pre><code class="language-markup">&lt;head>
+          <div id="sibling-folder">
+            <p>Navigate up and down the folder structure using ../</p>
+            <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's how to import an external style --&gt;
     &lt;link rel="stylesheet" href="../assets/styles.css"&gt;
 
     &lt;!-- Here's how to import an external script --&gt;
     &lt;script src="../assets/script.js" defer&gt;&lt;/script&gt;
 &lt;/head></code></pre>
-	</div>
+          </div>
 
-	<div class="callout outline" id="external-resource">
-        <p>Reference external resources using their full URL. This is called an absolute URL.</p>
-				 <pre><code class="language-markup">&lt;head>
+          <div id="external-resource">
+            <p>
+              Reference external resources using their full URL. This is called
+              an absolute URL.
+            </p>
+            <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's how to import an external style --&gt;
     &lt;link rel="stylesheet" href="https://my-external-resource.com/styles.css"&gt;
 
     &lt;!-- Here's how to import an external script --&gt;
     &lt;script src="https://my-external-resource.com/script.js" defer&gt;&lt;/script&gt;
 &lt;/head></code></pre>
-	</div>
-</kelp-tabs>
-</div>
+          </div>
+        </kelp-tabs>
+      </div>
 
-<ul>
-    <li>Because we stored the files in the same folder as the HTML file, we only needed to reference the name of the file in the href= and src= attributes.</li>
-    <li>It's common for developers to organise their stylesheets and scripts into sub-folders.</li>
-    <li>In that case, we would put the filepath to our CSS/JS file relative from where our HTML file is.</li>
-    <li>This is why we call these kinds of file paths relative file paths.</li>
-</ul>
+      <h2>Common HTML Tags</h2>
 
-<p>For example, let's say our styles.css file is no longer in the same folder as our index.html file, but is instead in a subfolder called stylesheets.</p>
-<p>Our script.js file is located in a folder called javascript – but that folder is located one level higher in the file hierarchy than index.html.</p>
-
-
-<ul>
-    <li>By adding /stylesheets onto our file path for our <code class="language-markup">&lt;link&gt;</code> tag, we're telling the browser to look inside the stylesheets subfolder for our .css file.</li>
-    <li>To find our .js file, we need to navigate backwards one level before looking for the javascript folder. We do that by adding .. to our file path, then /javascript to look for our script.</li>
-    <li>This is why file architecture is super important when planning your projects!</li>
-</ul>
-
-
-<pre><code class="language-markup">&lt;body>
+      <pre><code class="language-markup">&lt;body>
 
     &lt;!-- Heading tags are examples of a tag which 
     has an opening and a closing tag. 
@@ -444,8 +442,9 @@
     &lt;h2&gt;Subheading tags! H2&lt;/h2&gt;
     &lt;h3&gt;Sub-subheading tags! H3&lt;/h3&gt;
 
-    &lt;p&gt;Paragraph tags with a &lt;span&gt;span tag&lt;/span&gt; to be 
-    able to target specific words in CSS or JS.&lt;/p&gt;
+    &lt;p&gt;Good old paragraph tags. You can also use a 
+    &lt;span&gt;span tag&lt;/span&gt; to
+    target specific words in CSS or JS.&lt;/p&gt;
     &lt;p&gt;Each new paragraph should have a new tag.&lt;/p&gt;
 
     &lt;!-- Use tags that convey semantic meaning 
@@ -463,10 +462,25 @@
     Don't use these instead of paragraphs!--&gt;
     &lt;br&gt; or &lt;br/&gt;
 
-    &lt;!-- Image tags - this one has no closing slash ("Modern"!)--&gt;
-    &lt;img src="images/cat.jpg" alt="A cute black and white cat"&gt;
+    &lt;!-- Horizontal rule tags for thematic breaks --&gt;
+    &lt;hr&gt; or &lt;hr/&gt;
+
+    &lt;!-- Figure tags are great for grouping an image with a caption --&gt;
+    &lt;figure&gt;
+      &lt;!-- Image tags - this one has no closing slash ("Modern"!). 
+      There are a lot of complex ways to add multiple image sizes 
+      to a single image tag for use on different devices.
+      Save that for another workshop! --&gt;
+      &lt;img src="images/cat.jpg" alt="A cute black and white cat"&gt;
+      &lt;figcaption&gt;This is a cat&lt;/figcaption&gt;
+    &lt;/figure&gt;
 
     &lt;a href="my-exciting-link"&gt;Link tags&lt;/a&gt;
+
+    &lt;blockquote&gt;This is a blockquote. 
+    It is used for quoting sections of text from other sources.
+    &lt;cite&gt;Cite tags&lt;/cite&gt; can be used within blockquotes.
+    &lt;/blockquote&gt;
 
     &lt;ul&gt;
         &lt;li&gt;Unordered list item 1&lt;/li&gt;
@@ -482,18 +496,45 @@
     
 &lt;/head></code></pre>
 
+<h3 class="margin-start-m">Using Alt Text for Images</h3>
+<p>
+        Alt text is a tool used by screen readers to describe an image to those
+        with impaired vision.
+      </p>
+      <ul>
+        <li>
+          It's in our best interests to make our page as accessible as we can
+          so we should always be adding alt text to our
+          <code class="language-markup">&lt;img&gt;</code> elements!
+        </li>
+        <li>
+          Alt text is an attribute, so we will add it to our tag after our
+          source attribute.
+        </li>
+        <li>
+          Describe the image without referring to it as an image: for example,
+          write 'a brown dog' instead of 'a picture of a brown dog'.
+        </li>
+      </ul>
 
-<pre><code class="language-markup">&lt;body>
-&lt;!-- Modern HTML has tags for areas of your page --&gt;
+      <pre><code class="language-markup">&lt;body>
+&lt;!-- Modern HTML has semantic tags for areas of your page --&gt;
     &lt;header&gt;This could be the header of the whole page or just part of the page&lt;/header&gt;
 
     &lt;main&gt;
 
-        &lt;!-- This is the main content of the webpage. Usually there is only one &lt;main&gt; element per page. --&gt;
+        &lt;!-- This is the main content of the webpage. 
+        Usually there is only one &lt;main&gt; element per page. --&gt;
 
         &lt;article&gt;This is an article within the main content.&lt;/article&gt;
         &lt;section&gt;This is a section within the main content.&lt;/section&gt;
         &lt;aside&gt;This is an aside within the main content.&lt;/aside&gt;
+
+        &lt;div&gt;Okay, I left this until last. 
+        It's the much used and much maligned div tag. 
+        Use this when there are no other semantic tags 
+        that fit your content, but aim 
+        to use it as little as possible!&lt;/div&gt;
 
     &lt;/main&gt;
 
@@ -501,94 +542,127 @@
 
 &lt;/body&gt;</code></pre>
 
-Stuff about images and alt text here...
 
-<p>Alt text is a tool used by screen readers to describe an image to those with impaired vision.</p>
-<ul>
-    <li>It's in our best interests to make our page as accessible as we can – so we should always be adding alt text to our <code class="language-markup">&lt;img&gt;</code> elements!</li>
-    <li>Alt text is an attribute, so we will add it to our tag after our source attribute</li>
-    <li>Describe the image without referring to it as an image – for example, write 'a brown dog' instead of 'a picture of a brown dog'</li>
-</ul>
+      <h3>Attributes and IDs</h3>
 
-<h3>Attributes and IDs</h3>
+      <p>
+        We talked a bit about attributes earlier: they are extra information we add into
+        the opening tag of an element.
+      </p>
 
-<p>We talked a bit about Attributes earlier – extra information we add into the opening tag of an element.</p>
-
-<ul>
-    <li>Attributes consist of two parts:
-        <ul>
+      <ul>
+        <li>
+          Attributes consist of two parts:
+          <ul>
             <li>Name</li>
             <li>Value</li>
-        </ul>
-    </li>
-    <li>One commonly used attribute is ID. We can use ID to pick out specific elements, and is useful if you're using an element more than once.</li>
-    <li>This becomes incredibly useful once we start styling in CSS, as we can use these IDs to apply unique style rules to a single element.</li>
-    <li>No two HTML elements can share the same ID, so get inventive with your IDs!</li>
-</ul>
+          </ul>
+        </li>
+        <li>
+          One commonly used attribute is ID. We can use ID to pick out specific
+          elements, and is useful if you're using an element more than once.
+        </li>
+        <li>
+          This becomes incredibly useful once we start styling in CSS, as we can
+          use these IDs to apply unique style rules to a single element.
+        </li>
+        <li>
+          No two HTML elements can share the same ID, so get inventive with your
+          IDs!
+        </li>
+      </ul>
 
-    <pre><code class="language-markup">&lt;section id="my-cat"&gt;
+      <pre><code class="language-markup">&lt;section id="my-cat"&gt;
     &lt;h1&gt;Look at my cat!!!!&lt;/h1&gt;
     &lt;img src="images/cat.jpg" alt="black and white cat" width="640" height="480"&gt;
 &lt;/section&gt;</code></pre>
 
-        <h2>Semantic HTML</h2>
-        <blockquote>
-        Semantic adj. se.man.tic
-        1. of or relating to meaning of language. ” 
-        2. of or relating to
-        </blockquote>
+      <h2>Semantic HTML</h2>
+      <blockquote>
+        Semantic adj. se.man.tic 1. of or relating to meaning of language. ” 2.
+        of or relating to
+      </blockquote>
 
-        <h3>Why do we need semantic HTML?</h3>
+      <h3>Why do we need semantic HTML?</h3>
 
-        Semantic HTML uses tags which best convey the underlying meaning of the content the tag contains. There are two big reasons this is important:
- 
-        <h4>Accessibility</h4>
+      Semantic HTML uses tags which best convey the underlying meaning of the
+      content the tag contains. There are two big reasons this is important:
+
+      <h4>Accessibility</h4>
+      <ul>
+        <li>
+          As we saw earlier, semantically accurate HTML makes it much easier to
+          convey what you mean to those who use a screen reader.
+        </li>
+        <li>
+          Semantics also comes into play when we're considering whether a page
+          is accessible for neurodivergent users
+        </li>
+      </ul>
+
+      <h4>Readability</h4>
+      <ul>
+        <li>
+          If your page is laid out illogically, people won't take the time to
+          read it. Modern users have a good eye, and will lose interest if they
+          can't find the info they want.
+        </li>
+        <li>
+          Semantic cohesion plays a role in Search Engine Optimisation (SEO).
+        </li>
+        <li>
+          Your HTML code needs to be easy to understand for other developers
+          maintaining it!
+        </li>
+      </ul>
+
+      <h3>HTML Nesting</h3>
+
+      Here, we've used the section tag to create containers for our content. •
+      We have then nested groups of semantically-related content within these
+      containers. • This structure will be easier for screen readers, search
+      engines, and other developers to comprehend.
+
+      <div class="callout outline margin-start-m">
+        <h3>Choosing the right element</h3>
+
+        <p><code class="language-markup">&lt;div&gt;</code></p>
         <ul>
-            <li>As we saw earlier, semantically accurate HTML makes it much easier to convey what you mean to those who use a screen reader.</li>
-            <li>Semantics also comes into play when we're considering whether a page is accessible for neurodivergent users</li>
+          <li>Used to group content that is not semantically related.</li>
+          <li>Meaningless to screen readers</li>
+          <li>
+            Mainly used for grouping content for CSS targeting – a style
+            container for other elements.
+          </li>
         </ul>
 
-        <h4>Readability</h4>
+        <p><code class="language-markup">&lt;section&gt;</code></p>
         <ul>
-            <li>If your page is laid out illogically, people won't take the time to read it. Modern users have a good eye, and will lose interest if they can't find the info they want.</li>
-            <li>Semantic cohesion plays a role in Search Engine Optimisation (SEO).</li>
-            <li>Your HTML code needs to be easy to understand for other developers maintaining it!</li>
+          <li>
+            Applied to content that can be grouped together in a semantically
+            meaningful way
+          </li>
+          <li>
+            Grouped content in a
+            <code class="language-markup">&lt;section&gt;</code> should have a
+            'theme' – often declared with a heading
+          </li>
         </ul>
 
+        <p><code class="language-markup">&lt;article&gt;</code></p>
+        <ul>
+          <li>Most specific container</li>
+          <li>
+            Groups content that is semantically related and self-contained; it
+            can be isolated from the rest of the page and still make sense.
+          </li>
+          <li>E.g. - a recipe from a food blog</li>
+        </ul>
+      </div>
 
-        <h3>HTML Nesting</h3>
+      <h3 class="margin-start-m">Combining elements to create meaningful structure</h3>
 
-        Here, we’ve used the <section> tag to create containers for our content.
-• We have then nested groups of semantically-related content within these containers.
-• This structure will be easier for screen readers, search engines, and other developers to comprehend.
-
-<div class="callout outline margin-start-m">
-<h3>Choosing the right element</h3>
-
-<p><code class="language-markup">&lt;div&gt;</code></p>
-<ul>
-    <li>Used to group content that is not semantically related.</li>
-    <li>Meaningless to screen readers</li>
-    <li>Mainly used for grouping content for CSS targeting – a style container for other elements.</li>
-</ul>
-
-<p><code class="language-markup">&lt;section&gt;</code></p>
-<ul>
-    <li>Applied to content that can be grouped together in a semantically meaningful way</li>
-    <li>Grouped content in a <code class="language-markup">&lt;section&gt;</code> should have a 'theme' – often declared with a heading</li>
-</ul>
-
-<p><code class="language-markup">&lt;article&gt;</code></p>
-<ul>
-    <li>Most specific container</li>
-    <li>Groups content that is semantically related and self-contained; it can be isolated from the rest of the page and still make sense.</li>
-    <li>E.g. - a recipe from a food blog</li>
-</ul>
-</div>
-
-<h3>Combining elements</h3>
-
-<pre><code class="language-markup">&lt;section&gt;
+      <pre><code class="language-markup">&lt;section&gt;
     &lt;h1&gt;Latest Recipe posts&lt;/h1&gt;
     &lt;article&gt;
         &lt;h2&gt;Gluten-Free Chocolate Muffins&lt;/h2&gt;
@@ -600,8 +674,11 @@ Stuff about images and alt text here...
     &lt;/article&gt;
 &lt;/section&gt;</code></pre>
 
-
-      </section>
+<p class="margin-start-m">Now you have the basics of HTML try marking up a web page: focus on structure rather than style.</p>
     </main>
+
+       <footer class="margin-start-m padding-m text-center">
+      <p>Norwich University of the Arts - Introduction to Web Development</p>
+    </footer>
   </body>
 </html>
