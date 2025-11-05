@@ -42,7 +42,7 @@
   <body class="flex direction-column">
     <main class="container">
       <h1 class="margin-start-m">
-        HTML: The Greatest Ever Document File Format?
+        HTML: The Foundation of the Web
       </h1>
 
       <p>
@@ -53,12 +53,15 @@
       <p>
         As the standard markup language for creating web pages, HTML offers one
         of the most robust and dependable ways to structure documents in an open
-        and accessible format.
+        and accessible format.<p>
+        <p><a target="_blank" href="https://resilientwebdesign.com/">Read Resilient Web Design by Jeremy Keith</a></p>
       </p>
       <p>
-        HTML is considered a declarative language used primarily in Front-end
+        HTML is considered a <strong>declarative language</strong> used primarily in <strong>front-end</strong>
         web development.
       </p>
+
+      <h2>Declarative vs. Imperative</h3>
 
       <dl class="margin-start-m callout outline">
         <dt>Declarative Languages</dt>
@@ -88,7 +91,7 @@
         </dd>
       </dl>
 
-      <h2>Front end vs. Back end</h2>
+      <h2>Front end vs. Back end</h3>
 
       <dl class="margin-start-m callout outline">
         <dt>Front end (client-side)</dt>
@@ -162,7 +165,7 @@
         </li>
       </ul>
 
-      <h2>Let's Get Started!</h2>
+      <h2>Let's get started!</h2>
 
       <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
 &lt;html&gt;    
@@ -194,7 +197,7 @@
       </p>
 
       <div class="callout outline primary margin-start-m">
-        <h3>Let's try it out!</h3>
+        <h2>Let's try it out!</h2>
         <p>
           Open <code class="language-markup">playgounds/html-1/index.html</code>
         </p>
@@ -207,7 +210,7 @@
       </div>
 
       <div class="callout outline margin-start-m">
-        <h3>Doctype Declaration</h3>
+        <h3>Doctype declaration</h3>
         <p>
           The <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element
           at the top is called the Doctype Declaration. This is only used once,
@@ -221,7 +224,7 @@
       </div>
 
       <div class="callout outline margin-start-m">
-        <h3>HTML Tag</h3>
+        <h3>HTML tag</h3>
         <p>
           The Doctype Declaration is followed by an
           <code class="language-markup">&lt;html&gt;</code> opening tag which
@@ -381,7 +384,7 @@
       </div>
 
       <div class="margin-start-m">
-        <h3>Importing External Resources</h3>
+        <h3>Importing external resources</h3>
         <kelp-tabs>
           <ul class="list-inline" tabs>
             <li><a href="#same-folder">Same Folder</a></li>
@@ -430,7 +433,7 @@
         </kelp-tabs>
       </div>
 
-      <h2>Common HTML Tags</h2>
+      <h2>Common HTML tags</h2>
 
       <pre><code class="language-markup">&lt;body>
 
@@ -496,12 +499,18 @@
     
 &lt;/head></code></pre>
 
-      <h3 class="margin-start-m">Using Alt Text for Images</h3>
+      <h2 class="margin-start-m">Using alt text for images</h2>
       <p>
         Alt text is a tool used by screen readers to describe an image to those
         with impaired vision.
       </p>
-      <ul>
+
+                  <pre><code class="language-markup">&lt;section id="my-cat"&gt;
+    &lt;h1&gt;Look at my cat!!!!&lt;/h1&gt;
+    &lt;img src="images/cat.jpg" alt="black and white cat" width="640" height="480"&gt;
+&lt;/section&gt;</code></pre>
+
+      <ul class="margin-start-m">
         <li>
           It's in our best interests to make our page as accessible as we can so
           we should always be adding alt text to our
@@ -530,11 +539,13 @@
         &lt;section&gt;This is a section within the main content.&lt;/section&gt;
         &lt;aside&gt;This is an aside within the main content.&lt;/aside&gt;
 
-        &lt;div&gt;Okay, I left this until last. 
-        It's the much used and much maligned div tag. 
-        Use this when there are no other semantic tags 
-        that fit your content, but aim 
-        to use it as little as possible!&lt;/div&gt;
+        &lt;div&gt;
+        &lt;p&gt;Wrapped around this paragrpah is the much used 
+        and much maligned div tag! 
+        It's useful for containing and grouping content when 
+        it doesn't make sense to use any of the other semantic tags.
+        to use it as little as possible!&lt;/p&gt;
+        &lt;/div&gt;
 
     &lt;/main&gt;
 
@@ -542,7 +553,7 @@
 
 &lt;/body&gt;</code></pre>
 
-      <h3>Attributes and IDs</h3>
+      <h2>HTML attributes</h3>
 
       <p>
         We talked a bit about attributes earlier: they are extra information we
@@ -553,8 +564,8 @@
         <li>
           Attributes consist of two parts:
           <ul>
-            <li>Name</li>
-            <li>Value</li>
+            <li>Name (e.g. <code class="language-markup">class</code>)</li>
+            <li>Value  (e.g. <code class="language-markup">"heading-bold"</code>)</li>
           </ul>
         </li>
         <li>
@@ -562,24 +573,26 @@
           elements, and is useful if you're using an element more than once.
         </li>
         <li>
-          This becomes incredibly useful once we start styling in CSS, as we can
-          use these IDs to apply unique style rules to a single element.
+          Attributes like class and id become incredibly useful once we start styling in CSS, as we can
+          use these to apply unique style rules to a single element.
         </li>
         <li>
-          No two HTML elements can share the same ID, so get inventive with your
+          While you can reuse classes on as many elements as you wish, No two HTML elements should share the same ID, so get inventive with your
           IDs!
         </li>
       </ul>
 
-      <pre><code class="language-markup">&lt;section id="my-cat"&gt;
-    &lt;h1&gt;Look at my cat!!!!&lt;/h1&gt;
-    &lt;img src="images/cat.jpg" alt="black and white cat" width="640" height="480"&gt;
-&lt;/section&gt;</code></pre>
+
+      <pre><code class="language-markup">&lt;body>
+    &lt;!-- Here's are some attributes on an h1 tag --&gt;
+    &lt;h1 class="heading-bold" id="main-heading">This is the main heading&lt;/h1>
+&lt;/body></code></pre>
 
       <h2>Semantic HTML</h2>
       <blockquote>
-        Semantic adj. se.man.tic 1. of or relating to meaning of language. ” 2.
-        of or relating to
+        <em>Semantic adj. se.man.tic </em><br>
+        1. of or relating to meaning of language.<br>
+        2. of or relating to Semantics, the study of the meaning of language.
       </blockquote>
 
       <h3>Why do we need semantic HTML?</h3>
@@ -615,7 +628,7 @@
         </li>
       </ul>
 
-      <h3>HTML Nesting</h3>
+      <h3>HTML nesting</h3>
 
       Here, we've used the section tag to create containers for our content. •
       We have then nested groups of semantically-related content within these
