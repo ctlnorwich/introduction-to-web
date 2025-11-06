@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to HTML</title>
+    <title>Introduction to HTML | CTL Norwich</title>
 
     <link
       rel="stylesheet"
@@ -29,39 +29,26 @@
       import prismjs from "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/+esm";
     </script>
 
-    <!-- 
-    <script>
-      document.addEventListener("kelp:debug", (event) => {
-        console.log("KELP DEBUG", {
-          element: event.target,
-          message: event.detail,
-        });
-      });
-    </script> -->
   </head>
   <body class="flex direction-column">
     <main class="container">
+
       <h1 class="margin-start-m">
-        HTML: The Foundation of the Web
+        HTML: The Foundational language of the World Wide Web
       </h1>
 
       <p>
-        HTML stands for <strong>HyperText Markup Language</strong>. It was publicly
-        released in October 1991 by Tim Berners-Lee as a foundational part of the
-        World Wide Web.
+        HTML stands for <strong>HyperText Markup Language</strong>. It was publicly released in October 1991 by Tim Berners-Lee as a foundational part of the World Wide Web.
       </p>
       <p>
-        As the standard markup language for creating web pages, HTML offers one
-        of the most robust and dependable ways to structure documents in an open
-        and accessible format.<p>
+        As the standard for creating web pages using HyperText (the concept of linking documents together), HTML offers one of the most robust, open and accessible ways to structure and author content.<p>
           <ul>
         <li><a target="_blank" href="https://resilientwebdesign.com/">Read 'Resilient Web Design' by Jeremy Keith</a></li>
         <li><a target="_blank" href="https://thehistoryoftheweb.com/timeline/">Discover the history of the web</a></li>
           </ul>
       </p>
       <p>
-        HTML is considered a <strong>declarative language</strong> used primarily in <strong>front-end</strong>
-        web development.
+        HTML is considered a <strong>declarative language</strong> used primarily in <strong>front-end</strong> web development.
       </p>
 
       <h2>Declarative vs. Imperative</h3>
@@ -84,12 +71,12 @@
         <dt>Imperative Languages</dt>
         <dd>
           <ul>
-            <li>Describe a step-by-step process for how a program runs</li>
+            <li>Create a step-by-step process for how a program runs</li>
             <li>
               Use individual statements, instructions and methods to create a
               control flow
             </li>
-            <li>Examples: Java, Ruby, PHP, C</li>
+            <li>Examples: Java, JavaScript (mostly), Ruby, PHP, C</li>
           </ul>
         </dd>
       </dl>
@@ -97,13 +84,13 @@
       <h2>Front end vs. Back end</h3>
 
       <dl class="margin-start-m callout outline">
-        <dt>Front end (client-side)</dt>
+        <dt>Front end (client side)</dt>
         <dd>
-          Focus on visible, user-facing aspects of a website<br />
+          Focuses on visible, user-facing aspects of a website<br />
           <em>HTML, CSS, JavaScript (and its many offshoots)</em>
           <ul>
             <li>Layout</li>
-            <li>Design</li>
+            <li>UI/UX Design</li>
             <li>Interaction</li>
             <li>Media (images, videos, SVGs)</li>
             <li>Accessibility</li>
@@ -126,30 +113,25 @@
       <h2>Front-end languages</h2>
       <h3>HTML</h3>
       <p>
-        Gives a webpage Content and Structure. Uses elements within tags to
-        define different types of content
+        Gives a webpage content and structure. Uses elements within tags to define different types of content.
+        <br><code class="language-markup">&lt;h1 class="hello-world"&gt;Hello World!&lt;/h1&gt;</code>
       </p>
 
       <h3>CSS</h3>
       <p>
-        Alters a webpage's Style and Design. Uses selectors to target HTML
-        elements and give them style properties
+        Alters a webpage's style and design. Uses selectors to target HTML elements and assign them style properties and values.
+        <br><code class="language-css">h1.hello-world { color: purple;}</code>
       </p>
 
       <h3>JavaScript</h3>
       <p>
-        Adds Logic and Interactivity to a webpage. Uses variables and functions
-        to create a more dynamic, functional website for users
+        Adds Logic and Interactivity to a webpage. Uses variables and functions to create a more dynamic experience where content can be updated and changed through user interaction.
+        <br><code class="language-js">document.addEventListner("click", (event) => {alert("Alert World!")});</code>
       </p>
 
       <h2>Where do I write my code?</h2>
       <p>
-        Code can be written almost anywhere! You just need to save it with the
-        correct file extension (e.g. .html for HTML files). However, a code
-        editor will make your life much easier, with features like syntax
-        highlighting, auto-completion, and error detection. Code editors with
-        many features are often referred to as Integrated Development
-        Environments (IDEs). Here are some popular code editors:
+        Code can be written almost anywhere! You just need to save it with the correct file extension (e.g. .html for HTML files). However, a code editor will make your life much easier, with features like syntax highlighting, auto-completion, and error detection. Code editors with many features are often referred to as Integrated Development Environments (IDEs). Here are some popular code editors:
       </p>
 
       <ul class="margin-start-m">
@@ -187,16 +169,10 @@
 &lt;/html&gt;</code></pre>
 
       <p class="margin-start-m">
-        Notice how HTML elements are nested within each other? They can have
-        parent, child or sibling relationships. This gives our web page a
-        meaningful structure. We can also reference these relationships in our
-        CSS and JS to target specific elements.
+        Notice how HTML elements are nested within each other? They can have parent, child or sibling relationships. This gives our web page a meaningful structure. We can also reference these relationships in our CSS and JS to target specific elements.
       </p>
       <p>
-        The indentation is optional and is only done for readability. Some
-        people indent 2 spaces, some 4. Sometimes tabs are used, sometimes
-        spaces. This is not at all a source of immense conflict between
-        developers.
+        The indentation is optional and is only done for readability. Some people indent 2 spaces, some 4. Sometimes tabs are used, sometimes spaces. This is not at all a source of immense conflict between developers.
       </p>
 
       <div class="callout outline primary margin-start-m">
@@ -215,14 +191,10 @@
       <div class="callout outline margin-start-m">
         <h3>Doctype declaration</h3>
         <p>
-          The <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element
-          at the top is called the Doctype Declaration. This is only used once,
-          right at the top of the page.
+          The <code class="language-markup">&lt;!DOCTYPE html&gt;</code> element at the top is called the Doctype Declaration. This is only used once, right at the top of the page.
         </p>
         <p>
-          This versiion of the declaration tells web browsers that this document
-          is written in the standard of HTML5 and above, so the browser knows
-          how to display it correctly.
+          This version of the declaration tells web browsers that this document is written in the standard of HTML5 and above, so the browser knows how to display it correctly.
         </p>
       </div>
 
@@ -240,23 +212,17 @@
       <div class="callout outline margin-start-m">
         <h3>Head tag</h3>
         <p>
-          The <code class="language-markup">&lt;html&gt;</code> tag is then
-          followed by a <code class="language-markup">&lt;head&gt;</code> tag.
+          The <code class="language-markup">&lt;html&gt;</code> tag is then followed by a <code class="language-markup">&lt;head&gt;</code> tag.
         </p>
         <p>
-          The <code class="language-markup">&lt;head&gt;</code> section contains
-          information for web browsers and search engines, such as the page
-          title, links to CSS stylesheets and JavaScript files, metadata, and
-          display settings.
+          The <code class="language-markup">&lt;head&gt;</code> section contains information for web browsers and search engines, such as the page title, links to CSS stylesheets and JavaScript files, metadata, and display settings.
         </p>
       </div>
 
       <div class="callout outline margin-start-m">
         <h3>Body tag</h3>
         <p>
-          The <code class="language-markup">&lt;head&gt;</code> is followed by
-          the <code class="language-markup">&lt;body&gt;</code> tag. This is
-          where all the visible content for your webpage will go.
+          The <code class="language-markup">&lt;head&gt;</code> is followed by the <code class="language-markup">&lt;body&gt;</code> tag. This is where all the visible content for your webpage will go.
         </p>
       </div>
 
@@ -279,15 +245,11 @@
  &lt;/html&gt;</code></pre>
 
       <p>
-        Let's take a look at the heading sizes on the webpage. Notice that the
-        browser already has some basic default styles to differentiate the
-        headings.
+        Let's take a look at the heading sizes on the webpage. Notice that the browser already has some basic default styles to differentiate the headings.
       </p>
 
       <p>
-        Ideally, we should use only one
-        <code class="language-markup">&lt;h1&gt;</code> element per page. This
-        is the top-level heading; everything else is second to it.
+        Ideally, we should use only one <code class="language-markup">&lt;h1&gt;</code> element per page. This is the top-level heading; everything else is second to it.
       </p>
       <ul class="margin-start-m">
         <li>
@@ -297,26 +259,20 @@
           would look weird.
         </li>
         <li>
-          Try not to use more than 3 heading levels if you can. If you're
-          creating a super deep hierarchy, it's probably a sign some of your
-          content should be on a different page!
+          Try not to use more than 3 heading levels if you can. If you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!
         </li>
       </ul>
 
       <h2>Adding CSS and JavaScript</h2>
       <p>
-        Our HTML file is now ready to use, but ot will look very plain without
-        any CSS styling and it won't be very interactive without any JavaScript
-        (although that might be a good thing - JS is not always necessary for a
-        good web page). There are a few ways we can add other types of code to
-        our HTML:
+        Our HTML file is now ready to use, but ot will look very plain without any CSS styling and it won't be very interactive without any JavaScript (although that might be a good thing - JS is not always necessary for a good web page). There are a few ways we can add other types of code to our HTML:
       </p>
 
       <div class="callout outline margin-start-m">
         <h3>Inline</h3>
         <ul>
           <li>
-            Writing code directly into our HTML elements – often as an attribute
+            Writing code directly into our HTML elements - often as an attribute
           </li>
           <li>
             Can be difficult to make and track adjustments if your page has a
@@ -381,7 +337,7 @@
           <li>Helps keep HTML readable</li>
           <li>Easy to make changes</li>
           <li>
-            Can be referenced on multiple webpages – great for consistency!
+            Can be referenced on multiple webpages - great for consistency!
           </li>
         </ul>
       </div>
@@ -397,8 +353,7 @@
 
           <div id="same-folder">
             <p>
-              When your CSS and JS files are in the same folder as your HTML
-              file, you can link to them directly by their filename.
+              When your CSS and JS files are in the same folder as your HTML file, you can link to them directly by their filename.
             </p>
             <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's how to import an external style --&gt;
@@ -422,8 +377,7 @@
 
           <div id="external-resource">
             <p>
-              Reference external resources using their full URL. This is called
-              an absolute URL.
+              Reference external resources using their full URL. This is called an absolute URL.
             </p>
             <pre><code class="language-markup">&lt;head>
     &lt;!-- Here's how to import an external style --&gt;
@@ -504,8 +458,7 @@
 
       <h2 class="margin-start-m">Using alt text for images</h2>
       <p>
-        Alt text is a tool used by screen readers to describe an image to those
-        with impaired vision.
+        Alt text is a tool used by screen readers to describe an image to those with impaired vision.
       </p>
 
                   <pre><code class="language-markup">&lt;section id="my-cat"&gt;
@@ -572,16 +525,13 @@
           </ul>
         </li>
         <li>
-          One commonly used attribute is ID. We can use ID to pick out specific
-          elements, and is useful if you're using an element more than once.
+          One commonly used attribute is ID. We can use ID to pick out specific elements, and is useful if you're using an element more than once.
         </li>
         <li>
-          Attributes like class and id become incredibly useful once we start styling in CSS, as we can
-          use these to apply unique style rules to a single element.
+          Attributes like class and id become incredibly useful once we start styling in CSS, as we can use these to apply unique style rules to a single element.
         </li>
         <li>
-          While you can reuse classes on as many elements as you wish, No two HTML elements should share the same ID, so get inventive with your
-          IDs!
+          While you can reuse classes on as many elements as you wish, No two HTML elements should share the same ID, so get inventive with your IDs!
         </li>
       </ul>
 
@@ -606,28 +556,23 @@
       <h4>Accessibility</h4>
       <ul>
         <li>
-          As we saw earlier, semantically accurate HTML makes it much easier to
-          convey what you mean to those who use a screen reader.
+          As we saw earlier, semantically accurate HTML makes it much easier to convey what you mean to those who use a screen reader.
         </li>
         <li>
-          Semantics also comes into play when we're considering whether a page
-          is accessible for neurodivergent users
+          Semantics also comes into play when we're considering whether a page is accessible for neurodivergent users
         </li>
       </ul>
 
       <h4>Readability</h4>
       <ul>
         <li>
-          If your page is laid out illogically, people won't take the time to
-          read it. Modern users have a good eye, and will lose interest if they
-          can't find the info they want.
+          If your page is laid out illogically, people won't take the time to read it. Modern users have a good eye, and will lose interest if they can't find the info they want.
         </li>
         <li>
           Semantic cohesion plays a role in Search Engine Optimisation (SEO).
         </li>
         <li>
-          Your HTML code needs to be easy to understand for other developers
-          maintaining it!
+          Your HTML code needs to be easy to understand for other developers maintaining it!
         </li>
       </ul>
 
@@ -654,13 +599,10 @@
         <p><code class="language-markup">&lt;section&gt;</code></p>
         <ul>
           <li>
-            Applied to content that can be grouped together in a semantically
-            meaningful way
+            Applied to content that can be grouped together in a semantically meaningful way
           </li>
           <li>
-            Grouped content in a
-            <code class="language-markup">&lt;section&gt;</code> should have a
-            'theme' – often declared with a heading
+            Grouped content in a <code class="language-markup">&lt;section&gt;</code> should have a 'theme' – often declared with a heading
           </li>
         </ul>
 
@@ -668,8 +610,7 @@
         <ul>
           <li>Most specific container</li>
           <li>
-            Groups content that is semantically related and self-contained; it
-            can be isolated from the rest of the page and still make sense.
+            Groups content that is semantically related and self-contained; it can be isolated from the rest of the page and still make sense.
           </li>
           <li>E.g. - a recipe from a food blog</li>
         </ul>
@@ -692,11 +633,10 @@
 &lt;/section&gt;</code></pre>
 
       <p class="margin-start-m">
-        Now you have the basics of HTML try marking up a web page: focus on
-        structure rather than style.
+        Now you have the basics of HTML try marking up a web page: focus on structure rather than style.
       </p>
 
-      <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">HTML Elements Reference on MDN: All the things!</a></p>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">HTML Elements Reference on MDN: All the HTML things!</a></p>
     </main>
 
     <footer class="margin-start-m padding-m text-center">
