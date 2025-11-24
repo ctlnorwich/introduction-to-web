@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to CSS | CTL Norwich</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/kelpui@1/css/kelp.css"
+    >
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.min.css"
+      rel="stylesheet"
+    >
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/kelp.js"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/dark-mode-auto.js"
+      defer
+    ></script>
+
+    <script type="module">
+      import prismjs from "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/+esm";
+    </script>
+
+  </head>
+
+  <body class="flex direction-column">
+    <main class="container">
+
+      <h1 class="margin-start-m">
+        CSS: Take Control of Style on the Web
+      </h1>
+
+      <h2>What is CSS?</h2>
+
+      <p>
+        Cascading Style Sheets (CSS) is a language used to describe the design and layout of a HTML or XML document. It dictates how elements should be presented – whether that's on-screen, in print, in speech, or in other media types.
+      </p>
+      <p>
+        Like HTML, CSS is a Declarative Language used for Frontend Development.
+      </p>
+      <p>
+        Also like HTML, CSS no longer has a unified release version. After CSS 2.1, it was decided that CSS would be updated as multiple separate modules, rather than all at once. The core CSS syntax is currently on Level 3, whilst the color module is on level 5! We call this a living standard language.
+      </p>
+      <p>
+        The development of CSS is overseen by the World Wide Web Consortium (W3C).
+      </p>
+
+      <h2>The CSS file</h2>
+
+      <ul>
+        <li>Whilst you can style elements within the <code>&lt;head&gt;</code> of your HTML, it's much better practice to make a separate CSS file in VS Code.</li>
+        <li>Create a new file in the <strong>Build your own Stylesheet</strong> folder in VS Code and call it <code>style.css</code>.</li>
+        <li>We can then head to the <code>index.html</code> file, and add a <code>&lt;link&gt;</code> to our stylesheet.</li>
+        <li>You can add in a sub-folder for your CSS if you like things tidy! Just remember to put the right file path in your <code>&lt;link&gt;</code>.</li>
+      </ul>
+
+      <pre><code class="language-html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+
+      <h2>CSS Syntax</h2>
+
+      <p>CSS is comprised of three main parts: Selectors, Properties, and Values.</p>
+      <p>These look slightly different depending on whether you’re using inline CSS or internal/external CSS.</p>
+
+      <h2>Inline CSS</h2>
+      <pre><code class="language-html">&lt;p style="color:green; font-style:italic;"&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+
+
+      Internal/External CSS
+
+      <pre><code class="language-css">p {color: green; font-style: italic; }</code></pre>
+
+      <h2>CSS Syntax</h2>
+
+      <pre><code class="language-css">
+      body {
+        font-family: Open Sans, Arial; color: #000000 ;
+        font-size: 9px;
+        background: #ffffff ; line-height: 16px;
+      }
+      </code></pre>
+
+      <ul>
+        <li>CSS is a rules-based language; we define the styling rules by picking out groups of elements and declaring style properties for them.</li>
+        <li>We start with a Selector – this tells our browser which elements these style rules apply to.</li>
+        <li>We then add in declarations, which are made up of Properties and Values - what style aspect we want to change, and what we want to change it to.</li>
+        <li>Only properties inside the curly braces will be changed!</li>
+      </ul>
+
+      <h2>Colour in CSS</h2>
+
+      <pre><code class="language-css">
+      color: CornflowerBlue;
+
+      color: #af0f9d;
+
+      color: rgba(255, 99, 71, 0.9)
+
+      color: hsl(85, 88%, 51%);
+      </code></pre>
+
+      <ul>
+        <li>There's a few ways we can define colour in CSS – which you choose to use might depend on the kind of colour you need.</li>
+        <li>The simplest way is by just typing in a colour name. CSS has ~140 inbuilt colours to choose from.</li>
+        <li>You can also use a colour hex code. For example, <code>#000000</code> is black, whilst <code>#ffffff</code> is white.</li>
+        <li>If you need to control opacity, try using <code>rgba(255,255,255,1)</code>. This allows you to set red, green, blue and alpha values.</li>
+        <li>You could also opt for <code>hsl(180,61%, 100%)</code> which will adjust hue, saturation, and lightness.</li>
+      </ul>
+
+
+      <h2>CSS Referencing</h2>
+
+      <p>There are a huge number of different CSS properties – more than we could ever cover.</p>
+      <p>An important part of any developer toolkit is a reference guide for the language you're working with. Learning how to use a reference guide is the most valuable thing you can do!</p>
+      <p>It may be tempting to try and ask AI for the answer – avoid this if you can, especially for living standard languages that are updated regularly. AI training data is often years out of date, and won't always provide a reliable answer.</p>
+      <p>Trust your own brain! You are smart!</p>
+
+      <ul>
+        <li>W3C CSS Reference Guide</li>
+        <li>Mozilla CSS Reference Guide</li>
+        <li>W3C CSS Specifications</li>
+      </ul>
+ 
+      <h2>CSS Selectors: the Big Three</h2>
+
+      <p>
+        As we've seen, CSS rules always start with a Selector – or a list of selectors. There are quite a few types of selector, but the main three you'll use the most are:
+      </p>
+
+      <dl>
+        <dt>Type selector</dt>
+        <dd>
+          <ul>
+            <li>Selects elements solely by the element tag name, e.g. h1, img, a, etc.</li>
+            <li>All elements of this type in HTML will be selected for styling</li>
+            <li>The simplest selector type</li>
+          </ul>
+        </dd>
+
+        <dt>Class selector</dt>
+        <dd>
+          <ul>
+            <li>Selects elements by Class – an attribute you can give multiple elements in HTML.</li>
+            <li>All elements with the same Class name will be selected</li>
+            <li>Can be used to select multiple similar elements without having to select all of them.</li>
+          </ul>
+        </dd>
+
+        <dt>ID selector</dt>
+        <dd>
+          <ul>
+            <li>Selects a HTML element for styling by referencing the ID attribute.</li>
+            <li>Only one HTML element will be selected, as IDs are unique</li>
+            <li>Used to make style changes to one element without changing the others</li>
+          </ul>
+        </dd>
+      </dl>
+
+
+<h2>CSS Type Selectors</h2>
+     <pre><code class="language-css">
+h1{
+font: bold 12px/20px Montserrat; text-align: left;
+text-transform: uppercase; mix-blend-mode: overlay; letter-spacing: 2px;
+}
+</code></pre>
+
+<pre><code class="language-html">&lt;h1&gt;welcome to my website!&lt;/h1&gt;</code></pre>
+
+<h2>CSS Class Selectors</h2>
+
+<pre><code class="language-css">
+.quote { text-align: center; font-size: 13px; font-style: italic; }
+</code></pre>
+
+<pre><code class="language-html">&lt;h1 class="quote"&gt;welcome to my website!&lt;/h1&gt;</code></pre>
+
+<h2>Multiple Classes</h2>
+
+<p>The example before used only one class name for the element. But if every HTML element could only belong to a single class, that would create a lot of work for us!</p>
+<p>Luckily, HTML allows us to stack class attributes and apply multiple style rules at once:</p>
+
+<pre><code class="language-css">
+.green { color: green; }
+.bold { font-weight: bold; }
+</code></pre>
+
+<h3>HTML</h3>
+<pre><code class="language-html">&lt;h1 class="green bold"&gt;Hello World!&lt;/h1&gt;</code></pre>
+
+
+<h3>CSS</h3>
+<pre><code class="language-css">
+#sidebar {
+width: 400px;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+display: table;
+background: url(”galaxy.jpg"); background-size: cover; color: #000000 ;
+}
+</code></pre>
+
+<h3>HTML</h3>
+<pre><code class="language-html">&lt;section id="sidebar"&gt;
+  &lt;h1&gt;Welcome to my site!&lt;/h1&gt;
+&lt;/section&gt;</code></pre>
+
+<h2>CSS Selectors: Practical</h2>
+<p>In your new style.css file, add the following style rules:</p>
+<ul>
+  <li>Change all elements in <code>&lt;body&gt;</code> to use the Helvetica font stack. The property you will need is: <code>font-family: Helvetica, Arial, Sans-Serif;</code></li>
+  <li>Style only the <code>&lt;p&gt;</code> elements in the header and footer to be CornFlowerBlue.</li>
+  <li>Give one element in the page an ID, then use a reference guide to choose 2 new properties and apply them to your selected element.</li>
+</ul>
+
+<h2>Compound selectors/Selector lists</h2>
+<p>Once you have a grasp on the three main selector types, you can start blending them together (Compound selectors) and selecting multiple targets in the same declaration (Selector lists).
+Here's an example of compounding type and class selectors, within a selector list:</p>
+
+<h3>CSS</h3>
+<p>This solely targets paragraph and span elements which have the special class.</p>
+
+<pre><code class="language-css"></code>
+p.special, span.special {
+color: orange;
+font-weight: bold; }
+</code></pre>
+
+<h3>HTML</h3>
+<pre><code class="language-html">&lt;p class="special"&gt;this text looks very &lt;span class="special"&gt;special!&lt;/span&gt;&lt;/p&gt;
+&lt;h1 class="special"&gt;this text doesn't look special at all, because h1 isn't on the selector list for the .special class&lt;/h1&gt;</code></pre>
+
+<h2>Combinators: styling by location</h2>
+
+<p>There are times you may want to target something based on where it is within your HTML structure.</p>
+<p>Using combinators, we can combine multiple selectors to explicitly target an element based on where it is in relation to another element.</p>
+<p>Selectors using combinators are called Complex Selectors.</p>
+<p>There are many different types of combinator, and you can use multiple combinators at once!</p>
+
+<pre><code class="language-css">
+Descendant combinator: article p {
+color: rebeccapurple; }
+Next-sibling combinator h1+p {
+font-size: 200%;
+}
+Child combinator: section > article {
+font: Montserrat; }
+Subsequent-sibling combinator p~img{
+width: relative;
+}
+</code></pre>
+
+<h2>Pseudo-classes: styling by state</h2>
+
+<ul>
+  <li>We can also target elements based on their current state, or on a number of other external factors (e.g. browser history, time, etc.)</li>
+  <li>A great example of this is styling links. The anchor <code>&lt;a&gt;</code> element has different states:
+    <ul>
+      <li>Unvisited</li>
+      <li>Visited</li>
+      <li>Hovered over</li>
+      <li>Focused by the keyboard</li>
+      <li>Being clicked</li>
+    </ul>
+  </li>
+  <li>We call these selectors pseudo-classes.</li>
+</ul>
+
+<pre><code class="language-css"></code>
+a:link { color: pink;
+} a:visited {
+color: green; }
+a:hover {
+text-decoration: underline;
+}
+<code></pre>
+
+<dl>
+  <dt>Type Selector</dt>
+  <dd>Targets all relevant HTML elements</dd>
+  <dd><code>h1{}</code></dd>
+
+  <dt>Class Selector</dt>
+  <dd>Targets elements based on the Class attribute</dd>
+  <dd><code>.box{}</code></dd>
+
+  <dt>ID Selector</dt>
+  <dd>Targets element with specific ID value</dd>
+  <dd><code>#unique{}</code></dd>
+
+  <dt>Attribute Selector</dt>
+  <dd>Makes selection based on if an element has a specific attribute/an attribute value</dd>
+  <dd><code>a[title]{} a[href='www.wikipedia.com']{}</code></dd>
+
+  <dt>Pseudo-classes</dt>
+  <dd>Selects elements that are in a specific state</dd>
+  <dd><code>a:hover{}</code></dd>
+
+  <dt>Pseudo-elements</dt>
+  <dd>Selects a very specific part of an element</dd>
+  <dd><code>p::first-line {}</code></dd>
+
+  <dt>Combinators</dt>
+  <dd>Combines other selectors to target elements</dd>
+  <dd><code>#myId > .myClass + p::firstline {}</code></dd>
+
+  <dt>Universal Selector</dt>
+  <dd>Selects all elements</dd>
+  <dd><code>*{}</code></dd>
+</dl>
+
+
+<dl>
+  <dt>+ Next-sibling combinator</dt>
+  <dd>Separates two selectors and targets instances where the second element immediately follows the first.</dd>
+  <dd><code>h1+p{}</code></dd>
+
+  <dt><code>~</code> Subsequent sibling combinator</dt>
+  <dd>Separates two selectors and targets all instances of the second element following the first, provided they are at the same hierarchy level.</dd>
+  <dd><code>h2~span{}</code></dd>
+
+  <dt><code>␣</code> Descendant combinator</dt>
+  <dd>Separates two selectors. Targets all instances of the second element when nested inside the first.</dd>
+  <dd><code>section img{}</code></dd>
+
+  <dt><code>></code> Child combinator</dt>
+  <dd>Separates two selectors and targets instances where the second element is a direct child of the first.</dd>
+  <dd><code>div > span {}</code></dd>
+
+  <dt><code>||</code> Column combinator</dt>
+  <dd>Targets elements which belong to a column <code>&lt;col&gt;</code>. Used mostly for table styling.</dd>
+  <dd><code>col||td{}</code></dd>
+
+  <dt><code>|</code> Namespace separator</dt>
+  <dd>Targets elements belonging to a specified <code>@namespace</code> – a tool used when your page contains multiple languages (e.g. HTML with inline SVG)</dd>
+  <dd><code>@myNameSpace | p {}</code></dd>
+</dl>
+
+
+<h2>Specificity</h2>
+
+<p>But what happens when two selectors select the same HTML element? Can anyone guess what colour the text will end up being?</p>
+
+<h3>CSS</h3>
+<pre><code class="language-css">
+.special { color: red; }
+p{
+color: blue; }
+<code></pre>
+
+<h3>HTML</h3>
+<p class=“special”>hello</p>
+
+
+<h3>Specificity</h3>
+<p>Inline ID Class Type</p>
+
+<ul>
+<li>Luckily, CSS has in-built rules that decide which selector comes out on top in the event of a conflict.</li>
+<li>Class selectors will always beat out element type selectors; ID selectors will always beat out both.</li>
+<li>Inline styling using the style= attribute in HTML will beat all of them.</li>
+<li>This is what we call the Specificity rule.</li>
+</ul>
+
+<p>So in our example, according to specificity, the text will be red, as the rules for the class selector beat the element selector.
+But what if we have two selectors of the same specificity in conflict?</p>
+
+<h3>CSS</h3>
+<pre><code class="language-css">
+.special { color: red; }
+p{
+color: blue; }
+<code></pre>
+
+<h3>HTML</h3>
+<pre><code class="language-html">&lt;p class="special"&gt;hello&lt;/p&gt;</code></pre>
+
+<pre><code class="language-css">
+p{
+color: red; }
+p{
+color: blue; }
+<code></pre>
+
+<p>Here, we have two rules for <code>&lt;p&gt;</code>. So which colour will our text be this time?</p>
+
+<ul>
+<li>Anyone who guessed blue: congratulations!</li>
+<li>The text would be blue because the declaration for blue comes later in the stylesheet.</li>
+<li>This rule is called the Cascade rule - basically, the latest rule in conflict overwrites the others.</li>
+</ul>
+
+<h2>Selector Specificity</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Weight Category</th>
+      <th>Selectors</th>
+      <th>Weighting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ID</td>
+      <td>ID Selectors (#ID)</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Class</td>
+      <td>Class Selectors (.class)<br>Attribute Selectors ( [attribute="..."] )<br>Pseudo-classes (:pseudo-class)</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td>Element Type Selectors (p, h1, img)<br>Pseudo-elements (::pseudo-element)</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>No value</td>
+      <td>Universal Selector (*)<br>Combinators (+, >, ~, |, ||, ␣)</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Almost all selectors have their own level of specificity you can use to calculate which will win out in a clash.</li>
+  <li>It's worth noting that an infinite number of selectors in one weight category cannot surpass even a single selector of a higher weight category. 100 class selectors will always be lower priority than 1 ID selector.</li>
+</ul>
+
+<h2>Selector Specificity</h2>
+
+<ul>
+<li>All this can get quite confusing when you start using complex selectors. This table shows a way to track specificity that might be helpful.</li>
+<li>A CSS reference guide will provide details on a selector’s specificity, and any unique quirks it might have – the :not() pseudo-class used here is a very odd character!</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Selector</th>
+      <th>IDs</th>
+      <th>Classes</th>
+      <th>Elements</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>h1</code></td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>001</td>
+    </tr>
+    <tr>
+      <td><code>h1+p::first-letter</code></td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>002</td>
+    </tr>
+    <tr>
+      <td><code>li>a[href*="en-us"] > .inline-warning</code></td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>022</td>
+    </tr>
+    <tr>
+      <td><code>#identifier</code></td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td><code>button:not(#mainBtn, .cta)</code></td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>101</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Inheritance</h2>
+
+<pre><code class="language-css"></code>
+p{
+color: green; }
+<code></pre>
+
+<p>this paragraph has <em>emphasised text</em></p>
+
+<ul>
+  <li>Also significant here is the concept of inheritance – some CCS properties cause child elements to inherit the properties of the parent element by default.</li>
+   <li>You don’t need to be an expert on this yet, but it can cause unexpected behaviour in your styling. So if things aren’t looking quite right, it might be an inheritance issue.</li>
+</ul>
+
+<h2>Understanding the Cascade</h2>
+
+<ol>
+  <li><strong>Relevance:</strong> User agent finds all rule blocks with a selector match for each element.</li>
+  <li><strong>Importance:</strong> Sorts rules based on whether they are Normal, or Important. Important styles are those with the !important flag.</li>
+  <li><strong>Style Origin:</strong> Within each of the two importance options, sorts CSS rules by whose stylesheet they're in: the user-agent, the author (developer), or the website user. Priority differs based on these answers, combined with the importance rule.</li>
+  <li><strong>Cascade Layers:</strong> Within these six categories, sorts rules again by Cascade Layer. Cascade layers are a tool devs use to add extra sub-layers of priority to stylesheets.</li>
+  <li><strong>Specificity:</strong> Sorts rules by specificity of selectors, as we have explored.</li>
+  <li><strong>Scoping Proximity:</strong> This helps resolve conflicts between declarations within a @scope. @scope sets very specific conditions for when a CSS rule should be applied.</li>
+  <li><strong>Source Order:</strong> When two selectors in the same origin & cascade layers have the same importance, specificity, and scope proximity, the last declared selector wins.</li>
+</ol>
+
+<ul>
+  <li>We've talked about selector specificity and the order selectors are declared in, but these are only two steps in a much larger process web browsers go through to decide which CSS rules are applied.</li>
+  <li>User-agents follow the steps on the left from 1-7: only rules 'still in the running' each time move to the next step. Once there is only one left, no more rules are checked.</li>
+  <li>You don't have to understand all these concepts right now – just know they exist, so that you can spot them in other people's CSS.</li>
+</ul>
+
+<h2>Style Origin</h2>
+
+<ol>
+  <li>normal user-agent styles</li>
+  <li>normal user styles</li>
+  <li>normal author styles</li>
+  <li>styles being animated</li>
+  <li>important author styles</li>
+  <li>important user styles</li>
+  <li>important user-agent styles</li>
+  <li>styles being transitioned</li>
+</ol>
+
+<ul>
+  <li>As we've seen, the origin of style rules can greatly impact their level of specificity in the cascade order.</li>
+  <li>The user-agent has the lowest priority with regard to normal styles, but one of the highest when styles are !important.</li>
+  <li>Users of your site may also be applying their own styles to your page (think Chrome Extensions, for instance.) Their styles are of medium importance for both normal and !important buckets.</li>
+  <li>It's useful to know this so you know how your styles (author styles) fit into this origin order.</li>
+</ul>
+
+<h2>What is the Box Model?</h2>
+
+<ul>
+  <li>Everything in CSS has a box around it.</li>
+  <li>These boxes have several properties which will affect how they are laid out on our webpage, and how they interact with other elements.</li>
+  <li>Boxes have an Outer display type and an Inner display type:
+    <ul>
+      <li>Outer display controls how the element sits on the page alongside other elements</li>
+      <li>Inner display controls the layout of everything within the box – including any nested elements.</li>
+    </ul>
+  </li>
+  <li>We can set these display types using the display property.</li>
+</ul>
+
+<h2>The Box Model: Outer display type</h2>
+
+<p>Outer display type controls the flow layout of elements on the page.</p>
+
+<p><strong>When this is set to block:</strong></p>
+
+<ul>
+  <li>The box will break onto a new line</li>
+  <li>Width & height properties are respected. If no width is given, the box will extend to fill its containing element.</li>
+  <li>Padding, margins & borders will cause other elements to be pushed away from the box.</li>
+  <li>Some elements, like <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>, use block as their outer display type by default.</li>
+</ul>
+
+<p><strong>When this is set to inline:</strong></p>
+
+<ul>
+  <li>The box will not break onto a new line</li>
+  <li>Width & height properties will not apply</li>
+  <li>Top & bottom padding, margins, & borders will not push other inline elements away</li>
+  <li>Left & right padding/margins/borders will still push other inline elements away.</li>
+  <li>HTML elements, such as <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code> use inline as their default outer display type.</li>
+</ul>
+
+<h2>The Standard Box Model</h2>
+
+<ul>
+  <li>CSS boxes are made up of four main parts:
+    <ul>
+      <li>Content</li>
+      <li>Padding</li>
+      <li>Border</li>
+      <li>Margin</li>
+    </ul>
+  </li>
+  <li>In the standard CSS box model, when you set the width and height properties on a box, these values apply only to the content section of your CSS box.</li>
+  <li>Any padding & borders are then added on top of these dimensions to get the total size taken up by the box. Margins do not count!</li>
+  <li>The box model only applies fully to block boxes. Inline boxes do adopt some features, but not all of them!</li>
+</ul>
+
+<h2>The Standard Box Model</h2>
+.box {
+width: 350px;
+height: 150px;
+margin: 10px;
+padding: 25px;
+border: 5px solid black;
+}
+
+Looking at this CSS, what would the size of our CSS box actually be?
+
+Margins
+
+.box {
+margin: 10px;
+} .longhand {
+margin-top: 10px; margin-bottom: 10px; margin-left: 20px; margin-right: -5px;
+}
+
+• Marginsaretheinvisiblespace around your box, which pushes other elements away from it.
+• Theycanhavepositiveand negative values; setting a negative values causes your box to overlap with other elements on the page.
+• Remember–marginsdon’tcount towards box size!
+• Controlallmarginsofanelement at once using the margin property, or control each side using longhand.
+
+
+Margin Collapsing
+
+• Dependingonwhethertwoelements whose margins touch have positive or
+negative margins, you will get different results.
+• Thisistheresultofsomethingcalled Margin Collapse.
+• Two positive margins will collapse to become one margin – the biggest value margin.
+• Two negative margins will collapse, with the smallest value being used.
+• If only one margin is negative, it will be subtracted from the other.
+• There’salotofrulessurrounding margin collapse – your reference guide can help if your boxes aren’t looking the way you expect.
+
+
+Borders
+
+.box {
+border: 5px solid blue;
+} .longhand {
+border-top-width: 2px; border-bottom-style: dotted; border-left-color: orange;
+}
+
+• Bordersaredrawnbetweenthe margin and the padding of a box.
+• Therearealargenumberof properties available for styling borders, as each side has its own width, style, and colour properties.
+• Youcanusetheborderpropertyto change all these values at once, or use longhand to apply more specific styling.
+
+Padding 
+
+.box { padding: 7px;
+} .longhand {
+padding-top: 7px; padding-bottom: 7px; padding-left: 10px; padding-right: 10px;
+}
+
+• Paddingsitsbetweentheborder and the content area and is used to push the content away from the border.
+• Thereisnonegativevaluefor padding; the lowest possible value is 0.
+• Anybackgroundappliedtoyour element will display behind the padding.
+• Likemarginsandborders,there’s long and shorthand for padding.
+
+
+Box Model: Practical
+In your new style.css file, add the following style rules:
+
+• Choose a <section> and give it an ID using the ID attribute in HTML
+• In your CSS stylesheet, create the following style rules for your <section>:
+• Set the width of your section to 100% of the page.
+• Set the height to 150px.
+• Give your element a 5px border, in a colour and style of your choice.
+• Add 20px of padding on only the left side of the box.
+• Select the <a> element in CSS and create the following rules:
+• Set the display type to block.
+• Add a margin of 30px on all sides.
+
+The Alternate Box Model
+
+• Whenusingthealternativebox model, width & height properties affect the whole visible box on the page.
+• Anyborderandpaddingvaluesyou then set are subtracted from the total width & height, leaving the size value of your content.
+• Thiscanbeusefulifyouhavevery specific dimensions your box cannot exceed.
+• Youcanswitchtothealternatebox model in CSS by using the property box-sizing: border-box;
+
+The Alternate Box Model
+html{
+box-sizing: border-box;
+}
+*, *::before, *::after {
+box-sizing: inherit; }
+
+• Developers often like to use the alternate box model for all their elements.
+• To do that, we set the box- sizing property on the <html> element.
+• We then use the universal selector to ensure all our elements inherit that value from the HTML element.
+
+Display: inline-block;
+
+• display: inline-block is a special value of display, which provides a middle ground between inline and block.
+• Use it if you don’t want an item to break onto a new line, but you do want it to respect width & height.
+• This also avoids the overlapping you often see in a purely inline layout.
+
+
+Sizing Content
+
+.box {
+display: block;
+border: 5px solid red; padding: 2em; width: 50%;
+}
+
+• We’ve mostly been sizing content so far using the pixel measurement (px).
+• Usingabsolutevaluescanoftenend with content overflowing from their boxes.
+• Wecaninsteaduserelativevaluesto set the size of an element. The element will then be sized to a percentage of its parent element.
+• Whennopercentageisset,ablock element will take up 100% of available width. So a percentage value may make it more responsive to different screens.
+
+Styling Images
+
+object-fit: contain;
+• shrinks to fit box on longest side
+• maintains aspect ratio
+• results in ‘letterboxing’
+
+object-fit: cover;
+• crops to fit box on shortest side
+• maintains aspect ratio
+• does not contain whole
+image
+
+object-fit: fill;
+• resizes to fit box on both sides
+• does not maintain aspect ratio
+
+
+• WhilstCSScan’taffectthe internal layout of an image or video, we can adjust how they are laid out on the page.
+• Ifwetrytoplaceanimageinside a CSS box that isn’t the same size as the image:
+• Theimagewillnotstretchtofit a larger box
+• Theimagewilloverflowoutofa smaller box.
+• Wecanusetheobject-fitproperty to ensure our image completely covers our box.
+
+At-rules: Importing Fonts
+  @font-face {
+font-family: "MyHelvetica";
+src: local(“Helvetica Neue Bold”),
+local(“HelveticaNeue-Bold”),
+url(“MgOpenModernaBold.ttf”); font-weight: bold;
+}
+
+• At-rulesinCSSarespecific instructions we can give on how we want CSS to behave. We declare an at-rule by using @.
+• Therulethenlastsuntilthenext;on its hierarchy level, or the next CSS block – whichever comes first.
+• Wecanusethe@font-faceruleto import custom fonts for our text: either from our own locally-installed fonts, or from external sources.
+• Addingbothalocalandurlsource allows for a backup option should the user not have that font installed!
+
+At-rules: Cascade Layers
+
+@layer layout {
+body {
+display: inline-block;
+font: bold 12px/20px Montserrat blue; }
+a{
+color: rebeccapurple; }
+}
+
+• Anothergreatuseofat-rulesisforthe creation of Cascade Layers.
+• WetalkedalittlebitbeforeaboutCSS layers in relation to the cascade – they allow us to create added layers of specificity into our stylesheet.
+• There’safewwaystogoabout adding layers – our example is the @layer block at-rule, which creates a block for that layer which you can add styles into.
+• Theorderoflayercreationis important, as it affects the level of hierarchy amongst layers. Your reference guide should be able to explain more about this.
+
+
+    </main>
+
+    <footer class="margin-start-m padding-m text-center">
+      <p>Norwich University of the Arts - Introduction to Web Development</p>
+    </footer>
+  </body>
+</html>
