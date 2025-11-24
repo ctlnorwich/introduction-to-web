@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-GB">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to CSS | CTL Norwich</title>
 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/kelpui@1/css/kelp.css"
-    >
+    />
 
     <link
       href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.min.css"
       rel="stylesheet"
-    >
+    />
 
     <script
       type="module"
@@ -90,7 +90,7 @@
           You can add in a sub-folder for your CSS if you like things tidy! Just
           remember to put the right file path in your <code>&lt;link&gt;</code>.
         </li>
-      </ul>
+      </ul>å
 
       <pre><code class="language-html">&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
 
@@ -395,10 +395,12 @@ color: hsl(85, 88%, 51%);</code></pre>
       <h2>Pseudo-classes: styling by state</h2>
 
       <p>
-        We can also target elements based on their current state, or on a number of other external factors (e.g. browser history, time, etc.).
+        We can also target elements based on their current state, or on a number
+        of other external factors (e.g. browser history, time, etc.).
       </p>
       <p>
-        A great example of this is styling links. The anchor <code>&lt;a&gt;</code> element has different states:
+        A great example of this is styling links. The anchor
+        <code>&lt;a&gt;</code> element has different states:
       </p>
       <ul>
         <li>Unvisited</li>
@@ -416,37 +418,51 @@ a:hover { text-decoration: underline; }
 
       <dl>
         <dt>Type Selector</dt>
-        <dd>Targets all relevant HTML elements.
-        <br><code>h1 {}</code>
-        </dd>
+        <dd>Targets all relevant HTML elements. <br /><code>h1 {}</code></dd>
 
         <dt>Class Selector</dt>
-        <dd>Targets elements based on the Class attribute.
-        <br><code>.box {}</code></dd>
+        <dd>
+          Targets elements based on the Class attribute. <br /><code
+            >.box {}</code
+          >
+        </dd>
 
         <dt>ID Selector</dt>
-        <dd>Targets element with specific ID value.
-        <br><code>#unique {}</code></dd>
+        <dd>
+          Targets element with specific ID value. <br /><code>#unique {}</code>
+        </dd>
 
         <dt>Attribute Selector</dt>
-        <dd>Makes selection based on if an element has a specific attribute/an attribute value.
-        <br><code>a[title] {}<br>a[href='www.wikipedia.com'] {}</code></dd>
+        <dd>
+          Makes selection based on if an element has a specific attribute/an
+          attribute value. <br /><code
+            >a[title] {}<br />a[href='www.wikipedia.com'] {}</code
+          >
+        </dd>
 
         <dt>Pseudo-classes</dt>
-        <dd>Selects elements that are in a specific state.
-        <br><code>a:hover {}</code></dd>
+        <dd>
+          Selects elements that are in a specific state. <br /><code
+            >a:hover {}</code
+          >
+        </dd>
 
         <dt>Pseudo-elements</dt>
-        <dd>Selects a very specific part of an element.
-        <br><code>p::first-line {}</code></dd>
+        <dd>
+          Selects a very specific part of an element. <br /><code
+            >p::first-line {}</code
+          >
+        </dd>
 
         <dt>Universal Selector</dt>
-        <dd>Selects all elements.
-        <br><code>* {}</code></dd>
+        <dd>Selects all elements. <br /><code>* {}</code></dd>
 
         <dt>Combinators</dt>
-        <dd>Combines other selectors to target elements.
-        <br><code>#myId > .myClass + p::firstline {}</code></dd>
+        <dd>
+          Combines other selectors to target elements. <br /><code
+            >#myId > .myClass + p::firstline {}</code
+          >
+        </dd>
       </dl>
 
       <h3>Combinators</h3>
@@ -454,48 +470,59 @@ a:hover { text-decoration: underline; }
       <dl>
         <dt>Next-sibling combinator</dt>
         <dd>
-          Separates two selectors and targets instances where the second element immediately follows the first.
-        <br><code>h1+p {}</code></dd>
+          Separates two selectors and targets instances where the second element
+          immediately follows the first.
+          <br /><code>h1+p {}</code>
+        </dd>
 
         <dt>Subsequent sibling combinator</dt>
         <dd>
-          Separates two selectors and targets all instances of the second element following the first, provided they are at the same hierarchy level.
-        <br><code>h2~span {}</code></dd>
+          Separates two selectors and targets all instances of the second
+          element following the first, provided they are at the same hierarchy
+          level.
+          <br /><code>h2~span {}</code>
+        </dd>
 
         <dt>Descendant combinator</dt>
         <dd>
-          Separates two selectors. Targets all instances of the second element when nested inside the first.
-        <br><code>section img{}</code></dd>
+          Separates two selectors. Targets all instances of the second element
+          when nested inside the first.
+          <br /><code>section img{}</code>
+        </dd>
 
         <dt>Child combinator</dt>
         <dd>
-          Separates two selectors and targets instances where the second element is a direct child of the first.
-        <br><code>div > span {}</code></dd>
+          Separates two selectors and targets instances where the second element
+          is a direct child of the first.
+          <br /><code>div > span {}</code>
+        </dd>
 
         <dt>Column combinator</dt>
         <dd>
-          Targets elements which belong to a column <code>&lt;col&gt;</code>. Used mostly for table styling.
-        <br><code>col||td{}</code></dd>
+          Targets elements which belong to a column <code>&lt;col&gt;</code>.
+          Used mostly for table styling. <br /><code>col||td{}</code>
+        </dd>
 
         <dt>Namespace separator</dt>
         <dd>
           Targets elements belonging to a specified <code>@namespace</code> - a
           tool used when your page contains multiple languages (e.g. HTML with
-          inline SVG)
-        <br><code>@myNameSpace | p {}</code></dd>
+          inline SVG) <br /><code>@myNameSpace | p {}</code>
+        </dd>
       </dl>
 
       <h2>Specificity</h2>
 
       <p>
-        But what happens when two selectors select the same HTML element? Can anyone guess what colour the text will end up being?
+        But what happens when two selectors select the same HTML element? Can
+        anyone guess what colour the text will end up being?
       </p>
 
       <h3>CSS</h3>
       <pre><code class="language-css">.special { color: red; }
 p { color: blue; } </code></pre>
 
-        <pre><code class="language-markup">&lt;p class="special"&gt;hello&lt;/p&gt;</code></pre>
+      <pre><code class="language-markup">&lt;p class="special"&gt;hello&lt;/p&gt;</code></pre>
 
       <h3>Inline > ID > Class > Type</h3>
 
@@ -516,7 +543,9 @@ p { color: blue; } </code></pre>
       </ul>
 
       <p>
-        So in our example, according to specificity, the text will be red, as the rules for the class selector beat the element selector. But what if we have two selectors of the same specificity in conflict?
+        So in our example, according to specificity, the text will be red, as
+        the rules for the class selector beat the element selector. But what if
+        we have two selectors of the same specificity in conflict?
       </p>
 
       <pre><code class="language-css">.special { color: red; }
@@ -533,20 +562,19 @@ p { color: blue; }</code></pre>
       </p>
 
       <details>
-	<summary><strong>Reveal Answer</strong></summary>
-   <ul>
-        <li>Anyone who guessed blue: congratulations!</li>
-        <li>
-          The text would be blue because the declaration for blue comes later in
-          the stylesheet.
-        </li>
-        <li>
-          This rule is called the Cascade rule - basically, the latest rule in
-          conflict overwrites the others.
-        </li>
-      </ul>
-</details>
-   
+        <summary><strong>Reveal Answer</strong></summary>
+        <ul>
+          <li>Anyone who guessed blue: congratulations!</li>
+          <li>
+            The text would be blue because the declaration for blue comes later
+            in the stylesheet.
+          </li>
+          <li>
+            This rule is called the Cascade rule - basically, the latest rule in
+            conflict overwrites the others.
+          </li>
+        </ul>
+      </details>
 
       <h2>Selector Specificity</h2>
 
@@ -567,32 +595,41 @@ p { color: blue; }</code></pre>
           <tr>
             <td>Class</td>
             <td>
-              Class Selectors (<code>.class</code>)<br>Attribute Selectors (
-              <code>[attribute="..."]</code> )<br>Pseudo-classes (<code>:pseudo-class</code>)
+              Class Selectors (<code>.class</code>)<br />Attribute Selectors (
+              <code>[attribute="..."]</code> )<br />Pseudo-classes
+              (<code>:pseudo-class</code>)
             </td>
             <td>10</td>
           </tr>
           <tr>
             <td>Type</td>
             <td>
-              Element Type Selectors (<code>p, h1, img</code>)<br>Pseudo-elements
-              (<code>::pseudo-element</code>)
+              Element Type Selectors (<code>p, h1, img</code
+              >)<br />Pseudo-elements (<code>::pseudo-element</code>)
             </td>
             <td>1</td>
           </tr>
           <tr>
             <td>No value</td>
-            <td>Universal Selector (<code>*</code>)<br>Combinators (<code>+, >, ~, |, ||, ␣</code>)</td>
+            <td>
+              Universal Selector (<code>*</code>)<br />Combinators (<code
+                >+, >, ~, |, ||, ␣</code
+              >)
+            </td>
             <td>0</td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        Almost all selectors have their own level of specificity you can use to calculate which will win out in a clash.
+        Almost all selectors have their own level of specificity you can use to
+        calculate which will win out in a clash.
       </p>
       <p>
-        It's worth noting that an infinite number of selectors in one weight category cannot surpass even a single selector of a higher weight category. 100 class selectors will always be lower priority than 1 ID selector.
+        It's worth noting that an infinite number of selectors in one weight
+        category cannot surpass even a single selector of a higher weight
+        category. 100 class selectors will always be lower priority than 1 ID
+        selector.
       </p>
 
       <table>
@@ -645,13 +682,19 @@ p { color: blue; }</code></pre>
       </table>
 
       <p>
-        All this can get quite confusing when you start using complex selectors. The above table shows a way to track specificity that might be helpful.
+        All this can get quite confusing when you start using complex selectors.
+        The above table shows a way to track specificity that might be helpful.
       </p>
       <p>
-        A CSS reference guide will provide details on a selector's specificity, and any unique quirks it might have - the :not() pseudo-class used here is a very odd character!
+        A CSS reference guide will provide details on a selector's specificity,
+        and any unique quirks it might have - the :not() pseudo-class used here
+        is a very odd character!
       </p>
 
-      <p>Remember: the Universal selector (*), combinators, and a few pseudo- classes have no effect on specificity.</p>
+      <p>
+        Remember: the Universal selector (*), combinators, and a few pseudo-
+        classes have no effect on specificity.
+      </p>
 
       <h2>Inheritance</h2>
 
@@ -661,10 +704,14 @@ p { color: blue; }</code></pre>
 
       <ul>
         <li>
-          Also significant here is the concept of inheritance - some CCS properties cause child elements to inherit the properties of the parent element by default.
+          Also significant here is the concept of inheritance - some CCS
+          properties cause child elements to inherit the properties of the
+          parent element by default.
         </li>
         <li>
-          You don't need to be an expert on this yet, but it can cause unexpected behaviour in your styling. So if things aren't looking quite right, it might be an inheritance issue.
+          You don't need to be an expert on this yet, but it can cause
+          unexpected behaviour in your styling. So if things aren't looking
+          quite right, it might be an inheritance issue.
         </li>
       </ul>
 
@@ -672,37 +719,54 @@ p { color: blue; }</code></pre>
 
       <ol>
         <li>
-          <strong>Relevance:</strong> User agent finds all rule blocks with a selector match for each element.
+          <strong>Relevance:</strong> User agent finds all rule blocks with a
+          selector match for each element.
         </li>
         <li>
-          <strong>Importance:</strong> Sorts rules based on whether they are Normal, or Important. Important styles are those with the !important flag.
+          <strong>Importance:</strong> Sorts rules based on whether they are
+          Normal, or Important. Important styles are those with the !important
+          flag.
         </li>
         <li>
-          <strong>Style Origin:</strong> Within each of the two importance options, sorts CSS rules by whose stylesheet they're in: the
-          user-agent, the author (developer), or the website user. Priority differs based on these answers, combined with the importance rule.
+          <strong>Style Origin:</strong> Within each of the two importance
+          options, sorts CSS rules by whose stylesheet they're in: the
+          user-agent, the author (developer), or the website user. Priority
+          differs based on these answers, combined with the importance rule.
         </li>
         <li>
-          <strong>Cascade Layers:</strong> Within these six categories, sorts rules again by Cascade Layer. Cascade layers are a tool devs use to add extra sub-layers of priority to stylesheets.
+          <strong>Cascade Layers:</strong> Within these six categories, sorts
+          rules again by Cascade Layer. Cascade layers are a tool devs use to
+          add extra sub-layers of priority to stylesheets.
         </li>
         <li>
-          <strong>Specificity:</strong> Sorts rules by specificity of selectors, as we have explored.
+          <strong>Specificity:</strong> Sorts rules by specificity of selectors,
+          as we have explored.
         </li>
         <li>
-          <strong>Scoping Proximity:</strong> This helps resolve conflicts between declarations within a @scope. @scope sets very specific conditions for when a CSS rule should be applied.
+          <strong>Scoping Proximity:</strong> This helps resolve conflicts
+          between declarations within a @scope. @scope sets very specific
+          conditions for when a CSS rule should be applied.
         </li>
         <li>
-          <strong>Source Order:</strong> When two selectors in the same origin & cascade layers have the same importance, specificity, and scope proximity, the last declared selector wins.
+          <strong>Source Order:</strong> When two selectors in the same origin &
+          cascade layers have the same importance, specificity, and scope
+          proximity, the last declared selector wins.
         </li>
       </ol>
 
       <p>
-        We've talked about selector specificity and the order selectors are declared in, but these are only two steps in a much larger process web browsers go through to decide which CSS rules are applied.
+        We've talked about selector specificity and the order selectors are
+        declared in, but these are only two steps in a much larger process web
+        browsers go through to decide which CSS rules are applied.
       </p>
       <p>
-        User-agents follow the steps on the left from 1-7: only rules 'still in the running' each time move to the next step. Once there is only one left, no more rules are checked.
+        User-agents follow the steps on the left from 1-7: only rules 'still in
+        the running' each time move to the next step. Once there is only one
+        left, no more rules are checked.
       </p>
       <p>
-        You don't have to understand all these concepts right now - just know they exist, so that you can spot them in other people's CSS.
+        You don't have to understand all these concepts right now - just know
+        they exist, so that you can spot them in other people's CSS.
       </p>
 
       <h2>Style Origin</h2>
@@ -719,12 +783,12 @@ p { color: blue; }</code></pre>
       </ol>
 
       <p>
-        As we've seen, the origin of style rules can greatly impact their
-        level of specificity in the cascade order.
+        As we've seen, the origin of style rules can greatly impact their level
+        of specificity in the cascade order.
       </p>
       <p>
-        The user-agent has the lowest priority with regard to normal styles,
-        but one of the highest when styles are !important.
+        The user-agent has the lowest priority with regard to normal styles, but
+        one of the highest when styles are !important.
       </p>
       <p>
         Users of your site may also be applying their own styles to your page
@@ -732,20 +796,18 @@ p { color: blue; }</code></pre>
         importance for both normal and !important buckets.
       </p>
       <p>
-        It's useful to know this so you know how your styles (author styles)
-        fit into this origin order.
+        It's useful to know this so you know how your styles (author styles) fit
+        into this origin order.
       </p>
 
       <h2>What is the Box Model?</h2>
 
       <p>Everything in CSS has a box around it.</p>
       <p>
-        These boxes have several properties which will affect how they are
-        laid out on our webpage, and how they interact with other elements.
+        These boxes have several properties which will affect how they are laid
+        out on our webpage, and how they interact with other elements.
       </p>
-      <p>
-        Boxes have an Outer display type and an Inner display type:
-      </p>
+      <p>Boxes have an Outer display type and an Inner display type:</p>
       <ul>
         <li>
           Outer display controls how the element sits on the page alongside
@@ -769,13 +831,17 @@ p { color: blue; }</code></pre>
       <ul>
         <li>The box will break onto a new line.</li>
         <li>
-          Width & height properties are respected. If no width is given, the box will extend to fill its containing element.
+          Width & height properties are respected. If no width is given, the box
+          will extend to fill its containing element.
         </li>
         <li>
-          Padding, margins & borders will cause other elements to be pushed away from the box.
+          Padding, margins & borders will cause other elements to be pushed away
+          from the box.
         </li>
         <li>
-          Some elements, like <code>&lt;h1&gt;</code> and <code>&lt;p&gt;</code>, use block as their outer display type by default.
+          Some elements, like <code>&lt;h1&gt;</code> and
+          <code>&lt;p&gt;</code>, use block as their outer display type by
+          default.
         </li>
       </ul>
 
@@ -785,10 +851,12 @@ p { color: blue; }</code></pre>
         <li>The box will not break onto a new line.</li>
         <li>Width & height properties will not apply.</li>
         <li>
-          Top & bottom padding, margins, & borders will not push other inline elements away.
+          Top & bottom padding, margins, & borders will not push other inline
+          elements away.
         </li>
         <li>
-          Left & right padding/margins/borders will still push other inline elements away.
+          Left & right padding/margins/borders will still push other inline
+          elements away.
         </li>
         <li>
           HTML elements, such as <code>&lt;a&gt;</code>,
@@ -800,9 +868,7 @@ p { color: blue; }</code></pre>
 
       <h3>The Standard Box Model</h3>
 
-      <p>
-        CSS boxes are made up of four main parts:
-      </p>
+      <p>CSS boxes are made up of four main parts:</p>
       <ul>
         <li>Content</li>
         <li>Padding</li>
@@ -810,13 +876,17 @@ p { color: blue; }</code></pre>
         <li>Margin</li>
       </ul>
       <p>
-        In the standard CSS box model, when you set the width and height properties on a box, these values apply only to the content section of your CSS box.
+        In the standard CSS box model, when you set the width and height
+        properties on a box, these values apply only to the content section of
+        your CSS box.
       </p>
       <p>
-        Any padding & borders are then added on top of these dimensions to get the total size taken up by the box. Margins do not count!
+        Any padding & borders are then added on top of these dimensions to get
+        the total size taken up by the box. Margins do not count!
       </p>
       <p>
-        The box model only applies fully to block boxes. Inline boxes do adopt some features, but not all of them!
+        The box model only applies fully to block boxes. Inline boxes do adopt
+        some features, but not all of them!
       </p>
 
       <h2>The Standard Box Model</h2>
@@ -988,38 +1058,43 @@ p { color: blue; }</code></pre>
 
       <ul>
         <li>
-          When using the alternative box model, width &amp; height properties affect the whole visible box on the page.
+          When using the alternative box model, width &amp; height properties
+          affect the whole visible box on the page.
         </li>
         <li>
-          Any border and padding values you then set are subtracted from the total width &amp; height, leaving the size value of your content.
+          Any border and padding values you then set are subtracted from the
+          total width &amp; height, leaving the size value of your content.
         </li>
         <li>
-          This can be useful if you have very specific dimensions your box cannot exceed.
+          This can be useful if you have very specific dimensions your box
+          cannot exceed.
         </li>
         <li>
-          You can switch to the alternate box model in CSS by using the property <code>box-sizing: border-box;</code>
+          You can switch to the alternate box model in CSS by using the property
+          <code>box-sizing: border-box;</code>
         </li>
       </ul>
 
-      <pre><code class="language-css">
-html{
-box-sizing: border-box;
+      <pre><code class="language-css">html {
+  box-sizing: border-box;
 }
 *, *::before, *::after {
-box-sizing: inherit; }
+  box-sizing: inherit;
+}
 </code></pre>
-
-      <h2>The Alternate Box Model</h2>
 
       <ul>
         <li>
-          Developers often like to use the alternate box model for all their elements.
+          Developers often like to use the alternate box model for all their
+          elements.
         </li>
         <li>
-          To do that, we set the <code>box-sizing</code> property on the <code>&lt;html&gt;</code> element.
+          To do that, we set the <code>box-sizing</code> property on the
+          <code>&lt;html&gt;</code> element.
         </li>
         <li>
-          We then use the universal selector to ensure all our elements inherit that value from the HTML element.
+          We then use the universal selector to ensure all our elements inherit
+          that value from the HTML element.
         </li>
       </ul>
 
@@ -1027,13 +1102,16 @@ box-sizing: inherit; }
 
       <ul>
         <li>
-          <code>display: inline-block</code> is a special value of display, which provides a middle ground between inline and block.
+          <code>display: inline-block</code> is a special value of display,
+          which provides a middle ground between inline and block.
         </li>
         <li>
-          Use it if you don't want an item to break onto a new line, but you do want it to respect width &amp; height.
+          Use it if you don't want an item to break onto a new line, but you do
+          want it to respect width &amp; height.
         </li>
         <li>
-          This also avoids the overlapping you often see in a purely inline layout.
+          This also avoids the overlapping you often see in a purely inline
+          layout.
         </li>
       </ul>
 
