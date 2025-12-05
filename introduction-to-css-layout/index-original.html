@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to CSS Layouts | CTL Norwich</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/kelpui@1/css/kelp.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs-okaidia-theme@0.0.1/prism-okaidia.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href=" https://cdn.jsdelivr.net/npm/prismjs@1.3.0/plugins/line-highlight/prism-line-highlight.css"
+      rel="stylesheet"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/kelp.js"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/kelpui@1/js/dark-mode-auto.js"
+      defer
+    ></script>
+
+    <script type="module">
+      import prismjs from "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/+esm";
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.3.0/plugins/line-highlight/prism-line-highlight.min.js"
+      defer
+    ></script>
+
+  </head>
+
+  <body class="flex direction-column">
+    <main class="container">
+
+      <h1 class="margin-start-m">CSS Layouts</h1>
+
+      <section class="callout primary">
+        <h2>Objectives</h2>
+        <ol>
+          <li>Normal Flow</li>
+          <li>Flexbox</li>
+          <li>CSS Grid</li>
+        </ol>
+      </section>
+
+      <h2>What is Responsive Web Design?</h2>
+
+      <ul>
+        <li>Responsive Web Design (RWD) is an approach to web design that centres on the idea that web pages should look the same across screen sizes, resolutions and devices.</li>
+        <li>This practice makes use of fluid layout styling and media queries, to make content responsive to the Viewport it's viewed in.</li>
+        <li>It's beneficial to have this principle in mind when styling your pages.</li>
+      </ul>
+
+      <h2>Normal Flow</h2>
+
+      <ul>
+        <li>Normal Flow is what happens when we make no changes to a HTML page's layout.</li>
+        <li>HTML elements are displayed in the exact order they appear.</li>
+        <li>We've used block elements, so our elements are displayed stacked on top of one another.</li>
+      </ul>
+
+      <pre><code class="language-markup">&lt;h1&gt;This page is laid out in normal flow.&lt;/h1&gt;
+&lt;p&gt;In normal flow, the inline layout direction is the same &lt;br&gt;
+as the writing direction of the language the page is in.&lt;/p&gt; &lt;p&gt;The block direction runs perpendicular to this.&lt;/p&gt;
+&lt;p&gt;So, depending on your language, the page will look different:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;In English, the inline direction will run horizontally, &lt;br&gt; and the block direction will be vertical.&lt;/li&gt;
+  &lt;li style="writing-mode: vertical-rl;"&gt;日本語のよ な言語では、インライン方向は垂直になり、 ブロックは水平に実行されます。&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <p>Just remember that the Western-style layout we’re used to, whilst increasingly popular, isn’t the only kind that exists!</p>
+
+        <h2>The Display Property: Revisited</h2>
+        
+        <ul>
+          <li>Our main method for crafting different layouts in CSS is by using the display property.</li>
+          <li>By using <code>block</code>, <code>inline</code> or <code>inline-block</code> values, we can change how elements behave in normal flow.</li>
+          <li>However, these aren't the only values we can give the display property. We can activate entirely new layout methods by using two new values: flex and grid.</li>
+        </ul>
+    
+        <h2>Why would I use Flexbox?</h2>
+        <ul>
+          <li>Flexible box layout (Flexbox) allows us to arrange our elements in rows or columns.</li>
+          <li>Items inside the flexbox will expand evenly to fill extra space, or shrink to fit smaller areas.</li>
+          <li>We call Flexbox a one-dimensional layout, because it only deals with a single dimension at a time – either a row or a column.</li>
+        </ul>
+
+        <h3>It’s useful to use Flexbox when we want to:</h3>
+
+        <ul>
+          <li>Vertically centre our content inside its containing element.</li>
+          <li>Ensure that all elements inside a container take up an equal amount of space on the page, no matter the viewport size.</li>
+          <li>Create multi-column layouts with identical column heights, even when they have different amounts of content.</li>
+        </ul>
+
+        <h2>Flexbox: Example Activity</h2>
+        <p>Let’s take a look at a practical example.</p>
+
+        <ul>
+          <li>In your VS Code project folder for these sessions there’s a HTML file called <mark>flexbox0</mark>.</li>
+          <li>In this file you’ll see some CSS styling in the <code>&lt;head&gt;</code>, along with a <code>&lt;header&gt;</code>, and a <code>&lt;section&gt;</code> element with three nested <article> elements.</li>
+          <li>As article elements are block elements, how do we think these will look on the webpage in normal flow?</li>
+        </ul>
+
+        <pre><code class="language-css">section { 
+  display: flex;
+}</code></pre>
+
+        <ul>
+          <li>Now, if we want our articles to be evenly spaced out, we need to adjust the display property of the element that contains them – the <section> element.</li>
+          <li>Let’s add a section {} selector to the end of our CSS, and create a rule setting the display property to flex.</li>
+          <li>Now save your code(CTRL/CMD + S) and refresh the page.</li>
+          <li>Note how all three boxes are now the same size, even though the last box contains more text.</li>
+        </ul>
+
+        <pre><code class="language-css">section { 
+  display: flex;
+  flex-flow: column; 
+}</code></pre>
+
+      <ul>
+        <li>Now, take a look at the flexbox1 HTML file and how it displays in the browser. It looks a little busy, right?</li>
+        <li>Flexbox will by default try to place all its flex items evenly onto a single line – which can lead to a very crowded looking page!</li>
+        <li>We can fix this by adding another value, wrap, to our flex-flow property.</li>
+        <li>flex-flow is actually the shorthand for two separate properties: flex-direction and flex-wrap.</li>
+      </ul>
+
+              <pre><code class="language-css">article {
+  padding: 10px;
+  margin: 10px; 
+  background: #25236e;
+  flex: 200px;
+}
+section {
+  display: flex;
+  flex-flow: row wrap; 
+}</code></pre>
+
+<p>We’re also adding a new property into our article {} selector, which sets a minimum size each flex item can be.</p>
+
+        <pre><code class="language-css">section { 
+  flex: 1; 
+}</code></pre>
+
+<p>We can also control the size of a flex item relative to the ones around it – creating more interesting layouts.</p>
+
+<ul>
+  <li>Head back to the flexbox0 file.</li>
+  <li>At the bottom of your CSS, add the CSS rule on the left.</li>
+  <li>What we’ve just done is given our articles a proportion value, dictating a fraction of available space they should take up.</li>
+  <li>Since all our articles have the same value, nothing on our page should change. Let’s fix that.</li>
+</ul>
+
+        <pre><code class="language-css">article { 
+  flex: 1;
+}
+article:nth-of-type(1) {
+  flex: 2; 
+}</code></pre>
+
+<p>Now, add this second rule to your CSS.</p>
+
+<ul>
+  <li>This time, we’re using a pseudo-class to select a specific <article> based on its position amongst other elements of the same type.</li>
+  <li>We’ve chosen the first <code>&lt;article&gt;</code> element on our page and given it a new flex value of 2.</li>
+</ul>
+
+<p>What do we think this will do to our page?</p>
+
+<p>Our first article box has grown to double the size of the others!</p>
+
+
+<h2>The <code>flex</code> Property</h2>
+
+<p>The resizing we just did is only one of the several ways we can use the flex property. flex is shorthand for three separate properties:</p>
+
+<dl>
+  <dt>flex-grow</dt>
+  <dd>Assigns a element with a unitless proportion value for sizing. This is what we just used.</dd>
+  <dt>flex-shrink</dt>
+  <dd>Another unitless proportion value. Defines how much a flex item will shrink compared to other elements in the event that our flex items are too large for their container.</dd>
+  <dt>flex-basis</dt>
+  <dd>A minimum size value each flex item should have. When using this and flex-grow, each flex item will get the allocated space defined in flex- basis before being assigned a proportion of what’s left.</dd>
+</dl>
+
+<h2>The Flex Model</h2>
+
+<ul>
+  <li>Just like the element box model, there's a model for Flexbox too.</li>
+  <li>The main axis runs in the direction in which flex items are laid out. Flex items will start from the edge of the main axis by default.</li>
+  <li>The cross axis runs perpendicular to the main axis. Flex items will stretch to fill this axis by default.</li>
+  <li>Everything we do with flexbox runs along these two axes, so it's worth learning how they work if you want to style a page this way.</li>
+</ul>
+
+<h2>Flexbox: Alignment</h2>
+
+<p>Now we have a grasp on the Flex Model, we can think about how we align items in our flexbox along these axes.</p>
+
+<ul>
+  <li>Open up the flexbox2 file and preview it in the browser.</li>
+  <li>Open up your developer tools (F12) and select &lt;section&gt; on the left hand side.</li>
+  <li>Your browser should have some kind of flexbox preview mode that will allow you to view your flex container size and where your flex items sit within it.</li>
+</ul>
+
+<h2>Flexbox: Alignment</h2>
+
+<p>These purple lines are showing the start and end of our Cross Axis. Our flex items are currently aligned to the start of both the main and cross axes.</p>
+
+<pre><code class="language-css">section {
+  padding-top: 30px;
+  height: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  /* Adding our flexbox alignment rules in here */
+  align-items: center; justify-content: space-around;
+}</code></pre>
+
+<p>If we want to change the alignment of our flex items, we’re going to use two properties: align- items and justify-content.</p>
+<ul>
+  <li>align-items will adjust our content along the cross axis</li>
+  <li>justify-content will space out our flex items along the main axis.</li>
+</ul>
+<p>Add these two new rules into your file, one at a time, saving in- between. See how the alignments change!</p>
+
+<p>Now, our flex items are aligned to the centre of the cross axis...</p>
+
+<p>And spaced evenly on the page with space around the edges!</p>
+
+<h2>Flexbox: Ordering</h2>
+
+<pre><code class="language-css">article:first-child { 
+  order: 8;
+}</code></pre>
+
+<ul>
+  <li>Our first article has now moved down to last in the order!</li>
+  <li>If we want an item to appear earlier in the order, we can use a negative value instead.</li>
+</ul>
+
+<h2>Why would I use CSS Grid?</h3>
+
+<ul>
+  <li>CSS grid is a two-dimensional layout system, letting us organise content into columns and rows.</li>
+  <li>Grid is used to create elements that won’t resize or shift on multi-page sites, so it’s great for maintaining consistency.</li>
+  <li>A grid will be comprised of rows, columns, and a third value: the gaps between those columns and rows. These are referred to as gutters.</li>
+</ul>
+
+<p>Let’s play with another example:</p>
+
+<pre><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 500px; 
+  gap: 15px;
+}</code></pre>
+
+<ul>
+  <li>This time, find the grid0.html file in VS Code.</li>
+  <li>If you open this file in your browser, the <code>&lt;div&gt;</code> containers are currently laid out in normal flow.</li>
+  <li>We can also see a parent <code>&lt;div&gt;</code> element with a class - .container. Let's use that class as our selector to create the grid.</li>
+  <li>We're adding in 3 rules into our declaration. Now save and refresh!</li>
+</ul>
+
+<h2>Creating a CSS Grid</h2>
+
+<pre data-line="3"><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 500px; 
+  gap: 15px;
+}</code></pre>
+
+  <p>It’s the grid-template-columns property doing the majority of the heavy lifting in creating our grid. This property explicitly defines that we want to create a certain number of columns.</p>
+  
+  <p>We then have two types of values we’ve given: a repeat() function, and a single pixel value of 500px. With this, we can already identify that our last column will be 500px wide.</p>
+
+  <p>The repeat() function allows us to create a batch number of columns which are all the same size. Here, we’ve created 3.</p>
+
+
+      </main>
+
+    <footer class="margin-start-m padding-m text-center">
+      <p>Norwich University of the Arts - Introduction to Web Development</p>
+    </footer>
+  </body>
+</html>
