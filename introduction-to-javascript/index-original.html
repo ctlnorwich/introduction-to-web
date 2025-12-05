@@ -46,14 +46,257 @@
 
       <h1 class="margin-start-m">JavaScript</h1>
 
-      <section class="callout primary">
-        <h2>Objectives</h2>
-        <ol>
-       
-        </ol>
-      </section>
-
+      <h2>What is JavaScript?</h2>
      
+      ECMAScript , also known as JavaScript, is an incredibly versatile programming language used to introduce interactivity to web content. It has a wide range of applications, from webpage & app design to creating web games and artworks.
+      Whilst it’s possible to use JavaScript for declarative programming, it’s primarily used as an Imperative language – where developers outline each step the computer must take to achieve the desired results.
+      JavaScript is used for both client-side and server-side web development – so it’s a valuable language to learn!
+      It’s also what we call an Object-oriented language. We’ll talk a bit more about that means later.
+
+      <h2>JavaScript Versions & Standards</h2>
+
+      <ul>
+      <li>Like with the other languages we’ve covered already, JavaScript receives version updates that are released every year or so.</li>
+      <li>You may have heard of ES6 – this version of JS came out in 2015. After this, versions were named by year (e.g. ECMAScript 2016, ECMAScript 2017, etc.)</li>
+      <li>Some features available in newer versions may not work in older versions of web browsers. It’s wise to use a version that’s at least a couple of years old, unless you really need a specific new feature.</li>
+      </ul>
+
+      <h2>What we’ll need:</h2>
+
+      <ul>
+        <li>A code editor</li>
+        <li>A reference guide</li>
+        <li>A little bit of prior knowledge of HTML and CSS</li>
+      </ul>
+
+      <h2>The .js file</h2>
+
+      <ul>
+        <li>Just like with CSS, JavaScript can be inserted straight into HTML using the &lt;scriptd&gt; tag, but it’s bad practice.</li>
+        <li>Instead, create a .js file somewhere in your project directory, then add a link to it in your HTML within the &lt;head&gt; of the page.</li>
+      </ul>
+      
+      <h2>Variables</h2>
+      <ul>
+        <li>String</li>
+        <li>Number</li>
+        <li>Boolean</li>
+        <li>Bigint</li>
+        <li>Object</li>
+        <li>Symbol</li>
+        <li>Undefined</li>
+        <li>Null</li>
+      </ul>
+
+      <ul>
+        <li>When we're programming, we inevitably come across values or data we'll need to use again later.</li>
+        <li>We can store these bits of data to call upon in other parts of our script. We call these stored values Variables.</li>
+        <li>There are 8 types of data available to us in JavaScript, and any of them can be made into a variable.</li>
+      </ul>
+
+      <h2>Declaring a variable</h2>
+
+<pre><code class="language-js">let myName;
+let myAge;
+let isMarried;
+</code></pre>
+
+<p>Note that each line is ended with a
+semicolon. All JS instructions should be written this way.</p>
+
+<p>It’s good practice in JS for variable names to be written in camelCase.</p>
+      
+
+<ul>
+  <li>We have to declare our variable in order to use it. We do this by using the let keyword, followed by our variable’s name.</li>
+  <li>Unlike a lot of other programming languages, you don’t have to declare a variable’s datatype in JavaScript. That’s because we can switch a variable’s type whenever we like.</li>
+</ul>
+
+<h2>Initialising a variable</h2>
+
+<pre><code class="language-js">let myName = "Hannah-Louise"; 
+let myAge = 29;
+let isMarried = false;
+</code></pre>
+
+<ul>
+  <li>Now we have variables, we need to give them values. This is what we call Initialising the variable.</li>
+  <li>To make things easier, we can declare and initialise a variable at the same time, as shown here.</li>
+  <li>You may have seen the var keyword used before to declare variables; this is an outdated keyword and it's never recommended for use.</li>
+</ul>
+
+<h3>Updating a variable</h3>
+
+
+<pre><code class="language-js">let myName = "Hannah-Louise"; 
+let myName = "Hannah-Louise"; 
+myName = "Hannah";
+myName = null;
+</code></pre>
+
+<ul>
+  <li>Once we've initialised a variable, we can update it pretty easily simply by giving it a new value further down our code.</li>
+  <li>Remember, JavaScript is very flexible with data types, so we can update our variable with a different data type if we need to.</li>
+</ul>
+
+<h3>Constants</h3>
+
+<pre><code class="language-js">
+const MY_NAME = "Hannah-Louise";
+const namesList = [“Hannah”, “Alex”, “Adam” ]; 
+namesList.push(“Emily”);
+</code></pre>
+
+<p>We’re using CAPITAL_SNAKE_CASE for the string const above, but camelCase for the array const below. This helps remind us at a glance which constants cannot be altered throughout the code.</p>
+
+<ul>
+  <li>We can also store data using a Constant instead of a variable.</li>
+  <li>They're a bit like variables, but with a few major differences:</li>
+  <ul>
+  <li>You must initialise a constant when you declare it</li>
+  <li>You can't give them a new value once you have initialised them</li>
+  </ul>
+  <li>Whilst you can't change the value of a constant, you can change the content of a value. Whilst that's not helpful for number or string constants, it is for Objects & Arrays.</li>
+</ul>
+
+<h3>Adding Comments</h3>
+
+<pre><code class="language-js">let myName = "Hannah-Louise"; // Declare myName let myAge = 29;
+let isMarried = false;
+/*
+the code below will
+update the isMarried variable */
+isMarried = true;
+//myAge = 30;
+</code></pre>
+
+<ul>
+  <li>We can add comments to help us make our script more readable and explain our code to others.</li>
+  <li>We can also use it to prevent execution of code when troubleshooting or testing alternatives.</li>
+  <li>We can make a comment over a single line using //. Anything written after this on the line will be considered a comment.</li>
+  <li>For comments over multiple lines, we use /* and */ to signal the start and end of a comment.</li>
+</ul>
+
+<h3>console.log()</h3>
+
+<pre><code class="language-js">let myName = "Hannah-Louise"; 
+myName = "Hannah"; 
+console.log(myName);
+</code></pre>
+
+<ul>
+  <li>We can use the console.log() method to help us troubleshoot and monitor our code.</li>
+  <li>Activating Developer tools in a web browser will bring up the console so we can see what's happening on the webpage.</li>
+</ul>
+
+<h2>Quick Practical</h2>
+
+<ul>
+  <li>In the script.js file, create a variable called myName, and initialise it with a value.</li>
+  <li>Save your code and take a look how the greeting on our index.html page changes!</li>
+  <li>Add in some comments to script.js to describe our code.</li>
+  <li>Underneath your variable, re-assign myName and give it a new value.</li>
+  <li>Now, change myName to a const.</li>
+  <li>Open up developer tools in the browser to see the ReferenceError on our console.</li>
+</ul>
+
+<h2>Basic Maths in JavaScript</h2>
+
+<pre><code class="language-js">let myInt = 7;
+let myFloat = 24.62;
+
+typeof myInt;
+typeof myFloat;
+</code></pre>
+
+<ul>
+  <li>At this stage, there's two main types of number we need to be aware of.</li>
+  <li>Integers are whole value numbers (e.g. 1, 100, 365, etc.)</li>
+  <li>Floating-point numbers (Floats) are numbers with decimal points and places (e.g. 1.5, 3.1415926, 6.9, etc.)</li>
+  <li>Unless your number is extremely large, all your numbers will come under the number data type in JS.</li>
+  <li>Number values are written without speech marks. Otherwise, JS will read it as a String!</li>
+</ul>
+
+<pre><code class="language-js">let myInt = 7;
+let myNumber = "7";
+myNumber = Number(myNumber) + 5;
+
+myNumber;
+</code></pre>
+
+<ul>
+  <li>There are a huge number of different methods we can use with number values in JS.</li>
+  <li>We can also convert other data values into number types using the Number() constructor.</li>
+  <li>This is useful when converting values entered on web forms – which are strings – into numbers we can calculate with.</li>
+  <li>In this example, if we did not convert myNumber, the result would be "75". Once we do, the output becomes 12.</li>
+</ul>
+
+<h2>Arithmetic Operators</h2>
+
+<ul>
+  <li>The way we make calculations in JavaScript is by using Arithmetic Operators; most of these will already likely be familiar to you.</li>
+  <li>The eModulo operator will divide the number on the left by the number on the right, returning the remainder value if the two numbers cannot be divided exactly.</li>
+  <li>Exponent performs a exponentiation or 'to the power of' calculation, which raises the number on the left to the power of the number on the right. In our example, we raise 5 to the power of 2; 5 squared is 25.</li>
+</ul>
+
+<h2>Basic Maths in JavaScript</h2>
+
+  <pre><code class="language-js">let myNumber = "7";
+myNumber = Number(myNumber) + 5;
+
+myNumber;</code></pre>
+
+<h2>Arithmetic Operators</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>Addition</td>
+      <td>10+3</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Subtraction</td>
+      <td>50-5</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>Multiplication</td>
+      <td>10*7</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>Division</td>
+      <td>64/8</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>Modulo, or Remainder</td>
+      <td>8%3</td>
+    </tr>
+    <tr>
+      <td>**</td>
+      <td>Exponent</td>
+      <td>5**2</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Remember that the standard order of operation for mathematics still applies in JavaScript!</p>
+
+<ul>
+  <li>The way we make calculations in JavaScript is by using Arithmetic Operators; most of these will already likely be familiar to you.</li>
+  <li>The Modulo operator will divide the number on the left by the number on the right, returning the remainder value if the two numbers cannot be divided exactly.</li>
+  <li>Exponent performs a exponentiation or 'to the power of' calculation, which raises the number on the left to the power of the number on the right. In our example, we raise 5 to the power of 2; 5 squared is 25.</li>
+</ul>
 
 
       </main>
