@@ -48,10 +48,10 @@
 
       <h2>What is JavaScript?</h2>
      
-      ECMAScript , also known as JavaScript, is an incredibly versatile programming language used to introduce interactivity to web content. It has a wide range of applications, from webpage & app design to creating web games and artworks.
-      Whilst it’s possible to use JavaScript for declarative programming, it’s primarily used as an Imperative language – where developers outline each step the computer must take to achieve the desired results.
-      JavaScript is used for both client-side and server-side web development – so it’s a valuable language to learn!
-      It’s also what we call an Object-oriented language. We’ll talk a bit more about that means later.
+      <p>ECMAScript, also known as JavaScript, is an incredibly versatile programming language used to introduce interactivity to web content. It has a wide range of applications, from webpage & app design to creating web games and artworks.</p>
+      <p>Whilst it’s possible to use JavaScript for declarative programming, it’s primarily used as an Imperative language – where developers outline each step the computer must take to achieve the desired results.</p>
+      <p>JavaScript is used for both <strong>client-side</strong> and <strong>server-side</strong> web development – so it’s a valuable language to learn!</p>
+      <p>It’s also what we call an Object-oriented language. We’ll talk a bit more about that means later.</p>
 
       <h2>JavaScript Versions & Standards</h2>
 
@@ -72,8 +72,8 @@
       <h2>The .js file</h2>
 
       <ul>
-        <li>Just like with CSS, JavaScript can be inserted straight into HTML using the &lt;scriptd&gt; tag, but it’s bad practice.</li>
-        <li>Instead, create a .js file somewhere in your project directory, then add a link to it in your HTML within the &lt;head&gt; of the page.</li>
+        <li>Just like with CSS, JavaScript can be inserted straight into HTML using the <code>&lt;script&gt;</code> tag, but this is not necessarily best practice.</li>
+        <li>Instead, create a <code>.js</code> file somewhere in your project directory, then add a link to it in your HTML within the <code>&lt;head&gt;</code> of the page.</li>
       </ul>
       
       <h2>Variables</h2>
@@ -114,9 +114,9 @@ semicolon. All JS instructions should be written this way.</p>
 
 <h2>Initialising a variable</h2>
 
-<pre><code class="language-js">let myName = "Hannah-Louise"; 
-let myAge = 29;
-let isMarried = false;
+<pre><code class="language-js">let quizQuestion = "What is the meaning of life, the universe and everything?"; 
+let quizAnswer = 42;
+let isCorrect = true;
 </code></pre>
 
 <ul>
@@ -133,20 +133,20 @@ myName = "Hannah";
 myName = null;
 </code></pre>
 
-<ul>
+<ul class="margin-start-m">
   <li>Once we've initialised a variable, we can update it pretty easily simply by giving it a new value further down our code.</li>
   <li>Remember, JavaScript is very flexible with data types, so we can update our variable with a different data type if we need to.</li>
 </ul>
 
 <h3>Constants</h3>
 
-<pre><code class="language-js">
-const MY_NAME = "Hannah-Louise";
-const namesList = ["Hannah", "Alex", "Adam" ]; 
-namesList.push("Emily");
+<pre><code class="language-js">const API_KEY = "12345xyz";
+const countryList = ["India", "France", "Brazil"]; 
+namesList.push("Japan");
+console.log(namesList);
 </code></pre>
 
-<p>We’re using CAPITAL_SNAKE_CASE for the string const above, but camelCase for the array const below. This helps remind us at a glance which constants cannot be altered throughout the code.</p>
+<p class="margin-start-m">We’re using CAPITAL_SNAKE_CASE for the string const above, but camelCase for the array const below. This helps remind us at a glance which constants cannot be altered throughout the code.</p>
 
 <ul>
   <li>We can also store data using a Constant instead of a variable.</li>
