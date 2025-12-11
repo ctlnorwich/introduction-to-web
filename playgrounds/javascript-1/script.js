@@ -64,12 +64,6 @@ const quiz = function () {
       answerButton.innerHTML = answer;
       answerButton.setAttribute("data-index", index);
 
-      if (index === currentQuestion.correctAnswer) {
-        answerButton.setAttribute("correct", "true");
-      } else {
-        answerButton.setAttribute("correct", "false");
-      }
-
       answerList.append(answerListItem);
       answerListItem.append(answerButton);
     //   index++;
