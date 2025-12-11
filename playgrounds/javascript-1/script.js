@@ -1,96 +1,113 @@
-const name = document.getElementById("name");
-const nameButton = document.getElementById("name-button");
-const welcomeText = document.getElementById("welcome-text");
-const questionText = document.getElementById("question");
-const answerList = document.querySelector("#answers");
-const scoreText = document.querySelector(".score");
-const resultMessage = document.querySelector(".result-message");
-const resetButton = document.querySelector("#reset-button");
+const quiz = function () {
+  // Register all the elements as variables
+  const nameInput = document.getElementById("name");
+  const nameButton = document.getElementById("name-button");
+  const welcomeText = document.getElementById("welcome-text");
+  const questionText = document.getElementById("question");
+  const answerList = document.querySelector("#answers");
+  const scoreText = document.querySelector(".score");
+  const resultMessage = document.querySelector(".result-message");
+  const resetButton = document.querySelector("#reset-button");
 
-nameButton.addEventListener("click", function (event) {
-  welcomeText.innerHTML = `Welcome ${name.value}!`;
-});
+  // Set the name using an event listner function
+  nameButton.addEventListener("click", function (event) {
+    if (nameInput.value.trim() === "") {
+      alert("Please enter your name!");
+      return;
+    }
+    welcomeText.textContent = `Welcome ${nameInput.value}!`;
+  });
 
-const questionBank = [
-  {
-    question: "Question 1",
-    answers: ["Answer 1-1", "Answer 1-2", "Answer 1-3"],
-    correctAnswer: 1,
-  },
-  {
-    question: "Question 2",
-    answers: ["Answer 2-1", "Answer 2-2", "Answer 2-3"],
-    correctAnswer: 0,
-  },
-  {
-    question: "Question 3",
-    answers: ["Answer 3-1", "Answer 3-2", "Answer 3-3"],
-    correctAnswer: 2,
-  },
-];
+  // Question bank is an array of objects - explore simple arrays first.
+  const questionBank = [
+    {
+      question: "In what year was JavaScript created?",
+      answers: ["1993", "1995", "2000"],
+      correctAnswer: 1,
+    },
+    {
+      question: "What is the orignial keyword for declaring a variable?",
+      answers: ["var", "let", "const"],
+      correctAnswer: 0,
+    },
+    {
+      question: "What do you use to define an object?",
+      answers: ["Square Brackets", "Parentheses", "Curly Braces"],
+      correctAnswer: 2,
+    },
+  ];
 
-let currentScore = 0;
-let questionIndex = 0;
+  // Define state variables
+  let currentScore = 0;
+  let questionIndex = 0;
+  let currentQuestion = null;
 
-const checkAnswer = function (button) {
-  button.addEventListener("click", (event) => {
-    let index = Number(event.target.getAttribute("data-index"));
-    let result = index === currentQuestion.correctAnswer;
+  // Add this to a function after testing a simpler example
+  const setUpQuestion = function (questionIndex) {
+    answerList.innerHTML = "";
 
-    questionIndex++;
+    // Add this to check that there is a question!
+    if (!questionBank[questionIndex]) {
+      questionText.innerHTML = `You scored ${currentScore.toString()} out of ${questionBank.length.toString()}!`;
+      return;
+    }
 
-    if (result) {
-      currentScore++;
-      console.log(currentScore);
-      scoreText.innerHTML = currentScore.toString();
-      setUpQuestion(questionIndex);
-      resultMessage.innerHTML = `Well done, ${name.value}, that's correct!`;
-    } else {
-      resultMessage.innerHTML = `Sorry, ${name.value}, that's not correct.`;
+    // Set the current question
+    currentQuestion = questionBank[questionIndex];
+    questionText.innerHTML = questionIndex + 1 + ". " + currentQuestion.question;
+
+    // Set the answers
+    // let index = 0;
+    for (const [index, answer] of currentQuestion.answers.entries()) {
+      const answerListItem = document.createElement("li");
+      const answerButton = document.createElement("button");
+      answerButton.innerHTML = answer;
+      answerButton.setAttribute("data-index", index);
+
+      if (index === currentQuestion.correctAnswer) {
+        answerButton.setAttribute("correct", "true");
+      } else {
+        answerButton.setAttribute("correct", "false");
+      }
+
+      answerList.append(answerListItem);
+      answerListItem.append(answerButton);
+    //   index++;
+    }
+  };
+
+  // Add cevent listener to answer buttons
+  answerList.addEventListener("click", function (event) {
+    if (event.target.matches("button")) {
+      let answerButton = event.target;
+      let answerIndex = Number(answerButton.getAttribute("data-index"));
+      let result = answerIndex === currentQuestion.correctAnswer;
+
+      // Go to next question, and...
+      questionIndex++;
+
+      if (result) {
+        currentScore++;
+        scoreText.textContent = currentScore.toString();
+        resultMessage.innerHTML = `Well done ${nameInput.value}, that's correct!`;
+      } else {
+        resultMessage.innerHTML = `Sorry ${nameInput.value}, that's not correct.`;
+      }
+
       setUpQuestion(questionIndex);
     }
   });
-};
 
-const setUpQuestion = function (questionIndex) {
-  answerList.innerHTML = "";
+  // Reset everyting
+  resetButton.addEventListener("click", function () {
+    currentScore = 0;
+    questionIndex = 0;
+    scoreText.innerHTML = "0";
+    resultMessage.innerHTML = "";
+    setUpQuestion(questionIndex);
+  });
 
-  if (!questionBank[questionIndex]) {
-    questionText.innerHTML = `End of Quiz! You scored ${currentScore.toString()} out of ${questionBank.length.toString()}!`;
-    return;
-  }
-
-  currentQuestion = questionBank[questionIndex];
-  questionText.innerHTML = currentQuestion.question;
-
-  index = 0;
-  for (const answer of currentQuestion.answers) {
-    const answerListItem = document.createElement("li");
-    const answerButton = document.createElement("button");
-    answerButton.innerHTML = answer;
-    answerButton.setAttribute("data-index", index);
-
-    if (index === currentQuestion.correctAnswer) {
-      console.log(answer);
-      answerButton.setAttribute("correct", "true");
-    } else {
-      answerButton.setAttribute("correct", "false");
-    }
-
-    answerList.append(answerListItem);
-    answerListItem.append(answerButton);
-
-    checkAnswer(answerButton);
-    index++;
-  }
-};
-
-setUpQuestion(questionIndex);
-
-resetButton.addEventListener("click", function (event) {
-  currentScore = 0;
-  questionIndex = 0;
-  scoreText.innerHTML = "0";
-  resultMessage.innerHTML = "";
   setUpQuestion(questionIndex);
-});
+};
+
+quiz();
