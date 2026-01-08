@@ -1,0 +1,553 @@
+---
+title: "Introduction to HTML"
+description: "The basics of coding a website using semantic HTML."
+template: splash
+---
+
+import { Card } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+HTML stands for **Hypertext Markup Language**. It was publicly released in October 1991 by Sir Tim Berners-Lee as the foundational language of the World Wide Web.
+
+As the standard for creating web pages using Hypertext (the concept of linking 'text' documents together to create associations between them), HTML offers perhaps the most robust, open and accessible way to structure and author digital content.
+
+- [Read 'Resilient Web Design' by Jeremy Keith](https://resilientwebdesign.com/)
+- [Discover the history of the web through this timeline](https://thehistoryoftheweb.com/timeline/)
+
+HTML is considered a **declarative language** used primarily in **front-end** web development.
+
+## Declarative vs. Imperative
+
+<Card title="Declarative Languages">
+  - Describe your desired result rather than outlining each step the computer
+  should take to reach it. 
+  - **What**, not **how**.
+  - Examples: HTML, CSS, SQL.
+</Card>
+
+<Card title="Imperative Languages">
+  - Create a step-by-step process for how a program runs. 
+  - Use individual
+  statements, instructions and methods to create a control flow. 
+  - Examples: Java, JavaScript (mostly), Ruby, PHP, C.
+</Card>
+
+## Front end vs. Back end
+
+<Card title="Front end (client side)">
+  Runs in the **web browser** so can behave differently depending on each user's
+  device and browser version. Focuses on visible, user-facing aspects of a
+  website *HTML, CSS, JavaScript (and its many offshoots)* - Layout - UI/UX
+  Design - Interaction - Media (images, videos, SVGs) - Accessibility
+</Card>
+
+<Card title="Back end (server side)">
+  Runs on a **web server** or cloud-based infastructure, so can be tailored for
+  specific configurations (unlike web browsers). Focuses on hidden, server-side
+  parts of a website *PHP, Node (JavaScript), SQL, Python, Ruby, Java* -
+  Application logic - Database management - Server architecture - APIs
+</Card>
+
+<Aside>
+  In recent years, the division between the front end and the back end has
+  become more blurred, since it is possible to 'delegate' traditional back-end
+  functionality to the browser using modern JavaScript tooling. [Read 'The Great
+  Divide' by Chris Coyier](https://css-tricks.com/the-great-divide/).
+</Aside>
+
+## Front-end languages
+
+Front-end languages run directly in the web browser.
+
+<Card title="HTML" icon="seti:html">
+  Gives a webpage content and structure. Uses elements within tags to define
+  different types of content. ```html
+  <h1 class="hello-world">Hello World!</h1>;```
+</Card>
+
+<Card title="CSS" icon="seti:css">
+  Alters a webpage's style and design. Uses selectors to target HTML elements and assign them style properties and values.
+  ```css
+  h1.hello-world { color: pink; };
+  ```
+</Card>
+
+<Card title="JavaScript" icon="seti:javascript">
+ Adds Logic and Interactivity to a webpage. Uses variables and functions to create a more dynamic experience where content can be updated and changed through user interaction.
+  ```js
+  document.addEventListener("click", (event) => {
+	  alert("Alert World!");
+  }
+  ```
+</Card>
+
+## Where do I write my code?
+
+Code can be written almost anywhere! You just need to save it with the correct file extension (e.g. .html for HTML files). However, a code editor will make your life much easier, with features like syntax highlighting, auto-completion, and error detection. Code editors with many development-related features (e.g. version control, database access), are often referred to as Integrated Development Environments (IDEs).
+
+Here are some popular code editors for the web:
+
+- [Visual Studio Code](https://code.visualstudio.com/): Microsoft code editor that has many extensions to function like an IDE. Probably the most-used code editor for the web at the moment. Free to use.
+- [WebStorm](https://www.jetbrains.com/webstorm/): Popular fully-featured IDE by JetBrains. Free for non-commercial use.
+- [Notepad++](https://notepad-plus-plus.org/): Classic and somewhat old-school Open-Source code editor.
+
+## Let's get started!
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+          "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+  </head>
+
+  <body>
+    <!-- This is an HTML comment.
+    It doesn't appear on the webpage, only in the code itself.
+    We will be using these to explain the code. -->
+    <h1>This is the first heading on the page.</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>`,
+        }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+      Notice how HTML elements are nested within each other? They can have
+      parent, child or sibling relationships. This gives our web page a
+      meaningful structure. We can also reference these relationships in our CSS
+      and JS to target specific elements.
+
+       The indentation is optional and is only done for readability. Some people
+      indent 2 spaces, some 4. Sometimes tabs are used, sometimes spaces. This
+      is not a source of immense conflict between developers.
+
+      ### Doctype declaration
+
+      The `<!DOCTYPE html>` element at the top is called the Doctype Declaration. This is only used once, right at the top of the page.
+
+      This version of the declaration tells web browsers that this document is written in the standard of HTML5 and above, so the browser knows how to display it correctly.
+
+### HTML tag
+
+The Doctype Declaration is followed by an `<html>` opening tag which marks where your HTML starts. The last tag on the page should be the `</html>` closing tag, to close out the document.
+
+### Head tag
+
+The `<html>` tag is then followed by a `<head>` tag.
+
+The `<head>` section contains information for web browsers and search engines, such as the page title, links to CSS stylesheets and JavaScript files, metadata, and display settings.
+
+### Body tag
+
+The `<head>` is followed by the `<body>` tag. This is where all the visible content for your webpage will go.
+
+<div className="not-content">
+  <Sandpack
+    client:load
+    files={{
+      "/index.html": `<!DOCTYPE html> 
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>My First HTML Page</title>
+    </head>
+    <body>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+      <p>Paragraph text.</p>
+   </body>
+</html>`,
+    }}
+    template="static"
+    theme="dark"
+    options={{ showLineNumbers: true }}
+  />
+</div>
+Let's take a look at the heading sizes on the webpage. Notice that the browser already
+has some basic default styles to differentiate the headings.
+
+Ideally, we should use only one `<h1>` element per page. This is the top-level heading; everything else is second to it.
+
+- Make sure you're following the heading hierarchy. Using `<h3>` for subheadings, then `<h2>` for sub-subheadings, would look weird.
+- Try not to use more than 3 heading levels if you can. If you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!
+
+## Adding CSS and JavaScript
+
+Our HTML file is now ready to use, but it will look very plain without any
+CSS styling and it won't be very interactive without any JavaScript
+(although that might be a good thing - JS is not always necessary for a
+good web page). There are a few ways we can add other types of code to our
+HTML:
+
+### Inline
+
+- Writing code directly into our HTML elements - often as an attribute.
+- Can be difficult to make and track adjustments if your page has a lot of content.
+- Not ideal for code readability.
+
+<div className="not-content">
+      <Sandpack
+        client:load
+        files={{
+          "/index.html": `<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inline Examples</title>
+  </head>
+
+  <body>
+    <!-- Here's an inline style -->
+    <h1 style="color:purple;">This is a purple heading</h1>
+       
+    <!-- Here's an inline script on a button element -->
+    <button onclick="alert('Alert JavaScript!');">Click me to alert!</button>
+
+    <button id="alertButton">Click me to log to the console!</button>
+
+    <!-- Here's an inline script within the body -->
+    <script>
+      const alertButton = document.querySelector("#alertButton");
+      alertButton.addEventListener("click", (e) => {
+        console.log('Logged to the console!');
+      });
+    </script>
+
+  </body>
+</html>`,
+        }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true }}
+      />
+    </div>
+
+### Internal
+
+      - Add code between our `<head>` tags
+      - Use `<style>` tags for CSS
+      - Use `<script>` tags for JS
+      - Useful if styling a single page
+      - Can get tricky to manage if more pages are added
+
+```html
+<head>
+  <!-- Here's an internal style in the head -->
+  <style>
+    body {
+      background-color: powderblue;
+    }
+    h1 {
+      color: blue;
+    }
+    p {
+      color: red;
+    }
+  </style>
+
+  <!-- Here's an internal script in the head -->
+  <script>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+  </script>
+</head>
+```
+
+### External
+
+- Imports styles and scripts from separate .css and .js files
+- Helps keep HTML readable
+- Easy to make changes
+- Can be referenced on multiple webpages - great for consistency!
+
+<Tabs>
+  <TabItem label="Same Folder">
+    When your CSS and JS files are in the same folder as your HTML file, you can link to them directly by their filename.
+```html
+<head>
+  <!-- Here's how to import an external style -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Here's how to import an external script -->
+
+{" "}
+
+<script src="script.js" defer></script>
+
+</head>
+```
+  </TabItem>
+  <TabItem label="Another Folder">
+  Navigate up and down the folder structure using ../
+```html
+<head>
+  <!-- Here's how to import an external style -->
+  <link rel="stylesheet" href="../assets/styles.css">
+
+  <!-- Here's how to import an external script -->
+
+{" "}
+
+<script src="../assets/script.js" defer></script>
+
+</head>
+```
+  </TabItem>
+    <TabItem label="External Resource">
+       Reference external resources using their full URL. This is called an absolute URL.
+```html
+<head>
+  <!-- Here's how to import an external style -->
+  <link rel="stylesheet" href="https://my-external-resource.com/styles.css">
+
+  <!-- Here's how to import an external script -->
+
+{" "}
+
+<script src="https://my-external-resource.com/script.js" defer></script>
+
+</head>
+```
+    </TabItem>
+</Tabs>
+
+<h2>Common HTML tags</h2>
+
+<div class="not-content">
+  <Sandpack
+    client:load
+    files={{
+    "/index.html":
+`<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Common HTML Tags</title>
+  </head>
+  <body>
+    <!-- Heading tags are examples of a tag which 
+    has an opening and a closing tag. 
+    Having a separate closing tag usually indicates that 
+    content should go between the two tags -->
+    <h1>Heading tags! H1</h1>
+    <h2>Subheading tags! H2</h2>
+    <h3>Sub-subheading tags! H3</h3>
+
+    <p>Good old paragraph tags. You can also use a
+    <span style="color:green;">span tag</span> to
+    target specific words in CSS or JS.</p>
+    <p>Each new paragraph should have a new tag.</p>
+
+    <!-- Use tags that convey semantic meaning
+    to highlight specific words and phrases - this indicates why
+    you want to format the text in a certain way -->
+    <strong>strong text is styled bold by default</strong>
+    <em>em text is styled italic by default</em>
+    <mark>mark text is highlighted by default</mark>
+
+    <!-- Some tags are self-closing -->
+    <!-- They can be written with or without a slash at the end.-->
+    <!-- It is more 'modern' to write them without a slash -->
+
+    <!-- Break tags for forced line breaks.
+    Don't use these instead of paragraphs!-->
+    <br> or <br/>
+
+    <!-- Horizontal rule tags for thematic breaks -->
+    <hr> or <hr/>
+
+    <!-- Figure tags are great for grouping an image with a caption -->
+    <figure>
+    <!-- Image tags - this one has no closing slash ("Modern"!).
+    There are a lot of complex ways to add multiple image sizes
+    to a single image tag for use on different devices.
+    Save that for another workshop! -->
+    <img src="https://placekitten.com/400/300" alt="A cute black and white cat">
+    <figcaption>This is a cat</figcaption>
+    </figure>
+
+    <a href="my-exciting-link">Link tags</a>
+
+    <blockquote>This is a blockquote.
+    It is used for quoting sections of text from other sources.
+    <cite>Cite tags</cite> can be used within blockquotes.
+    </blockquote>
+
+    <ul>
+      <li>Unordered list item 1</li>
+      <li>Unordered list item 2</li>
+      <li>Unordered list item 3</li>
+    </ul>
+
+    <ol>
+      <li>Ordered list item 1</li>
+      <li>Ordered list item 2</li>
+      <li>Ordered list item 3</li>
+    </ol>
+
+  </body>
+</html>`,
+          }}
+          template="static"
+          theme="dark"
+          options={{ showLineNumbers: true }}
+        />
+</div>
+
+## Using alt text for images
+
+Alt text is a tool used by screen readers to describe an image to those with impaired vision.
+
+```html
+<section id="my-cat">
+  <h1>Look at my cat!!!!</h1>
+  <img
+    src="images/cat.jpg"
+    alt="black and white cat"
+    width="640"
+    height="480"
+  />
+</section>
+```
+
+<Aside type="tip">
+It's in our best interests to make our page as accessible as we can so we should always be adding alt text to our `img` elements!
+
+Alt text is an attribute, so we will add it to our tag after our source attribute.
+
+Describe the image without referring to it as an image: for example, write 'a brown dog' instead of 'a picture of a brown dog'.
+
+</Aside>
+
+```html
+<body>
+  <!-- Modern HTML has semantic tags for areas of your page -->
+  <header>
+    This could be the header of the whole page or just part of the page
+  </header>
+
+  <main>
+    <!-- This is the main content of the webpage. 
+  Usually there is only one <main> element per page. -->
+
+    <article>This is an article within the main content.</article>
+    <section>This is a section within the main content.</section>
+    <aside>This is an aside within the main content.</aside>
+
+    <div>
+      <p>
+        Wrapped around this paragraph is the much used and much maligned div
+        tag! It's useful for containing and grouping content when it doesn't
+        make sense to use any of the other semantic tags. Use it as little as
+        possible!
+      </p>
+    </div>
+  </main>
+
+  <footer>This is the footer of the whole page or part of the page.</footer>
+</body>
+```
+
+## HTML attributes
+
+We talked a bit about attributes earlier: they are extra information we add into the opening tag of an element.
+
+- Attributes consist of two parts:
+  - Name (e.g. `class`)
+  - Value (e.g. `heading-bold`)
+- One commonly used attribute is ID. We can use ID to pick out specific elements, and is useful if you're using an element more than once.
+- Attributes like class and id become incredibly useful once we start styling in CSS, as we can use these to apply unique style rules to a single element.
+- While you can reuse classes on as many elements as you wish, No two HTML elements should share the same ID, so get inventive with your IDs!
+
+```html
+<body>
+  <!-- Here's are some attributes on an h1 tag -->
+  <h1 class="heading-bold" id="main-heading">This is the main heading</h1>
+</body>
+```
+
+## Semantic HTML
+
+<Aside type="tip">
+  *Semantic adj. se.man.tic* 1. of or relating to meaning of language. 2. of or
+  relating to Semantics, the study of the meaning of language.
+</Aside>
+
+### Why do we need semantic HTML?
+
+Semantic HTML uses tags which best convey the underlying meaning of the
+content the tag contains. There are two big reasons this is important:
+
+#### Accessibility
+
+- As we saw earlier, semantically accurate HTML makes it much easier to convey what you mean to those who use a screen reader.
+- Semantics also comes into play when we're considering whether a page is accessible for neurodivergent users.
+
+#### Readability
+
+- If your page is laid out illogically, people won't take the time to read it. Modern users have a good eye, and will lose interest if they can't find the info they want.
+- Semantic cohesion plays a role in Search Engine Optimisation (SEO).
+- Your HTML code needs to be easy to understand for other developers maintaining it!
+
+## HTML nesting
+
+Here, we've used the section tag to create containers for our content.
+
+- We have then nested groups of semantically-related content within these containers.
+- This structure will be easier for screen readers, search engines, and other developers to comprehend.
+
+<Card title="Choosing the right element">
+`<div>`
+- Used to group content that is not semantically related.
+- Meaningless to screen readers.
+- Mainly used for grouping content for CSS targeting - a style container for other elements.
+
+`<section>`
+- Applied to content that can be grouped together in a semantically meaningful way.
+- Grouped content in a `<section>` should have a 'theme' - often declared with a heading.
+
+`<article>`
+- Most specific container.
+- Groups content that is semantically related and self-contained; it can be isolated from the rest of the page and still make sense.
+- E.g. - a recipe from a food blog.
+</Card>
+
+Combining elements to create meaningful structure
+
+```html
+<section>
+  <h1>Latest Recipe posts</h1>
+
+  <article>
+    <h2>Gluten-Free Chocolate Muffins</h2>
+    <p>These triple chocolate muffins will light up any special occasion.</p>
+  </article>
+
+  <article>
+    <h2>Pork and Chive Baozi</h2>
+    <p>Tasty filling with soft, fluffy wrappers, homemade bao buns are super comforting!</p>
+  </article>
+
+</section>
+```
+
+Now you have the basics of HTML try marking up a web page: focus on structure rather than style.
+
+[HTML Elements Reference on MDN: HTML All the things!](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)
