@@ -7,6 +7,7 @@ template: splash
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { FileTree } from '@astrojs/starlight/components';
 import { Sandpack } from "@codesandbox/sandpack-react";
 
 HTML stands for **Hypertext Markup Language**. It was publicly released in October 1991 by Sir Tim Berners-Lee as the foundational language of the World Wide Web.
@@ -29,25 +30,30 @@ HTML is considered a **declarative language** used primarily in **front-end** we
 
 <Card title="Imperative Languages">
   - Create a step-by-step process for how a program runs. 
-  - Use individual
-  statements, instructions and methods to create a control flow. 
+  - Use individual statements, instructions and methods to create a control flow. 
   - Examples: Java, JavaScript (mostly), Ruby, PHP, C.
 </Card>
 
 ## Front end vs. Back end
 
 <Card title="Front end (client side)">
-  Runs in the **web browser** so can behave differently depending on each user's
-  device and browser version. Focuses on visible, user-facing aspects of a
-  website *HTML, CSS, JavaScript (and its many offshoots)* - Layout - UI/UX
-  Design - Interaction - Media (images, videos, SVGs) - Accessibility
+  Runs in the **web browser** so can behave differently depending on each user's device and browser version. Focuses on visible, user-facing aspects of a
+  website *HTML, CSS, JavaScript (and its many offshoots)*
+  - Layout
+  - UI/UX Design
+  - Interaction
+  - Media (images, videos, SVGs)
+  - Accessibility
 </Card>
 
 <Card title="Back end (server side)">
   Runs on a **web server** or cloud-based infastructure, so can be tailored for
   specific configurations (unlike web browsers). Focuses on hidden, server-side
-  parts of a website *PHP, Node (JavaScript), SQL, Python, Ruby, Java* -
-  Application logic - Database management - Server architecture - APIs
+  parts of a website *PHP, Node (JavaScript), SQL, Python, Ruby, Java* 
+  - Application logic
+  - Database management
+  - Server architecture
+  - APIs
 </Card>
 
 <Aside>
@@ -63,8 +69,10 @@ Front-end languages run directly in the web browser.
 
 <Card title="HTML" icon="seti:html">
   Gives a webpage content and structure. Uses elements within tags to define
-  different types of content. ```html
-  <h1 class="hello-world">Hello World!</h1>;```
+  different types of content.
+  ```html
+  <h1 class="hello-world">Hello World!</h1>;
+  ```
 </Card>
 
 <Card title="CSS" icon="seti:css">
@@ -123,20 +131,21 @@ Here are some popular code editors for the web:
       />
 </div>
 
-      Notice how HTML elements are nested within each other? They can have
-      parent, child or sibling relationships. This gives our web page a
-      meaningful structure. We can also reference these relationships in our CSS
-      and JS to target specific elements.
+Notice how HTML elements are nested within each other? They can have
+parent, child or sibling relationships. This gives our web page a
+meaningful structure. We can also reference these relationships in our CSS
+and JS to target specific elements.
 
-       The indentation is optional and is only done for readability. Some people
-      indent 2 spaces, some 4. Sometimes tabs are used, sometimes spaces. This
-      is not a source of immense conflict between developers.
+The indentation is optional and is only done for readability. Some people
+indent 2 spaces, some 4. Sometimes tabs are used, sometimes spaces.*
+      
+*Not a source of conflict between developers.
 
-      ### Doctype declaration
+### Doctype declaration
 
-      The `<!DOCTYPE html>` element at the top is called the Doctype Declaration. This is only used once, right at the top of the page.
+The `<!DOCTYPE html>` element at the top is called the Doctype Declaration. This is only used once, right at the top of the page.
 
-      This version of the declaration tells web browsers that this document is written in the standard of HTML5 and above, so the browser knows how to display it correctly.
+This version of the declaration tells web browsers that this document is written in the standard of HTML5 and above, so the browser knows how to display it correctly.
 
 ### HTML tag
 
@@ -156,7 +165,8 @@ The `<head>` is followed by the `<body>` tag. This is where all the visible cont
   <Sandpack
     client:load
     files={{
-      "/index.html": `<!DOCTYPE html> 
+      "/index.html": 
+`<!DOCTYPE html> 
 <html>
     <head>
       <meta charset="UTF-8">
@@ -179,12 +189,14 @@ The `<head>` is followed by the `<body>` tag. This is where all the visible cont
     options={{ showLineNumbers: true }}
   />
 </div>
+
 Let's take a look at the heading sizes on the webpage. Notice that the browser already
 has some basic default styles to differentiate the headings.
 
-Ideally, we should use only one `<h1>` element per page. This is the top-level heading; everything else is second to it.
+Ideally, we should use only one `<h1>` element per page. This is the top-level heading; everything else comes lower in the hierarchy.
 
 - Make sure you're following the heading hierarchy. Using `<h3>` for subheadings, then `<h2>` for sub-subheadings, would look weird.
+- It is useful to think about your document in terms of an 'Outline', where you use the different headings to structure it.
 - Try not to use more than 3 heading levels if you can. If you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!
 
 ## Adding CSS and JavaScript
@@ -202,10 +214,11 @@ HTML:
 - Not ideal for code readability.
 
 <div className="not-content">
-      <Sandpack
-        client:load
-        files={{
-          "/index.html": `<html>
+  <Sandpack
+    client:load
+    files={{
+      "/index.html": 
+  `<html>
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -236,15 +249,15 @@ HTML:
         theme="dark"
         options={{ showLineNumbers: true, showConsole: true }}
       />
-    </div>
+</div>
 
 ### Internal
 
-      - Add code between our `<head>` tags
-      - Use `<style>` tags for CSS
-      - Use `<script>` tags for JS
-      - Useful if styling a single page
-      - Can get tricky to manage if more pages are added
+- Add code between our `<head>` tags
+- Use `<style>` tags for CSS
+- Use `<script>` tags for JS
+- Useful if styling a single page
+- Can get tricky to manage if more pages are added
 
 ```html
 <head>
@@ -284,26 +297,31 @@ HTML:
   <link rel="stylesheet" href="styles.css">
 
   <!-- Here's how to import an external script -->
-
-{" "}
-
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 
 </head>
 ```
   </TabItem>
   <TabItem label="Another Folder">
-  Navigate up and down the folder structure using ../
+    Navigate back up the folder structure using ../
+    <FileTree>
+
+- sripts
+  - script.js
+- site
+  - styles
+    - style.css
+  - home
+    - index.html
+
+</FileTree>
 ```html
 <head>
-  <!-- Here's how to import an external style -->
-  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Here's how to import an external style in a sibing directory -->
+  <link rel="stylesheet" href="../styles/style.css">
 
-  <!-- Here's how to import an external script -->
-
-{" "}
-
-<script src="../assets/script.js" defer></script>
+  <!-- Here's how to import an external script in a directory one level up-->
+  <script src="../../scripts/script.js" defer></script>
 
 </head>
 ```
@@ -316,10 +334,7 @@ HTML:
   <link rel="stylesheet" href="https://my-external-resource.com/styles.css">
 
   <!-- Here's how to import an external script -->
-
-{" "}
-
-<script src="https://my-external-resource.com/script.js" defer></script>
+  <script src="https://my-external-resource.com/script.js" defer></script>
 
 </head>
 ```
