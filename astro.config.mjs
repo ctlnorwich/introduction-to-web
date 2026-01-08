@@ -6,6 +6,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://ctlnorwich.github.io/introduction-to-web/",
+    base: "/introduction-to-web",
     integrations: [starlight({
         title: 'NUA Introduction to Web',
         social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
