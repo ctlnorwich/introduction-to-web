@@ -12,7 +12,7 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 
 HTML stands for **Hypertext Markup Language**. It was publicly released in October 1991 by Sir Tim Berners-Lee as the foundational language of the World Wide Web.
 
-As the standard for creating web pages using Hypertext (the concept of linking 'text' documents together to create associations between them), HTML offers perhaps the most robust, open and accessible way to structure and author digital content.
+As the standard for creating web pages using Hypertext (the concept of linking 'text' documents together to create associations between them using `<a href="https://link.com">link</a>` elements), HTML offers perhaps the most robust, open and accessible way to structure and author digital content.
 
 - [Read 'Resilient Web Design' by Jeremy Keith](https://resilientwebdesign.com/)
 - [Discover the history of the web through this timeline](https://thehistoryoftheweb.com/timeline/)
@@ -31,14 +31,17 @@ HTML is considered a **declarative language** used primarily in **front-end** we
 <Card title="Imperative Languages">
   - Create a step-by-step process for how a program runs. 
   - Use individual statements, instructions and methods to create a control flow. 
-  - Examples: Java, JavaScript (mostly), Ruby, PHP, C.
+  - Examples: Python, Java, JavaScript (mostly), Ruby, PHP, C++.
 </Card>
 
 ## Front end vs. Back end
 
 <Card title="Front end (client side)">
   Runs in the **web browser** so can behave differently depending on each user's device and browser version. Focuses on visible, user-facing aspects of a
-  website *HTML, CSS, JavaScript (and its many offshoots)*
+  website
+  
+  *HTML, CSS, JavaScript (and its many offshoots)*
+  
   - Layout
   - UI/UX Design
   - Interaction
@@ -49,7 +52,10 @@ HTML is considered a **declarative language** used primarily in **front-end** we
 <Card title="Back end (server side)">
   Runs on a **web server** or cloud-based infastructure, so can be tailored for
   specific configurations (unlike web browsers). Focuses on hidden, server-side
-  parts of a website *PHP, Node (JavaScript), SQL, Python, Ruby, Java* 
+  parts of a website
+  
+  *PHP, Node.js (JavaScript), SQL, Python, Ruby, Java* 
+  
   - Application logic
   - Database management
   - Server architecture
@@ -99,7 +105,7 @@ Here are some popular code editors for the web:
 
 - [Visual Studio Code](https://code.visualstudio.com/): Microsoft code editor that has many extensions to function like an IDE. Probably the most-used code editor for the web at the moment. Free to use.
 - [WebStorm](https://www.jetbrains.com/webstorm/): Popular fully-featured IDE by JetBrains. Free for non-commercial use.
-- [Notepad++](https://notepad-plus-plus.org/): Classic and somewhat old-school Open-Source code editor.
+- [Notepad++](https://notepad-plus-plus.org/): Classic and somewhat old-school open-source code editor.
 
 ## Let's get started!
 
@@ -107,7 +113,7 @@ Here are some popular code editors for the web:
 <Sandpack
   client:load
   files={{
-          "/index.html":
+    "/index.html":
 `<!DOCTYPE html> 
 <html>
   <head>
@@ -122,6 +128,7 @@ Here are some popular code editors for the web:
     We will be using these to explain the code. -->
     <h1>This is the first heading on the page.</h1>
     <p>This is a paragraph.</p>
+    <p>This is a paragraph with a <a href="https://www.w3.org/">link to the W3C website</a></p>.
   </body>
 </html>`,
         }}
@@ -139,7 +146,7 @@ and JS to target specific elements.
 The indentation is optional and is only done for readability. Some people
 indent 2 spaces, some 4. Sometimes tabs are used, sometimes spaces.*
       
-*Not a source of conflict between developers.
+*Not at all a source of conflict between developers.
 
 ### Doctype declaration
 
@@ -195,13 +202,13 @@ has some basic default styles to differentiate the headings.
 
 Ideally, we should use only one `<h1>` element per page. This is the top-level heading; everything else comes lower in the hierarchy.
 
-- Make sure you're following the heading hierarchy. Using `<h3>` for subheadings, then `<h2>` for sub-subheadings, would look weird.
-- It is useful to think about your document in terms of an 'Outline', where you use the different headings to structure it.
-- Try not to use more than 3 heading levels if you can. If you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!
+- Make sure you're following the heading hierarchy. Using `<h4>` for subheadings, then `<h2>` for sub-subheadings, would look weird.
+- It is useful to think about your document in terms of an 'outline', where you use the different headings to structure it.
+- Try not to use more than 3 ir 4 heading levels if you can. If you're creating a super deep hierarchy, it's probably a sign some of your content should be on a different page!
 
 ## Adding CSS and JavaScript
 
-Our HTML file is now ready to use, but it will look very plain without any
+If you have followed the structure outlined HTML file is now ready to use, but it will look very plain without any
 CSS styling and it won't be very interactive without any JavaScript
 (although that might be a good thing - JS is not always necessary for a
 good web page). There are a few ways we can add other types of code to our
@@ -304,8 +311,7 @@ HTML:
   </TabItem>
   <TabItem label="Another Folder">
     Navigate back up the folder structure using ../
-    <FileTree>
-
+<FileTree>
 - sripts
   - script.js
 - site
@@ -313,7 +319,6 @@ HTML:
     - style.css
   - home
     - index.html
-
 </FileTree>
 ```html
 <head>
@@ -398,7 +403,7 @@ HTML:
     <figcaption>This is a cat</figcaption>
     </figure>
 
-    <a href="my-exciting-link">Link tags</a>
+    <a href="https://w3c.org">Link tags</a>
 
     <blockquote>This is a blockquote.
     It is used for quoting sections of text from other sources.
