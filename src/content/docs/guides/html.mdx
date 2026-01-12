@@ -128,7 +128,7 @@ Here are some popular code editors for the web:
     We will be using these to explain the code. -->
     <h1>This is the first heading on the page.</h1>
     <p>This is a paragraph.</p>
-    <p>This is a paragraph with a <a href="https://www.w3.org/">link to the W3C website</a></p>.
+    <p>This is a paragraph with a <a href="https://www.w3.org/">link to the W3C website</a>.</p>
   </body>
 </html>`,
         }}
@@ -346,7 +346,9 @@ HTML:
     </TabItem>
 </Tabs>
 
-<h2>Common HTML tags</h2>
+## Common HTML tags for creating documents
+HTML elements (e.g. the 'heading 1' element) are made up of html tags (e.g. the `<h1></h1>` opening and closing tags). Elements which nest content or 'children' have opening and closing tags to wrap around the content. Elements which don't have inner content or store their content only in attributes are 'self-closing'. These elements can be written with or without a forward slash at the end (e.g. `<br>` or `<br/>`). Not using a slash is more 'modern' and a valid way to write the tag, but some HTML validators will still suggest that you should add the slash.
+
 
 <div class="not-content">
   <Sandpack
@@ -388,10 +390,12 @@ HTML:
 
     <!-- Break tags for forced line breaks.
     Don't use these instead of paragraphs!-->
-    <br> or <br/>
+    <p>
+    Break tags will <br> create line breaks like this or <br/> this.
+    </p>
 
     <!-- Horizontal rule tags for thematic breaks -->
-    <hr> or <hr/>
+    <hr> this text is between two horizontal rule tags <hr/>
 
     <!-- Figure tags are great for grouping an image with a caption -->
     <figure>
@@ -399,8 +403,8 @@ HTML:
     There are a lot of complex ways to add multiple image sizes
     to a single image tag for use on different devices.
     Save that for another workshop! -->
-    <img src="https://placekitten.com/400/300" alt="A cute black and white cat">
-    <figcaption>This is a cat</figcaption>
+    <img src="https://picsum.photos/id/146/320/240" alt="A red and white tricycle chained to a lamp post on a pavement in front of a door.">
+    <figcaption>A caption about this image</figcaption>
     </figure>
 
     <a href="https://w3c.org">Link tags</a>
@@ -431,16 +435,128 @@ HTML:
         />
 </div>
 
+## Common HTML tags for creating forms
+
+Form elements are not only used for creating obvious forms (e.g. a 'Contact Us' form), but for interactive elements of a user interface such as toggles and filters. When creating a form, it is important to use the correct markup to make sure it is machine-readable, works with keyboard navigation and makes use of the correct accessibility features.
+
+<div class="not-content">
+  <Sandpack
+    client:load
+    files={{
+    "/index.html":
+`<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Common HTML Tags</title>
+  </head>
+  <body>
+    <!-- Forms are wrapped in the Form tag. This tag has an action and methods attributes to control what the form does when you submit it.-->
+    <form action="#" method="get">
+    <p>
+      <label>
+        Text input<br/>
+        <input type="text" placeholder="Enter your name">
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        Email input<br/>
+        <input type="email" placeholder="your.email@example.com">
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        Password input<br/>
+        <input type="password" placeholder="Enter password">
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        Number input<br/>
+        <input type="number" placeholder="Enter a number" min="0" max="100">
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        Date input<br/>
+        <input type="date">
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        Textarea<br/>
+        <textarea rows="4" cols="30" placeholder="Enter multiple lines of text"></textarea>
+      </label>
+    </p>
+    
+    <p>
+      Select dropdown<br/>
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </p>
+    
+    <p>
+      <label>
+        <input type="checkbox">
+        Checkbox option
+      </label>
+    </p>
+    
+    <p>
+      Radio buttons<br/>
+      <label>
+        <input type="radio" name="choice" value="option1">
+        Option 1
+      </label>
+      <label>
+        <input type="radio" name="choice" value="option2">
+        Option 2
+      </label>
+    </p>
+    
+    <p>
+      <label>
+        File upload<br/>
+        <input type="file">
+      </label>
+    </p>
+    
+    <p>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </p>
+      </form>
+
+  </body>
+</html>`,
+          }}
+          template="static"
+          theme="dark"
+          options={{ showLineNumbers: true }}
+        />
+</div>
+
 ## Using alt text for images
 
-Alt text is a tool used by screen readers to describe an image to those with impaired vision.
+Alt text is a tool used by screen readers to describe an image to those with impaired vision. It is part of a more in-depth set of best practices for front-end development related to accessibility (sometimes referred to as A11y).
 
 ```html
 <section id="my-cat">
   <h1>Look at my cat!!!!</h1>
   <img
     src="images/cat.jpg"
-    alt="black and white cat"
+    alt="A black and white cat"
     width="640"
     height="480"
   />
@@ -506,7 +622,10 @@ We talked a bit about attributes earlier: they are extra information we add into
 ## Semantic HTML
 
 <Aside type="tip">
-  *Semantic adj. se.man.tic* 1. of or relating to meaning of language. 2. of or
+  *Semantic adj. se.man.tic*
+  
+  1. of or relating to meaning of language. 
+  2. of or
   relating to Semantics, the study of the meaning of language.
 </Aside>
 
@@ -570,4 +689,6 @@ Combining elements to create meaningful structure
 
 Now you have the basics of HTML try marking up a web page: focus on structure rather than style.
 
+<Aside type="tip">
 [HTML Elements Reference on MDN: HTML All the things!](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)
+</Aside>
