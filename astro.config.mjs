@@ -14,6 +14,9 @@ export default defineConfig({
             { icon: 'github', label: 'GitHub', href: 'https://github.com/ctlnorwich' },
             { icon: 'open-book', label: 'VLE', href: 'https://vle.norwichuni.ac.uk/course/view.php?id=486' }
         ],
+        customCss: [
+             './src/styles/custom.css',
+        ],
         sidebar: [
             {
                 label: 'Guides',
