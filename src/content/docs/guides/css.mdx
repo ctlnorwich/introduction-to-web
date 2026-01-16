@@ -6,12 +6,13 @@ template: splash
 
 import { Card } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 import { Sandpack } from "@codesandbox/sandpack-react";
 
 
-## Objectives
+## What does this cover?
 
 1. Get started with styling
 2. Get started with styling
@@ -22,32 +23,27 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 
 ## What is CSS?
 
-Cascading Style Sheets (CSS) is a language used to describe the design
-and layout of HTML documents. It dictates how elements should be
-presented - whether that's on-screen, in print, in speech, or in other
-media types.
+Cascading Style Sheets (CSS) is a language used to describe the design and layout of HTML documents. It dictates how elements should be presented - whether that's on-screen, in print, in speech, or in other media types.
 
-Like HTML, CSS is a Declarative Language used for Frontend Development.
+Like HTML, CSS is a **Declarative Language** used for Front end Development. Remember that CSS runs in the browser so different (and older) browsers may display your CSS differently or not at all!
 
-Also like HTML, CSS no longer has a unified release version. After CSS
-2.1, it was decided that CSS would be updated as multiple separate
-modules, rather than all at once. The core CSS syntax is currently on
-Level 3, whilst the color module is on level 5! We call this a living
-sandard language.
+The development of CSS is overseen by the [World Wide Web Consortium (W3C)](https://www.w3.org/Style/CSS/#specs).
 
-The development of CSS is overseen by the World Wide Web Consortium (W3C).
+
+:::note[Useful Links]{icon="heart"}
+- [CSS Zen Garden - The Classic!](https://csszengarden.com/)
+- [Adam Argyle](https://nerdy.dev/4-css-features-every-front-end-developer-should-know-in-2026)
+- [Jen Simmons](https://labs.jensimmons.com/)
+- [Sarah Soueidan](https://www.sarasoueidan.com/blog/)
+- [Andy Clarke](https://stuffandnonsense.co.uk/about)
+- [CSS Tricks](https://css-tricks.com/category/articles/)
+:::
 
 ## The CSS file
-Whilst you can style elements within the `head` of
-your HTML, it's much better practice to make a separate CSS file in VS
-Code.
-
-Jump into VS Code and create a new file in your Intro to Web project folder called `style.css`.
-
-We can then head to the `index.html` file, and add a `<link>` to our stylesheet.
+Whilst you can style elements using a `<style>` tag in the `head` of your HTML, if you have a lot of styles to add, it's much better practice to make a separate CSS file.
 
 <Aside type="tip">
-You can add in a sub-folder for your CSS if you like things tidy! Just remember to put the right file path in your `<link>`.
+You can add a sub-folder for your CSS (such as 'assets' or 'styles') if you like things tidy! Just remember to put the right file path in your `<link>`.
 </Aside>
 
 ```html
@@ -55,23 +51,26 @@ You can add in a sub-folder for your CSS if you like things tidy! Just remember 
 ```
 
 ## CSS Syntax
-CSS is comprised of three main parts: Selectors, Properties, and Values.
+CSS is comprised of three main parts:
 
-These look slightly different depending on whether you're using inline
-CSS or internal/external CSS.
+- **Selectors**
+- **Properties**
+- **Values**
 
-## Inline CSS
+These look slightly different depending on whether you're using inline CSS or internal/external CSS.
+
+### Inline CSS
 
 ```html
 <p style="color:green; font-style:italic;">This is a paragraph.</p>
 ```
 
-## Internal/External CSS
-```css
-p {color: green; font-style: italic;}
+### Internal/External CSS
+```html
+<style>
+  p {color: green; font-style: italic;}
+</style>
 ```
-
-## CSS Syntax
 
 ```css
 body {
@@ -83,19 +82,15 @@ body {
 }
 ```
 
-CSS is a rules-based language; we define the styling rules by picking
-out groups of elements and declaring style properties for them.
+CSS is a rules-based language; we define the style rules by picking out groups of elements and declaring style properties for them.
 
-We start with a Selector - this tells our browser which elements these
-style rules apply to.
+We start with a **Selector** - this tells our browser which elements these style rules apply to.
 
-We then add in declarations, which are made up of Properties and
-Values - what style aspect we want to change, and what we want to
-change it to.
+We then add in declarations, which are made up of **Properties** and **Values** - what style aspect we want to change, and what we want to change it to.
 
 Only properties inside the curly braces will be changed!
 
-## Colo(u)r in CSS
+### Colo(u)r in CSS
 
 ```css
 body {
@@ -109,16 +104,16 @@ There's a few ways we can define colour in CSS - which you choose to
 use might depend on the kind of colour you need.
 
 The simplest way is by just typing in a colour name. CSS has ~140
-inbuilt colours to choose from.
+[inbuilt named colours](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color) to choose from.
 
 You can also use a colour hex code. For example,
-<code>#000000</code> is black, whilst <code>#ffffff</code> is white.
+`#000000` is black, whilst `#ffffff` is white.
 
 If you need to control opacity, try using
-<code>rgba(255,255,255,1)</code>. This allows you to set red, green,
+`rgba(255,255,255,1)`. This allows you to set red, green,
 blue and alpha values.
 
-You could also opt for <code>hsl(180,61%,100%)</code> which will
+You could also opt for `hsl(180,61%,100%)` which will
 adjust hue, saturation, and lightness.
 
 ## CSS Referencing
@@ -129,12 +124,9 @@ An important part of any developer toolkit is a reference guide for the
 language you're working with. Learning how to use a reference guide is
 the most valuable thing you can do!
 
-It may be tempting to try and ask AI for the answer - avoid this if you
-can, especially for living standard languages that are updated
-regularly. AI training data is often years out of date, and won't always
-provide a reliable answer.
-
-Trust your own brain! You are smart!
+:::note[MDN CSS Reference]
+  The [MDN CSS reference](https://developer.mozilla.org/en-US/docs/Web/CSS) is probably the most authroatative guide to all CSS features.
+:::
 
 ## CSS Selectors: the Big Three
 As we've seen, CSS rules always start with a Selector - or a list of
@@ -148,7 +140,7 @@ the most are:
 
 ```css
 h1 {
-  font: bold 12px/20px Montserrat; 
+  font-family: "Montserrat", Arial, sans-serif; 
   text-align: left;
   text-transform: uppercase; 
   mix-blend-mode: overlay; 
@@ -186,9 +178,10 @@ style rules at once:
 ```css
 .green { color: green; }
 .bold { font-weight: bold; }
+.main-heading { font-size: 4rem;}
 ```
 ```html
-<h1 class="green bold">Hello World!</h1>;
+<h1 class="green bold main-heading">Hello World!</h1>;
 ```     
 </Card>
 
@@ -198,20 +191,19 @@ style rules at once:
 - Used to make style changes to one element without changing the others.
 
 ```css
-#sidebar {
-  width: 400px;
-  height: 100%;
+#galaxy-backdrop {
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  display: table;
   background: url("galaxy.jpg"); 
   background-size: cover; 
   color: #000000;
 }
 ```
 ```html
-<section id="sidebar">
+<section id="galaxy-backdrop">
   <h1>Welcome to my site!</h1>;
 </section>
 ```
@@ -234,9 +226,9 @@ style rules at once:
   <body>
     <h1>Make this heading Magenta and give it a Magenta glow using the text-shadow property.</h1>
     <p>Change all typography in the body to the 'Courier New' font.</p>
-    <p>Give the body a dark background colour</p>
-    <p>Make all paragraphs Aquamarine.</p>
-    <p>Make <a href="https://www.w3.org/">this link</a> another colour using a hexidecimal value.</p>
+    <p>Give the body a dark background colour...</p>
+    <p>Make all paragraphs Aquamarine!</p>
+    <p>Make <a href="https://www.w3.org/">this link</a> a suitable colour using a hex code value.</p>
   </body>
 </html>`,
   "/style.css": 
@@ -329,30 +321,56 @@ p~img { width: relative; }
 We can also target elements based on their current state, or on a number
 of other external factors (e.g. browser history, time, etc.).
 
-A great example of this is styling links. The anchor
-`<a>` element has different states:
+A great example of this is styling links. The anchor `<a>` element has different states:
 
 - Unvisited
 - Visited
 - Hovered over
 - Focused by the keyboard
-- Being clicked
+- Active (e.g by being clicked)
 
 We call these selectors pseudo-classes.
 
-```css
-a:link { color: pink } 
-a:visited { color: green; }
-a:hover { text-decoration: underline; }
-```
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS</title>
+    <style>
+      body { padding: 1rem; background: darkslateblue; }
+      a { color: white; font-size: 2rem; text-decoration: none; } 
+      a:visited { color: yellow; }
+      a:hover { text-decoration: underline; }
+      a:active { color: cornflowerblue; }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      <a href="#">I'm a link!</a>
+    </p>
+  </body>
+</html>`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
 
 
 ## Selectors
 | Selector | Description | Example |
 |----------|-------------|---------|
 | Type Selector | Targets all relevant HTML elements. | `h1 {}` |
-| Class Selector | Targets elements based on the Class attribute. | `.box {}` |
-| ID Selector | Targets element with specific ID value. | `#unique {}` |
+| Class Selector | Targets elements based on the Class attribute. | `.card {}` |
+| ID Selector | Targets element with specific ID value. | `#hero {}` |
 | Attribute Selector | Makes selection based on if an element has a specific attribute/an attribute value. | `a[title] {}`<br/>`a[href='www.wikipedia.com'] {}` |
 | Pseudo-classes | Selects elements that are in a specific state. | `a:hover {}` |
 | Pseudo-elements | Selects a very specific part of an element. | `p::first-line {}` |
@@ -368,13 +386,14 @@ a:hover { text-decoration: underline; }
 | Child combinator | Separates two selectors and targets instances where the second element is a direct child of the first. | `div > span {}` |
 
 ## Specificity
-But what happens when two selectors select the same HTML element? Can
-anyone guess what colour the text will end up being?
+But what happens when two selectors select the same HTML element?
 
 ```css
 .special { color: red; }
 p { color: blue; }
 ```
+
+**Can anyone guess what colour the text will end up being?**
 
 ### Inline > ID > Class > Type
 - Luckily, CSS has in-built rules that decide which selector comes out
@@ -395,8 +414,7 @@ p { color: red; }
 p { color: blue; }
 ```
 
-Here, we have two rules for `<p>`. So which colour will
-our text be this time?
+Here, we have two rules for `<p>`. So which colour will our text be this time?
 
 <details>
   <summary><strong>Reveal Answer</strong></summary>
@@ -404,7 +422,7 @@ our text be this time?
   This rule is called the Cascade rule - basically, the latest rule in conflict overwrites the others.
 </details>
 
-## Selector Specificity
+### Selector Specificity
 | Weight Category | Selectors | Weighting |
 |-----------------|-----------|-----------|
 | ID | ID Selectors (`#id`) | 100 |
@@ -449,47 +467,49 @@ quite right, it might be an inheritance issue.
 
 ## Understanding the Cascade
 
+<Steps>
 1. **Relevance:** User agent finds all rule blocks with a selector match for each element.
-2. **Importance:** Sorts rules based on whether they are Normal, or Important. Important styles are those with the !important flag.
+2. **Importance:** Sorts rules based on whether they are Normal, or Important. Important styles are those with the `!important` flag.
 3. **Style Origin:** Within each of the two importance options, sorts CSS rules by whose stylesheet they're in: the user-agent, the author (developer), or the website user. Priority differs based on these answers, combined with the importance rule.
-4. **Cascade Layers:** Within these six categories, sorts rules again by Cascade Layer. Cascade layers are a tool devs use to add extra sub-layers of priority to stylesheets.
+4. **Cascade Layers:** Within these six categories, sorts rules again by Cascade Layer. Cascade layers can be used by developers to add extra levels of priority to stylesheets.
 5. **Specificity:** Sorts rules by specificity of selectors, as we have explored.
 6. **Scoping Proximity:** This helps resolve conflicts between declarations within a @scope. @scope sets very specific conditions for when a CSS rule should be applied.
 7. **Source Order:** When two selectors in the same origin & cascade layers have the same importance, specificity, and scope proximity, the last declared selector wins.
-8. **Relevance:** User agent finds all rule blocks with a
-selector match for each element.
+</Steps>
 
 We've talked about selector specificity and the order selectors are
 declared in, but these are only two steps in a much larger process web
 browsers go through to decide which CSS rules are applied.
 
-User-agents follow the steps on the left from 1-7: only rules 'still in
+User agents follow the steps above from 1-7: only rules 'still in
 the running' each time move to the next step. Once there is only one
 left, no more rules are checked.
 
 You don't have to understand all these concepts right now - just know
 they exist, so that you can spot them in other people's CSS.
 
-## Style Origin
-1. normal user-agent styles
+### Style Origin
+<Steps>
+1. normal user-agent styles (default browser styles)
 2. normal user styles
 3. normal author styles
 4. styles being animated
-5. important author styles
-6. important user styles
-7. important user-agent styles
+5. `!important` author styles
+6. `!important` user styles
+7. `!important` user-agent styles
 8. styles being transitioned
+</Steps>
 
 As we've seen, the origin of style rules can greatly impact their level of specificity in the cascade order.
 
-The user-agent has the lowest priority with regard to normal styles, but one of the highest when styles are !important.
+The user-agent has the lowest priority with regard to normal styles, but one of the highest when styles are `!important`.
 
-Users of your site may also be applying their own styles to your page (think Chrome Extensions, for instance.) Their styles are of medium importance for both normal and !important buckets.
+Users of your site may also be applying their own styles to your page (think Chrome Extensions, for instance.) Their styles are of medium importance for both normal and `!important` buckets.
 
 It's useful to know this so you know how your styles (author styles) fit into this origin order.
 
 ## What is the Box Model?
-Everything in CSS has a box around it.
+Everything in CSS has a **box** around it.
 
 These boxes have several properties which will affect how they are laid
 out on our webpage, and how they interact with other elements.
@@ -501,23 +521,29 @@ Boxes have an Outer display type and an Inner display type:
 
 We can set these display types using the display property.
 
-### The Box Model: Outer display type
+### Outer Display Type
 Outer display type controls the flow layout of elements on the page.
 
-**When this is set to `block`:**
-
+<Card title="When this is set to block">
 - The box will break onto a new line.
 - Width & height properties are respected. If no width is given, the box will extend to fill its containing element.
 - Padding, margins & borders will cause other elements to be pushed away from the box.
 - Some elements, like `<h1>` and `<p>`, use block as their outer display type by default.
+</Card>
 
+<Card title="When this is set to inline">
 
-**When this is set to `inline`:**
-- The box will not break onto a new line.
 - Width & height properties will not apply.
 - Top & bottom padding, margins, & borders will not push other inline elements away.
 - Left & right padding/margins/borders will still push other inline elements away.
 - HTML elements, such as `<a>`, `<span>`, `<em>` and `<strong>` use inline as their default outer display type.
+</Card>
+
+<Card title="When this is set to inline-block">
+- The box will not break onto a new line, but it will respect width & height.
+- This also avoids the overlapping you often see in a purely inline layout.
+- HTML elements such as `<img>`, `<button>`, `<textarea,>`, `<input>`, and `<select>` use `inline-block` as their default outer display type.
+</Card>
 
 ### The Standard Box Model
 
@@ -537,19 +563,43 @@ the total size taken up by the box. Margins do not count!
 
 The box model only applies fully to block boxes. Inline boxes do adopt some features, but not all of them!
 
-```css
-.box {
-  width: 350px;
-  height: 150px;
-  margin: 10px;
-  padding: 25px;
-  border: 5px solid black;
-}
-```
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS</title>
+    <style>
+      .box {
+        width: 150px;
+        height: 50px;
+        margin: 10px;
+        padding: 25px;
+        border: 5px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+  </body>
+</html>`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
 
 Looking at this CSS, what would the size of our CSS box actually be?
 
-## Margins
+### Margins
 
 ```css
 .box { margin: 10px -5px 10px 20px; } 
@@ -573,13 +623,70 @@ Looking at this CSS, what would the size of our CSS box actually be?
 
 ### Margin Collapsing
 
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS</title>
+    <style>
+      section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 50px; 
+        background: violet;
+        margin: 10px 0;
+      }
+      section:nth-of-type(2) {
+        margin: 30px 0 5px;
+      }
+      section:nth-of-type(3) {
+        margin: 20px 0 50px;
+      }
+      section:nth-of-type(4) {
+        margin: -10px 0 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section>
+         margin: 10px 0;
+      </section>
+      <section>
+        margin: 30px 0 5px;
+      </section> 
+      <section>
+          margin: 20px 0 50px;
+      </section>
+      <section>
+          margin: -10px 0 10px;
+      </section>    
+    </main
+  </body>
+
+</html>`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
 - Depending on whether two elements whose margins touch have positive or negative margins, you will get different results.
 - This is the result of something called Margin Collapse.
 - Two positive margins will collapse to become one margin - the biggest value margin.
 - Two negative margins will collapse, with the smallest value being used.
 - If only one margin is negative, it will be subtracted from the other.
 - There's a lot of rules surrounding margin collapse - your reference guide can help if your boxes aren't looking the way you expect.
-
 
 ### Borders
 
@@ -593,13 +700,11 @@ Looking at this CSS, what would the size of our CSS box actually be?
   border-left-color: orange;
 }
 ```
-
-## Borders
 - Borders are drawn between the margin and the padding of a box.
 - There are a large number of properties available for styling borders, as each side has its own width, style, and colour properties.
 - You can use the border property to change all these values at once, or use longhand to apply more specific styling.
 
-## Padding
+### Padding
 
 ```css
 .box { 
@@ -619,13 +724,18 @@ Looking at this CSS, what would the size of our CSS box actually be?
 - Any background applied to your element will display behind the padding.
 - Like margins and borders, there's long and shorthand for padding.
 
-## The Alternate Box Model
+### The (Widely-Preferred) Alternate Box Model
 
 - When using the alternative box model, width & height properties affect the whole visible box on the page.
 - Any border and padding values you then set are subtracted from the total width & height, leaving the size value of your content.
 - This can be useful if you have very specific dimensions your box cannot exceed.
 - You can switch to the alternate box model in CSS by using the property `box-sizing: border-box;`
 
+:::tip
+- Developers often use the alternate box model for all their elements.
+- To do that, we set the `box-sizing` property on the `<html>` element.
+- We then use the universal selector to ensure all our elements inherit that value from the HTML element.
+- This often forms part of a 'CSS Reset' - boilerplate code used to set defaults prior to any project-related styles.
 ```css
 html {
   box-sizing: border-box;
@@ -634,16 +744,7 @@ html {
   box-sizing: inherit;
 }
 ```
-
-- Developers often like to use the alternate box model for all their elements.
-- To do that, we set the `box-sizing` property on the `<html>` element.
-- We then use the universal selector to ensure all our elements inherit that value from the HTML element.
-
-## Display: inline-block;
-
-- `display: inline-block` is a special value of display, which provides a middle ground between inline and block.
-- Use it if you don't want an item to break onto a new line, but you do want it to respect width & height.
-- This also avoids the overlapping you often see in a purely inline layout.
+:::
 
 ## Sizing Content
 
@@ -662,24 +763,104 @@ html {
 - When no percentage is set, a block element will take up 100% of available width. So a percentage value may make it more responsive to different screens.
 
 ## Styling Images
-
  
-**object-fit: contain;**
+**`object-fit: contain;`**
 
 - shrinks to fit box on longest side
 - maintains aspect ratio
 - results in 'letterboxing'
 
-**object-fit: cover;**
+**`object-fit: cover;`**
 
 - crops to fit box on shortest side
 - maintains aspect ratio
 - does not contain whole image
 
-**object-fit: fill;**
+**`object-fit: fill;`**
 
 - resizes to fit box on both sides
 - does not maintain aspect ratio
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS</title>
+    <style>
+
+    figure {
+      margin: 1rem 0;
+    }
+
+    figcaption {
+      display: block;
+      font-family: sans-serif;
+      margin: 0.5rem 0 0 0;
+    }
+
+    img {
+      background: black;
+      display: block;
+    }
+
+    img.fixed {
+      width: 128px;
+      height: 128px;
+    }
+
+    .contain {
+      object-fit: contain;
+    }
+
+    .cover {
+      object-fit: cover;
+    }
+
+    .fill {
+      object-fit: fill;
+    }
+     
+    </style>
+  </head>
+
+  <body>
+    <main>
+
+      <figure>
+        <img src="https://picsum.photos/id/237/300/200">
+        <figcaption>Original</figcaption>
+      </figure>
+
+      <figure>
+        <img class="fixed contain" src="https://picsum.photos/id/237/300/200">
+        <figcaption>Contain</figcaption>
+      </figure>
+
+      <figure>
+        <img class="fixed cover" src="https://picsum.photos/id/237/300/200">
+        <figcaption>Cover</figcaption>
+      </figure>
+
+      <figure>
+        <img class="fixed fill" src="https://picsum.photos/id/237/300/200">
+        <figcaption>Fill</figcaption>
+      </figure>
+    </main
+  </body>
+
+</html>`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
 
 Whilst CSS can't affect the internal layout of an image or video, we
 can adjust how they are laid out on the page.
@@ -692,15 +873,13 @@ as the image:
   
 We can use the `object-fit` property to ensure our image completely covers our box.
 
-## At-rules: Importing Fonts
+## @-rules: Importing Fonts
 
 ```css
 @font-face {
-  font-family: "MyHelvetica";
-  src: local("Helvetica Neue Bold"),
-       local("HelveticaNeue-Bold"),
-       url("MgOpenModernaBold.ttf");
-  font-weight: bold;
+  font-family: 'MyWebFont';
+  src: url('myfont.woff2') format('woff2');
+  font-display: swap;
 }
 ```
 
@@ -710,7 +889,7 @@ We can use the `object-fit` property to ensure our image completely covers our b
 - Adding both a local and url source allows for a backup option should the user not have that font installed!
 
 
-## At-rules: Cascade Layers
+## @-rules: Cascade Layers
 
 ```css
 /* Layer order */
@@ -729,8 +908,8 @@ We can use the `object-fit` property to ensure our image completely covers our b
 
 @layer base {
   body {
-    display: inline-block;
-    font: bold 12px/20px Montserrat blue;
+    display: flex;
+    font-family: "Courier New", Courier, monospace;
   }
   a {
      color: rebeccapurple;
@@ -738,7 +917,7 @@ We can use the `object-fit` property to ensure our image completely covers our b
 }
 
 @layer layout {
-  #site-header .container {
+  #site-header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -751,7 +930,7 @@ a {
 }
 ```
       
-- Another great use of at-rules is for the creation of Cascade Layers.
+- Another great use of @-rules is for the creation of Cascade Layers.
 - We talked a little bit before about CSS layers in relation to the cascade - they allow us to create added layers of specificity into our stylesheet.
 - There's a few ways to go about adding layers - our example is the `@layer` block at-rule, which creates a block for that layer which you can add styles into.
 - The order of layer creation is important, as it affects the level of hierarchy amongst layers. Your reference guide should be able to explain more about this.
