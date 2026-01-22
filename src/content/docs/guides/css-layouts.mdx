@@ -1,0 +1,1297 @@
+---
+title: "Introduction to CSS Layouts"
+description: "Responsive and flexible layouts for your website"
+template: splash
+---
+
+import { Card } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+import { Steps } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { FileTree } from '@astrojs/starlight/components';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+<Card title="What does this cover?">
+
+1. Normal Flow
+2. Flexbox
+3. CSS Grid
+4. Media Queries
+
+</Card>
+
+## Links
+- [CSS Grid Garden - plant vegetables to learn CSS Grid](https://cssgridgarden.com)
+- [Flexbox Froggy - you get the idea...](https://flexboxfroggy.com)
+- [Ethan Marcotte - a RWD pioneer: his books are available online for free](https://ethanmarcotte.com/)
+- [CSS layout guide on MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout)
+- [CSS Tricks - CSS Grid layout guide](https://css-tricks.com/css-grid-layout-guide/)
+
+## What is Responsive Web Design?
+
+Responsive Web Design (RWD) centres on the idea that web pages should adapt to different screen sizes, resolutions and devices. This practice makes use of fluid layout styling and/or media queries that specify 'breakpoints' for specific browser viewport sizes.
+
+The practice gained mainstream adoption after the redesign of the [Boston Globe website in 2011](https://ethanmarcotte.com/wrote/the-boston-globe/), several years after smartphones had entered the market. Prior to this, websites often had a fixed width designed around the well-established XGA monitor size of 1024 x 768. This would either be too wide or too narrow for different web browsers displayed on a new range of screen sizes.
+
+It's beneficial to have this principle in mind when styling your pages. Remember that responsive web design is about the size of the browser viewport rather than the device screen (althought the latter obviously constrains the former). Even on a mobile device, the viewport is often shorter than the device screen and can often change size because of user interactions.
+
+## Normal Flow
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body style="padding: 0 0 2rem 0;">
+    <h1>This page is laid out in normal flow.</h1>
+
+    <ul>
+        <li>In normal flow, the inline layout direction is the same as the writing direction of the language the page is in.</p> 
+        <li>The block direction runs perpendicular to this.</p>
+        <li>Depending the writing mode and text direction settings, the page will look different:</p>
+    </ul>
+
+    <p>In English, the inline direction will run <br> horizontally left to right, and the <br> block direction will be vertical.</p>
+    <p style="writing-mode: vertical-rl;">日本語のよ な言語では、<br>インライン方向は垂直になり、 <br>ブロックは水平に実行されます</p>
+    <p style="direction: rtl;">في اللغة العربية، يكون اتجا <br> الكتابة من اليمين إلى اليسار.</p>
+</body>
+</html>`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true, }}
+      />
+</div>
+
+- Normal Flow is what happens when we make no changes to a HTML page's layout.
+- HTML elements are displayed in the exact order they appear.
+- Here we've used block elements, so our elements are displayed stacked on top of one another.
+
+### The Display Property: Revisited
+- Our main method for crafting different layouts in CSS is the `display` property.
+- By using `block`, `inline` or `inline-block` values, we can change how elements behave in normal flow.
+- However, these aren't the only values we can give the display property. We can activate entirely new layout methods by using two new values: `flex` and `grid`.
+
+## Why would I use Flexbox?
+- Flexbox allows us to arrange our elements in **rows** or **columns**.
+- Items inside a `flex` container will **expand** evenly to fill extra space, or **shrink** to fit smaller areas.
+- We call Flexbox a **one-dimensional** layout, because it only deals with a single dimension at a time - either a row or a column.
+
+:::tip[It's useful to use Flexbox when we want to:]
+- Vertically centre our content inside its containing element.
+- Ensure that all elements inside a container take up an equal amount of space on the page, no matter the viewport size.
+- Create multi-column layouts with identical column heights, even when they have different amounts of content.
+:::
+
+### Flexbox: Example Activity
+Let's take a look at a practical example.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 1</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+        <h1>Flexbox Example</h1>
+    </header>
+
+    <section>
+        <article>
+            <h2>First article</h2>
+
+            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        </article>
+
+        <article>
+            <h2>Second article</h2>
+
+            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        </article>
+
+        <article>
+            <h2>Third article</h2>
+
+            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        </article>
+    </section>
+  </body>
+</html>`,
+  "/style.css":
+`html {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background: #d2553b;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+p, h2 {
+    color:antiquewhite;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: #25236e;
+}
+
+/* Add your flexbox CSS below here */
+      
+/* Add in flexible sizing rules here */`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+- We have a `style.css` file referenced in the `<head>` of our `index.html`.
+- The index.html contains a `<header>`, and a `<section>` element with three nested `<article>` elements.
+- As article elements are block elements, how do we think these will look on the webpage in normal flow?
+
+### Adding `flex`
+
+- If we want our articles to be evenly spaced out, we need to adjust the display property of the`<section>` element that contains them.
+- Let's add a `section {}` selector to the end of our CSS, and create a rule setting the display property to `flex`.
+- Note how all three boxes are now the same size, even though the last box contains more text.
+
+```css
+section { 
+  display: flex;
+}
+```
+
+- Now, take a look at the example below. It looks a little busy, right?
+- Flexbox will by default try to place all its flex items evenly onto a single line - which can lead to a very crowded looking page!
+- We can fix this by adding another value, wrap, to our `flex-flow` property.
+- `flex-flow` is actually the shorthand for two separate properties: `flex-direction` and `flex-wrap`.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 2</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+   <header>
+      <h1>Flexbox Example 2</h1>
+    </header>
+
+    <section>
+      <article>
+        <h2>Article 1</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 2</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 3</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 4</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 5</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 6</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 7</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Article 8</h2>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+    </section>
+    </body>
+</html>`,
+  "/style.css":
+`html {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background: #d2553b;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+p, h2 {
+    color:antiquewhite;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: #25236e;
+}
+
+section {
+    display: flex;
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+
+```css
+article {
+  padding: 10px;
+  margin: 10px; 
+  background: #25236e;
+  flex: 200px;
+}
+section {
+  display: flex;
+  flex-flow: row wrap;
+}
+```
+We're also adding a new property into our `article {}` selector, which sets a minimum size each flex item can be. In this case, 200px. If the articles are about to become less than 200px wide, they will be wrapped onto a new line.
+
+
+We can also control the size of a flex item relative to the ones around it - creating more interesting layouts.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 1</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Flexbox Example</h1>
+    </header>
+
+    <section>
+      <article>
+        <h2>First article</h2>
+
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Second article</h2>
+
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+      </article>
+
+      <article>
+        <h2>Third article</h2>
+
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
+        </article>
+    </section>
+  </body>
+</html>`,"/style.css":
+`html {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+body {
+   margin: 0;
+}
+
+header {
+    background: #d2553b;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+p, h2 {
+    color:antiquewhite;
+}
+
+section {
+    display: flex;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: #25236e;
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+Add the following to the above example:
+
+```css
+article { 
+  flex: 1; 
+}
+```
+
+What we've just done is given our articles a proportion value, dictating a fraction of available space they should take up. Since all our articles have the same value, nothing on our page should change. Let's fix that.
+
+Now, add this second rule to your CSS:
+
+```css
+article { 
+    flex: 1;
+}
+article:nth-of-type(1) {
+    flex: 2; 
+}
+```
+
+This time, we're using a pseudo-class to select a specific `<article>` based on its position amongst other elements of the same type.
+We've chosen the first `<article>` element on our page and given it a new flex value of 2.
+
+
+<details>
+<summary>What do we think this will do to our page?</summary>
+Our first article box has grown to double the size of the others!
+</details>
+
+### The 'flex' Property
+
+The resizing we just did is only one of the several ways we can use the flex property. flex is shorthand for three separate properties:
+
+<dl>
+  <dt>`flex-grow`</dt>
+  <dd>Assigns a element with a unitless proportion value for sizing. This is what we just used.</dd>
+  <dt>`flex-shrink`</dt>
+  <dd>Another unitless proportion value. Defines how much a flex item will shrink compared to other elements in the event that our flex items are too large for their container.</dd>
+  <dt>`flex-basis`</dt>
+  <dd>A minimum size value each flex item should have. When using this and `flex-grow`, each flex item will get the allocated space defined in `flex-basis` before being assigned a proportion of what’s left.</dd>
+</dl>
+
+### The Flex Model
+
+- Just like the element box model, there's a model for flexbox too.
+- The **main axis** runs in the direction in which flex items are laid out (in a row or in a column). Flex items will start from the edge of the main axis by default.
+- The **cross axis** runs perpendicular to the main axis. Flex items will stretch to fill this axis by default.
+- Everything we do with flexbox runs along these two axes, so it's worth learning how they work if you want to style a page this way.
+
+### Flexbox: Alignment
+
+Now we have a grasp on the Flex Model, we can think about how we align items in our flexbox along these axes.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 1</title>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+   <header>
+        <h1>Flexbox Alignment Example</h1>
+    </header>
+
+    <section>
+
+        <article>
+            <h2>Article One</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Two</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Three</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Four</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Five</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Six</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Seven</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Eight</h2>
+            <p>Article preview text here!</p>
+        </article>
+
+    </section>
+  </body>
+</html>`,
+"/style.css":
+`html {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background: #c68f84;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+article {
+    height:100px;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgb(153, 200, 203);
+    border: 2px solid rgb(58, 103, 103);
+}
+
+section {
+    padding-top: 30px;
+    height: 500px;
+    display: flex;
+    flex-flow: row wrap;
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+- Open up your developer tools (F12) and find the `<section>` element in the Inspector.
+- Your browser should have some kind of flexbox preview mode that will allow you to view your flex container size and where your flex items sit within it. For example, you may need to click the 'flex' pill button next to the `<section>` element to see the flexbox guides.
+- The purple lines show the start and end of our cross axis. Our flex items are currently aligned to the start of both the main and cross axes.
+
+```css
+section {
+  padding-top: 30px;
+  height: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  /* Adding our flexbox alignment rules in here */
+  align-items: center; justify-content: space-around;
+}
+```
+
+If we want to change the alignment of our flex items, we're going to use two properties: `align-items` and `justify-content`.
+
+- `align-items` will align our content along the cross axis.
+- `justify-content` will justify our flex items along the main axis.
+
+Add these two new rules into your file, one at a time, saving in-between. See how the alignments change!
+
+Now, our flex items are aligned to the centre of the cross axis and spaced evenly on the page with space around the edges!
+
+### Flexbox: Ordering
+
+```css
+article:first-child { 
+  order: 8;
+}
+```
+
+- Our first article has now moved down to **last** in the order!
+- If we want an item to appear earlier in the order, we can use a negative value instead.
+- Be careful using `order`, since it only changes the visible order without changing the underlying order of the html elements. A mismatch between visual and actual order [can cause accessibility problems](https://adropincalm.com/blog/accessibility-issues-using-order-in-grid-and-flex/).
+
+## Why would I use CSS Grid?
+
+- CSS grid is a **two-dimensional** layout system, letting us organise content into columns and rows.
+- Grid is used to create elements that won't resize or shift on multi-page sites, so it's great for maintaining consistency.
+- A grid will be comprised of rows, columns, and the gaps between those columns and rows.
+
+Let's play with an example:
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid 1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>CSS Grid Practical Example</h1>
+
+    <section class="container">
+
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+
+    </div>
+
+  </body>
+
+</html>`,
+"/style.css":
+`html {
+    font-size: 12px;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 520px;
+    font: .9em/1.2 Arial, Helvetica, sans-serif;
+    color: rgb(58,103,103);
+}
+
+.container > div {
+    border-radius: 5px;
+    padding: 8px;
+    background-color: rgb(153, 200, 203);
+    border: 2px solid rgb(58, 103, 103);
+}
+
+.container {
+/* Add CSS Grid properties here */
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+  - In the above example, the `<div>` containers are currently laid out in normal flow.
+  - We can also see a parent `<section>` element with a class of `.container`. Let's use that class as our selector to create the grid.
+  - We're adding in 3 rules into our declaration. Now save and refresh!
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 200px; 
+  gap: 16px;
+}
+```
+
+### Creating a CSS Grid
+
+```css {3}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 200px; 
+  gap: 16px;
+}
+```
+
+It's the `grid-template-columns` property doing the majority of the heavy lifting in creating our grid. This property explicitly defines that we want to create a certain number of columns.
+  
+We then have two types of values: a `repeat()` function, and a single pixel value of `200px`. With this, we can already identify that our last column will be 200px wide.
+
+The `repeat()` function allows us to create a batch number of columns which are all the same size. Here, we've created 3.
+
+The second parameter in this function, `1fr`, is a fraction value. Fraction values divide up available space in the grid's container into equal parts, then give each column the number of fractions declared.
+
+It's important to note that the available space for fractions is calculated after absolute pixel values are deducted. So if our maximum space is 520px, and the last column is 200px, that leaves 320px to be divided equally between the first 3 columns.
+
+The gap property defines the size of the gutter between rows and columns. It's shorthand for the column-gap and
+row-gap properties: only use it if you want your row and column gutters to be the same size.
+
+So, just to recap:
+
+- We have created a 4-column grid in a 520px container
+- The last column is 200px wide
+- The gap between columns and rows is set to 16px
+- That means the first three columns are all ~90px wide.
+
+### Implicit & Explicit Grids
+
+Notice how our example automatically created an extra row for divs 5-7?
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  gap: 16px;
+  grid-auto-rows: 100px;
+}
+```
+
+- This is the difference between **implicit** and **explicit** grids.
+- We declared a set number of 4 columns - an **explicit** grid.
+- But because we have more than 4 containers, an **implicit** grid is created to expand the rows to fit our content.
+- Implicit grids are auto-sized to fit around the content inside them. If you need your rows to be a specific size, you can use the grid-auto-rows property to set it.
+
+### minmax()
+
+```css {5}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 200px;
+  gap: 15px;
+  grid-auto-rows: minmax(100px, auto);
+}
+```
+
+Adding auto as the max value means rows will always grow to fit extra content.
+
+-  If we set our tracks to a specific size, that sets a hard limit on what we can fit in our
+rows before they start to overflow.
+- Luckily, we can use the `minmax()` function to set a minimum and a maximum value for our row size.
+- This means that our row will always be at least 100px, but can stretch to a larger size if we add more content.
+
+### Line-based Placement
+
+Now we have a grid, we can place content on it.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid 2</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Latest Blog Posts</h1>
+        </header>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+        <article>
+            <h2>Article Title</h2>
+            <p>Article preview text here!</p>
+        </article>
+
+    </div>
+
+</body>
+
+</html>`,
+"/style.css":
+`html {
+    font-size: 12px;
+}
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+    font: .9em/1.2 Arial, Helvetica, sans-serif;
+    color: rgb(58,103,103);
+}
+
+.container > article {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(153, 200, 203);
+    border: 2px solid rgb(58, 103, 103);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+/* Adding in a new header selector */
+header {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(221, 225, 225);
+    border: 2px solid rgb(58, 103, 103);
+    text-align: center;
+    /* Adding in our header website placement, spanning the entire first row of our grid */
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+- For line-based placement, envision each row and column as a line.
+- We can then specify in CSS where an element starts and ends within the grid, using the grid-row and grid-column properties.
+- We've got a header and 8 articles in our grid.
+- We want our header to cover the entire first row. Let's look at the CSS rules for the header element.
+
+```css {7-8}
+header {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(221, 225, 225);
+  border: 2px solid rgb(58, 103, 103);
+  text-align: center;
+  grid-column: 1 / 5;
+  grid-row: 1;
+}
+```
+
+Grid-column is CSS shorthand, combining the `grid-column-start` and `grid-column-end` properties.
+
+- Our grid-column property needs two values: a **starting line** and an **ending line**.
+- We want to start at the beginning of the first column, so we'll put line 1 as our first value.
+- So that our header covers the fourth column, we're going to end our placement at line 5. We
+separate these values with a **slash**.
+- For `grid-row`, we only need to tell it to start at line 1, so we only add one value.
+
+Much better!
+
+Have a play about with the placement values in the .bigBox class and see how it changes.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid 2</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <header>
+          <h1>Latest Blog Posts</h1>
+      </header>
+      <article class = "bigBox">
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+      <article>
+          <h2>Article Title</h2>
+          <p>Article preview text here!</p>
+      </article>
+
+   </div>
+
+</body>
+
+</html>`,
+"/style.css":
+`body {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+    font: .9em/1.2 Arial, Helvetica, sans-serif;
+    color: rgb(58,103,103);
+}
+
+.container > article {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(153, 200, 203);
+    border: 2px solid rgb(58, 103, 103);
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+/* Adding in a new header selector */
+header {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(221, 225, 225);
+    border: 2px solid rgb(58, 103, 103);
+    text-align: center;
+    /* Adding in our header website placement, spanning the entire first row of our grid */
+    grid-column: 1/5;
+    grid-row: 1;
+}
+
+.bigBox{
+    grid-column: 1 / 2;
+    grid-row: 2 / 5;
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+## grid-template-areas
+
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "header header header header"
+    "bigBox content content content"
+    "bigBox content content content"
+    "footer footer footer footer";
+}
+```
+
+Line placement isn't the only way we can place content into our grid.
+
+- The grid-template-areas property allows us to give areas of our page a name.
+- You lay this out using a string per row, with an area name for each column.
+- As we have 4 columns, every string should contain 4 names
+- otherwise it won't work!
+
+```css
+header {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(221, 225, 225);
+  border: 2px solid rgb(58, 103, 103);
+  text-align: center;
+  grid-area: header;
+}
+```
+
+- We then need to add a new property to each of our element selectors - grid-area - which will allow us to assign the element with one of the area names in our grid.
+- Take a look at the example below and compare it to the previous one.
+- We've made a few extra changes to our CSS/HTML to ensure `grid-template-areas` works as intended. What's changed?
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Grid 2</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+<body>
+
+  <div class ="container">
+    <header>
+        <h1>Latest Blog Posts</h1>
+    </header>
+
+    <section class = "bigBox">
+        <h2>Section Title</h2>
+        <p>Section Text Here!</p>
+    </section>
+
+    <!-- New Section containing subgrid starts here-->
+    <section class="articleGrid">
+      <article>
+        <h2>Article One</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Two</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Three</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Four</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Five</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Six</h2>
+        <p>Article preview text here!</p>
+      </article>
+      <article>
+        <h2>Article Seven</h2>
+        <p>Article preview text here!</p>
+      </article>
+    </section>
+    <!-- New section containing subgrid ends here-->
+    
+    <footer>
+        <h2>Footer</h2>
+    </footer>
+
+    </div>
+
+  </body>
+
+</html>`,
+"/style.css":
+`html {
+  font-size: 12px
+} 
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto;
+    font: .9em/1.2 Arial, Helvetica, sans-serif;
+    color: rgb(58,103,103);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+    "header header header header"
+    "bigBox content content content"
+    "bigBox content content content"
+    "footer footer footer footer";
+}
+
+/* changed the class indicator here to show that 
+<articles> are now following the .articleGrid subclass. */
+.articleGrid > article {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(153, 200, 203);
+    border: 2px solid rgb(58, 103, 103);
+    
+}
+
+/* Created new class for subgrid within <section> element */
+.articleGrid {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-auto-rows: minmax(100px,150px);
+    gap: inherit;
+    
+}
+
+header {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(221, 225, 225);
+    border: 2px solid rgb(58, 103, 103);
+    text-align: center;
+    grid-area: header;
+
+}
+
+.bigBox{
+    grid-area: bigBox;
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid rgb(58, 103, 103);
+}
+
+footer {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(221, 225, 225);
+    border: 2px solid rgb(58, 103, 103);
+    text-align: center;
+    grid-area: footer;
+}`
+  }}
+        template="static"
+        theme="dark"
+        options={{ showLineNumbers: true }}
+      />
+</div>
+
+### Nesting Grids
+The biggest change between is that we’ve created a new `<section>` to contain our articles - and turned it into a subgrid.
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "header header header header"
+    "bigBox content content content"
+    "bigBox content content content"
+    "footer footer footer footer";
+}
+```
+
+This is the area of our first grid – covering the entire `<div>` container using the `.container` class.
+
+
+```css
+.articleGrid {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-auto-rows: minmax(100px,150px);
+  gap: inherit;
+}
+```
+
+We created our second grid inside the new `<section>` containing our articles. This is placed in the area named “content” within our first grid.
+
+## What are Media Queries?
+The CSS Media Query allows us to create special rules for which browsers and devices our CSS gets applied to. For example, you could apply rules based on screen size, or whether the displaying device has a touchscreen.
+
+Here’s an example media query. Let’s break it down:
+
+```css "@media"
+@media screen and (width: 600px) {
+  body {
+    background-color: #ffffff;
+  }
+}
+```
+
+We start our query with the @media at-rule. We've seen at-rules before, so refer back to your Intro to CSS notes for a reminder!
+
+```css "screen" "width" "body"
+@media screen and (width: 600px) {
+  body {
+    background-color: #ffffff;
+  }
+}
+```
+Media Type `screen`: Tells the browser whether this code is for screen media, print media, or both.
+
+Media Expression `width`: A condition that must be met before the CSS below can be applied.
+
+Executed Code `body`: The CSS rules that will be applied if the expression is true.
+
+### Media Types
+
+<dl>
+<dt>
+print
+</dt>
+<dd>
+Applies only to media
+when it is printed.
+</dd>
+<dt>
+screen
+</dt>
+<dd>
+Applies only to media
+when it is loaded in a
+browser on-screen
+</dd>
+<dt>
+all
+</dt>
+<dd>
+Applies to both printed
+and screen media. If you
+do not specify a type,
+this is the default.
+</dd>
+</dl>
+
+### Media Expressions
+
+```css
+@media screen and (height: 1080px;) {}
+@media screen and (min-width: 1025px) {}
+@media (orientation: landscape) {}
+@media (hover: hover) {}
+@media (50% <= width <= 100%) {}
+```
+
+- Once we’ve targeted a media type, we can set our conditional expression.
+- There are a range of different features we can use in our expression, from min or max width/height to device orientation.
+- On the left are all examples of expressions you’ll commonly see in media queries.
+
+### Media Expressions: Complex Logic
+
+```css
+@media screen and (max-width: 1920px) and (orientation: landscape) {}
+@media screen and (min-width: 1200px), screen and (orientation: landscape) {}
+@media not (orientation: landscape) {}
+```
+
+- We can also combine expressions to create more advanced logic for our media query.
+- Here we have examples of how we would incorporate ”and”, “or”, and “not” logic into our expressions.
+
+### Breakpoints
+
+Media Queries were great in the early days of RWD, when there were only a handful of screen sizes designers needed to style for. Nowadays, it’s not realistic to be able to target every screen for every type of device. Instead, it’s more common to use media queries to target breakpoints where some CSS rules need to change either above or below a certain width or height value. This way, we can cater for all size ranges without having to make a huge number of layouts.
+
+The Developer Tools of many web browsers will have a Responsive Design Mode, which will let you preview what your website looks like on different devices and screen sizes. This is a great way to test out where your breakpoints should be.
+
+## Mobile-first design
+
+As you can see, there’s a lot to think about when designing the layout of your page. To make it easier, there are two main approaches you can follow:
+
+- Designing for your largest screen size, then making adjustments as viewport size reduces
+- Designing for your smallest screen (often mobiles), then adding layout features as screen size increases.
+
+This second option is called mobile-first design, and is often the more efficient and performant choice (if not always the easiest to implement). With mobile first, mobile devices ignore all the CSS rules for desktop, which they don't need to implement anyway, and desktop devices apply or overwrite additional rules on top of the often more basic mobile ones.
