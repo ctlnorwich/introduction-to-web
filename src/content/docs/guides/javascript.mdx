@@ -20,6 +20,13 @@ While JavaScript was intially developerd as a **client-side** language, it is us
 
 JavaScript is an **object-oriented language.** We'll talk a bit more about that means later.
 
+:::note[Useful Links]{icon="heart"}
+- [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Go Make Things - Vanilla JS guides](https://gomakethings.com/guides/)
+- [JavaScript30 - Classic free course by Wes Bos](https://javascript30.com/)
+- [State of JavaScript](https://stateofjs.com/en-US)
+:::
+
 ### JavaScript Versions & Standards
 
 - Like with the other languages we've covered already, JavaScript receives version updates that are released every year or so.
@@ -713,7 +720,7 @@ daySelect.addEventListener("change", (e)=> {
 
       default:
 
-        dayMenu.innerHTML = "Cafeteria Closed";
+        dayMenu.innerHTML = "Cafeteria Closed!";
     }
 })`
         }}
@@ -728,7 +735,7 @@ daySelect.addEventListener("change", (e)=> {
 - The break keyword is used to ensure that the switch statement stops looking for matching conditions once it finds one.
 - The default option is used if none of the other cases match the expression.
 
-## Do You Need to Switch?
+### Do You Need to Switch?
 
 - Sometimes you may want to think about how you can create 'conditional' logic without a `switch` or `if...else` statement.
 - One way to do this is to store conditional content in the html.
@@ -777,8 +784,8 @@ let currentDay;
 daySelect.addEventListener("change", (e)=> {
 
     currentDay = e.target.value;
-    dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
-    dayMenu.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).getAttribute("data-menu");
+    dayHeading.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).innerHTML;
+    dayMenu.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).getAttribute("data-menu");
     console.log(\`changed to \${currentDay}\`);
 
 })`
@@ -788,8 +795,6 @@ daySelect.addEventListener("change", (e)=> {
         options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
       />
 </div>
-
-{/* ### No Conditions 
 
 <div className="not-content">
 <Sandpack
@@ -836,7 +841,7 @@ moodSelect.addEventListener("change", (e)=> {
         theme="dark"
         options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
       />
-</div> */}
+</div>
 
 ## Functions vs. Methods
 
@@ -845,18 +850,18 @@ moodSelect.addEventListener("change", (e)=> {
 let str = "It's too early for teaching";
 
 // Use methods to affect that string object
-let str1= str.toLowerCase(); 
-let str2= str.toUpperCase();
+let str1 = str.toLowerCase(); 
+let str2 = str.toUpperCase();
 
 /* Defining our function using an expression statement, creating a const variable */
 const iAmTired = function() {
- console.log("It's too early for teaching");
+ console.log("It's too early for teaching!");
 }
 // Calling the function
 iAmTired();
 ```
 
-- So far we've seen a few examples of JS' inbuilt Methods - sets of instructions that perform specific tasks for us.
+- So far we've seen a few examples of JavaScript's inbuilt **methods** - sets of instructions that perform specific tasks for us.
 - What's important to note is that methods are associated with an Object - you can't have the console.log() method without the 'console' object, for example.
 - If we want to create a set of instructions we can re-use, without having to connect them to a specific object, we need a Function.
 
@@ -879,17 +884,42 @@ const quickMaths = function (a, b) {return a * b};
 
 ## Invoking a function
 
-```js
-/* invoking a declared function*/
-function quickMaths (a, b) { 
-  return a * b;
-};
-quickMaths (5, 8);
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+
+  </body>
+
+</html>`,
+    "/index.js":
+`/* invoking a declared function*/
+    function quickMaths1 (a, b) { 
+        return a * b;
+    };
+quickMaths1 (5, 8);
 
 /* A function expression - an anonymous function is stored in a variable */
-const quickMaths = function (a, b) {return a * b};
-let answer = quickMaths(5, 8);
-```
+const quickMaths2 = function (a, b) {return a * b};
+let answer = quickMaths2(5, 8);`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
 
 - Once we've defined a function, we can choose to invoke it whenever we like. Once a function is invoked, the code inside will execute.
 - It's at this point that you can add your arguments into the parentheses: here we've replaced a and b with 5 and 8.
