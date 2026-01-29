@@ -1,0 +1,896 @@
+---
+title: "Introduction to JavaScript"
+description: "The basics of JavaScript."
+template: splash
+---
+
+import { Card } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { FileTree } from '@astrojs/starlight/components';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+## What is JavaScript?
+     
+JavaScript was created in 1995 to add interactivity to the web. Since then, it has become an incredibly versatile programming language with a wide range of uses, from websites and apps to games, control panels and generative art.
+
+Whilst it's possible to use JavaScript for **declarative** programming, it's primarily used as an **imperative** language, where developers outline each step the computer must take in order to achieve the desired result.
+
+While JavaScript was intially developerd as a **client-side** language, it is used (via Node.js) increasingly on the **server-side**, or in modern **serverless** cloud architecture, so it's a valuable language to learn!
+
+JavaScript is an **object-oriented language.** We'll talk a bit more about that means later.
+
+### JavaScript Versions & Standards
+
+- Like with the other languages we've covered already, JavaScript receives version updates that are released every year or so.
+- JavaScript adhers to the ECMAScript (ES) specification, so versions refer to ES instead of JS.
+- You may have heard of ES6. This version of JS came out in 2015. After this, versions were named by year (e.g. ECMAScript 2016, ECMAScript 2017, etc.)
+- Features available in newer versions will obvioulsy not work in older web browsers. It's wise to use a version that's at least a couple of years old, unless you really need a specific new feature. 
+- Developers often use polyfills to provide approximate fallbacks if a new native feature is not supported.
+
+:::note[What we'll need:]
+- A code editor (e.g. VS Code or WebStorm)
+- A reference guide (e.g [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript))
+- Some prior knowledge of HTML and CSS
+:::
+
+### The .js file
+
+- Just like with CSS, JavaScript can be inserted straight into HTML using the `<script>` tag, but this is not necessarily best practice.
+- Instead, create a `.js` file somewhere in your project directory, then add a link to it in your HTML within the `<head>` of the page using the `defer` attribute to make sure it loads after the html has loaded.
+
+```js
+<script src="script.js" defer></script>
+```
+
+## Variables
+
+- String: `"Helloooooo Norwich!"`
+- Number: `42`
+- Boolean: `true`
+- Bigint: `999999999999999n`
+- Object: `{ key: "this value is a string" }`
+- Symbol: `Symbol("description")`
+- Undefined: `undefined`
+- Null: `null`
+
+When we're programming, we inevitably come across values or data we'll need to use again later. We can store these bits of data to call upon in other parts of our script. We call these stored values **variables**. There are 8 types of data available to us in JavaScript, and any of them can be made into a variable.
+      
+### Declaring a variable
+
+```js 
+let taskName;
+let taskPriority;
+let isComplete;
+```
+
+Note that each line ends with a semicolon. It's safer to write all JS instructions this way. You don't absolutely have to, but then you have to rely on line breaks to determine where your instruction ends and the next one begins.
+
+It's good practice in JS for variable names to be written in camelCase.
+      
+- We have to declare our variable in order to use it. We do this by using the keyword, followed by our variable's name.
+- The original keyword for declaring a variable is `var`. Don't use this on new projects, but you may see it in older examples and documentation.
+- We now have `let` and `const`. Use `let` if you want to update the value. Use `const` if you want the value to be a 'constant' and protected from being updated.
+- Unlike a lot of other programming languages, you don't have to declare a variable's datatype in JavaScript.
+### Initialising a variable
+
+```js 
+let taskName = "Learn JavaScript"; 
+let taskPriority = 1;
+let isComplete = false;
+```
+
+- Now we have variables, we need to give them values. This is what we call initialising the variable.
+- To make things easier, we can declare and initialise a variable at the same time, as shown here.
+- We're using `let` keyword so we can change the value if we want to.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`let taskName = "Learn HTML"; 
+taskName = "Learn JavaScript"; 
+taskName = null;
+
+// You'll want to get used to using the console to test your JS:
+console.error("this is a test error!")
+console.warn("this is a test warning!")
+
+// Mostly, you'll be using console.log:
+console.log(taskName);`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
+      />
+</div>
+
+### Updating a variable
+
+```js
+let taskName = "Learn HTML"; 
+taskName = "Learn JavaScript"; 
+taskName = null;
+```
+
+- Once we've initialised a variable using `let`, we can update it pretty easily simply by giving it a new value further down our code.
+- Remember, JavaScript is very flexible with data types, so we can update our variable with a different data type if we need to. This can be more of a problem than an advantage! 
+
+### Why use const instead of let?
+
+The `const` variable keyword stands for 'constant'. It is good practice to use `const` all cases where you know you don't want the value of your variable to ever be overwritten (accidently or otherwise). You must initialise a constant when you declare it since it must have a value straight away.
+
+In the example below, we're using SCREAMING_SNAKE_CASE for the string `const` above, but camelCase for the array `const` below. This helps remind us at a glance which constants cannot be altered throughout the code. You may want to follow this convention, but it is not essential.
+
+While you cannot directy alter the value of a variable declared with `const`, you can alter the contents of that value. For example, if the value is and array, you can still alter the contents of that array. That's why the `taskList` can be updated below.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+        "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`const MY_NOT_SO_SECRET_API_KEY = "123456789XYZ";
+const taskList = ["Learn Git", "Learn HTML", "Learn CSS" ]; 
+taskList.push("Learn JavaScript");
+
+console.log(taskList);`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js" }}
+      />
+</div>
+
+### Adding Comments
+
+```js
+let taskName = "Learn React Native"; // Declare taskName 
+let taskPriority = 3;
+let isComplete = false;
+/* the code below will update 
+the isComplete variable */
+isComplete = true;
+// taskPriority = 1;
+```
+
+- We can add comments to help us make our script more readable and explain our code to others.
+- We can also use it to prevent execution of code when troubleshooting or testing alternatives.
+- We can make a comment over a single line using `//`. Anything written after this on the line will be considered a comment.
+- For comments over multiple lines, we use `/*` and `*/` to signal the start and end of a comment.
+
+### console.log()
+
+```js 
+let taskName = "Learn JavaScript"; 
+taskName = "Learn TypeScript"; 
+console.log(taskName);
+```
+
+- We use the `console.log()` method to help us troubleshoot and monitor our code.
+- We can also use `console.warn()` and `console.error()` to output warnings and errors.
+- Activating Developer Tools in a web browser will bring up the console so we can see what's happening on the webpage.
+
+## Quick Practical
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Hello Placeholder!</h1>
+    <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
+  </body>
+</html>`,
+"/index.js":
+`// Let's goooo!
+
+if (typeof myName !== 'undefined') {
+      document.querySelector("h1").innerHTML = \`Hello \${myName}!\`;
+}`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, autorun: true, activeFile: "/index.js" }}
+      />
+</div>
+
+- In the `script.js` file above, create a variable called `myName`, and initialise it with a value.
+- Save your code and take a look how the greeting on our `index.html` page changes!
+- Add in some comments to `script.js` to describe our code.
+- Underneath your variable, re-assign `myName` and give it a new value.
+- Now, change `myName` to a `const`.
+- Open up Developer Tools in the browser to enjoy the `SyntaxError` in the console!
+
+## Basic Maths in JavaScript
+
+```js
+let myInt = 7;
+let myFloat = 24.62;
+
+typeof myInt;
+typeof myFloat;
+```
+
+- At this stage, there's two main types of number we need to be aware of.
+- **Integers** are whole value numbers (e.g. 1, 100, 365, etc.)
+- **Floating-point** numbers (Floats) are numbers with decimal points and places (e.g. 1.5, 3.1415926, 6.9, etc.)
+- Unless your number is extremely large (more than 15 digits), all your numbers will come under the number data type in JS.
+- Number values are written without speech marks. Otherwise, JS will read it as a string!
+
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+    "/index.js":
+`let myInt = 7;
+let myNumber = "7";
+myNumber = Number(myNumber) + 5;
+
+console.log(myNumber);
+`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+- There are many different methods we can use with number values in JS.
+- We can also convert other data values into number types using the `Number()` constructor.
+- This is useful when converting values entered on **HTML forms** - which are strings - into numbers we can calculate with.
+- In the above example, if we did not convert `myNumber`, the result would be `"75"`. Once we do, the output becomes `12`.
+
+### Arithmetic Operators
+
+Remember that the standard order of operation for mathematics still applies in JavaScript!
+
+- The way we make calculations in JavaScript is by using **arithmetic operators**; most of these will already likely be familiar to you.
+- The **eModulo** operator will divide the number on the left by the number on the right, returning the remainder value if the two numbers cannot be divided exactly.
+- **Exponent** performs a exponentiation or 'to the power of' calculation, which raises the number on the left to the power of the number on the right. In our example, we raise 5 to the power of 2; 5 squared is 25.
+
+### Arithmetic Operators
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`+`</td>
+      <td>Addition</td>
+      <td>`10+3`</td>
+    </tr>
+    <tr>
+      <td>`-`</td>
+      <td>Subtraction</td>
+      <td>`50-5`</td>
+    </tr>
+    <tr>
+      <td>`*`</td>
+      <td>Multiplication</td>
+      <td>`10*7`</td>
+    </tr>
+    <tr>
+      <td>`/`</td>
+      <td>Division</td>
+      <td>`64/8`</td>
+    </tr>
+    <tr>
+      <td>`%`</td>
+      <td>Modulo, or Remainder</td>
+      <td>`8%3`</td>
+    </tr>
+    <tr>
+      <td>`**`</td>
+      <td>Exponent</td>
+      <td>`5**2`</td>
+    </tr>
+  </tbody>
+</table>
+
+### Increment/Decrement Operators
+
+```js 
+let num = 6;
+num++; // returns value of num, then adds 1
+num--; // returns value of num, then subtracts 1
+
+++num; // adds 1, then returns the value of num 
+--num; // subtracts 1, then returns the value of num
+```
+
+- Increment operators are used to gradually increase or decrease a value.
+- This can be useful when used as part of a loop, or to create a counter for conditional logic.
+- The value your console will return will depend on whether you place the operator before or after your variable.
+
+## Assignment Operators
+
+```js 
+let num = 6;
+num += 1; // adds 1, then updates the value of num
+num -= 1; // subtracts 1, then updates the value of num 
+num *= 2; // multiplies by 2, then updates the value of num 
+num /= 2; // divides by 2, then updates the value of num
+```
+
+- Assignment operators, unsurprisingly, assign a value to a variable. The most basic is =, which we've seen a lot of already.
+- The more complex operators are useful shorthand to keep our code neat and save time. Instead of writing x = x + 5; , we can just write x += 5.
+
+## Comparison Operators
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Name</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`===`</td>
+      <td>Strict equality</td>
+      <td>Tests whether left and right values are identical</td>
+      <td>`5 === 4+1`</td>
+    </tr>
+    <tr>
+      <td>`!==`</td>
+      <td>Strict non-equality</td>
+      <td>Tests whether left and right values are not identical</td>
+      <td>`5 == 4+2`</td>
+    </tr>
+    <tr>
+      <td>`<`</td>
+      <td>Less than</td>
+      <td>Tests whether the left value is smaller than the right one</td>
+      <td>`5 < 10`</td>
+    </tr>
+    <tr>
+      <td>`>`</td>
+      <td>Greater than</td>
+      <td>Tests whether the left value is greater than the right one</td>
+      <td>`5 > 3`</td>
+    </tr>
+    <tr>
+      <td>`<=`</td>
+      <td>Less or equal to</td>
+      <td>Tests whether the left value is smaller or equal to the right one</td>
+      <td>`5 <= 6`</td>
+    </tr>
+    <tr>
+      <td>`>=`</td>
+      <td>Greater or equal to</td>
+      <td>Tests whether the left value is greater or equal to the right one</td>
+      <td>`5 >= 4`</td>
+    </tr>
+  </tbody>
+</table>
+
+- Sometimes, we will need to run a true/false test between values, and carry out actions based on the result.
+- This is where Comparison operators come in. These will return a Boolean value of true or false which you can use elsewhere in your code.
+- With these operators, we can begin to start thinking about introducing logic into our scripts.
+
+## If... Else Statements
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza 1</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <h1>Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+    "/index.js":
+`let ticketsAvailable = false;
+
+if (ticketsAvailable) {
+    /* code to run if condition is true */
+    console.log("Tickets available!");
+} else {
+    /* run some other code instead */
+    console.log("Sold out!"); 
+};`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+- As we just discussed, sometimes we want to make decisions in our code based on a condition.
+- If... else statements look to see if an expression you specify returns as true. If it does, it executes one block of code; if not, it executes a different block.
+- We can also nest if...else statements if we wish to create several layers of choice - kind of like a dialogue tree in a video game.
+
+## else if
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <select name="pizzas">
+      <option value="" disabled selected>Please select a pizza</option>
+      <option value="Napoli">Napoli</option>
+      <option value="Margherita">Margherita</option>
+      <option value="Roma">Roma</option>
+    </select>
+    <h1>Please select a pizza</h1>
+    <p>...</p>
+    <p>£<span>0</span></p>
+  </body>
+
+</html>`,
+    "/index.js":
+`// Initialise const variables with html elements.
+const pizzaName = document.querySelector("h1");
+const pizzaToppings = document.querySelector("p");
+const pizzaPrice = document.querySelector("span");
+const pizzaSelect = document.querySelector("select");
+
+// Define current pizza variable but don't initialise it yet...
+let currentPizza;
+
+// Add a change event listener to the pizza select element.
+pizzaSelect.addEventListener("change", (e)=> {
+    currentPizza = e.target.value;
+    pizzaName.innerHTML = currentPizza;
+    console.log(\`changed to \${currentPizza}\`);
+
+    if (currentPizza === "Napoli") {
+        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, fresh garlic, basil & oregano (NO CHEESE)";
+        pizzaPrice.innerHTML = "14.99"
+    } else if (currentPizza === "Margherita") {
+        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, mozzarella, basil & Parmigiano Reggiano";
+        pizzaPrice.innerHTML = "12.99"
+    } else if (currentPizza === "Roma") {
+        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, buffalo mozzarella D.O.P & basil";
+        pizzaPrice.innerHTML = "13.99"
+    } else {
+        pizzaToppings.innerHTML = "...";
+        pizzaPrice.innerHTML = "0"
+    };
+})`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+- If... else statements on their own give us only two options to choose from. But what if we need more?
+- We can use else if to add additional conditions into our If...else statement.
+- Since JavaScript runs from top to bottom, order is important - else if sits after the if action but before the else keyword.
+- We can add as many else if conditions into our statement as we like.
+- Once the computer finds one of the statements true, it will not check any of the ones following it.
+
+
+## Logical Operators: AND, OR, NOT
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    
+    <p>
+    <label>
+    Weather
+    <select name="weather">
+      <option value="" disabled selected>Select weather</option>
+      <option value="raining">Raining</option>
+      <option value="snowing">Snowing</option>
+      <option value="sunny">Sunny</option>
+    </select>
+    </label>
+    </p>
+
+  <p> 
+    <label>
+    Wind speed (mph)
+    <input type="number" name="wind" min="5" max="100" value="10" step="5" />
+    </label>
+  </p>
+
+  <p>
+    <button>Do I put my washing out?</button>
+  </p>
+
+    <p class="advice">...</p>
+  </body>
+
+</html>`,
+    "/index.js":
+`// Initialise const variables with html elements.
+const weatherType = document.querySelector("h1");
+const weatherAdvice = document.querySelector("p.advice");
+const button = document.querySelector("button");
+
+// Define current weather variable but don't initialise it yet...
+let currentWeather;
+let wind;
+
+// Add a change event listener to the weather select element.
+button.addEventListener("click", (e) => {
+
+    const currentWeather =  document.querySelector("select").value;
+    const windSpeed = Number(document.querySelector("input").value);
+
+    if (currentWeather === "raining" || currentWeather === "snowing") {
+        weatherAdvice.innerHTML = "The weather is bad. Best not put out any washing.";
+    }
+    else if (!(windSpeed < 40)) {
+        weatherAdvice.innerHTML = "It's very windy! Your washing might blow away.";
+    }
+    else if (currentWeather === "sunny" && windSpeed >= 25) {
+        weatherAdvice.innerHTML = "Sun and a breeze! Perfect day for drying washing.";
+    } 
+    else {
+        weatherAdvice.innerHTML = "It's dry outside! Time to put out the washing.";
+    };
+})`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+- Logical operators allow us to create more complex logic by testing more than one condition at a time.
+- The AND operator (&&) chains multiple conditions together. All the conditions must be true for the whole expression to return as true.
+- The OR operator (||) also chains together conditions, but only one of the conditions needs to be true for the whole expression to be true.
+- Finally, the NOT operator (!) negates all the conditions. The expression will only return as true if none of the individual conditions are true.
+
+## Ternary Operators
+
+```js
+let ticketsAvailable = true;
+ticketsAvailable ? console.log("Tickets Available!") : console.log("Sold Out!");
+```
+
+- There's one last operator to introduce: the Ternary Operator.
+- This operator allows us to test a condition, returning one of two expressions based on whether our condition is true or false.
+- It's a useful tool for simple conditional tests, as it takes up a lot less code than a full if/else statement.
+
+## Switch Statements
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <select name="day">
+      <option value="" disabled selected>Please select a day</option>
+      <option value="mon">Monday</option>
+      <option value="tue">Tuesday</option>
+      <option value="wed">Wed</option>
+      <option value="thu">Thursday</option>
+      <option value="fri">Friday</option>
+      <option value="sat">Saturday</option> 
+      <option value="sun">Sunday</option> 
+    </select>
+    <h1>Please select a day</h1>
+    <p>...</p>
+  </body>
+
+</html>`,
+    "/index.js":
+`// Initialise const variables with html elements.
+const dayHeading = document.querySelector("h1");
+const daySelect = document.querySelector("select");
+const dayMenu = document.querySelector("p");
+
+// Define current day variable but don't initialise it yet...
+let currentDay;
+
+// Add a change event listener to the day select element.
+daySelect.addEventListener("change", (e)=> {
+
+    currentDay = e.target.value;
+    dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
+    console.log(\`changed to \${currentDay}\`);
+
+    switch(currentDay) {
+
+      case "mon":
+      case "fri":
+        dayMenu.innerHTML = "Chilli";
+      break;
+
+      case "tue":
+        dayMenu.innerHTML = "Halloumi";
+      break
+
+      case "wed":
+        dayMenu.innerHTML = "Lasagne";
+      break;
+
+      case "thu":
+        dayMenu.innerHTML = "Burger";
+      break;
+
+      default:
+
+        dayMenu.innerHTML = "Cafeteria Closed";
+    }
+})`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+- If...else statements are brilliant for a lot of purposes, but the syntax can be a bit bulky when you have a large number of options for a pretty simple condition.
+- That's where **switch statements** can help us out. Switch statements can take a single expression and compare it against multiple options until it finds one to match, executing the associated code.
+- The break keyword is used to ensure that the switch statement stops looking for matching conditions once it finds one.
+- The default option is used if none of the other cases match the expression.
+
+## Do You Need to Switch?
+
+- Sometimes you may want to think about how you can create 'conditional' logic without a `switch` or `if...else` statement.
+- One way to do this is to store conditional content in the html.
+- The below example fetches the corresponding `data-menu` value from selected option.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <select name="day">
+      <option value="" disabled selected>Please select a day</option>
+      <option data-menu="Chilli" value="mon">Monday</option>
+      <option data-menu="Halloumi" value="tue">Tuesday</option>
+      <option data-menu="Lasagne" value="wed">Wed</option>
+      <option data-menu="Burger" value="thu">Thursday</option>
+      <option data-menu="Chilli" value="fri">Friday</option>
+      <option data-menu="Cafeteria Closed" value="sat">Saturday</option> 
+      <option data-menu="Cafeteria Closed" value="sun">Sunday</option> 
+    </select>
+    <h1>Please select a day</h1>
+    <p>...</p>
+  </body>
+
+</html>`,
+    "/index.js":
+`// Initialise const variables with html elements.
+const dayHeading = document.querySelector("h1");
+const daySelect = document.querySelector("select");
+const dayMenu = document.querySelector("p");
+
+// Define current day variable but don't initialise it yet...
+let currentDay;
+
+// Add a change event listener to the day select element.
+daySelect.addEventListener("change", (e)=> {
+
+    currentDay = e.target.value;
+    dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
+    dayMenu.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).getAttribute("data-menu");
+    console.log(\`changed to \${currentDay}\`);
+
+})`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div>
+
+{/* ### No Conditions 
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <input type=range name="mood" min="1" max="4" value="2"></input>
+
+    <h1 style="font-size: 5rem; margin-top: 0;">
+    <span class="mood-1" style="display:none;">🙁</span>
+    <span class="mood-2" style="display:block;">😐</span>
+    <span class="mood-3" style="display:none;">🙂</span>
+    <span class="mood-4" style="display:none;" >😀</span>
+    </h1>
+  </body>
+
+</html>`,
+    "/index.js":
+`// Initialise const variables with html elements.
+const moodEmoji = document.querySelector("h1");
+const moodSelect = document.querySelector("input");
+
+// Add a change event listener to the pizza select element.
+moodSelect.addEventListener("change", (e)=> {
+
+    let mood = Number(e.target.value);
+
+    document.querySelectorAll("h1 span").forEach((mood) => mood.style.display = 'none');
+    document.querySelector(\`.mood-\${mood}\`).style.display = 'block';
+
+})`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+      />
+</div> */}
+
+## Functions vs. Methods
+
+```js
+// Define a string variable
+let str = "It's too early for teaching";
+
+// Use methods to affect that string object
+let str1= str.toLowerCase(); 
+let str2= str.toUpperCase();
+
+/* Defining our function using an expression statement, creating a const variable */
+const iAmTired = function() {
+ console.log("It's too early for teaching");
+}
+// Calling the function
+iAmTired();
+```
+
+- So far we've seen a few examples of JS' inbuilt Methods - sets of instructions that perform specific tasks for us.
+- What's important to note is that methods are associated with an Object - you can't have the console.log() method without the 'console' object, for example.
+- If we want to create a set of instructions we can re-use, without having to connect them to a specific object, we need a Function.
+
+## Defining a function
+
+```js
+/* A function declaration - we give our function a name and then describe it */
+function quickMaths (a, b) {
+  return a * b; 
+};
+
+/* A function expression - an anonymous function is stored in a variable */
+const quickMaths = function (a, b) {return a * b}; 
+```
+
+- Before we use a function, we have to define it - basically, explain what it does.
+- Let's look at two ways to define a function: Function Declarations and Function Expressions.
+- Both of these examples share 2 things: the function keyword, and arguments, enclosed in parentheses. With function expressions, we don't have to give our function a name.
+- Arguments are data values that are used inside the function. We can define those values when we invoke the function later!
+
+## Invoking a function
+
+```js
+/* invoking a declared function*/
+function quickMaths (a, b) { 
+  return a * b;
+};
+quickMaths (5, 8);
+
+/* A function expression - an anonymous function is stored in a variable */
+const quickMaths = function (a, b) {return a * b};
+let answer = quickMaths(5, 8);
+```
+
+- Once we've defined a function, we can choose to invoke it whenever we like. Once a function is invoked, the code inside will execute.
+- It's at this point that you can add your arguments into the parentheses: here we've replaced a and b with 5 and 8.
+- If you've used a function expression, you can then use the variable as a function in a wider context. Here, we're initialising a new variable, answer, using quickMaths.
