@@ -106,7 +106,7 @@ let isComplete = false;
   </head>
 
   <body>
-    <h1>Nothing to see here!</h1>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
     <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
   </body>
 </html>`,
@@ -162,7 +162,7 @@ While you cannot directy alter the value of a variable declared with `const`, yo
   </head>
 
   <body>
-    <h1>Nothing to see here!</h1>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
     <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
   </body>
 </html>`,
@@ -225,7 +225,7 @@ console.log(taskName);
   </head>
 
   <body>
-    <h1>Hello Placeholder!</h1>
+    <h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
     <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
   </body>
 </html>`,
@@ -281,7 +281,7 @@ typeof myFloat;
   </head>
 
   <body>
-    <h1>Nothing to see here!</h1>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
     <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
   </body>
 </html>`,
@@ -456,7 +456,7 @@ num /= 2; // divides by 2, then updates the value of num
   </head>
 
   <body>
-    <h1>Nothing to see here!</h1>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
     <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
   </body>
 </html>`,
@@ -504,7 +504,7 @@ if (ticketsAvailable) {
       <option value="Margherita">Margherita</option>
       <option value="Roma">Roma</option>
     </select>
-    <h1>Please select a pizza</h1>
+    <h1><span style="font-size: 3rem;">🍕</span> Please select a pizza</h1>
     <p>...</p>
     <p>£<span>0</span></p>
   </body>
@@ -571,7 +571,6 @@ pizzaSelect.addEventListener("change", (e)=> {
   </head>
 
   <body>
-    
     <p>
     <label>
     Weather
@@ -592,9 +591,8 @@ pizzaSelect.addEventListener("change", (e)=> {
   </p>
 
   <p>
-    <button>Do I put my washing out?</button>
+     <span style="font-size: 3rem;">🧺</span> <button>Do I put my washing out?</button>
   </p>
-
     <p class="advice">...</p>
   </body>
 
@@ -616,16 +614,16 @@ button.addEventListener("click", (e) => {
     const windSpeed = Number(document.querySelector("input").value);
 
     if (currentWeather === "raining" || currentWeather === "snowing") {
-        weatherAdvice.innerHTML = "The weather is bad. Best not put out any washing.";
+        weatherAdvice.innerHTML = "The <strong>weather is bad</strong>. Best not put out any washing.";
     }
     else if (!(windSpeed < 40)) {
-        weatherAdvice.innerHTML = "It's very windy! Your washing might blow away.";
+        weatherAdvice.innerHTML = "It's <strong>very windy</strong>! Your washing might blow away.";
     }
     else if (currentWeather === "sunny" && windSpeed >= 25) {
-        weatherAdvice.innerHTML = "Sun and a breeze! Perfect day for drying washing.";
+        weatherAdvice.innerHTML = "<strong>Sun and a breeze</strong>! Perfect day for drying washing.";
     } 
     else {
-        weatherAdvice.innerHTML = "It's dry outside! Time to put out the washing.";
+        weatherAdvice.innerHTML = "It's <strong>dry</strong> outside! Time to put outthe washing.";
     };
 })`
         }}
@@ -672,20 +670,20 @@ ticketsAvailable ? console.log("Tickets Available!") : console.log("Sold Out!");
       <option value="" disabled selected>Please select a day</option>
       <option value="mon">Monday</option>
       <option value="tue">Tuesday</option>
-      <option value="wed">Wed</option>
+      <option value="wed">Wednesday</option>
       <option value="thu">Thursday</option>
       <option value="fri">Friday</option>
       <option value="sat">Saturday</option> 
       <option value="sun">Sunday</option> 
     </select>
-    <h1>Please select a day</h1>
+    <h1> <span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
     <p>...</p>
   </body>
 
 </html>`,
     "/index.js":
 `// Initialise const variables with html elements.
-const dayHeading = document.querySelector("h1");
+const dayHeading = document.querySelector("h1 .day");
 const daySelect = document.querySelector("select");
 const dayMenu = document.querySelector("p");
 
@@ -766,14 +764,14 @@ daySelect.addEventListener("change", (e)=> {
       <option data-menu="Cafeteria Closed" value="sat">Saturday</option> 
       <option data-menu="Cafeteria Closed" value="sun">Sunday</option> 
     </select>
-    <h1>Please select a day</h1>
+    <h1><span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
     <p>...</p>
   </body>
 
 </html>`,
     "/index.js":
 `// Initialise const variables with html elements.
-const dayHeading = document.querySelector("h1");
+const dayHeading = document.querySelector("h1 .day");
 const daySelect = document.querySelector("select");
 const dayMenu = document.querySelector("p");
 
@@ -900,20 +898,27 @@ const quickMaths = function (a, b) {return a * b};
   </head>
 
   <body>
-
+    <div style="font-size: 3rem;">🧮</div>
   </body>
 
 </html>`,
     "/index.js":
 `/* invoking a declared function*/
-    function quickMathsD (a, b) { 
-        return a * b;
-    };
-quickMathsD (5, 8);
+function quickMathsD (a, b) { 
+    return a * b;
+};
+
+const answerD = quickMathsD(5, 8);
 
 /* A function expression - an anonymous function is stored in a variable */
-const quickMathsE = function (a, b) {return a * b};
-let answer = quickMathsE(5, 8);`
+const quickMathsE = function (a, b){
+    return a * b
+};
+
+const answerE = quickMathsE(5, 8);
+
+// ToDo: You need to console.log to see these answers!
+`
         }}
         template="vanilla"
         theme="dark"
@@ -925,6 +930,9 @@ let answer = quickMathsE(5, 8);`
 - It's at this point that you can add your arguments into the parentheses: here we've replaced a and b with 5 and 8.
 - If you've used a function expression, you can then use the variable as a function in a wider context. Here, we're initialising a new variable, answer, using quickMaths.
 
+## Mood Emoji JS Challenge!
+
+Add JS so that the range slider determines which emoji is visible.
 
 <div className="not-content">
 <Sandpack
@@ -944,7 +952,7 @@ let answer = quickMathsE(5, 8);`
     <input type=range name="mood" min="1" max="4" value="2"></input>
 
     <p>how do you rate this content?</p>
-    <div style="font-size: 5rem; margin-top: 0;">
+    <div style="font-size: 3rem; margin-top: 0;">
       <span>🙁</span>
       <span>😐</span>
       <span>🙂</span>
@@ -956,6 +964,9 @@ let answer = quickMathsE(5, 8);`
 </html>`,
     "/index.js":
 `// Emoji Challenge
+
+// Here's a hint about changing styles:
+document.querySelector("span:first-of-type").style.border = "solid red 2px";
 `
         }}
         template="vanilla"
