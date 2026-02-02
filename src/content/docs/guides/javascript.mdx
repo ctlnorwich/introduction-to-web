@@ -504,17 +504,17 @@ if (ticketsAvailable) {
       <option value="Margherita">Margherita</option>
       <option value="Roma">Roma</option>
     </select>
-    <h1><span style="font-size: 3rem;">🍕</span> Please select a pizza</h1>
+    <h1><span style="font-size: 3rem;">🍕</span> <span class="pizzaName">Please select a pizza</span></h1>
     <p>...</p>
-    <p>£<span>0</span></p>
+    <p>£<span class="pizzaPrice">0</span></p>
   </body>
 
 </html>`,
     "/index.js":
 `// Initialise const variables with html elements.
-const pizzaName = document.querySelector("h1");
+const pizzaName = document.querySelector("h1 .pizzaName");
 const pizzaToppings = document.querySelector("p");
-const pizzaPrice = document.querySelector("span");
+const pizzaPrice = document.querySelector(".pizzaPrice");
 const pizzaSelect = document.querySelector("select");
 
 // Define current pizza variable but don't initialise it yet...
@@ -794,53 +794,6 @@ daySelect.addEventListener("change", (e)=> {
       />
 </div>
 
-{/* <div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <input type=range name="mood" min="1" max="4" value="2"></input>
-
-    <h1 style="font-size: 5rem; margin-top: 0;">
-    <span class="mood-1" style="display:none;">🙁</span>
-    <span class="mood-2" style="display:block;">😐</span>
-    <span class="mood-3" style="display:none;">🙂</span>
-    <span class="mood-4" style="display:none;" >😀</span>
-    </h1>
-  </body>
-
-</html>`,
-    "/index.js":
-`// Initialise const variables with html elements.
-const moodEmoji = document.querySelector("h1");
-const moodSelect = document.querySelector("input");
-
-// Add a change event listener to the pizza select element.
-moodSelect.addEventListener("change", (e)=> {
-
-    let mood = Number(e.target.value);
-
-    document.querySelectorAll("h1 span").forEach((mood) => mood.style.display = 'none');
-    document.querySelector(\`.mood-\${mood}\`).style.display = 'block';
-
-})`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
-</div> */}
-
 ## Functions vs. Methods
 
 ```js
@@ -945,7 +898,7 @@ Add JS so that the range slider determines which emoji is visible.
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emoji Challenge!</title>
-    <script src="index.js" defer></script>
+    <script src="solution.js" defer></script>
   </head>
 
   <body>
@@ -966,11 +919,26 @@ Add JS so that the range slider determines which emoji is visible.
 `// Emoji Challenge
 
 // Here's a hint about changing styles:
-document.querySelector("span:first-of-type").style.border = "solid red 2px";
-`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
+document.querySelector("span:nth-of-type(2)").style.border = "solid red 2px";
+`,
+  "solution.js":
+`// Example using span:nth-of-typen to find the active emoji
+const moodEmojis = document.querySelectorAll("div span");
+const moodSelect = document.querySelector("input");
+
+const updateEmojis = (number) => {
+    moodEmojis.forEach((emoji) => emoji.style.display = 'none');
+    document.querySelector(\`div > span:nth-of-type(\${number})\`).style.display = 'block';
+}
+
+updateEmojis(2)
+  
+moodSelect.addEventListener("change", (e)=> {
+    updateEmojis(e.target.value)
+})`
+    }}
+    template="vanilla"
+    theme="dark"
+    options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
       />
 </div>
