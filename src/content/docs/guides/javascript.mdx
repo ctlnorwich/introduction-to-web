@@ -922,17 +922,20 @@ Add JS so that the range slider determines which emoji is visible.
 document.querySelector("span:nth-of-type(2)").style.border = "solid red 2px";
 `,
   "solution.js":
-`// Example using span:nth-of-typen to find the active emoji
+`// Example using span:nth-of-type() to find the active emoji
 const moodEmojis = document.querySelectorAll("div span");
 const moodSelect = document.querySelector("input");
 
+// Function can pass in the number from the range slider
 const updateEmojis = (number) => {
     moodEmojis.forEach((emoji) => emoji.style.display = 'none');
     document.querySelector(\`div > span:nth-of-type(\${number})\`).style.display = 'block';
 }
 
+// Default to emoji 2
 updateEmojis(2)
-  
+
+// When the range slider changes, call the update function and pass in the new number
 moodSelect.addEventListener("change", (e)=> {
     updateEmojis(e.target.value)
 })`
