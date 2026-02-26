@@ -4,30 +4,37 @@ description: "How to manage and distribute your code"
 template: splash
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Card, Steps } from '@astrojs/starlight/components';
 
+<Card title="What does this cover?">
 - Git Fundamentals
 - Using GitHub
 - GitHub Codespaces
 - GitHub Pages
+</Card>
 
 ## What is Git?
 
-Git is a widely-used **distributed version control system**, created by Linus Torvalds (also the creator of Linux) in 2005. It's used by all sorts of developers (web, app and other software), to back up their codebase, track and review changes, and work collaboratively within teams. Git is pretty much essential when multiple people are working on the same codebase at the same time, since it records who did what, when they did it and whether there are any conflicting changes that need to be resolved.
+Git is a widely-used **distributed version control system**, created by [Linus Torvalds](https://github.com/torvalds) (also the creator of Linux) in 2005. It's used by software developers to back up codebases, track and review changes, and work collaboratively within teams.
 
-[Git Website](https://git-scm.com/)
-[GitHub](https://github.com/)
-[GitHub Education](https://github.com/education)
+Codebases can be complex collections of maybe hundreds or thousands of files that reference each other in varying ways. A version control system like Git is pretty much essential when multiple people are working on the same codebase at the same time, since it records who did what, when they did it and whether there are any conflicting changes that need to be resolved.
+
+:::note[Useful Links]{icon="heart"}
+- [Git Website](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [GitHub Education](https://github.com/education)
+- [GitHub Desktop Docs](https://docs.github.com/en/desktop/overview/about-github-desktop)
+:::
 
 ## How Git works
 
-Git works by storing version history in a repository or 'repo'. This repository can be entirely local to the developer's computer, or synced to a remote online copy using a service such as GitHub. A repository can have multiple branches. Each branch can be used for a differnt purpose: for example, to create new feaures, test updates, fix bugs in isolation, or try out alternative ways of doing things. The primary branch is usually called the `main` branch but naming is flexible and more complex projects often have many branches: e.g. the popular website builder, [Astro has 422 branches!](https://github.com/withastro/astro). Tags are often used to keep track of version numbers for different releases.
+Git works by storing version history in a **repository** or 'repo'. This repository can be entirely local to the developer's computer, or synced to a remote online copy using a service such as GitHub. A repository can have multiple **branches**. Each branch contains a version of the codebase that can be used for a specific purpose: for example, to create new feaures, test updates, fix bugs in isolation, or try out alternative ways of doing things. Branches can be be merged into one another to add the changes from one branch to another. The primary branch is usually called the `main` branch, but naming is flexible. In addition to branches, **tags** are often used to keep track of version numbers for different releases. More complex projects often have many branches: for example, the popular website builder, [Astro has over 400 branches and 2900 tags!](https://github.com/withastro/astro)
 
-Saving changes to a branch, is called a **commit**. This is a bit like when you save your progress to a slot in a game. The git repository data lives in a hidden directory in your project directory. If you delete this data, the repository will no longer exist locally.
-      
-- After authenticating with a an online You can push your commits to the online repository, where others can view your branch.
-- Your changes can then be reviewed and merged into the main codebase. Merging changes is known as a <strong>pull</strong>.
-- You can also fetch updates others have made, and review them before pulling them into your branch.
+Saving changes to a branch, is called a **commit**. This is a bit like when you save your progress to a slot in a game. 
+
+Commits should at least have a summary message, but can also have a more detailed description about what has changed. There are different conventions for writing commit messages, but no universal standard. One popular way is begin with a Verb in the present tense and imperative mood - e.g. `Add about.html` or `Fix styling issue with dropdown`. Another more complex specification is [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+The git repository data is saved to a hidden directory inside your project directory (visible if you enable e.g. 'show hidden files'). If you delete this directory, the repository will no longer exist locally. 
 
 ## Git in the terminal
 
@@ -36,53 +43,88 @@ You can use Git directly from the command line or terminal if you want to, provi
 <Steps>
 
 1. Create a new folder called `my-git-project`.
+
 2. Open the project folder in VS Code.
-3. Open the terminal in VS Code (Terminal > New Terminal).
-4. Type `touch readme.md` to create a new `readme.md` file.
-5. Type `git -v` to check git is installed on your machine.
-6. Type `git init` to initialise a new git repository.
+
+3. Open the terminal in **VS Code** (Terminal > New Terminal).
+
+4. Use the terminal to create a new `readme.md` file:
+
+    ```bash
+    touch readme.md
+    ```
+
+5. Check git is installed on your machine:
+
+    ```bash
+    git -v
+    ```
+
+6. Initialise a new git repository:
+
+    ```bash
+    git init
+    ```
+
 7. Edit the readme file in VS Code (e.g. add `# Project Information` at the top to create a heading).
-8. Type `git add .` to stage all files for commit (there's only one file at the moment)
-9. Type `git commit -m "Initial commit"` to commit the changes to the readme file.
-10. Type `git status` to check if there is anything further to commit.
+
+8. Stage all files for commit (there's only one file at the moment):
+
+    ```bash
+    git add .
+    ```
+
+9. Commit the changes to the readme file with a message (summary):
+
+    ```bash
+    git commit -m "Initial commit"
+    ```
+
+10. Check if there is anything further to commit (there shouldn't be):
+
+    ```bash
+    git status
+    ```
 
 </Steps>
 
-Congratulations! You've used Git in the terminal!
-
+Congratulations! You've used Git in the Terminal!
 
 ## GitHub
-GitHub is currently the most popular platform for hosting and managing online Git repositories. GitHub has always been a separate entity from the Git Open Source project. It is now owned by Microsoft. There are alteratives to GitHub such as [GitLab](https://about.gitlab.com/) or [Bitbucket](https://bitbucket.org/)
+[GitHub](https://github.com/) is currently the most popular platform for hosting and managing online Git repositories. GitHub has always been a separate entity from the Git Open Source project and it is now owned by Microsoft. There are alteratives to GitHub such as [GitLab](https://about.gitlab.com/) or [Bitbucket](https://bitbucket.org/)
 
 ## GitHub Education
-As as student, you can upgrade your free acount to the [GitHub Education plan](https://github.com/education). This plan gives you access to features such as GitHub Codespaces which allows you to run a development environment and VS Code in the cloud so you can code in your web browser. You will also get access to GitHub Copilot Pro. If you decide to do AI-assisted development, please be mindful of the process!
+As as student, you can upgrade your free acount to the [GitHub Education plan](https://github.com/education). This plan gives you access to features such as [GitHub Codespaces](https://github.com/features/codespaces) which allows you to run a development environment and VS Code in the cloud so you can code anywhere you can use a web browser. You will also get access to [GitHub Copilot Pro](https://github.com/features/copilot/plans). However, if you decide to dabble in AI-assisted development, please be mindful of the nature of the process and its variable outcomes!
 
 ## GitHub Desktop
-[GitHub Desktop](https://desktop.github.com/download/) is an optional app that allows you to manage your local git repositories from an easy-to-use GUI. While you can also manage your GitHub repostitories directly in VS Code using a similar GUI (and, therefore, avoiding the need to memorise terminal commands), you may prefer the simpler and separate experience of GitHub Desktop.
+[GitHub Desktop](https://desktop.github.com/download/) is an optional app that allows you to manage your local and remote Git repositories from an easy-to-use GUI. While you can also manage your Git repositories directly in VS Code using the sidebar GUI (also avoiding the need to memorise terminal commands), you may still prefer the simpler and separate experience of GitHub Desktop.
 
-### GitHub Desktop: Cloning a repo:
-    
-We can clone (or create our own local copy of) a repository by choosing File > Clone Repository from the menu. If you have connected your GitHub account and already have you own repositories, you will be able to select them to clone here. If you want to clone someone else's repository, you can enteri the URL.
+- After connecting your GitHub account, you can **push** your repository changes to the online GitHub 'origin', where others can view your code.
+- If your changes are on a sepearte branch, they can then be reviewed and **merged** into another branch by yourself or another collaborator. You can prompt a collaborator to do this by creating a **pull request**.
+- You can also **fetch** updates others have made, and review them before **pulling** them into your branch.
+
+### GitHub Desktop: cloning a repo:
+We can clone  (create our own local copy of) a repository by choosing File > Clone Repository from the GitHub Desktop menu. If you have your own repositories on GitHub, you will be able to select them to clone here. If you want to clone someone else's repository, you can enter the URL instead.
 
 Let's clone the following repo from GitHub: [https://github.com/ctlnorwich/portfolio-example](https://github.com/ctlnorwich/portfolio-example)
 
-Now we've cloned our repo, we can open it in our file explorer, or edit it in VS Code. Let's open it in VS Code and make a change.
+Now we've cloned our repo, we can open it in our file explorer or edit it in VS Code. Let's open it in VS Code and make a change.
 
 - On the top toolbar, you can change your repository, change or create new branches, and fetch updates for your repo.
 - In the left sidebar under the Changes tab, you can see any files that have been changed, added or deleted since the last commit.
 - In the left sidebar under the History tab, you can step back and see all the file changes relating to different commits over time.
 - In the main workspace, you can see the code changes for the currently selected file. This is known as the **diff**. You will notice it is colour coded to show additions and deletions.
 
-When we're ready to submit our changes, we can commit them from the bottom-left hand corner. It's good practice to be clear and as descriptive as possible when writing up commits.
+When we're ready to submit our changes, we can commit them from the bottom-left hand corner. It's good practice to be clear and as descriptive as possible when writing commit messages.
 
 ## Forks
 
-If we've cloned a repo we don't have permission to make changes to, we have the option to create a fork. A Fork creates a new repository that shares code and visibility with the original. With a fork, we can use someone else's repo as a starting point for our own ideas.
+If we've cloned a repo we don't have permission to make changes to, we have the option to create a fork. A Fork creates a new version of the entire repository that shares code and visibility with the original. With a fork, we can use someone else's repo as a starting point for our own ideas. You have the option to preserve a connection 'upstream' back to the orignial repo, either to pull new features from the original or create pull requests from your fork for the orignal owner to review.
 
 ## Creating a New Repo
 
-Let's create a repository from scratch. You can either do this locally and push to GitHub, or in GitHub itself and then clone it locally.
+Let's create a repository from scratch. You can either do this locally and push to GitHub, or create the repo in GitHub first and clone it locally.
 
 ## GitHub Pages
 
-Github's Pages feature allows us to host a website from a public repository of our choice. We can configure this in the settings for our repo page once we've published it.
+The GitHub Pages feature allows you to host a single static website from a public repository of you choice. We can configure this in the settings for our repo page once we've published it.
