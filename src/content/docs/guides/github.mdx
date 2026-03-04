@@ -15,7 +15,7 @@ import { Card, Steps } from '@astrojs/starlight/components';
 
 ## What is Git?
 
-Git is a widely-used **distributed version control system**, created by [Linus Torvalds](https://github.com/torvalds) (also the creator of Linux) in 2005. It's used by software developers to back up codebases, track and review changes, and work collaboratively within teams.
+Git is a widely-used **distributed version control system**, created by [Linus Torvalds](https://github.com/torvalds), who is also the creator of Linux, in 2005. It's used by software developers to back up codebases, track and review changes, and work collaboratively within teams.
 
 Codebases can be complex collections of maybe hundreds or thousands of files that reference each other in varying ways. A version control system like Git is pretty much essential when multiple people are working on the same codebase at the same time, since it records who did what, when they did it and whether there are any conflicting changes that need to be resolved.
 
@@ -30,9 +30,9 @@ Codebases can be complex collections of maybe hundreds or thousands of files tha
 
 Git works by storing version history in a **repository** or 'repo'. This repository can be entirely local to the developer's computer, or synced to a remote online copy using a service such as GitHub. A repository can have multiple **branches**. Each branch contains a version of the codebase that can be used for a specific purpose: for example, to create new feaures, test updates, fix bugs in isolation, or try out alternative ways of doing things. Branches can be be merged into one another to add the changes from one branch to another. The primary branch is usually called the `main` branch, but naming is flexible. In addition to branches, **tags** are often used to keep track of version numbers for different releases. More complex projects often have many branches: for example, the popular website builder, [Astro has over 400 branches and 2900 tags!](https://github.com/withastro/astro)
 
-Saving changes to a branch, is called a **commit**. This is a bit like when you save your progress to a slot in a game. 
+Saving changes to a branch, is called a **commit**. This is a bit like when you save your progress to a slot in a video game. 
 
-Commits should at least have a summary message, but can also have a more detailed description about what has changed. There are different conventions for writing commit messages, but no universal standard. One popular way is begin with a Verb in the present tense and imperative mood - e.g. `Add about.html` or `Fix styling issue with dropdown`. Another more complex specification is [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+Commits should at least have a summary message, but can also have a more detailed description about what has changed. There are different conventions for writing commit messages, but no universal standard. One popular way is begin with a verb in the present tense and imperative mood - e.g. `Add about.html` or `Fix styling issue with dropdown`. Another more complex specification is [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 The git repository data is saved to a hidden directory inside your project directory (visible if you enable e.g. 'show hidden files'). If you delete this directory, the repository will no longer exist locally. 
 
