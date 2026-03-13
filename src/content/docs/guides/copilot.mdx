@@ -1,0 +1,81 @@
+---
+title: "Introduction to GitHub Copilot in VS Code"
+description: "Build a basic web app using GitHub Copilot agent mode in GitHub Codespaces."
+template: splash
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import { Steps } from "@astrojs/starlight/components";
+
+GitHub Copilot's **agent mode** lets you describe what you want to build in plain English, and Copilot will plan, write, and iterate on the code for you, including running terminal commands and fixing its own errors. This guide walks you through setting up a Codespace and building a simple web app from scratch with agent mode.
+
+## Recommended Stack
+
+These tools work well together and are well-understood by Copilot:
+
+| Tool | Why |
+|---|---|
+| **React** + **TypeScript** | Ubiquitous; LLMs have strong training coverage |
+| **Tailwind CSS** (+ **shadcn/ui**) | Utility-first CSS. Tailwind-based UI library with ready-made React components |
+| **localStorage** | No backend or database setup needed for prototypes |
+
+## Getting Started
+
+<Steps>
+
+1. **Check Copilot is enabled**
+
+   Make sure Copilot is enabled for your account under [github.com/settings/copilot](https://github.com/settings/copilot).
+
+2. **Create a new GitHub repository**
+
+   Go to [github.com](https://github.com) and create a new empty repository. Give it a descriptive name, e.g. `vibe-journal-app`.
+
+3. **Open it in a Codespace**
+
+   On your new repo page, click **Code → Codespaces → Create codespace on main**. This launches a full VS Code environment in your browser — no local setup needed.
+
+4. **Switch Copilot Chat to agent mode**
+
+   Open Copilot Chat (`Ctrl+Alt+I` / `Cmd+Alt+I`), then click the model dropdown at the top and select **Agent**. You're now in agent mode — Copilot can read and edit files, run commands, and act autonomously across your project.
+
+5. **Briefly describe general instructions for working on your app**
+
+    Type `/init` to create a new `copilot-instructions.md` file. This does similar work to an `AGENTS.md` (agents only) or `CLAUDE.md` (Claude-specific) file, but applies to anything Copilot does on the projects. You will be asked for a focus area or pattern - e.g. `react, typescript, tailwind, localStorage, WCAG AA`.
+
+6. **Create a `spec.md` file in the root of your project to provide a more detailed specification.**
+
+    Use this file to create a concise specification for your app idea. This is an alternative to typing a prompt directly into the chat window. Use bulleted lists and break features and interactions down and be sure to specifiy any expected constraints (e.g. character limits) or behavior.
+
+7. **Ask Copilot to create a `plan.md` file in the root of your project based on your spec to specify different stages of implementation.**
+
+   Type a prompt like:
+
+   > *"Follow the spec.md file to create a plan.md file. Ask me any questions if unsure of the spec."*
+
+   Copilot will propose a plan, usually with a number of stages.
+
+8. **Proceed with the plan**
+
+   Type a prompt like:
+
+   > *"Proceed with implementing Phase 1 in spec.md"*
+
+   Copilot will create or modify files, and ask for your approval before running terminal commands. Review each step and click **Continue** to proceed.
+
+9. **Preview and iterate**
+
+   Run `npm run dev` in the terminal and open the forwarded port to see your app live. If something isn't right, just tell Copilot in plain English — *"Make the button red"*, *"Add a counter showing how many tasks are left"* — and it will make the changes. Be sure to commit your changes regularly to GitHub using the Source Control panel on the left of VS Code.
+
+</Steps>
+
+<Aside type="tip">
+  Agent mode works best with focused, specific prompts. If Copilot goes off track, use **Undo** (`Ctrl+Z`) to revert file changes and try a more precise prompt.
+</Aside>
+
+## Further Reading
+
+- [GitHub Copilot Agent Mode Tutorial](https://code.visualstudio.com/docs/copilot/agents/agents-tutorial)
+- [GitHub Copilot Quickstart](https://docs.github.com/en/copilot/get-started/quickstart)
+- [shadcn/ui Docs](https://ui.shadcn.com/docs)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
