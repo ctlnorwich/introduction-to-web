@@ -9,6 +9,9 @@ import { Steps } from "@astrojs/starlight/components";
 
 GitHub Copilot's **agent mode** lets you describe what you want to build in plain English, and Copilot will plan, write, and iterate on the code for you, including running terminal commands and fixing its own errors. This guide walks you through setting up a Codespace and building a simple web app from scratch with agent mode.
 
+## Why use VS Code in Codespaces?
+[GitHub Codespaces](https://github.com/features/codespaces) are cloud-hosted virtual machines which allow you to run your web app in a development environment and edit it using the full version of VS code, all from your web browser. Codepaces remove the requirement to install specific tools such as Node.js on your local machine, which can be useful in situations where you don't have access to a dedicated computer for development work or the necessary permissions to install the required software.
+
 ## Recommended Stack
 
 These tools work well together and are well-understood by Copilot:
@@ -71,6 +74,51 @@ These tools work well together and are well-understood by Copilot:
 
 <Aside type="tip">
   Agent mode works best with focused, specific prompts. If Copilot goes off track, use **Undo** (`Ctrl+Z`) to revert file changes and try a more precise prompt.
+</Aside>
+
+## Figma MCP Server with VS Code (Via Codespaces)
+
+You can connect Figma designs to Copilot using the [Figma MCP server](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server). Once configured, Copilot can read your Figma frames and components directly, making it easier to translate designs into code.
+
+### What is an MCP Server?
+ 
+[Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) is a standardised protocol that enables external resources and services to provide structured, schematic data to LLM agents such as those used as part of GitHub Copilot. The aim of MCP is to ensure consistent and reliable context when agents perform tasks that require interaction with external systems and data sources. Without MCP, the user needs to provide context along with their prompts or the agent has to intuit the context from the prompt, both of which can be unreliable.
+
+<Steps>
+
+1. **Select Dev Mode in Figma and find the MCP section in the sidebar**
+
+   You will have the option to set up a new MCP client
+
+2. **Follow the VS Code Manual setup**
+
+   Follow the manual set up using your codespaces version of VS Code. You can try the 'one click setting' if you are using the desktop version of VS Code.
+
+3. **Check the `mcp.json` config**
+
+   ```json
+   "servers": {
+		"my-mcp-server-xxxxxx": {
+			"url": "https://mcp.figma.com/mcp",
+			"type": "http"
+		}
+   }
+   ```
+
+   Look for an `mcp.json` file like this in your project. There should be a clickable `Start` prompt above the server name (e.g. `my-mcp-server-xxxxxx`). Click that prompt and follow the instructions to authorise VS Code's access to your Figma account.
+
+4. **Reference your Figma file in Copilot Chat**
+
+   Paste a link to a Figma frame or component into the chat window alongside your prompt, for example:
+
+   > *"Build a React card component to match this design: https://www.figma.com/design/…"*
+
+   Copilot will fetch the design data via the MCP server and use it to generate matching code.
+
+</Steps>
+
+<Aside type="tip">
+  Figma MCP works best when you link to a specific frame rather than an entire page. Use Figma's **Copy link to selection** option (right-click a frame) to get a precise URL. You can find this link in the right Figma MCP sidebar secion of Figma's Dev Mode.
 </Aside>
 
 ## Further Reading
