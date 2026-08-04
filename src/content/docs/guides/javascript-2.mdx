@@ -9,3 +9,495 @@ import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 import { Sandpack } from "@codesandbox/sandpack-react";
+
+## What is an Array?
+Arrays are an iterable object type in JS that allows us to group items.
+We’ve seen a few Arrays by now, but let’s remind ourselves of the syntax:
+We declare Arrays as a const, as we can amend the items inside without having to redefine the array itself.
+Array items are placed between square brackets, and separated by commas.
+Not every item in the Array has to be of the same datatype.
+
+```js
+const dairyProducts = [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”];
+
+const primeNums = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+const mixNMatch = [ 2, “chicken”, 6, “Goat”, ”Cow”, 4, 7, 10];
+```
+
+
+### Accessing/Modifying Arrays
+Arrays are zero indexed – this means each item has an assigned number, starting at 0.
+We can access an individual item in an array using the item’s index and bracket notation.
+
+```js 
+const dairyProducts = [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”];
+
+console.log(dairyProducts[2]);
+//returns “Cheese”
+```
+
+We can also modify a singular item by identifying its index and giving it a new value, like so:
+
+```js 
+const dairyProducts = [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”];
+
+dairyProducts[1] = “Custard”;
+
+console.log(dairyProducts);
+//returns [“Milk”, “Custard”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”]
+```
+
+We can create multidimensional arrays by creating an array inside another array. To access these items, we use two sets of bracket notation.
+
+```js 
+
+const dairyProducts = [“Milk”, “Cream”, [“Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”]];
+
+console.log(dairyProducts[2][0]);
+//returns “Cheese”
+```
+If we don’t know the index of an array item, we can find it using the indexOf() method.
+This method takes an array item as an argument, and returns the item’s index.
+If the item isn’t in the array, it will return -1
+
+```js
+const dairyProducts = [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”];
+
+console.log(dairyProducts.indexOf(“Butter”);
+//returns 5;
+console.log(dairyProducts.indexOf(“Potato”);
+//returns -1;
+```
+To add an item onto the end of an array, we use the `.push()` method.
+If we want to add it to the beginning instead, we can use `.unshift()`.
+Methods like these are why we can assign arrays as constants and still change their values.
+
+```js
+const cArts = ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"]
+cArts.push(“Tanje”);
+console.log(cArts);
+/* returns ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael”, ”Tanje”] */
+
+cArts.unshift(“Will”);
+console.log(cArts);
+/* returns [”Will”, "Hannah-Louise”, "Hannah", "Linards", "Tracey", "Michael”, ”Tanje”] */
+```
+### Adding Items
+JavaScript has no specific method for adding items to the middle of an array.
+However, we can leverage the `.splice()` method to help us with this.
+`.splice()` takes 3 arguments:
+
+1. the starting index from where we want to add items.
+2. the number of items to be deleted, starting from the index number previously given. If this value is 0, nothing is deleted.
+3. The new item(s) to be added, separated by a comma.
+
+```js
+const cArts = ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"]
+cArts.splice( 3, 0, “Tanje”, “Will”);
+console.log(cArts);
+/* returns ["Hannah-Louise", "Hannah", "Linards", “Tanje”, “Will”, "Tracey", "Michael”] */
+```
+
+### Removing items
+If we want to remove the last item from an array, we use .pop()
+To remove the first item, use .shift()
+Again, we can remove items from anywhere in the array (provided we know the index) using .splice().
+In this splice, we specify to start at index 3, and to remove 2 items. Because we aren’t adding any new items, we add no third argument.
+
+```js
+const cArts = [”Will”, "Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael”, ”Tanje”]
+cArts.pop();
+console.log(cArts);
+/* returns [”Will”, "Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael”*/
+cArts.shift();
+console.log(cArts);
+//returns ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael”] 
+cArts.splice(3,2);
+console.log(cArts);
+//returns ["Hannah-Louise", "Hannah", "Linards”]
+```
+
+### Accessing all items
+We’ve already practiced how to access every item in an array using a for… of loop.
+If we wish to apply a change to every single item in an array, we can do so using the map() method.
+the map() method takes a function as a parameter, so let’s declare a function to add an exclamation mark to the end of each name string.
+map() then cycles through each item, performing the function.
+
+```js
+const cArts = ["Will", "Hannah-Louise", "Hannah", "Linards", "Tanje", "Tracey", "Matthew"];
+
+function hype(name){
+	return name + “!”;
+}
+
+const hypeCArts = cArts.map(hype);
+
+console.log(hypeCArts);
+```
+
+### Arrays: Practical Example
+In VSCode, open up the arrayMethods.js and arrayMethods.html files. Open the .html file in LiveServer.
+You’ll see our .js file is made of a few parts:
+
+- A string array variable 
+- A function declaration including a for…of loop
+- A commented-out .filter() method
+- Invocation of the declared function
+
+The function takes the index of items in the array, and assigns them to replace the `<h2>` text inside the articles in the HTML file.
+This means that our latest recipe article titles on the webpage correspond to items in the array.
+
+Now make the following adjustments to the webpage, using array methods:
+
+- Add “Yorkshire Puddings” to the website as the latest recipe
+- Replace “Classic Crepes” with “American Pancakes”
+- Un-comment the block of code containing the .filter() method. Can you figure out what it does and how?
+- Extra Task: This code demonstrates 2 different Methods we can use to target content on our webpage. What are they?
+
+### Converting Array Items
+
+You may have noticed in the previous example that we sometimes needed to convert our array items to strings for us to use them.
+We can convert Array items to strings using .toString().
+There’s several ways to convert to an array. Here, we’ve used Array.from().
+
+```js
+const dairyProducts = [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Butter”, “Chocolate”];
+let foodItem = dairyProducts[3].toString().toLowerCase();
+console.log(`For lunch today I’m going to make a ${foodItem} sandwich.`);
+// Returns “For lunch today I’m going to make a cheese sandwich”.
+
+let alphabet = “ABCDEFGH”;
+const newAlphabet = Array.from(alphabet);
+console.log(newAlphabet);
+//Returns [“A”, “B”, “C”, “D”, “E”, “F”, “G”, “H”]
+```
+
+### Sets vs Arrays
+We’ve talked about Sets a few times – and they look very similar to Arrays. Here’s the key similarities & differences you need to know:
+
+#### Arrays
+- Values do not have to be unique
+- Items can be duplicated
+- Items are ordered by index
+- Iterable by index
+
+#### Sets
+- Values must be unique
+- Items cannot be duplicated
+- Items have no specific order
+- Iterable by insertion order
+
+### Creating a Set
+We can create a set very easily using the Set() constructor. 
+There are fewer methods we can use to alter sets than we had for arrays:
+- .add() adds items to the set.
+- .delete() removes items in the set.
+- .has() searches the set for a specific item.
+- .clear() empties the set.
+
+```js
+const dairyProducts = new Set([“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Chocolate”]);
+dairyProducts.add(“Custard”);
+/* Returns [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Chocolate”, “Custard”] */
+dairyProducts.delete(“Chocolate”);
+/* Returns [“Milk”, “Cream”, “Cheese”, “Ice Cream”, “Yoghurt”, “Custard”] */
+dairyProducts.has(“Yoghurt”);
+// Returns true
+dairyProducts.clear();
+// Returns [ ]
+```
+
+## What do we mean by Objects?
+In JavaScript, an Object is another way to group together related values and functionality.
+Take a look at this example. Inside this object we’ve stored an array and a number, as well as two functions: bio() and introduceSelf().
+There’s quite a lot of different syntax inside our curly braces – most noticeably, no let, const, or function keywords.
+
+```js
+const person = {
+  name: [“Hannah-Louise”, “Batt”],
+  age: 29;  bio() {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+    },
+  introduceSelf() {
+    console.log(`Hi! I’m ${this.name[0]}.`);
+  },
+};
+```
+
+### Creating Objects: Example
+There’s a copy of this object in the objects1.js file in VSCode. Open it up and add in your name and age, then save and run the HTML in LiveServer.
+Let’s now open up developer tools on our browsers (F12). We can now access information from our object in the console by using the expressions on the left.
+
+```js
+person.name;
+person.name[0];
+person.age;
+person.bio();
+// ”Hannah-Louise Batt is 29 years old."
+person.introduceSelf();
+// "Hi! I’m Hannah."
+```
+
+### Objects: syntax
+Let’s head back to our object for a second to break down the syntax of objects:
+The first two members of our object (the name array and age) are called properties.
+The functions we created inside the object are known as methods
+We separate object members with commas, with properties being defined using colons (:) instead of equals (=).
+
+```js
+const person = {
+  name: [“Hannah-Louise”, “Batt”],
+  age: 29, bio() {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+    },
+  introduceSelf() {
+    console.log(`Hi! I’m ${this.name[0]}.`);
+  },
+};
+```
+
+### Dot notation
+When we access part of an object, or want to perform a method on an object, we use what’s called dot notation.
+You’ve seen this plenty of times before at this point – we give the name of the related object, followed by a full stop, then the property we want to access, or the method we want to carry out.
+
+```js
+person.age;
+person.bio();
+console.log();
+Math.random();
+```
+
+We can also make objects the properties of other objects – essentially nesting objects within one another.
+Here’s how we would use dot notation to access those nested object properties.
+
+```js
+const person = {
+  name: {
+    first: “Hannah-Louise”,
+    last: “Batt”,
+    },
+};
+person.name.first;
+```
+
+### Bracket Notation
+There are a few circumstances where dot notation doesn’t work – for example, if the property name is held in a variable, or is the return value of a function.
+In these circumstances, we need to use bracket notation instead.
+This looks similar to the way we access items in a set or array.
+
+```js
+const person = {
+    name: [“Hannah-Louise”, “Batt”],
+    age: 29,
+    isMarried: false,
+};
+const logInfo = function(propertyName) {
+    console.log (person[propertyName]);
+}
+logInfo(“name”);
+logInfo(”age”);
+logInfo(“isMarried”);
+```
+
+### Modifying object members
+If we need to update the values of our object members, we can just use dot/bracket notation to access them, then assign them a new value.
+
+```js
+const person = {
+    name: [“Hannah-Louise”, “Batt”],
+    age: 29,
+    isMarried: false,
+};
+person.age = 30;
+person[“isMarried”] = true;
+```
+
+### Adding Object members
+We can also add brand new members to our objects as we go along.
+In this example, we’ve added a new property, person.hair, and a new method: person.isRetired().
+
+```js
+const person = {
+    name: [“Hannah-Louise”, “Batt”],
+    age: 29,
+    isMarried: false,
+};
+person.hair = “blonde”;
+person.isRetired = function(){
+return (person.age >= 65) ? true : false;
+};
+console.log(person.isRetired());
+```
+
+### Removing Object members
+To remove an object member, use the delete keyword, then the members you want to remove.
+
+```js
+const person = {
+    name: [“Hannah-Louise”, “Batt”],
+    age: 29,
+    isMarried: false,
+};
+
+delete person.isMarried;
+```
+
+### this
+Take a look at the object in the example – specifically at the method. Notice anything weird?
+We are using a new keyword – this. 
+We can use the this in our object methods when we want to refer to the object our method is part of.
+
+```js
+const person = {
+  name: [“Hannah-Louise”, “Batt”],
+  age: 29;  bio() {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years    old.`);
+    },
+  introduceSelf() {
+    console.log(`Hi! I’m ${this.name[0]}.`);
+  },
+};
+```
+
+### Constructors
+So far, we’ve been creating object literals – creating all our objects individually.
+To work at scale, we’ll want a template we can replicate, only needing to update the values inside.
+We can do this by using a type of function called a constructor.
+
+```js
+// We start constructors with a capital letter, naming them after the object we want to create.
+function Person(name) {
+	this.name = name;
+	this.introduceSelf = function () {
+		console.log(`Hi! I’m ${this.name}.`);
+	};
+}
+// This constructor will create an object with one property: name; and a method: introduceSelf.
+```
+
+We can then use the new keyword to call our constructor and easily create multiple objects.
+
+```js
+const hannah = new Person (“Hannah”);
+hannah.introduceSelf();
+// returns “Hi! I’m Hannah.”
+
+const will = new Person (“Will”);
+will.introduceSelf();
+// returns “Hi! I’m Will.”
+```
+
+### Objects: Practical
+Find the Objects > Object Members > object-members.js files in the project folder.
+Our script contains an array of recipe names, which get mapped onto our webpage using a function.
+We want to be able to filter our recipes based on whether they’re vegetarian, vegan, or gluten free.
+
+To do this, let’s convert our array of strings into an array of Objects, each with 4 properties:
+name, vege, vegan, and glutenFree.
+
+- Convert the string array latestRecipes into an array of Objects – either through object literals or by using a constructor.
+- Take a look at the recipeCarousel function. What do we now need to change so that our function works properly with our new Object array?
+- Uncomment out the cleanup() and filter array method. Can we work out what these are doing in our code?
+- How might we add to our code so that we can change the filter by clicking the buttons on the page?
+
+## What is an Event?
+We want our code to be able to respond to actions our users perform on the webpage – for example, clicking a button, or inputting some information.
+To do that, we need Events.
+
+### Creating an Event
+To create an event, we’re going to need an Event Handler, sometimes called an Event Listener. We use the addEventListener() method to create these.
+
+Our event listener requires two parameters inside its parentheses:
+
+```js 
+addEventListener("keydown", (event) => {
+    alert(`you clicked "${event.key}".`)
+} )
+```
+
+## Temperature Conversion: Practical
+There are several different units we can use to measure temperature.
+Let’s use maths in JavaScript to convert between them!
+This task uses:
+
+- Variables and Constants
+- DOM methods
+- Math and String Methods
+- String interpolation
+- Arithmetic Operators
+- Functions & events
+
+In this activity, I’ve given you:
+A template HTML page and CSS stylesheet. You won’t need to change anything on these pages.
+We need to create a new JS file, temp.js.
+We then need to create an event that fires when our calculate button is clicked.
+
+In our JavaScript function, we need to:
+- obtain and store the Kelvin temperature value our user inputs on the HTML page
+- convert that value from a String to a Number we can use for calculations
+- calculate and store the Celsius temperature value based on the Kelvin value
+- calculate and store  the Fahrenheit temperature value based on the Celsius value
+- calculate and store the Rankine temperature value based on the Kelvin value
+- Round down any values that are not complete integers
+- Access the HTML elements we want to replace with our calculated temperature values
+- Convert our temperature Numbers back into Strings so they can be added to our HTML page
+- Replace the HTML text on our page with our new temperature values.
+
+```js
+let kelvin = document.getElementById("temp").value;
+
+kValue.innerHTML = `The temperature is ${kelvin.toString()} degrees Kelvin.`;
+```
+
+## What is Object-Oriented Programming?
+Object-oriented programming is a paradigm that’s central to many of our modern programming languages, including Java, C++, and C#.
+
+It’s useful us to know a bit about OOP to get the most out of JavaScript.
+When we think about the types of objects we want to include in our code, we may find we can group objects under a single type definition. We call these definitions classes. 
+Classes then act as templates for creating new objects of that class – instances – with the same features.
+
+
+```js
+//We can create a class by using the class keyword, like so.
+// We then add the properties and methods we want to include in curly braces.
+class Technician {
+    name;
+    subject;
+
+    // Just like with objects, we’ll need a constructor if we want to create new instances of our class.
+    // We define our constructor inside our class definition. 
+    // It’s similar to how we defined a constructor earlier, except we use the constructor keyword instead.
+
+    constructor(name, subject) {
+        this.name = name;
+        this.subject = subject;
+    }
+
+    bio() {
+        console.log(`Hi! I'm ${this.name}`);
+    }
+}
+```
+
+We now have a class, Technician, with:
+- Two properties – Name and Subject
+- A constructor with parameters to initialize each of our properties when we create a new object
+- A bio() method which uses this.name to access the object’s name property.
+
+We can now use our constructor to create new class instances!
+
+```js
+const hannah = new Technician("Hannah", "Creative Technology");
+
+hannah.bio(); // returns "Hi! I'm Hannah"
+```
+
+### Inheritance
+
+Let’s imagine that we now want to add academic staff into our previous example. 
+They will share some properties with technicians, like name and bio, but they aren’t based in a workshop and have a course they teach. However, they are the same type of thing – staff.
+
+
+### OOP and JavaScript
+We’ve looked at some key features of Class-based OOP, and how JavaScript uses them. But we should remember that JS is an anomaly compared to languages like C++.
