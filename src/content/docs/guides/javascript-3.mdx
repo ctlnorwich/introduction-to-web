@@ -1,6 +1,6 @@
 ---
-title: "Introduction to JavaScript 3"
-description: "The basics of JavaScript 3."
+title: "JavaScript 3: Functions, Loops, Iterables"
+description: "Part 3 of the CTL's JavaScript Introduction."
 template: splash
 ---
 
@@ -9,3 +9,352 @@ import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 import { Sandpack } from "@codesandbox/sandpack-react";
+
+## Functions Revisited
+
+A few quick questions to check we all remember last week’s section on Functions:
+
+<details>
+<summary>What is the difference between a Function and a Method?</summary>
+A Method is a type of function directly attached to an Object.
+</details>
+<details>
+<summary>What makes a function expression different from a function declaration?</summary>
+We don’t have to give our function a name if we use a function expression.
+</details>
+<details>
+<summary>Name 2 key elements we need in a function expression/declaration.</summary>
+The function keyword; parameter parentheses.
+</details>
+
+There are three things wrong with this code. What are they?
+
+```js
+let isSnowing = true;
+
+const snowcheck = function {
+	isSnowing ? "It is snowing!":"It is not snowing.";
+}
+
+console.log(snowcheck());
+```
+
+```js
+let isSnowing = true;
+
+const snowCheck = function() {
+return isSnowing ? "It is snowing!":"It is not snowing.";
+}
+
+console.log(snowCheck());
+```
+
+### Function Parameters
+
+```js
+// The Math.random() method does not require parameters:
+Math.random();
+
+// our quickMaths() function from last session needed two:
+const quickMaths = function(a, b) {
+    return a * b;
+}
+quickMaths(3,5);
+```
+
+- Parameters are the values we need to pass into the function so it can work properly.
+- Parameters aren’t necessary for every function – but even if we have no parameters, we still need to put the empty parentheses.
+- Some in-built functions in JS will have default parameters that will be used if none are given.
+
+#### Other names for Parameters you might see:
+- Arguments
+- Properties
+- Attributes
+
+### Default Parameters
+- In this example, the .toSorted() method expects us to provide a function as a parameter. If we don’t, it just sorts the array into alphabetical order.
+- If you’re building your own functions and would like to include a default value, you can do this by adding it into the parameter parentheses when you declare your function.
+
+### Anonymous Functions
+A lot of the functions you’ll see will have names – but not all of them.
+
+- We can create anonymous functions without giving a name.
+- We’ve seen this before – this is function expression. 
+- Until now, we’ve only used function expression to create a function inside a variable, but we don’t have to do it that way.
+- Anonymous functions are often used when a function is being used as a parameter for another function, like in the previous example.
+
+```js
+// named function declaration
+function iAmTired() {
+	console.log(“It’s too early for teaching.”);
+}
+
+//anonymous function expression
+(function () {
+	console.log(“It’s too early for teaching.);
+});
+```
+
+Let’s put this into context with an example.
+
+- The addEventListener() method requires two parameters from us:
+  - an event to listen out for
+  - a function to run when it happens
+- Open up anonymousFunctions.js and its accompanying HTML file in VSCode.
+- You’ll see a declared function, logKey(), and addEventListener().
+
+```js
+function logKey(event) {
+alert(`You pressed "${event.key}".`);
+}
+addEventListener(“keydown”, logKey);
+```
+
+- Instead of using a declaration, we can create an anonymous function directly inside the parentheses of addEventListener().
+- We might choose to do this for a few reasons: tidiness; performance optimisation; or simply because we only need to use this function once.
+- It’s worth remembering that function expressions can only be used once defined, and are often invoked immediately unless stored in a variable.
+
+```js
+addEventListener(“keydown”, function (event) {
+	alert(`You pressed "${event.key}".`;
+});
+```
+
+### Arrow Functions
+- Arrow functions are an alternate way to write function expressions.
+- They’re seen more often in more advanced JS frameworks, but it’s good to know what they look like for reference.
+- With arrow functions, we remove the function keyword.
+
+```js
+hello = function() {
+	console.log(“Hello World!”);
+	return “Hello World!”;
+}
+
+hello = () => {
+    console.log(“Hello World!”);	
+    return “Hello World!”;
+}
+```
+
+If our function takes parameters, we would add them like this:
+
+```js
+quickMaths = function(a, b){
+	return a*b;
+}
+
+quickMaths = (a, b) => a*b;
+```
+
+If our function only has one parameter, we can also remove the parentheses.
+
+```js
+quickMaths = function(a) {
+	return 2 * a;
+}
+
+quickMaths = a => 2 * a;
+```
+
+### Return Values
+
+- Return values are the values a function passes out when it’s finished running. 
+- Returns are mostly used when a function is part of a wider task, like multi-step calculations.
+- You don’t have to have a return value in a function if you don’t need it.
+- To return a value, just use the return keyword.
+
+```js
+function random() {
+    return Math.floor(Math.random() * 100);
+}
+
+let randomNumAnnouncer = function() {
+    alert(`Today/’s random number is ${random()}! `);
+}
+
+randomNumAnnouncer();
+```
+
+### Scope
+
+- All the variables and other things we create inside a function are inaccessible by code outside the function. This is called function scope.
+- Variables and values defined outside a function are called Global variables, and can be accessed from anywhere in your script.
+
+Take a look at the functionScope.js file in your VSCode project. 
+See how we are able to use the inStock boolean inside our function? Because it’s defined outside of a function, it has global scope, so we can use it anywhere in our file.
+
+However, because the teaOptions array only has function scope, we cannot add new items to it outside the function. We can refer to these variables as local variables.
+If you check your browser console, you should see a ReferenceError appear once you close the alert.
+
+ES6 Introduced a new type of scope, block scope, which prevents let and const variables from being accessed from outside a { } block.
+Since local variables are destroyed when a function ends, we can use the same name for variables across different functions.
+It’s good practice to use as few global variables as possible – both for security reasons and to avoid potential code conflicts.
+
+```js
+// Cannot be accessed here
+{
+    let x = 4;
+    const Y = 5;
+// Can be accessed here
+}
+//Cannot be accessed here
+```
+
+## Loops
+
+Sometimes, we need to repeat an action in code multiple times in order to get our desired result.
+Not only would writing out the same block of code multiple times take ages, it would be terrible for readability and troubleshooting, and leave us prone to more human error.
+This is why we use loops to run code multiple times.
+
+```js
+let i = 1;
+
+console.log(i);
+i = i++;
+console.log(i);
+i = i++;
+console.log(i);
+i = i++;
+console.log(i);
+i = i++;
+
+for (let i = 1; i<=10; i++) {
+    console.log(i);
+}
+```
+
+### For loops
+Let’s break down what’s going on here:
+We start off with the for keyword.
+
+```js
+for (let i = 1; i<=10; i++) {
+    console.log(i);
+}
+```
+
+We then have 3 values in the parentheses, separated with semicolons:
+
+This first value is the initialiser, or counter variable. We increment this variable to set how many times our loop will run. 
+
+We then have a condition – this is the condition that defines when the loop stops. Here, our counter loops as long as i is less than or equal to 10.
+
+Lastly, we have the final expression. This will run every time the loop finishes; in our case, it increases i by 1 each time.
+
+We then have whatever code block we want to loop within curly brackets.
+
+### For… of loops
+Often when we’re using loops, we’re looking to loop through a list of items in a collection rather than just looping a set number of times.
+This is where we can use a for… of loop. This kind of loop will use the number of items in a collection as its guide for how many loops to complete.
+
+```js
+const cATechs = [“Hannah”, “Hannah-Louise”, “Tanje”, “Linards”, “Tracey”, “Matthew”];
+
+for (const tech of cATechs) {
+	console.log(tech);
+}
+```
+### Breaking Loops
+Just like with switch statements, we can use a break statement to exit our loop and allow the computer to move on to the rest of your code.
+This becomes very useful when pairing loops with conditional statements.
+Take a look at the example project forLoop in VSCode.
+
+```js
+const cATechs = [“Hannah”, “Hannah-Louise”, “Tanje”, “Linards”, “Tracey”, “Matthew”];
+
+for (const tech of cATechs) {
+	console.log(tech);
+	if (tech === “Tanje”{
+		break;
+	}	
+}
+```
+
+We can also use continue statements to skip over the current iteration of a loop and move on to the next one.
+In this example, the loop will write each technician’s name to the console – except for “Will”, who is skipped.
+
+```js
+const cATechs = [“Hannah”, “Hannah-Louise”, “Will”, “Tanje”, “Linards”, “Tracey”, “Matthew”];
+
+for (const tech of cATechs) {
+	if (tech === “Will”{
+	       continue;
+	}
+	console.log(tech);
+}
+```
+
+### While… and Do… while loops
+While… loops are similar to a for loop, but with a different syntax structure.
+Here, our loop is running only while our condition is true: we’re setting more of a starting condition than an ending one.
+Do… while loops are again very similar, but with one key difference: a Do… while loop will always run at least once. This is because the condition sits inside the loop after  the code block.
+
+```js
+// While Loop Begins:
+let i = 2;
+while ( i < 1024) {
+	console.log(i);
+	i * 2;
+}
+
+// Do… while Loop Begins:
+let i = 2;
+do {
+	console.log(i);
+	i * 2;
+} while ( i < 1024);
+```
+### Which loop should I use?
+
+For the most part, you can use for and while loops interchangeably. However, there’s a couple of occasions where it matters:
+
+My loop must run at least once
+Use a Do… While loop.
+
+I need to loop through an iterable (e.g. an Array, a Set, etc.)
+Use a For/For… of loop.
+
+### Infinite Loops
+
+When using any loop in your code, you must always make sure your initialiser is incremented or decremented, so that the loop will eventually end.
+Otherwise, your loop will never end – leading to browser forced stops or crashes.
+We call these errors infinite loops.
+
+```js
+let i = 2;
+while ( i < 1024) {
+	console.log(i);
+	//i * 2;
+}
+```
+
+## What is an Iterable?
+
+We’ve already talked a bit about creating loops for a collection or group of data items.
+These collections are called Iterables – they’re a singular object, but made up of multiple parts.
+Some built-in iterators in JS include Strings, Arrays, Sets, and Maps.
+
+```js
+// We can iterate over each character of a string:
+let iter = “A String is an iterable Object”;
+// We can iterate over each item in an Array:
+const iter = [ ”Cheese”, “Yoghurt”, “Chocolate”, “Cream”, “Ice Cream”];
+// We can iterate over elements of a Set:
+const iter = new Set ([“a”,”b”,”c”]);
+//We can also iterate over elements of a Map:
+const iter = new Map ([
+[”Cheese”, 10]
+[“Yoghurt”, 20],
+[“Chocolate, 25],
+]);
+```
+
+### FizzBuzz: Practical Exercise
+Using JavaScript, create a program that logs the numbers from 1-100.
+
+Replace every multiple of 3 with the word Fizz.
+
+Replace every multiple of 5 with the word Buzz.
+
+Replace every multiple of both 3 and 5 with the word Fizzbuzz.

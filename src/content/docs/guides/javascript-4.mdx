@@ -1,0 +1,286 @@
+---
+title: "JavaScript 4: String & Number Methods"
+description: "Part 4 of the CTL's JavaScript Introduction."
+template: splash
+---
+
+import { Card } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { FileTree } from '@astrojs/starlight/components';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+## Introduction
+
+This session is all about digging a little further into how we can make strings and numbers
+work for us in JavaScript. By the end of the session we should be comfortable with:
+
+- Embedding expressions (variables/constants) into our strings
+- Slicing up and joining together strings
+- Using the Math object and its methods to perform calculations
+- Converting strings to numbers, and vice versa
+
+### String Methods
+
+- We can use most values
+in JavaScript as if they
+were objects, even when
+they’re not the Object
+data type.
+
+- This holds true to Strings
+too – as such, there are
+plenty of properties and
+methods for strings we
+can make use of.
+
+```js
+const string = "Strings are awesome!";
+
+string.length; //returns 20
+string[20]; //returns “!”
+string.includes("some"); //returns True
+string.indexOf("some"); //returns 15
+```
+
+### String Interpolation
+- When we create a variable
+in JS, we’re often using it as
+a dynamic placeholder value.
+- Often, we’ll want to include
+that placeholder inside a
+string, so that the text
+changes when our variable
+does.
+- We call this practice string
+interpolation.
+
+```js
+let myName = "Hannah";
+let greeting = `Hi! My name is ${myName}.`;
+
+console.log(greeting);
+// returns "Hi! My name is Hannah."
+
+myName = "Alex";
+
+console.log(greeting)
+// returns "Hi! My name is Alex."
+```
+
+### Template Literals
+- We can perform string interpolation using a Template Literal.
+- To create a template literal, we use the backtick ( ` ) to start and finish instead of speech marks.
+- To add in our expression, we use $, followed by our expression inside curly braces { }.
+
+```js
+let templateLiteral = `We are adding an ${expression} into our String.`;
+```
+
+We can also use template literals to write multi-line strings, like this:
+
+```js
+console.log( `first line of my string
+second line of my string` );
+
+//returns
+//”first line of my string
+//second line of my string”
+```
+
+### Strings as iterables
+Remember – just like arrays, strings are iterable. This means that each character in the
+string has an index, starting from 0.
+
+We can access individual characters in our string by accessing their index with bracket
+notation. We can also use indexOf() to look up a character’s index if we need to.
+
+```js
+const string = “Strings are awesome!”;
+string[20]; //returns “!”
+string.indexOf(“some”); //returns 15
+```
+
+### Substrings
+Sometimes, we may want to know if a string contains a smaller string – like if a sentence contains a certain word. We call these smaller strings Substrings.
+
+We can look for a substring by using the includes() method.
+
+```js
+let myString = "Pineapple!";
+myString.includes("apple") ? console.log ("Apples found!") : console.log("No apples found.");
+```
+
+### Extracting Substrings
+We can also extract a substring from a larger string using the slice() method.
+slice() takes two arguments:
+
+- Starting index of the substring (substring begins after this index)
+- Ending index of the substring (substring ends after this index)
+
+```js
+const string = “Strings are awesome!”;
+let substring = string.slice(12, 19);
+console.log(substring); //returns “awesome”
+10 JavaScript: String &
+```
+
+### Updating substrings
+We can also switch out a
+substring by using replace().
+Again, we pass in two arguments:
+
+- The substring we want to
+replace
+- The substring we want to
+replace it with
+
+Note that this creates a new
+string rather than modifying the
+original – this is very common for
+string methods.
+
+```js
+const string = “Strings are awesome!”;
+let stringUpdate = string.replace(“awesome”, “brilliant”);
+console.log(stringUpdate); //returns “Strings are brilliant!”
+```
+
+### String Concatenation
+So, we know how to cut up a string – but what about joining them together?
+We can perform String concatenation in two ways:
+
+```js
+const string1 = “Pine”;
+const string2 = “apple”;
+string1.concat(string2); //Returns “Pineapple”
+“”.concat(string1, string2); //Returns “Pineapple”
+string1 + string 2; //Returns “Pineapple”
+```
+
+### concat()
+The concat() method is probably the safest way to merge strings, because it will convert other data
+types directly into strings – a process called string coercion – before joining them together.
+We can also create a string from array items pretty easily using concat().
+
+```js
+// The … used in this example is
+// called spread syntax. We use it to
+// quickly pass all elements of an
+// array or object into a function
+// when we invoke it.
+
+const myArray = [ “hi,”, “ “, “I’m” , “ “, ”Hannah”, “.”];
+let greeting =
+“”
+.concat(...myArray);
+console.log(greeting); //Returns ”hi, I’m Hannah.”
+```
+
+### Addition operator
+We can also join strings together using our addition operator (+). If one of our values isn’t already a string, JavaScript will use primitive coercion to convert it.
+
+```js
+console.log( ”Hi,” + “ “ + “my” + “ “ + “name” + “ “ + ”is” + “ “ + “Hannah” + “ “ +
+“and” + “ “ + “I’m” + “ “ + 29 + “ “ + “years” + “ “ + “old.”)
+//Returns “Hi, my name is Hannah and I’m 29 years old.”
+```
+
+### The Math Object
+The Math object in JavaScript is what we call a static object. This means it has no constructor – we can’t create new instances of the Math object. We access its properties and methods with dot notation, just like with other objects. Math only works with the number data type.
+
+```js
+// Common Properties
+Math.PI
+Math.E
+Math.LN2
+Math.SQRT2
+
+// Common Methods
+Math.ceil()
+Math.floor()
+Math.round()
+Math.random()
+Math.max()
+Math.min()
+```
+
+### Rounding Numbers
+When we have a float number we want to round to an integer, we will
+need to use the Math Object. There are 3 methods we can choose from:
+
+```js
+Math.floor(42.8405); //returns 42
+
+Math.ceil(42.8405); //returns 43
+
+Math.round(42.8405); //returns 43
+```
+
+### Random Numbers
+Math.random() will always return a random value between 0 (including 0) and 1 (excluding 1).
+To generate a random number > 1, you will need to create a more complex function that
+multiplies Math.random() with another value.
+Always use Math.floor() when rounding Math.random().
+
+Note: Do NOT use Math.random()
+for anything security-related, as its
+results are not cryptographically
+secure.
+
+```js
+function getRandomInt(min, max) {
+	const minCeil = Math.ceil(min);
+	const maxFloor = Math.floor(max);
+	return Math.floor(Math.random() * (maxFloor – minCeil) + minCeil);
+};
+
+getRandomInt( 0, 158.539) // Returns 59
+```
+
+
+### Maximum and Minimum values
+We use Math.max() and Math.min() to find the minimum and maximum values from a
+collection of numbers.
+
+You’re likely to see these used to find min and max values within an array. We can use
+spread syntax to quickly pass in the whole array as method arguments.
+
+```js
+Math.min(1, 2, 3); //returns 1
+Math.max(1, 2, 3); //returns 3
+
+const numArray = [36, 258, 3, 65, 280, 3.6829, 23, 19048];
+Math.min(…numArray); //returns 3
+Math.max(…numArray); //returns 19048
+```
+
+### Converting Strings to Numbers
+We have a few ways we can convert strings into numbers:
+- The Number() constructor (with or without the new keyword)
+- The parseInt() and parseFloat() functions
+
+```js
+let num = ”163.85”;
+
+Number(num); //returns 163.85
+parseInt(num); //returns 163
+parseFloat(num); //returns 163.85
+```
+
+### Converting Numbers to Strings
+We’ve talked a bit about how JS converts other data types to strings during
+concatenation, but not how to do this generally.
+For that, we’ll use the toString() method.
+
+```js
+let num = 268;
+const arr = [1, 2, 3];
+
+num.toString(); //returns “268”;
+arr.toString(); //returns “1, 2, 3”
+```
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/Number
+- https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion
+- https://www.youtube.com/watch?v=x16Z_U1tGrc
