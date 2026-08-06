@@ -28,6 +28,76 @@ We can also **modify** a singular item by identifying its index and giving it a 
 
 We can create **multidimensional arrays** by creating an array inside another array. To access these items, we use two sets of bracket notation.
 
+If we don't know the index of an array item, we can find it using the `indexOf()` method. This method takes an array item as an argument, and returns the item's index. If the item isn't in the array, it will return -1.
+
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+    <style>
+      code {
+        background: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`/* Access */
+const dairyProductsA = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
+// console.log(dairyProductsA[2]);
+/* returns "Cheese" */
+
+/* Modify */
+const dairyProductsB = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
+dairyProductsB[1] = "Custard";
+// console.log(dairyProducts);
+/* returns ["Milk", "Custard", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"] */
+
+/* Access Mulitdimensional */
+const dairyProductsC = ["Milk", "Cream", ["Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"]];
+// console.log(dairyProductsC[2][1]);
+/* returns "Ice Cream" */
+
+/* Use indexOf */
+const dairyProductsD = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
+// console.log(dairyProductsD.indexOf("Butter"));
+/* returns 5 */
+// console.log(dairyProductsD.indexOf("Potato"));
+/* returns -1 */`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
+      />
+</div>
+
+### Adding Items
+
+To add an item onto the end of an array, we use the `.push()` method.
+If we want to add it to the beginning instead, we can use `.unshift()`.
+Methods like these are why we can assign arrays as constants and still change their values.
+
+JavaScript has no specific method for adding items to the middle of an array.
+However, we can leverage the `.splice()` method to help us with this.
+`.splice()` takes 3 arguments:
+
+1. the starting index from where we want to add items.
+2. the number of items to be deleted, starting from the index number previously given. If this value is 0, nothing is deleted.
+3. The new item(s) to be added, separated by a comma.
+
 <div className="not-content">
 <Sandpack
   client:load
@@ -44,27 +114,28 @@ We can create **multidimensional arrays** by creating an array inside another ar
 
   <body>
     <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
   </body>
 </html>`,
 "/index.js":
-`// Access
-const dairyProducts = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
+`/* push() */
+const techniciansA = ["Hannah", "Tracey", "Andy"]
+techniciansA.push("Will");
+// console.log(techniciansA);
+/* returns ["Hannah", "Tracey", "Andy", "Will"] */
 
-console.log(dairyProducts[2]);
-// returns "Cheese"
+/* unshift() */
+const techniciansB = ["Hannah-Louise", "Catherine", "Will"]
+techniciansB.unshift("Bevis");
+// console.log(techniciansB);
+/* returns  ["Bevis", "Hannah-Louise", "Catherine", "Will"] */
 
-// Modify
-dairyProducts[1] = "Custard";
-
-console.log(dairyProducts);
-// returns ["Milk", "Custard", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"]
-
-// Access Mulitdimensional
-const dairyProductsMulti = ["Milk", "Cream", ["Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"]];
-
-console.log(dairyProductsMulti[2][1]);
-// returns "Ice Cream"`
+/* splice() */
+const techniciansC = ["Hannah-Louise", "Bevis", "Will"]
+techniciansC.splice( 2, 0, "Catherine", "Andy");
+// console.log(techniciansC);
+/* returns ["Hannah-Louise", "Bevis", "Catherine", "Andy", "Will"] */
+`
         }}
         template="vanilla"
         theme="dark"
@@ -72,93 +143,104 @@ console.log(dairyProductsMulti[2][1]);
       />
 </div>
 
-If we don't know the index of an array item, we can find it using the `indexOf()` method. This method takes an array item as an argument, and returns the item's index. If the item isn't in the array, it will return -1.
-
-```js
-const dairyProducts = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-
-console.log(dairyProducts.indexOf("Butter");
-//returns 5;
-console.log(dairyProducts.indexOf("Potato");
-//returns -1;
-```
-
-### Adding Items
-
-To add an item onto the end of an array, we use the `.push()` method.
-If we want to add it to the beginning instead, we can use `.unshift()`.
-Methods like these are why we can assign arrays as constants and still change their values.
-
-```js
-const cArts = ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"]
-cArts.push("Tanje");
-console.log(cArts);
-/* returns ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael", "Tanje"] */
-
-cArts.unshift("Will");
-console.log(cArts);
-/* returns ["Will", "Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael", "Tanje"] */
-```
-
-JavaScript has no specific method for adding items to the middle of an array.
-However, we can leverage the `.splice()` method to help us with this.
-`.splice()` takes 3 arguments:
-
-1. the starting index from where we want to add items.
-2. the number of items to be deleted, starting from the index number previously given. If this value is 0, nothing is deleted.
-3. The new item(s) to be added, separated by a comma.
-
-```js
-const cArts = ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"]
-cArts.splice( 3, 0, "Tanje", "Will");
-console.log(cArts);
-/* returns ["Hannah-Louise", "Hannah", "Linards", "Tanje", "Will", "Tracey", "Michael"] */
-```
-
 ### Removing items
-If we want to remove the last item from an array, we use .pop()
-To remove the first item, use .shift()
-Again, we can remove items from anywhere in the array (provided we know the index) using .splice().
+If we want to remove the last item from an array, we use `.pop()`
+To remove the first item, use `.shift()`
+Again, we can remove items from anywhere in the array (provided we know the index) using `.splice()`.
 In this splice, we specify to start at index 3, and to remove 2 items. Because we aren't adding any new items, we add no third argument.
 
-```js
-const cArts = ["Will", "Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael", "Tanje"]
-cArts.pop();
-console.log(cArts);
-/* returns ["Will", "Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"*/
-cArts.shift();
-console.log(cArts);
-//returns ["Hannah-Louise", "Hannah", "Linards", "Tracey", "Michael"] 
-cArts.splice(3,2);
-console.log(cArts);
-//returns ["Hannah-Louise", "Hannah", "Linards"]
-```
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`/* pop() */
+const techniciansA = ["Hannah-Louise", "Will", "Catherine", "Bevis"]
+techniciansA.pop();
+// console.log(techniciansA);
+/* returns ["Hannah-Louise", "Will", "Catherine"] */
+
+/* shift() */
+const techniciansB = ["Hannah-Louise", "Will", "Catherine", "Bevis"]
+techniciansB.shift();
+// console.log(techniciansB);
+/* returns ["Will", "Catherine", "Bevis"] */
+
+/* splice() */
+const techniciansC = ["Hannah-Louise", "Will", "Catherine", "Bevis", "Andy"]
+techniciansC.splice(2,2);
+// console.log(techniciansC);
+/* returns ["Hannah-Louise", "Will", "Andy"] */`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
+      />
+</div>
 
 ### Accessing all items
 We've already practiced how to access every item in an array using a for… of loop.
-If we wish to apply a change to every single item in an array, we can do so using the map() method.
-the map() method takes a function as a parameter, so let's declare a function to add an exclamation mark to the end of each name string.
-map() then cycles through each item, performing the function.
+If we wish to apply a change to every single item in an array, we can do so using the `map()` method.
+the `map()` method takes a function as a parameter, so let's declare a function to add an exclamation mark to the end of each name string.
+`map()` then cycles through each item, performing the function.
 
-```js
-const cArts = ["Will", "Hannah-Louise", "Hannah", "Linards", "Tanje", "Tracey", "Matthew"];
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
 
-function hype(name){
-	return name + "!";
-}
+  <body>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`const technicians = ["Will", "Hannah-Louise", "Hannah", "Bevis", "Catherine", "Tracey", "Andy"];
 
-const hypeCArts = cArts.map(hype);
+/* Arrow function to call as a paramater of the hype method */
+const hype = (name) => name + "!!!";
 
-console.log(hypeCArts);
-```
+const hypeTechnicians = technicians.map(hype);
+
+// console.log(hypeTechnicians);`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
+      />
+</div>
 
 ### Arrays: Practical Example
-In VSCode, open up the arrayMethods.js and arrayMethods.html files. Open the .html file in LiveServer.
-You'll see our .js file is made of a few parts:
+In VSCode, open up the arrayMethods.js and arrayMethods.html files. Open the `.html` file in LiveServer.
+You'll see our `.js` file is made of a few parts:
 
 - A string array variable 
-- A function declaration including a for…of loop
-- A commented-out .filter() method
+- A function declaration including a for... of loop
+- A commented-out `.filter()` method
 - Invocation of the declared function
 
 The function takes the index of items in the array, and assigns them to replace the `<h2>` text inside the articles in the HTML file.
@@ -168,60 +250,87 @@ Now make the following adjustments to the webpage, using array methods:
 
 - Add "Yorkshire Puddings" to the website as the latest recipe
 - Replace "Classic Crepes" with "American Pancakes"
-- Un-comment the block of code containing the .filter() method. Can you figure out what it does and how?
+- Un-comment the block of code containing the `.filter()` method. Can you figure out what it does and how?
 - Extra Task: This code demonstrates 2 different Methods we can use to target content on our webpage. What are they?
 
 ### Converting Array Items
 
 You may have noticed in the previous example that we sometimes needed to convert our array items to strings for us to use them.
-We can convert Array items to strings using .toString().
-There's several ways to convert to an array. Here, we've used Array.from().
+We can convert Array items to strings using `.toString()`.
+There's several ways to convert to an array. Here, we've used `Array.from()`.
 
-```js
-const dairyProducts = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-let foodItem = dairyProducts[3].toString().toLowerCase();
-console.log(`For lunch today I'm going to make a ${foodItem} sandwich.`);
-// Returns "For lunch today I'm going to make a cheese sandwich".
+<div className="not-content">
+<Sandpack
+  client:load
+  files={{
+    "/index.html":
+`<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First HTML Page</title>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
+  </body>
+</html>`,
+"/index.js":
+`const dairyProducts = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
+
+const foodItem = dairyProducts[3].toString().toLowerCase();
+// console.log(\`For lunch today I'm going to make a \${foodItem} sandwich.\`);
+/* returns "For lunch today I'm going to make a cheese sandwich". */
 
 let alphabet = "ABCDEFGH";
 const newAlphabet = Array.from(alphabet);
-console.log(newAlphabet);
-//Returns ["A", "B", "C", "D", "E", "F", "G", "H"]
-```
+// console.log(newAlphabet);
+/* returns ["A", "B", "C", "D", "E", "F", "G", "H"] */`
+        }}
+        template="vanilla"
+        theme="dark"
+        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
+      />
+</div>
 
 ### Sets vs Arrays
 We've talked about Sets a few times – and they look very similar to Arrays. Here's the key similarities & differences you need to know:
 
-#### Arrays
+<Card title="Arrays">
 - Values do not have to be unique
 - Items can be duplicated
 - Items are ordered by index
 - Iterable by index
+</Card>
 
-#### Sets
+<Card title="Sets">
 - Values must be unique
 - Items cannot be duplicated
 - Items have no specific order
 - Iterable by insertion order
+</Card>
 
 ### Creating a Set
 We can create a set very easily using the Set() constructor. 
 There are fewer methods we can use to alter sets than we had for arrays:
-- .add() adds items to the set.
-- .delete() removes items in the set.
-- .has() searches the set for a specific item.
-- .clear() empties the set.
+- `.add()` adds items to the set.
+- `.delete()` removes items in the set.
+- `.has()` searches the set for a specific item.
+- `.clear()` empties the set.
 
 ```js
 const dairyProducts = new Set(["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Chocolate"]);
 dairyProducts.add("Custard");
-/* Returns ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Chocolate", "Custard"] */
+/* returns ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Chocolate", "Custard"] */
 dairyProducts.delete("Chocolate");
-/* Returns ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Custard"] */
+/* returns ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Custard"] */
 dairyProducts.has("Yoghurt");
-// Returns true
+/* returns true */
 dairyProducts.clear();
-// Returns [ ]
+/* returns [] */
 ```
 
 ## What do we mean by Objects?
@@ -232,7 +341,7 @@ There's quite a lot of different syntax inside our curly braces – most noticea
 ```js
 const person = {
   name: ["Hannah-Louise", "Batt"],
-  age: 29;  bio() {
+  age: 29;  bio() {
     console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
     },
   introduceSelf() {
@@ -368,7 +477,7 @@ We can use the this in our object methods when we want to refer to the object ou
 const person = {
   name: ["Hannah-Louise", "Batt"],
   age: 29;  bio() {
-    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years    old.`);
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
     },
   introduceSelf() {
     console.log(`Hi! I'm ${this.name[0]}.`);
@@ -518,22 +627,15 @@ They will share some properties with technicians, like name and bio, but they ar
 ### OOP and JavaScript
 We've looked at some key features of Class-based OOP, and how JavaScript uses them. But we should remember that JS is an anomaly compared to languages like C++.
 
-#### Standard OOP
 
+<Card title="Standard OOP">
 - Classes and objects are entirely separate entities
 - Objects are always created as instances of classes
 - The syntax used to define a class is distinct from a constructor
+</Card>
 
-#### JavaScript
-
+<Card title="JavaScript">
 - We can create Objects without a class definition at will, by creating Object literals or using constructor functions.
 - Constructors are more flexible
 - Working with objects is far easier and more lightweight in JavaScript.
-
-## Resources
-The JavaScript Prototype Chain
-MDN Web Docs OOP in JavaScript
-Mosh on Youtube JavaScript Array Methods
-W3Schools
-Introduction to Objects
-Lesson on Codecademy
+</Card>
