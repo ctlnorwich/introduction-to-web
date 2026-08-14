@@ -12,7 +12,7 @@ samp {
 
 code {
 	color: #dd1144;
-	/* word-wrap: break-word; */
+	word-wrap: break-word;
 }
 
 pre {
@@ -27,7 +27,7 @@ pre {
 	padding: 0.8125em;
 	tab-size: 2;
 	white-space: pre-wrap;
-	/* word-break: break-all; */
+	word-break: break-all;
 }
 
 @media (min-width: 38em) {

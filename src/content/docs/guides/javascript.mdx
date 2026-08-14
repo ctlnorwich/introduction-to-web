@@ -10,6 +10,12 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 import { Sandpack } from "@codesandbox/sandpack-react";
 
+import sandbox from "./src/sandbox/sandbox.js?url";
+import prism from "./src/sandbox/prism.js?url";
+
+<script src={prism}></script>
+<script src={sandbox} type="module"></script>
+
 ## What is JavaScript?
 
 JavaScript was created in 1995 to add interactivity to the web. Since then, it has become an incredibly versatile programming language with a wide range of uses, from websites and apps to games, control panels and generative art.
@@ -91,27 +97,13 @@ let isComplete = false;
 - To make things easier, we can declare and initialise a variable at the same time, as shown here.
 - We're using `let` keyword so we can change the value if we want to.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="script.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`let taskName = "Learn HTML"; 
+<div class="not-content">
+  <code-sandbox console="open">
+		<div for="intro"><p>Some message or text 2...</p></div>
+		<textarea for="html">{`<h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>`}</textarea>
+		<textarea for="css">/* ... */</textarea>
+		<textarea for="js" open>{`let taskName = "Learn HTML"; 
 taskName = "Learn JavaScript"; 
 taskName = null;
 
@@ -120,12 +112,8 @@ console.error("this is a test error!")
 console.warn("this is a test warning!")
 
 // Mostly, you'll be using console.log:
-console.log(taskName);`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+console.log(taskName);`}</textarea>
+  </code-sandbox>
 </div>
 
 ### Updating a variable
@@ -147,36 +135,19 @@ In the example below, we're using SCREAMING_SNAKE_CASE for the string `const` ab
 
 While you cannot directy alter the value of a variable declared with `const`, you can alter the contents of that value. For example, if the value is and array, you can still alter the contents of that array. That's why the `taskList` can be updated below.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-        "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="script.js" defer></script>
-  </head>
 
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`const MY_NOT_SO_SECRET_API_KEY = "123456789XYZ";
+<div class="not-content">
+  <code-sandbox console="open">
+		<div for="intro"><p>Some message or text 2...</p></div>
+		<textarea for="html">{`<h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>`}</textarea>
+		<textarea for="css">/* ... */</textarea>
+		<textarea for="js" open>{`const MY_NOT_SO_SECRET_API_KEY = "123456789XYZ";
 const taskList = ["Learn Git", "Learn HTML", "Learn CSS" ]; 
 taskList.push("Learn JavaScript");
 
-console.log(taskList);`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js" }}
-      />
+console.log(taskList);`}</textarea>
+  </code-sandbox>
 </div>
 
 ### Adding Comments
@@ -210,36 +181,20 @@ console.log(taskName);
 
 ## Quick Practical
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
-    <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
-  </body>
-</html>`,
-"/index.js":
-`// Let's goooo!
+<div class="not-content">
+<code-sandbox console="open">
+<div for="intro"><p>Some message or text 2...</p></div>
+<textarea for="html">{`<h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
+<p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>`}</textarea>
+<textarea for="css">/* ... */</textarea>
+<textarea for="js" open>{`// Let's goooo!
 
 if (typeof myName !== 'undefined') {
-      document.querySelector("h1").innerHTML = \`Hello \${myName}!\`;
-}`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, autorun: true, activeFile: "/index.js" }}
-      />
+    document.querySelector("h1")
+    .innerHTML = \`⚠️ Hello \${myName}!\`;
+}`}
+</textarea>
+</code-sandbox>
 </div>
 
 - In the `script.js` file above, create a variable called `myName`, and initialise it with a value.

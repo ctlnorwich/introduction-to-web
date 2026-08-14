@@ -15,7 +15,8 @@ export default defineConfig({
             { icon: 'open-book', label: 'VLE', href: 'https://vle.norwichuni.ac.uk/course/view.php?id=486' }
         ],
         customCss: [
-             './src/styles/custom.css',
+            './src/styles/custom.css',
+            './src/sandbox/sandbox.css',
         ],
         sidebar: [
             {
