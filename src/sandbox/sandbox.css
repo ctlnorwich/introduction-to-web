@@ -27,7 +27,7 @@ pre {
 	padding: 0.8125em;
 	tab-size: 2;
 	white-space: pre-wrap;
-	word-break: break-all;
+	/* word-break: break-all; */
 }
 
 @media (min-width: 38em) {
@@ -118,7 +118,7 @@ pre code {
 	resize: none;
 	tab-size: 2;
 	white-space: pre-wrap;
-	word-break: break-all;
+	/* word-break: break-all; */
 }
 
 @media (min-width: 38em) {

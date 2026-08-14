@@ -1,7 +1,7 @@
 customElements.define('code-sandbox', class extends HTMLElement {
 
 	// The class constructor object
-	constructor () {
+	constructor() {
 
 		// Always call super first in constructor
 		super();
@@ -74,7 +74,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * Handle event listeners
 	 * @param  {Event} event The event object
 	 */
-	handleEvent (event) {
+	handleEvent(event) {
 		this[`on${event.type}`](event);
 	}
 
@@ -82,7 +82,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * Update the rendered iframe on input events
 	 * @param  {Event} event The event object
 	 */
-	oninput (event) {
+	oninput(event) {
 		clearTimeout(this.debounce);
 		this.mirrorContent(event.target);
 		this.debounce = setTimeout(() => {
@@ -94,7 +94,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * Clear elements on click events
 	 * @param  {Event} event The event object
 	 */
-	onclick (event) {
+	onclick(event) {
 
 		// Get the task
 		let task = event.target.getAttribute('data-click');
@@ -116,7 +116,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * Override default tab and escape key behavior when sandbox has focus
 	 * @param  {Event} event The event object
 	 */
-	onkeydown (event) {
+	onkeydown(event) {
 
 		// Only run on specific keyboard events in the instance
 		if (!event.target.matches('.sandbox-text') || !this.contains(event.target)) return;
@@ -145,10 +145,12 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * @param  {Element} elem The template element
 	 * @return {string}       The HTML string
 	 */
-	createEditor (type, elem) {
-		if (this[type] === false) return '';
-		return `
-			<details ${elem && elem.hasAttribute('open') ? 'open' : ''}>
+
+	createEditor(type, elem) {
+		if (this[type] === false) return "";
+		const contentTypes = Object.keys(this).filter((key) => this[key] !== false && ["html", "css", "js"].includes(key));
+		const isSingleContentType = contentTypes.length === 1;
+		return `<details ${(elem && elem.hasAttribute("open")) || isSingleContentType ? "open" : ""}>
 				<summary>${type.toUpperCase()}</summary>
 				<label for="sandbox-${type}-${this.uuid}" class="screen-reader">${type.toUpperCase()}</label>
 				<div class="sandbox-editor">
@@ -162,7 +164,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * Mirror the content of a text area with syntax highlighting
 	 * @param  {Element} elem The element to mirror
 	 */
-	mirrorContent (elem) {
+	mirrorContent(elem) {
 		let mirror = elem.previousElementSibling.firstElementChild;
 		mirror.textContent = elem.value;
 		Prism.highlightElement(mirror);
@@ -171,7 +173,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	/**
 	 * Update the iframe content
 	 */
-	updateIframe () {
+	updateIframe() {
 
 		// Create new iframe
 		let clone = this.iframeElem.cloneNode();
@@ -195,7 +197,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	/**
 	 * Render the element content
 	 */
-	render () {
+	render() {
 		if (this.htmlElem) {
 			this.htmlElem.value = this.html;
 			this.mirrorContent(this.htmlElem);
@@ -217,7 +219,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	 * @param  {Integer} depth How deep items are indented
 	 * @return {String}        A stringified version
 	 */
-	parseLog (item, depth = 0) {
+	parseLog(item, depth = 0) {
 		let instance = this;
 		let indent = [...new Array(depth)].map(() => '\t').join('');
 		let indentProps = `${indent}\t`;
@@ -237,7 +239,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 	/**
 	 * Intercept console log events in the iframe
 	 */
-	setupConsole () {
+	setupConsole() {
 
 		// Only run if there's a console to log into
 		if (!this.console && this.result !== 'console') return;

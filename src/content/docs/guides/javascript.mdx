@@ -100,9 +100,12 @@ let isComplete = false;
 <div class="not-content">
   <code-sandbox console="open">
 		<div for="intro"><p>Some message or text 2...</p></div>
-		<textarea for="html">{`<h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>`}</textarea>
-		<textarea for="css">/* ... */</textarea>
+		<textarea for="html">{`
+<h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+
+<p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>`}
+    </textarea>
+	  <textarea for="css">/* ... */</textarea>
 		<textarea for="js" open>{`let taskName = "Learn HTML"; 
 taskName = "Learn JavaScript"; 
 taskName = null;
