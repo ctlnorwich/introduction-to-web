@@ -31,7 +31,7 @@ customElements.define('code-sandbox', class extends HTMLElement {
 				<div class="sandbox-header">
 					<strong class="sandbox-label">Code Sandbox</strong>
 					<span class="sandbox-controls">
-						<button class="btn btn-muted btn-small" data-click="reset">Reload</button>
+						<button class="btn btn-muted btn-small" data-click="reset">Reset</button>
 						${this.console || this.result === 'console' ? `<button class="btn btn-muted btn-small" data-click="clear">Clear Console</button>` : ''}
 					</span>
 				</div>
