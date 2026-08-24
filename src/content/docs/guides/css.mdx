@@ -9,16 +9,11 @@ import { Aside } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
-import { Sandpack } from "@codesandbox/sandpack-react";
 
 import sandbox from "./src/sandbox/sandbox.js?url";
 import prism from "./src/sandbox/prism.js?url";
 
-import css1 from "./src/code/css-1.js";
-import css2 from "./src/code/css-2.js";
-import css3 from "./src/code/css-3.js";
-import css4 from "./src/code/css-4.js";
-import css5 from "./src/code/css-5.js";
+import {cssSelectors, pseudoClasses, boxModel, marginCollapse, objectFit } from "./src/code/css.js";
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>
@@ -224,16 +219,16 @@ style rules at once:
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{css1.html}</textarea>
-    <textarea for="css" open>{css1.css}</textarea>
+		<textarea for="html">{cssSelectors.html}</textarea>
+    <textarea for="css" open>{cssSelectors.css}</textarea>
   </code-sandbox>
 </div>
 
 <div class="not-content">
   <code-sandbox collapse hidden>
   	<div for="intro"><summary>Solution...</summary></div>
-		<textarea for="html">{css1.html}</textarea>
-    <textarea for="css" open>{css1.cssSolution}</textarea>
+		<textarea for="html">{cssSelectors.html}</textarea>
+    <textarea for="css" open>{cssSelectors.cssSolution}</textarea>
   </code-sandbox>
 </div>
 
@@ -298,7 +293,7 @@ We call these selectors pseudo-classes.
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{css2.html}</textarea>
+		<textarea for="html" open>{pseudoClasses.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -503,7 +498,7 @@ The box model only applies fully to block boxes. Inline boxes do adopt some feat
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{css3.html}</textarea>
+		<textarea for="html" open>{boxModel.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -535,7 +530,7 @@ Looking at this CSS, what would the size of our CSS box actually be?
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{css4.html}</textarea>
+		<textarea for="html" open>{marginCollapse.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -641,7 +636,7 @@ html {
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{css5.html}</textarea>
+		<textarea for="html" open>{objectFit.html}</textarea>
   </code-sandbox>
 </div>
 

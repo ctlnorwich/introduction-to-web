@@ -2,20 +2,20 @@
  * @section General Code Styles
  */
 
-code,
-kbd,
-pre,
-samp {
+.sandbox code,
+.sandbox kbd,
+.sandbox pre,
+.sandbox samp {
 	font-family: Menlo, Monaco, "Courier New", monospace;
 	font-size: 0.875em;
 }
 
-code {
+.sandbox code {
 	color: #dd1144;
 	word-wrap: break-word;
 }
 
-pre {
+.sandbox pre {
 	background-color: #f7f7f7;
 	border: 0.0625rem solid #e5e5e5;
 	border-radius: 0.5em;
@@ -36,7 +36,7 @@ pre {
 	}
 }
 
-pre code {
+.sandbox pre code {
 	color: inherit;
 	font-size: 1em;
 }

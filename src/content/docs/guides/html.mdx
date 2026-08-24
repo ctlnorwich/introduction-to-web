@@ -12,11 +12,7 @@ import { FileTree } from '@astrojs/starlight/components';
 import sandbox from "./src/sandbox/sandbox.js?url";
 import prism from "./src/sandbox/prism.js?url";
 
-import html1 from "./src/code/html-1.js";
-import html2 from "./src/code/html-2.js";
-import html3 from "./src/code/html-3.js";
-import html4 from "./src/code/html-4.js";
-import html5 from "./src/code/html-5.js";
+import { basic, headings, inline, commonElements, forms } from "./src/code/html.js";
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>
@@ -133,7 +129,7 @@ Here are some popular code editors for the web:
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{html1.html}
+		<textarea for="html" open>{basic.html}
     </textarea>
   </code-sandbox>
 </div>
@@ -170,7 +166,7 @@ The `<head>` is followed by the `<body>` tag. This is where all the visible cont
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{html2.html}</textarea>
+		<textarea for="html" open>{headings.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -199,7 +195,7 @@ HTML:
 
 <div class="not-content">
   <code-sandbox console="open" hidden>
-		<textarea for="html" open>{html3.html}</textarea>
+		<textarea for="html" open>{inline.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -296,7 +292,7 @@ HTML elements (e.g. the 'heading 1' element) are made up of html tags (e.g. the 
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{html4.html}</textarea>
+		<textarea for="html" open>{commonElements.html}</textarea>
   </code-sandbox>
 </div>
 
@@ -307,7 +303,7 @@ Form elements are not only used for creating obvious forms (e.g. a 'Contact Us' 
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html" open>{html5.html}</textarea>
+		<textarea for="html" open>{forms.html}</textarea>
   </code-sandbox>
 </div>
 

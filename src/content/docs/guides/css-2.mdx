@@ -9,7 +9,15 @@ import { Aside } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
-import { Sandpack } from "@codesandbox/sandpack-react";
+
+import sandbox from "./src/sandbox/sandbox.js?url";
+import prism from "./src/sandbox/prism.js?url";
+
+import { normalFlow, addingFlex, flexFlow, flexSizing, flexAlignment, addingGrid, lineBasedPlacement, gridColumn, gridTemplateAreas } 
+from "./src/code/css-2.js";
+
+<script src={prism}></script>
+<script src={sandbox} type="module"></script>
 
 <Card title="What does this cover?">
 
@@ -37,39 +45,10 @@ It's beneficial to have this principle in mind when styling your pages. Remember
 
 ## Normal Flow
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/styles.css" />
-</head>
-
-<body style="padding: 0 0 2rem 0;">
-    <h1>This page is laid out in normal flow.</h1>
-
-    <ul>
-        <li>In normal flow, the inline layout direction is the same as the writing direction of the language the page is in.</p> 
-        <li>The block direction runs perpendicular to this.</p>
-        <li>Depending the writing mode and text direction settings, the page will look different:</p>
-    </ul>
-
-    <p>In English, the inline direction will run <br> horizontally left to right, and the <br> block direction will be vertical.</p>
-    <p style="writing-mode: vertical-rl;">日本語のよ な言語では、<br>インライン方向は垂直になり、 <br>ブロックは水平に実行されます</p>
-    <p style="direction: rtl;">في اللغة العربية، يكون اتجا <br> الكتابة من اليمين إلى اليسار.</p>
-</body>
-</html>`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true, }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html" open>{normalFlow.html}</textarea>
+  </code-sandbox>
 </div>
 
 - Normal Flow is what happens when we make no changes to a HTML page's layout.
@@ -95,87 +74,11 @@ It's beneficial to have this principle in mind when styling your pages. Remember
 ### Flexbox: Example Activity
 Let's take a look at a practical example.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Flexbox 1</title>
-
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-        <h1>Flexbox Example</h1>
-    </header>
-
-    <section>
-        <article>
-            <h2>First article</h2>
-
-            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        </article>
-
-        <article>
-            <h2>Second article</h2>
-
-            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        </article>
-
-        <article>
-            <h2>Third article</h2>
-
-            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-            <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        </article>
-    </section>
-  </body>
-</html>`,
-  "/style.css":
-`html {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body {
-    margin: 0;
-}
-
-header {
-    background: #d2553b;
-    height: 100px;
-}
-
-h1 {
-    text-align: center;
-    color: white;
-    line-height: 100px;
-    margin: 0;
-}
-
-p, h2 {
-    color:antiquewhite;
-}
-
-article {
-    padding: 10px;
-    margin: 10px;
-    background: #25236e;
-}
-
-/* Add your flexbox CSS below here */
-      
-/* Add in flexible sizing rules here */`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{addingFlex.html}</textarea>
+    <textarea for="css" open>{addingFlex.css}</textarea>
+  </code-sandbox>
 </div>
 
 - We have a `style.css` file referenced in the `<head>` of our `index.html`.
@@ -199,114 +102,12 @@ section {
 - We can fix this by adding another value, wrap, to our `flex-flow` property.
 - `flex-flow` is actually the shorthand for two separate properties: `flex-direction` and `flex-wrap`.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Flexbox 2</title>
-
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-   <header>
-      <h1>Flexbox Example 2</h1>
-    </header>
-
-    <section>
-      <article>
-        <h2>Article 1</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 2</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 3</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 4</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 5</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 6</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 7</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Article 8</h2>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-    </section>
-    </body>
-</html>`,
-  "/style.css":
-`html {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body {
-    margin: 0;
-}
-
-header {
-    background: #d2553b;
-    height: 100px;
-}
-
-h1 {
-    text-align: center;
-    color: white;
-    line-height: 100px;
-    margin: 0;
-}
-
-p, h2 {
-    color:antiquewhite;
-}
-
-article {
-    padding: 10px;
-    margin: 10px;
-    background: #25236e;
-}
-
-section {
-    display: flex;
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{flexFlow.html}</textarea>
+    <textarea for="css" open>{flexFlow.css}</textarea>
+  </code-sandbox>
 </div>
-
 
 ```css
 article {
@@ -322,89 +123,13 @@ section {
 ```
 We're also adding a new property into our `article {}` selector, which sets a minimum size each flex item can be. In this case, 200px. If the articles are about to become less than 200px wide, they will be wrapped onto a new line.
 
-
 We can also control the size of a flex item relative to the ones around it - creating more interesting layouts.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Flexbox 1</title>
-
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Flexbox Example</h1>
-    </header>
-
-    <section>
-      <article>
-        <h2>First article</h2>
-
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Second article</h2>
-
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-      </article>
-
-      <article>
-        <h2>Third article</h2>
-
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        <p>I wanna be the very best like no-one ever was to catch them is my real test to train them is my cause I will travel across the land searching far and wide each pokemon to understand the power that's inside.</p>
-        </article>
-    </section>
-  </body>
-</html>`,"/style.css":
-`html {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body {
-   margin: 0;
-}
-
-header {
-    background: #d2553b;
-    height: 100px;
-}
-
-h1 {
-    text-align: center;
-    color: white;
-    line-height: 100px;
-    margin: 0;
-}
-
-p, h2 {
-    color:antiquewhite;
-}
-
-section {
-    display: flex;
-}
-
-article {
-    padding: 10px;
-    margin: 10px;
-    background: #25236e;
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{flexSizing.html}</textarea>
+    <textarea for="css" open>{flexSizing.css}</textarea>
+  </code-sandbox>
 </div>
 
 Add the following to the above example:
@@ -461,104 +186,11 @@ The resizing we just did is only one of the several ways we can use the flex pro
 
 Now we have a grasp on the Flex Model, we can think about how we align items in our flexbox along these axes.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Flexbox 1</title>
-
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-   <header>
-        <h1>Flexbox Alignment Example</h1>
-    </header>
-
-    <section>
-
-        <article>
-            <h2>Article One</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Two</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Three</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Four</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Five</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Six</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Seven</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Eight</h2>
-            <p>Article preview text here!</p>
-        </article>
-
-    </section>
-  </body>
-</html>`,
-"/style.css":
-`html {
-    font-family: sans-serif;
-    font-size: 12px;
-}
-
-body {
-    margin: 0;
-}
-
-header {
-    background: #c68f84;
-    height: 100px;
-}
-
-h1 {
-    text-align: center;
-    color: white;
-    line-height: 100px;
-    margin: 0;
-}
-
-article {
-    height:100px;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: rgb(153, 200, 203);
-    border: 2px solid rgb(58, 103, 103);
-}
-
-section {
-    padding-top: 30px;
-    height: 500px;
-    display: flex;
-    flex-flow: row wrap;
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{flexAlignment.html}</textarea>
+    <textarea for="css" open>{flexAlignment.css}</textarea>
+  </code-sandbox>
 </div>
 
 - Open up your developer tools (F12) and find the `<section>` element in the Inspector.
@@ -605,65 +237,11 @@ article:first-child {
 
 Let's play with an example:
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Grid 1</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body>
-    <h1>CSS Grid Practical Example</h1>
-
-    <section class="container">
-
-        <div>One</div>
-        <div>Two</div>
-        <div>Three</div>
-        <div>Four</div>
-        <div>Five</div>
-        <div>Six</div>
-        <div>Seven</div>
-
-    </div>
-
-  </body>
-
-</html>`,
-"/style.css":
-`html {
-    font-size: 12px;
-}
-
-body {
-    margin: 0 auto;
-    max-width: 520px;
-    font: .9em/1.2 Arial, Helvetica, sans-serif;
-    color: rgb(58,103,103);
-}
-
-.container > div {
-    border-radius: 5px;
-    padding: 8px;
-    background-color: rgb(153, 200, 203);
-    border: 2px solid rgb(58, 103, 103);
-}
-
-.container {
-/* Add CSS Grid properties here */
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{addingGrid.html}</textarea>
+    <textarea for="css" open>{addingGrid.css}</textarea>
+  </code-sandbox>
 </div>
 
   - In the above example, the `<div>` containers are currently laid out in normal flow.
@@ -748,104 +326,11 @@ rows before they start to overflow.
 
 Now we have a grid, we can place content on it.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Grid 2</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-<body>
-
-    <div class="container">
-        <header>
-            <h1>Latest Blog Posts</h1>
-        </header>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-        <article>
-            <h2>Article Title</h2>
-            <p>Article preview text here!</p>
-        </article>
-
-    </div>
-
-</body>
-
-</html>`,
-"/style.css":
-`html {
-    font-size: 12px;
-}
-body {
-    width: 90%;
-    max-width: 900px;
-    margin: 2em auto;
-    font: .9em/1.2 Arial, Helvetica, sans-serif;
-    color: rgb(58,103,103);
-}
-
-.container > article {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(153, 200, 203);
-    border: 2px solid rgb(58, 103, 103);
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    grid-auto-rows: minmax(100px, auto);
-}
-
-/* Adding in a new header selector */
-header {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(221, 225, 225);
-    border: 2px solid rgb(58, 103, 103);
-    text-align: center;
-    /* Adding in our header website placement, spanning the entire first row of our grid */
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{lineBasedPlacement.html}</textarea>
+    <textarea for="css" open>{lineBasedPlacement.css}</textarea>
+  </code-sandbox>
 </div>
 
 - For line-based placement, envision each row and column as a line.
@@ -877,111 +362,11 @@ Much better!
 
 Have a play about with the placement values in the .bigBox class and see how it changes.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Grid 2</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <header>
-          <h1>Latest Blog Posts</h1>
-      </header>
-      <article class = "bigBox">
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-      <article>
-          <h2>Article Title</h2>
-          <p>Article preview text here!</p>
-      </article>
-
-   </div>
-
-</body>
-
-</html>`,
-"/style.css":
-`body {
-    width: 90%;
-    max-width: 900px;
-    margin: 2em auto;
-    font: .9em/1.2 Arial, Helvetica, sans-serif;
-    color: rgb(58,103,103);
-}
-
-.container > article {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(153, 200, 203);
-    border: 2px solid rgb(58, 103, 103);
-
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    grid-auto-rows: minmax(100px, auto);
-}
-
-/* Adding in a new header selector */
-header {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(221, 225, 225);
-    border: 2px solid rgb(58, 103, 103);
-    text-align: center;
-    /* Adding in our header website placement, spanning the entire first row of our grid */
-    grid-column: 1/5;
-    grid-row: 1;
-}
-
-.bigBox{
-    grid-column: 1 / 2;
-    grid-row: 2 / 5;
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{gridColumn.html}</textarea>
+    <textarea for="css" open>{gridColumn.css}</textarea>
+  </code-sandbox>
 </div>
 
 ## grid-template-areas
@@ -1023,148 +408,11 @@ header {
 - Take a look at the example below and compare it to the previous one.
 - We've made a few extra changes to our CSS/HTML to ensure `grid-template-areas` works as intended. What's changed?
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Grid 2</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-<body>
-
-  <div class ="container">
-    <header>
-        <h1>Latest Blog Posts</h1>
-    </header>
-
-    <section class = "bigBox">
-        <h2>Section Title</h2>
-        <p>Section Text Here!</p>
-    </section>
-
-    <!-- New Section containing subgrid starts here-->
-    <section class="articleGrid">
-      <article>
-        <h2>Article One</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Two</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Three</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Four</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Five</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Six</h2>
-        <p>Article preview text here!</p>
-      </article>
-      <article>
-        <h2>Article Seven</h2>
-        <p>Article preview text here!</p>
-      </article>
-    </section>
-    <!-- New section containing subgrid ends here-->
-    
-    <footer>
-        <h2>Footer</h2>
-    </footer>
-
-    </div>
-
-  </body>
-
-</html>`,
-"/style.css":
-`html {
-  font-size: 12px
-} 
-body {
-    width: 90%;
-    max-width: 900px;
-    margin: 2em auto;
-    font: .9em/1.2 Arial, Helvetica, sans-serif;
-    color: rgb(58,103,103);
-}
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    grid-auto-rows: minmax(100px, auto);
-    grid-template-areas: 
-    "header header header header"
-    "bigBox content content content"
-    "bigBox content content content"
-    "footer footer footer footer";
-}
-
-/* changed the class indicator here to show that 
-<articles> are now following the .articleGrid subclass. */
-.articleGrid > article {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(153, 200, 203);
-    border: 2px solid rgb(58, 103, 103);
-    
-}
-
-/* Created new class for subgrid within <section> element */
-.articleGrid {
-    grid-area: content;
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-auto-rows: minmax(100px,150px);
-    gap: inherit;
-    
-}
-
-header {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(221, 225, 225);
-    border: 2px solid rgb(58, 103, 103);
-    text-align: center;
-    grid-area: header;
-
-}
-
-.bigBox{
-    grid-area: bigBox;
-    border-radius: 5px;
-    padding: 10px;
-    border: 2px solid rgb(58, 103, 103);
-}
-
-footer {
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(221, 225, 225);
-    border: 2px solid rgb(58, 103, 103);
-    text-align: center;
-    grid-area: footer;
-}`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{gridTemplateAreas.html}</textarea>
+    <textarea for="css" open>{gridTemplateAreas.css}</textarea>
+  </code-sandbox>
 </div>
 
 ### Nesting Grids
