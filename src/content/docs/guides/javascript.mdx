@@ -1,6 +1,6 @@
 ---
-title: "Introduction to JavaScript"
-description: "The basics of JavaScript."
+title: "JavaScript 1: Introduction to JavaScript"
+description: "Part 1 of the CTL's JavaScript Introduction."
 template: splash
 ---
 
@@ -8,10 +8,18 @@ import { Card } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
-import { Sandpack } from "@codesandbox/sandpack-react";
+
+import sandbox from "./src/sandbox/sandbox.js?url";
+import prism from "./src/sandbox/prism.js?url";
+
+import { consoleExamples, variableConst, variablesLet, quickPractical, ifElse, elseIf, logicalOperators, switchStatements, dataAttributeConditionals, invokingFunctions, moodEmojiChallenge } 
+from "./src/code/javascript.js"
+
+<script src={prism}></script>
+<script src={sandbox} type="module"></script>
 
 ## What is JavaScript?
-     
+
 JavaScript was created in 1995 to add interactivity to the web. Since then, it has become an incredibly versatile programming language with a wide range of uses, from websites and apps to games, control panels and generative art.
 
 Whilst it's possible to use JavaScript for **declarative** programming, it's primarily used as an **imperative** language, where developers outline each step the computer must take in order to achieve the desired result.
@@ -91,41 +99,11 @@ let isComplete = false;
 - To make things easier, we can declare and initialise a variable at the same time, as shown here.
 - We're using `let` keyword so we can change the value if we want to.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="script.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`let taskName = "Learn HTML"; 
-taskName = "Learn JavaScript"; 
-taskName = null;
-
-// You'll want to get used to using the console to test your JS:
-console.error("this is a test error!")
-console.warn("this is a test warning!")
-
-// Mostly, you'll be using console.log:
-console.log(taskName);`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+  <code-sandbox console="open">
+		<textarea for="html">{consoleExamples.html}</textarea>
+    <textarea for="js" open>{consoleExamples.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Updating a variable
@@ -147,36 +125,12 @@ In the example below, we're using SCREAMING_SNAKE_CASE for the string `const` ab
 
 While you cannot directy alter the value of a variable declared with `const`, you can alter the contents of that value. For example, if the value is and array, you can still alter the contents of that array. That's why the `taskList` can be updated below.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-        "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="script.js" defer></script>
-  </head>
 
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`const MY_NOT_SO_SECRET_API_KEY = "123456789XYZ";
-const taskList = ["Learn Git", "Learn HTML", "Learn CSS" ]; 
-taskList.push("Learn JavaScript");
-
-console.log(taskList);`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js" }}
-      />
+<div class="not-content">
+  <code-sandbox console="open">
+		<textarea for="html">{variableConst.html}</textarea>
+		<textarea for="js" open>{variableConst.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Adding Comments
@@ -210,36 +164,11 @@ console.log(taskName);
 
 ## Quick Practical
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
-    <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
-  </body>
-</html>`,
-"/index.js":
-`// Let's goooo!
-
-if (typeof myName !== 'undefined') {
-      document.querySelector("h1").innerHTML = \`Hello \${myName}!\`;
-}`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, autorun: true, activeFile: "/index.js" }}
-      />
+<div class="not-content">
+  <code-sandbox console="open">
+    <textarea for="html">{quickPractical.html}</textarea>
+    <textarea for="js" open>{quickPractical.js}</textarea>
+  </code-sandbox>
 </div>
 
 - In the `script.js` file above, create a variable called `myName`, and initialise it with a value.
@@ -266,37 +195,11 @@ typeof myFloat;
 - Number values are written without speech marks. Otherwise, JS will read it as a string!
 
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-    "/index.js":
-`let myInt = 7;
-let myNumber = "7";
-myNumber = Number(myNumber) + 5;
-
-console.log(myNumber);
-`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{variablesLet.html}</textarea>
+    <textarea for="js" open>{variablesLet.js}</textarea>
+  </code-sandbox>
 </div>
 
 - There are many different methods we can use with number values in JS.
@@ -441,40 +344,11 @@ num /= 2; // divides by 2, then updates the value of num
 
 ## If... Else Statements
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizza 1</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-    "/index.js":
-`let ticketsAvailable = false;
-
-if (ticketsAvailable) {
-    /* code to run if condition is true */
-    console.log("Tickets available!");
-} else {
-    /* run some other code instead */
-    console.log("Sold out!"); 
-};`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{ifElse.html}</textarea>
+    <textarea for="js" open>{ifElse.js}</textarea>
+  </code-sandbox>
 </div>
 
 - As we just discussed, sometimes we want to make decisions in our code based on a condition.
@@ -483,68 +357,11 @@ if (ticketsAvailable) {
 
 ## else if
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <select name="pizzas">
-      <option value="" disabled selected>Please select a pizza</option>
-      <option value="Napoli">Napoli</option>
-      <option value="Margherita">Margherita</option>
-      <option value="Roma">Roma</option>
-    </select>
-    <h1><span style="font-size: 3rem;">🍕</span> <span class="pizzaName">Please select a pizza</span></h1>
-    <p>...</p>
-    <p>£<span class="pizzaPrice">0</span></p>
-  </body>
-
-</html>`,
-    "/index.js":
-`// Initialise const variables with html elements.
-const pizzaName = document.querySelector("h1 .pizzaName");
-const pizzaToppings = document.querySelector("p");
-const pizzaPrice = document.querySelector(".pizzaPrice");
-const pizzaSelect = document.querySelector("select");
-
-// Define current pizza variable but don't initialise it yet...
-let currentPizza;
-
-// Add a change event listener to the pizza select element.
-pizzaSelect.addEventListener("change", (e)=> {
-    currentPizza = e.target.value;
-    pizzaName.innerHTML = currentPizza;
-    console.log(\`changed to \${currentPizza}\`);
-
-    if (currentPizza === "Napoli") {
-        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, fresh garlic, basil & oregano (NO CHEESE)";
-        pizzaPrice.innerHTML = "14.99"
-    } else if (currentPizza === "Margherita") {
-        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, mozzarella, basil & Parmigiano Reggiano";
-        pizzaPrice.innerHTML = "12.99"
-    } else if (currentPizza === "Roma") {
-        pizzaToppings.innerHTML = "Tomato sauce, extra virgin olive oil, buffalo mozzarella D.O.P & basil";
-        pizzaPrice.innerHTML = "13.99"
-    } else {
-        pizzaToppings.innerHTML = "...";
-        pizzaPrice.innerHTML = "0"
-    };
-})`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{elseIf.html}</textarea>
+    <textarea for="js" open>{elseIf.js}</textarea>
+  </code-sandbox>
 </div>
 
 - If... else statements on their own give us only two options to choose from. But what if we need more?
@@ -556,81 +373,11 @@ pizzaSelect.addEventListener("change", (e)=> {
 
 ## Logical Operators: AND, OR, NOT
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <p>
-    <label>
-    Weather
-    <select name="weather">
-      <option value="" disabled selected>Select weather</option>
-      <option value="raining">Raining</option>
-      <option value="snowing">Snowing</option>
-      <option value="sunny">Sunny</option>
-    </select>
-    </label>
-    </p>
-
-  <p> 
-    <label>
-    Wind speed (mph)
-    <input type="number" name="wind" min="5" max="100" value="10" step="5" />
-    </label>
-  </p>
-
-  <p>
-     <span style="font-size: 3rem;">🧺</span> <button>Do I put my washing out?</button>
-  </p>
-    <p class="advice">...</p>
-  </body>
-
-</html>`,
-    "/index.js":
-`// Initialise const variables with html elements.
-const weatherType = document.querySelector("h1");
-const weatherAdvice = document.querySelector("p.advice");
-const button = document.querySelector("button");
-
-// Define current weather variable but don't initialise it yet...
-let currentWeather;
-let wind;
-
-// Add a change event listener to the weather select element.
-button.addEventListener("click", (e) => {
-
-    const currentWeather =  document.querySelector("select").value;
-    const windSpeed = Number(document.querySelector("input").value);
-
-    if (currentWeather === "raining" || currentWeather === "snowing") {
-        weatherAdvice.innerHTML = "The <strong>weather is bad</strong>. Best not put out any washing.";
-    }
-    else if (!(windSpeed < 40)) {
-        weatherAdvice.innerHTML = "It's <strong>very windy</strong>! Your washing might blow away.";
-    }
-    else if (currentWeather === "sunny" && windSpeed >= 25) {
-        weatherAdvice.innerHTML = "<strong>Sun and a breeze</strong>! Perfect day for drying washing.";
-    } 
-    else {
-        weatherAdvice.innerHTML = "It's <strong>dry</strong> outside! Time to put outthe washing.";
-    };
-})`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{logicalOperators.html}</textarea>
+    <textarea for="js" open>{logicalOperators.js}</textarea>
+  </code-sandbox>
 </div>
 
 - Logical operators allow us to create more complex logic by testing more than one condition at a time.
@@ -651,81 +398,11 @@ ticketsAvailable ? console.log("Tickets Available!") : console.log("Sold Out!");
 
 ## Switch Statements
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <select name="day">
-      <option value="" disabled selected>Please select a day</option>
-      <option value="mon">Monday</option>
-      <option value="tue">Tuesday</option>
-      <option value="wed">Wednesday</option>
-      <option value="thu">Thursday</option>
-      <option value="fri">Friday</option>
-      <option value="sat">Saturday</option> 
-      <option value="sun">Sunday</option> 
-    </select>
-    <h1> <span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
-    <p>...</p>
-  </body>
-
-</html>`,
-    "/index.js":
-`// Initialise const variables with html elements.
-const dayHeading = document.querySelector("h1 .day");
-const daySelect = document.querySelector("select");
-const dayMenu = document.querySelector("p");
-
-// Define current day variable but don't initialise it yet...
-let currentDay;
-
-// Add a change event listener to the day select element.
-daySelect.addEventListener("change", (e)=> {
-
-    currentDay = e.target.value;
-    dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
-    console.log(\`changed to \${currentDay}\`);
-
-    switch(currentDay) {
-
-      case "mon":
-      case "fri":
-        dayMenu.innerHTML = "Chilli";
-      break;
-
-      case "tue":
-        dayMenu.innerHTML = "Halloumi";
-      break
-
-      case "wed":
-        dayMenu.innerHTML = "Lasagne";
-      break;
-
-      case "thu":
-        dayMenu.innerHTML = "Burger";
-      break;
-
-      default:
-
-        dayMenu.innerHTML = "Cafeteria Closed!";
-    }
-})`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{switchStatements.html}</textarea>
+    <textarea for="js" open>{switchStatements.js}</textarea>
+  </code-sandbox>
 </div>
 
 - If...else statements are brilliant for a lot of purposes, but the syntax can be a bit bulky when you have a large number of options for a pretty simple condition.
@@ -739,59 +416,11 @@ daySelect.addEventListener("change", (e)=> {
 - One way to do this is to store conditional content in the html.
 - The below example fetches the corresponding `data-menu` value from selected option.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <select name="day">
-      <option value="" disabled selected>Please select a day</option>
-      <option data-menu="Chilli" value="mon">Monday</option>
-      <option data-menu="Halloumi" value="tue">Tuesday</option>
-      <option data-menu="Lasagne" value="wed">Wed</option>
-      <option data-menu="Burger" value="thu">Thursday</option>
-      <option data-menu="Chilli" value="fri">Friday</option>
-      <option data-menu="Cafeteria Closed" value="sat">Saturday</option> 
-      <option data-menu="Cafeteria Closed" value="sun">Sunday</option> 
-    </select>
-    <h1><span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
-    <p>...</p>
-  </body>
-
-</html>`,
-    "/index.js":
-`// Initialise const variables with html elements.
-const dayHeading = document.querySelector("h1 .day");
-const daySelect = document.querySelector("select");
-const dayMenu = document.querySelector("p");
-
-// Define current day variable but don't initialise it yet...
-let currentDay;
-
-// Add a change event listener to the day select element.
-daySelect.addEventListener("change", (e)=> {
-
-    currentDay = e.target.value;
-    dayHeading.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).innerHTML;
-    dayMenu.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).getAttribute("data-menu");
-    console.log(\`changed to \${currentDay}\`);
-
-})`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{dataAttributeConditionals.html}</textarea>
+    <textarea for="js" open>{dataAttributeConditionals.js}</textarea>
+  </code-sandbox>
 </div>
 
 ## Functions vs. Methods
@@ -835,48 +464,11 @@ const quickMaths = function (a, b) {return a * b};
 
 ## Invoking a function
 
-
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <div style="font-size: 3rem;">🧮</div>
-  </body>
-
-</html>`,
-    "/index.js":
-`/* invoking a declared function*/
-function quickMathsD (a, b) { 
-    return a * b;
-};
-
-const answerD = quickMathsD(5, 8);
-
-/* A function expression - an anonymous function is stored in a variable */
-const quickMathsE = function (a, b){
-    return a * b
-};
-
-const answerE = quickMathsE(5, 8);
-
-// ToDo: You need to console.log to see these answers!
-`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+    <code-sandbox hidden console="open">
+		  <textarea for="html">{invokingFunctions.html}</textarea>
+      <textarea for="js" open>{invokingFunctions.js}</textarea>
+  </code-sandbox>
 </div>
 
 - Once we've defined a function, we can choose to invoke it whenever we like. Once a function is invoked, the code inside will execute.
@@ -887,61 +479,17 @@ const answerE = quickMathsE(5, 8);
 
 Add JS so that the range slider determines which emoji is visible.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Emoji Challenge!</title>
-    <script src="solution.js" defer></script>
-  </head>
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{moodEmojiChallenge.html}</textarea>
+    <textarea for="js" open>{moodEmojiChallenge.js}</textarea>
+  </code-sandbox>
+</div>
 
-  <body>
-    <input type=range name="mood" min="1" max="4" value="2"></input>
-
-    <p>how do you rate this content?</p>
-    <div style="font-size: 3rem; margin-top: 0;">
-      <span>🙁</span>
-      <span>😐</span>
-      <span>🙂</span>
-      <span>😀</span>
-    </h1>
-
-  </body>
-
-</html>`,
-    "/index.js":
-`// Emoji Challenge
-
-// Here's a hint about changing styles:
-document.querySelector("span:nth-of-type(2)").style.border = "solid red 2px";
-`,
-  "solution.js":
-`// Example using span:nth-of-type() to find the active emoji
-const moodEmojis = document.querySelectorAll("div span");
-const moodSelect = document.querySelector("input");
-
-// Function can pass in the number from the range slider
-const updateEmojis = (number) => {
-    moodEmojis.forEach((emoji) => emoji.style.display = 'none');
-    document.querySelector(\`div > span:nth-of-type(\${number})\`).style.display = 'block';
-}
-
-// Default to emoji 2
-updateEmojis(2)
-
-// When the range slider changes, call the update function and pass in the new number
-moodSelect.addEventListener("change", (e)=> {
-    updateEmojis(e.target.value)
-})`
-    }}
-    template="vanilla"
-    theme="dark"
-    options={{ showLineNumbers: true, autoReload: false, showConsole: true }}
-      />
+<div class="not-content">
+  <code-sandbox collapse hidden>
+  	<div for="intro"><summary>Solution...</summary></div>
+		<textarea for="html">{moodEmojiChallenge.html}</textarea>
+    <textarea for="js" open>{moodEmojiChallenge.jsSolution}</textarea>
+  </code-sandbox>
 </div>

@@ -1,6 +1,6 @@
 ---
-title: "Introduction to CSS"
-description: "How to style your website."
+title: "CSS 1: Introduction"
+description: "Part 1 of the CTL's CSS Introduction."
 template: splash
 ---
 
@@ -9,8 +9,14 @@ import { Aside } from "@astrojs/starlight/components";
 import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
-import { Sandpack } from "@codesandbox/sandpack-react";
 
+import sandbox from "./src/sandbox/sandbox.js?url";
+import prism from "./src/sandbox/prism.js?url";
+
+import {cssSelectors, pseudoClasses, boxModel, marginCollapse, objectFit } from "./src/code/css.js";
+
+<script src={prism}></script>
+<script src={sandbox} type="module"></script>
 
 ## What does this cover?
 
@@ -211,69 +217,21 @@ style rules at once:
 ```
 </Card>
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-
-  <body>
-    <h1>Make this heading Magenta and give it a Magenta glow using the text-shadow property.</h1>
-    <p>Change all typography in the body to the 'Courier New' font.</p>
-    <p>Give the body a dark background colour...</p>
-    <p>Make all paragraphs Aquamarine!</p>
-    <p>Make <a href="https://www.w3.org/">this link</a> a suitable colour using a hex code value.</p>
-  </body>
-</html>`,
-  "/style.css": 
-  `body {
-  
-  }
-
-  h1 {
-  
-  }
-
-  p {
-  
-  }
-
-  a {
-  
-  }`,
-    "/solution.css": 
-  `body {
-    font-family: "Courier New", Courier, monospace;
-    background: darkslateblue;
-  }
-
-  h1 {
-    color: magenta;
-    text-shadow: 0 0 12px magenta;
-  }
-
-  p {
-    color: aquamarine;
-  }
-
-  a {
-    color: #00ffff;
-  }
-`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true, activeFile: "/style.css", }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html">{cssSelectors.html}</textarea>
+    <textarea for="css" open>{cssSelectors.css}</textarea>
+  </code-sandbox>
 </div>
+
+<div class="not-content">
+  <code-sandbox collapse hidden>
+  	<div for="intro"><summary>Solution...</summary></div>
+		<textarea for="html">{cssSelectors.html}</textarea>
+    <textarea for="css" open>{cssSelectors.cssSolution}</textarea>
+  </code-sandbox>
+</div>
+
 
 ## Compound selectors/Selector lists
 
@@ -333,37 +291,10 @@ A great example of this is styling links. The anchor `<a>` element has different
 
 We call these selectors pseudo-classes.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS</title>
-    <style>
-      body { padding: 1rem; background: darkslateblue; }
-      a { color: white; font-size: 2rem; text-decoration: none; } 
-      a:visited { color: yellow; }
-      a:hover { text-decoration: underline; }
-      a:active { color: cornflowerblue; }
-    </style>
-  </head>
-
-  <body>
-    <p>
-      <a href="#">I'm a link!</a>
-    </p>
-  </body>
-</html>`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html" open>{pseudoClasses.html}</textarea>
+  </code-sandbox>
 </div>
 
 
@@ -565,38 +496,10 @@ the total size taken up by the box. Margins do not count!
 
 The box model only applies fully to block boxes. Inline boxes do adopt some features, but not all of them!
 
-
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS</title>
-    <style>
-      .box {
-        width: 150px;
-        height: 50px;
-        margin: 10px;
-        padding: 25px;
-        border: 5px solid black;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="box"></div>
-  </body>
-</html>`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html" open>{boxModel.html}</textarea>
+  </code-sandbox>
 </div>
 
 Looking at this CSS, what would the size of our CSS box actually be?
@@ -625,62 +528,10 @@ Looking at this CSS, what would the size of our CSS box actually be?
 
 ### Margin Collapsing
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS</title>
-    <style>
-      section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 50px; 
-        background: violet;
-        margin: 10px 0;
-      }
-      section:nth-of-type(2) {
-        margin: 30px 0 5px;
-      }
-      section:nth-of-type(3) {
-        margin: 20px 0 50px;
-      }
-      section:nth-of-type(4) {
-        margin: -10px 0 10px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <main>
-      <section>
-         margin: 10px 0;
-      </section>
-      <section>
-        margin: 30px 0 5px;
-      </section> 
-      <section>
-          margin: 20px 0 50px;
-      </section>
-      <section>
-          margin: -10px 0 10px;
-      </section>    
-    </main
-  </body>
-
-</html>`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html" open>{marginCollapse.html}</textarea>
+  </code-sandbox>
 </div>
 
 - Depending on whether two elements whose margins touch have positive or negative margins, you will get different results.
@@ -783,85 +634,10 @@ html {
 - resizes to fit box on both sides
 - does not maintain aspect ratio
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CSS</title>
-    <style>
-
-    figure {
-      margin: 1rem 0;
-    }
-
-    figcaption {
-      display: block;
-      font-family: sans-serif;
-      margin: 0.5rem 0 0 0;
-    }
-
-    img {
-      background: black;
-      display: block;
-    }
-
-    img.fixed {
-      width: 128px;
-      height: 128px;
-    }
-
-    .contain {
-      object-fit: contain;
-    }
-
-    .cover {
-      object-fit: cover;
-    }
-
-    .fill {
-      object-fit: fill;
-    }
-     
-    </style>
-  </head>
-
-  <body>
-    <main>
-
-      <figure>
-        <img src="https://picsum.photos/id/237/300/200">
-        <figcaption>Original</figcaption>
-      </figure>
-
-      <figure>
-        <img class="fixed contain" src="https://picsum.photos/id/237/300/200">
-        <figcaption>Contain</figcaption>
-      </figure>
-
-      <figure>
-        <img class="fixed cover" src="https://picsum.photos/id/237/300/200">
-        <figcaption>Cover</figcaption>
-      </figure>
-
-      <figure>
-        <img class="fixed fill" src="https://picsum.photos/id/237/300/200">
-        <figcaption>Fill</figcaption>
-      </figure>
-    </main
-  </body>
-
-</html>`
-  }}
-        template="static"
-        theme="dark"
-        options={{ showLineNumbers: true }}
-      />
+<div class="not-content">
+  <code-sandbox hidden>
+		<textarea for="html" open>{objectFit.html}</textarea>
+  </code-sandbox>
 </div>
 
 Whilst CSS can't affect the internal layout of an image or video, we
