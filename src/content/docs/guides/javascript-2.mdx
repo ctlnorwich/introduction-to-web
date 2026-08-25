@@ -9,6 +9,15 @@ import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 
+import sandbox from "~/sandbox/sandbox.js?url";
+import prism from "~/sandbox/prism.js?url";
+
+import { sandboxModify, sandboxAdd, sandboxRemove, sandboxMap, sandboxConvert } 
+from "~/code/javascript-2.js"
+
+<script src={prism}></script>
+<script src={sandbox} type="module"></script>
+
 ## What is an Array?
 Arrays are an iterable object type in JavaScript that allows us to group items. We've seen a few Arrays by now, but let's remind ourselves of the syntax: We declare Arrays as a `const`, as we can amend the items inside without having to redefine the array itself. Array items are placed between square brackets, and separated by commas. Not every item in an Array has to be of the same datatype.
 
@@ -29,58 +38,11 @@ We can create **multidimensional arrays** by creating an array inside another ar
 
 If we don't know the index of an array item, we can find it using the `indexOf()` method. This method takes an array item as an argument, and returns the item's index. If the item isn't in the array, it will return -1.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-    <style>
-      code {
-        background: blue;
-      }
-    </style>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`/* Access */
-const dairyProductsA = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-// console.log(dairyProductsA[2]);
-/* returns "Cheese" */
-
-/* Modify */
-const dairyProductsB = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-dairyProductsB[1] = "Custard";
-// console.log(dairyProducts);
-/* returns ["Milk", "Custard", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"] */
-
-/* Access Mulitdimensional */
-const dairyProductsC = ["Milk", "Cream", ["Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"]];
-// console.log(dairyProductsC[2][1]);
-/* returns "Ice Cream" */
-
-/* Use indexOf */
-const dairyProductsD = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-// console.log(dairyProductsD.indexOf("Butter"));
-/* returns 5 */
-// console.log(dairyProductsD.indexOf("Potato"));
-/* returns -1 */`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{sandboxModify.html}</textarea>
+    <textarea for="js" open>{sandboxModify.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Adding Items
@@ -97,49 +59,11 @@ However, we can leverage the `.splice()` method to help us with this.
 2. the number of items to be deleted, starting from the index number previously given. If this value is 0, nothing is deleted.
 3. The new item(s) to be added, separated by a comma.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`/* push() */
-const techniciansA = ["Hannah", "Tracey", "Andy"]
-techniciansA.push("Will");
-// console.log(techniciansA);
-/* returns ["Hannah", "Tracey", "Andy", "Will"] */
-
-/* unshift() */
-const techniciansB = ["Hannah-Louise", "Catherine", "Will"]
-techniciansB.unshift("Bevis");
-// console.log(techniciansB);
-/* returns  ["Bevis", "Hannah-Louise", "Catherine", "Will"] */
-
-/* splice() */
-const techniciansC = ["Hannah-Louise", "Bevis", "Will"]
-techniciansC.splice( 2, 0, "Catherine", "Andy");
-// console.log(techniciansC);
-/* returns ["Hannah-Louise", "Bevis", "Catherine", "Andy", "Will"] */
-`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{sandboxAdd.html}</textarea>
+    <textarea for="js" open>{sandboxAdd.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Removing items
@@ -148,49 +72,13 @@ To remove the first item, use `.shift()`
 Again, we can remove items from anywhere in the array (provided we know the index) using `.splice()`.
 In this splice, we specify to start at index 3, and to remove 2 items. Because we aren't adding any new items, we add no third argument.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`/* pop() */
-const techniciansA = ["Hannah-Louise", "Will", "Catherine", "Bevis"]
-techniciansA.pop();
-// console.log(techniciansA);
-/* returns ["Hannah-Louise", "Will", "Catherine"] */
-
-/* shift() */
-const techniciansB = ["Hannah-Louise", "Will", "Catherine", "Bevis"]
-techniciansB.shift();
-// console.log(techniciansB);
-/* returns ["Will", "Catherine", "Bevis"] */
-
-/* splice() */
-const techniciansC = ["Hannah-Louise", "Will", "Catherine", "Bevis", "Andy"]
-techniciansC.splice(2,2);
-// console.log(techniciansC);
-/* returns ["Hannah-Louise", "Will", "Andy"] */`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{sandboxRemove.html}</textarea>
+    <textarea for="js" open>{sandboxRemove.js}</textarea>
+  </code-sandbox>
 </div>
+
 
 ### Accessing all items
 We've already practiced how to access every item in an array using a for… of loop.
@@ -198,39 +86,11 @@ If we wish to apply a change to every single item in an array, we can do so usin
 the `map()` method takes a function as a parameter, so let's declare a function to add an exclamation mark to the end of each name string.
 `map()` then cycles through each item, performing the function.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`const technicians = ["Will", "Hannah-Louise", "Hannah", "Bevis", "Catherine", "Tracey", "Andy"];
-
-/* Arrow function to call as a paramater of the hype method */
-const hype = (name) => name + "!!!";
-
-const hypeTechnicians = technicians.map(hype);
-
-// console.log(hypeTechnicians);`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{sandboxMap.html}</textarea>
+    <textarea for="js" open>{sandboxMap.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Arrays: Practical Example
@@ -258,41 +118,11 @@ You may have noticed in the previous example that we sometimes needed to convert
 We can convert Array items to strings using `.toString()`.
 There's several ways to convert to an array. Here, we've used `Array.from()`.
 
-<div className="not-content">
-<Sandpack
-  client:load
-  files={{
-    "/index.html":
-`<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Remove the <code>//</code> to uncomment the console.logs in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>`,
-"/index.js":
-`const dairyProducts = ["Milk", "Cream", "Cheese", "Ice Cream", "Yoghurt", "Butter", "Chocolate"];
-
-const foodItem = dairyProducts[3].toString().toLowerCase();
-// console.log(\`For lunch today I'm going to make a \${foodItem} sandwich.\`);
-/* returns "For lunch today I'm going to make a cheese sandwich". */
-
-let alphabet = "ABCDEFGH";
-const newAlphabet = Array.from(alphabet);
-// console.log(newAlphabet);
-/* returns ["A", "B", "C", "D", "E", "F", "G", "H"] */`
-        }}
-        template="vanilla"
-        theme="dark"
-        options={{ showLineNumbers: true, showConsole: true, autoReload: false, activeFile: "/index.js", }}
-      />
+<div class="not-content">
+   <code-sandbox hidden console="open">
+		<textarea for="html">{sandboxConvert.html}</textarea>
+    <textarea for="js" open>{sandboxConvert.js}</textarea>
+  </code-sandbox>
 </div>
 
 ### Sets vs Arrays

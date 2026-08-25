@@ -6,8 +6,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://ctlnorwich.github.io/introduction-to-web/",
-    base: "/introduction-to-web",
+    site: "https://web.norwich.io",
+    base: "/",
     integrations: [starlight({
         title: 'Introduction to Web',
         social: [
@@ -25,6 +25,8 @@ export default defineConfig({
                     // Each item here is one entry in the navigation menu.
                     { label: 'Introduction to HTML', slug: 'guides/html' },
                     { label: 'Introduction to CSS', slug: 'guides/css' },
+                    { label: 'Introduction to CSS 2', slug: 'guides/css-2' },
+                    { label: 'Introduction to JavaScript', slug: 'guides/javascript' },
                 ],
             }
         ],

@@ -9,11 +9,11 @@ import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 
-import sandbox from "./src/sandbox/sandbox.js?url";
-import prism from "./src/sandbox/prism.js?url";
+import sandbox from "~/sandbox/sandbox.js?url";
+import prism from "~/sandbox/prism.js?url";
 
-import { consoleExamples, variableConst, variablesLet, quickPractical, ifElse, elseIf, logicalOperators, switchStatements, dataAttributeConditionals, invokingFunctions, moodEmojiChallenge } 
-from "./src/code/javascript.js"
+import { sandboxConsole, sandboxConst, sandboxLet, sandboxPractical, sandboxIfElse, sandboxElseIf, sandboxOperators, sandboxSwitch, sandboxAttributes, sandboxInvoke, sandboxEmoji } 
+from "~/code/javascript.js"
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>
@@ -101,8 +101,8 @@ let isComplete = false;
 
 <div class="not-content">
   <code-sandbox console="open">
-		<textarea for="html">{consoleExamples.html}</textarea>
-    <textarea for="js" open>{consoleExamples.js}</textarea>
+		<textarea for="html">{sandboxConsole.html}</textarea>
+    <textarea for="js" open>{sandboxConsole.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -128,8 +128,8 @@ While you cannot directy alter the value of a variable declared with `const`, yo
 
 <div class="not-content">
   <code-sandbox console="open">
-		<textarea for="html">{variableConst.html}</textarea>
-		<textarea for="js" open>{variableConst.js}</textarea>
+		<textarea for="html">{sandboxConst.html}</textarea>
+		<textarea for="js" open>{sandboxConst.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -166,8 +166,8 @@ console.log(taskName);
 
 <div class="not-content">
   <code-sandbox console="open">
-    <textarea for="html">{quickPractical.html}</textarea>
-    <textarea for="js" open>{quickPractical.js}</textarea>
+    <textarea for="html">{sandboxPractical.html}</textarea>
+    <textarea for="js" open>{sandboxPractical.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -197,8 +197,8 @@ typeof myFloat;
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{variablesLet.html}</textarea>
-    <textarea for="js" open>{variablesLet.js}</textarea>
+		<textarea for="html">{sandboxLet.html}</textarea>
+    <textarea for="js" open>{sandboxLet.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -346,8 +346,8 @@ num /= 2; // divides by 2, then updates the value of num
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{ifElse.html}</textarea>
-    <textarea for="js" open>{ifElse.js}</textarea>
+		<textarea for="html">{sandboxIfElse.html}</textarea>
+    <textarea for="js" open>{sandboxIfElse.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -359,8 +359,8 @@ num /= 2; // divides by 2, then updates the value of num
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{elseIf.html}</textarea>
-    <textarea for="js" open>{elseIf.js}</textarea>
+		<textarea for="html">{sandboxElseIf.html}</textarea>
+    <textarea for="js" open>{sandboxElseIf.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -375,8 +375,8 @@ num /= 2; // divides by 2, then updates the value of num
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{logicalOperators.html}</textarea>
-    <textarea for="js" open>{logicalOperators.js}</textarea>
+		<textarea for="html">{sandboxOperators.html}</textarea>
+    <textarea for="js" open>{sandboxOperators.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -400,8 +400,8 @@ ticketsAvailable ? console.log("Tickets Available!") : console.log("Sold Out!");
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{switchStatements.html}</textarea>
-    <textarea for="js" open>{switchStatements.js}</textarea>
+		<textarea for="html">{sandboxSwitch.html}</textarea>
+    <textarea for="js" open>{sandboxSwitch.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -418,8 +418,8 @@ ticketsAvailable ? console.log("Tickets Available!") : console.log("Sold Out!");
 
 <div class="not-content">
   <code-sandbox hidden>
-		<textarea for="html">{dataAttributeConditionals.html}</textarea>
-    <textarea for="js" open>{dataAttributeConditionals.js}</textarea>
+		<textarea for="html">{sandboxAttributes.html}</textarea>
+    <textarea for="js" open>{sandboxAttributes.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -466,8 +466,8 @@ const quickMaths = function (a, b) {return a * b};
 
 <div class="not-content">
     <code-sandbox hidden console="open">
-		  <textarea for="html">{invokingFunctions.html}</textarea>
-      <textarea for="js" open>{invokingFunctions.js}</textarea>
+		  <textarea for="html">{sandboxInvoke.html}</textarea>
+      <textarea for="js" open>{sandboxInvoke.js}</textarea>
   </code-sandbox>
 </div>
 
@@ -481,15 +481,15 @@ Add JS so that the range slider determines which emoji is visible.
 
 <div class="not-content">
    <code-sandbox hidden console="open">
-		<textarea for="html">{moodEmojiChallenge.html}</textarea>
-    <textarea for="js" open>{moodEmojiChallenge.js}</textarea>
+		<textarea for="html">{sandboxEmoji.html}</textarea>
+    <textarea for="js" open>{sandboxEmoji.js}</textarea>
   </code-sandbox>
 </div>
 
 <div class="not-content">
   <code-sandbox collapse hidden>
   	<div for="intro"><summary>Solution...</summary></div>
-		<textarea for="html">{moodEmojiChallenge.html}</textarea>
-    <textarea for="js" open>{moodEmojiChallenge.jsSolution}</textarea>
+		<textarea for="html">{sandboxEmoji.html}</textarea>
+    <textarea for="js" open>{sandboxEmoji.jsSolution}</textarea>
   </code-sandbox>
 </div>

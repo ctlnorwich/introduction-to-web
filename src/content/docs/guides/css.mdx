@@ -10,10 +10,10 @@ import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 
-import sandbox from "./src/sandbox/sandbox.js?url";
-import prism from "./src/sandbox/prism.js?url";
+import sandbox from "~/sandbox/sandbox.js?url";
+import prism from "~/sandbox/prism.js?url";
 
-import {cssSelectors, pseudoClasses, boxModel, marginCollapse, objectFit } from "./src/code/css.js";
+import {cssSelectors, pseudoClasses, boxModel, marginCollapse, objectFit } from "~/code/css.js";
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>

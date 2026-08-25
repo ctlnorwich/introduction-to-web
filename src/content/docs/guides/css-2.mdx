@@ -10,11 +10,11 @@ import { Steps } from '@astrojs/starlight/components';
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 
-import sandbox from "./src/sandbox/sandbox.js?url";
-import prism from "./src/sandbox/prism.js?url";
+import sandbox from "~/sandbox/sandbox.js?url";
+import prism from "~/sandbox/prism.js?url";
 
 import { normalFlow, addingFlex, flexFlow, flexSizing, flexAlignment, addingGrid, lineBasedPlacement, gridColumn, gridTemplateAreas } 
-from "./src/code/css-2.js";
+from "~/code/css-2.js";
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>

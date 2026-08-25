@@ -9,10 +9,10 @@ import { Aside } from "@astrojs/starlight/components";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { FileTree } from '@astrojs/starlight/components';
 
-import sandbox from "./src/sandbox/sandbox.js?url";
-import prism from "./src/sandbox/prism.js?url";
+import sandbox from "~/sandbox/sandbox.js?url";
+import prism from "~/sandbox/prism.js?url";
 
-import { basic, headings, inline, commonElements, forms } from "./src/code/html.js";
+import { basic, headings, inline, commonElements, forms } from "~/code/html.js";
 
 <script src={prism}></script>
 <script src={sandbox} type="module"></script>

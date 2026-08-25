@@ -1,4 +1,4 @@
-export const consoleExamples = {
+export const sandboxConsole = {
     html: `
 <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
 
@@ -18,7 +18,7 @@ console.log(taskName);
 `
 }
 
-export const variableConst = {
+export const sandboxConst = {
     html: `
 <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
     <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
@@ -33,7 +33,7 @@ console.log(taskList);
 `
 }
 
-export const variablesLet = {
+export const sandboxLet = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -58,7 +58,7 @@ myNumber = Number(myNumber) + 5;
 console.log(myNumber);
 `}
 
-export const quickPractical = {
+export const sandboxPractical = {
     html: `
 <h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
 <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
@@ -72,7 +72,7 @@ if (typeof myName !== 'undefined') {
 }`
 }
 
-export const ifElse = {
+export const sandboxIfElse = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -101,7 +101,7 @@ if (ticketsAvailable) {
 };
 `}
 
-export const elseIf = {
+export const sandboxElseIf = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -158,7 +158,7 @@ pizzaSelect.addEventListener("change", (e)=> {
 })
 `}
 
-export const logicalOperators = {
+export const sandboxOperators = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -228,7 +228,7 @@ button.addEventListener("click", (e) => {
 })
 `}
 
-export const switchStatements = {
+export const sandboxSwitch = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -298,7 +298,7 @@ daySelect.addEventListener("change", (e)=> {
 })
 `}
 
-export const dataAttributeConditionals = {
+export const sandboxAttributes = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -346,7 +346,7 @@ daySelect.addEventListener("change", (e)=> {
 })
 `}
 
-export const invokingFunctions = {
+export const sandboxInvoke = {
     html: `
 <!DOCTYPE html> 
 <html>
@@ -381,7 +381,7 @@ const answerE = quickMathsE(5, 8);
 // ToDo: You need to console.log to see these answers!
 `}
 
-export const moodEmojiChallenge = {
+export const sandboxEmoji = {
     html: `
 <!DOCTYPE html> 
 <html>
