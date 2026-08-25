@@ -1,11 +1,10 @@
 export const sandboxConsole = {
-    html: `
+  html: `
 <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-
-<p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+<p>The JS we're using here isn't changing the html. Instead, we're logging to the console below.</p>
 `,
-    js:
-        `let taskName = "Learn HTML"; 
+  js:
+    `let taskName = "Learn HTML"; 
 taskName = "Learn JavaScript"; 
 taskName = null;
 
@@ -19,12 +18,12 @@ console.log(taskName);
 }
 
 export const sandboxConst = {
-    html: `
+  html: `
 <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
+<p>The JS we're using here isn't changing the html. Instead, we're logging to the console below.</p>
 `,
-    js:
-        `
+  js:
+    `
 const MY_NOT_SO_SECRET_API_KEY = "123456789XYZ";
 const taskList = ["Learn Git", "Learn HTML", "Learn CSS" ]; 
 taskList.push("Learn JavaScript");
@@ -34,23 +33,11 @@ console.log(taskList);
 }
 
 export const sandboxLet = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>
+  html: `
+<h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
+<p>The JS we're using here isn't changing the html. Instead, we're logging to the console below.</p>
 `,
-    js: `
+  js: `
 let myInt = 7;
 let myNumber = "7";
 myNumber = Number(myNumber) + 5;
@@ -59,12 +46,12 @@ console.log(myNumber);
 `}
 
 export const sandboxPractical = {
-    html: `
+  html: `
 <h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
 <p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
     `,
-    js: `
-    // Let's go!
+  js: `
+// Let's go!
 
 if (typeof myName !== 'undefined') {
     document.querySelector("h1")
@@ -73,23 +60,11 @@ if (typeof myName !== 'undefined') {
 }
 
 export const sandboxIfElse = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pizza 1</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <h1><span style="font-size: 3rem;">🚧</span> Nothing to see here!</h1>
-    <p>The JS we're using here isn't changing the html. Instead, we're logging to the console below. Change the code in <code>index.js</code> and hit run to update.</p>
-  </body>
-</html>
+  html: `
+<h1><span style="font-size: 3rem;">⚠️</span> Hello Placeholder!</h1>
+<p>The H1 above is being queried by our JS so we can update its inner HTML. We should see something change!</p>
 `,
-    js: `
+  js: `
 let ticketsAvailable = false;
 
 if (ticketsAvailable) {
@@ -102,31 +77,19 @@ if (ticketsAvailable) {
 `}
 
 export const sandboxElseIf = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
+  html: `
+<select name="pizzas">
+  <option value="" disabled selected>Please select a pizza</option>
+  <option value="Napoli">Napoli</option>
+  <option value="Margherita">Margherita</option>
+  <option value="Roma">Roma</option>
+</select>
 
-  <body>
-    <select name="pizzas">
-      <option value="" disabled selected>Please select a pizza</option>
-      <option value="Napoli">Napoli</option>
-      <option value="Margherita">Margherita</option>
-      <option value="Roma">Roma</option>
-    </select>
-    <h1><span style="font-size: 3rem;">🍕</span> <span class="pizzaName">Please select a pizza</span></h1>
-    <p>...</p>
-    <p>£<span class="pizzaPrice">0</span></p>
-  </body>
-
-</html>
+<h1><span style="font-size: 3rem;">🍕</span> <span class="pizzaName">Please select a pizza</span></h1>
+<p>...</p>
+<p>£<span class="pizzaPrice">0</span></p>
 `,
-    js: `
+  js: `
 // Initialise const variables with html elements.
 const pizzaName = document.querySelector("h1 .pizzaName");
 const pizzaToppings = document.querySelector("p");
@@ -159,45 +122,32 @@ pizzaSelect.addEventListener("change", (e)=> {
 `}
 
 export const sandboxOperators = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
+  html: `
+ <p>
+  <label>
+  Weather
+  <select name="weather">
+    <option value="" disabled selected>Select weather</option>
+    <option value="raining">Raining</option>
+    <option value="snowing">Snowing</option>
+    <option value="sunny">Sunny</option>
+  </select>
+  </label>
+</p>
 
-  <body>
-    <p>
-    <label>
-    Weather
-    <select name="weather">
-      <option value="" disabled selected>Select weather</option>
-      <option value="raining">Raining</option>
-      <option value="snowing">Snowing</option>
-      <option value="sunny">Sunny</option>
-    </select>
-    </label>
-    </p>
+<p> 
+  label>
+  Wind speed (mph)
+  <input type="number" name="wind" min="5" max="100" value="10" step="5" />
+  </label>
+</p>
 
-  <p> 
-    <label>
-    Wind speed (mph)
-    <input type="number" name="wind" min="5" max="100" value="10" step="5" />
-    </label>
-  </p>
-
-  <p>
-     <span style="font-size: 3rem;">🧺</span> <button>Do I put my washing out?</button>
-  </p>
-    <p class="advice">...</p>
-  </body>
-
-</html>
+<p>
+  <span style="font-size: 3rem;">🧺</span> <button>Do I put my washing out?</button>
+</p>
+<p class="advice">...</p>
 `,
-    js: `
+  js: `
 // Initialise const variables with html elements.
 const weatherType = document.querySelector("h1");
 const weatherAdvice = document.querySelector("p.advice");
@@ -229,34 +179,21 @@ button.addEventListener("click", (e) => {
 `}
 
 export const sandboxSwitch = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <select name="day">
-      <option value="" disabled selected>Please select a day</option>
-      <option value="mon">Monday</option>
-      <option value="tue">Tuesday</option>
-      <option value="wed">Wednesday</option>
-      <option value="thu">Thursday</option>
-      <option value="fri">Friday</option>
-      <option value="sat">Saturday</option> 
-      <option value="sun">Sunday</option> 
-    </select>
-    <h1> <span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
-    <p>...</p>
-  </body>
-
-</html>
+  html: `
+<select name="day">
+  <option value="" disabled selected>Please select a day</option>
+  <option value="mon">Monday</option>
+  <option value="tue">Tuesday</option>
+  <option value="wed">Wednesday</option>
+  <option value="thu">Thursday</option>
+  <option value="fri">Friday</option>
+  <opion value="sat">Saturday</option> 
+  <option value="sun">Sunday</option> 
+</select>
+<h1> <span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
+<p>...</p>
 `,
-    js: `
+  js: `
 // Initialise const variables with html elements.
 const dayHeading = document.querySelector("h1 .day");
 const daySelect = document.querySelector("select");
@@ -268,65 +205,51 @@ let currentDay;
 // Add a change event listener to the day select element.
 daySelect.addEventListener("change", (e)=> {
 
-    currentDay = e.target.value;
-    dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
-    console.log(\`changed to \${currentDay}\`);
+  currentDay = e.target.value;
+  dayHeading.innerHTML = document.querySelector(\`option[value="\${e.target.value}"]\`).innerHTML;
+  console.log(\`changed to \${currentDay}\`);
 
-    switch(currentDay) {
+  switch(currentDay) {
 
-      case "mon":
-      case "fri":
-        dayMenu.innerHTML = "Chilli";
-      break;
+    case "mon":
+    case "fri":
+      dayMenu.innerHTML = "Chilli";
+    break;
 
-      case "tue":
-        dayMenu.innerHTML = "Halloumi";
-      break
+    case "tue":
+      dayMenu.innerHTML = "Halloumi";
+    break
 
-      case "wed":
-        dayMenu.innerHTML = "Lasagne";
-      break;
+    case "wed":
+      dayMenu.innerHTML = "Lasagne";
+    break;
 
-      case "thu":
-        dayMenu.innerHTML = "Burger";
-      break;
+    case "thu":
+      dayMenu.innerHTML = "Burger";
+    break;
 
-      default:
-
-        dayMenu.innerHTML = "Cafeteria Closed!";
+    default:
+      dayMenu.innerHTML = "Cafeteria Closed!";
     }
 })
 `}
 
 export const sandboxAttributes = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <select name="day">
-      <option value="" disabled selected>Please select a day</option>
-      <option data-menu="Chilli" value="mon">Monday</option>
-      <option data-menu="Halloumi" value="tue">Tuesday</option>
-      <option data-menu="Lasagne" value="wed">Wed</option>
-      <option data-menu="Burger" value="thu">Thursday</option>
-      <option data-menu="Chilli" value="fri">Friday</option>
-      <option data-menu="Cafeteria Closed" value="sat">Saturday</option> 
-      <option data-menu="Cafeteria Closed" value="sun">Sunday</option> 
-    </select>
-    <h1><span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
-    <p>...</p>
-  </body>
-
-</html>
+  html: `
+<select name="day">
+  <option value="" disabled selected>Please select a day</option>
+  <option data-menu="Chilli" value="mon">Monday</option>
+  <option data-menu="Halloumi" value="tue">Tuesday</option>
+  <option data-menu="Lasagne" value="wed">Wed</option>
+  <option data-menu="Burger" value="thu">Thursday</option>
+  <option data-menu="Chilli" value="fri">Friday</option>
+  <option data-menu="Cafeteria Closed" value="sat">Saturday</option> 
+  <option data-menu="Cafeteria Closed" value="sun">Sunday</option> 
+</select>
+<h1><span style="font-size: 3rem;">🗓️</span> <span class="day">Please select a day</span></h1>
+<p>...</p>
 `,
-    js: `
+  js: `
 // Initialise const variables with html elements.
 const dayHeading = document.querySelector("h1 .day");
 const daySelect = document.querySelector("select");
@@ -338,32 +261,19 @@ let currentDay;
 // Add a change event listener to the day select element.
 daySelect.addEventListener("change", (e)=> {
 
-    currentDay = e.target.value;
-    dayHeading.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).innerHTML;
-    dayMenu.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).getAttribute("data-menu");
-    console.log(\`changed to \${currentDay}\`);
+  currentDay = e.target.value;
+  dayHeading.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).innerHTML;
+  dayMenu.innerHTML = document.querySelector(\`option[value="\${currentDay}"]\`).getAttribute("data-menu");
+  console.log(\`changed to \${currentDay}\`);
 
 })
 `}
 
 export const sandboxInvoke = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My First HTML Page</title>
-    <script src="index.js" defer></script>
-  </head>
-
-  <body>
-    <div style="font-size: 3rem;">🧮</div>
-  </body>
-
-</html>
+  html: `
+<div style="font-size: 3rem;">🧮</div>
 `,
-    js: `
+  js: `
 /* invoking a declared function*/
 function quickMathsD (a, b) { 
     return a * b;
@@ -382,37 +292,24 @@ const answerE = quickMathsE(5, 8);
 `}
 
 export const sandboxEmoji = {
-    html: `
-<!DOCTYPE html> 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Emoji Challenge!</title>
-  </head>
+  html: `
+<input type=range name="mood" min="1" max="4" value="2"></input>
 
-  <body>
-    <input type=range name="mood" min="1" max="4" value="2"></input>
-
-    <p>how do you rate this content?</p>
-    <div style="font-size: 3rem; margin-top: 0;">
-      <span>🙁</span>
-      <span>😐</span>
-      <span>🙂</span>
-      <span>😀</span>
-    </h1>
-
-  </body>
-
-</html>
+<p>how do you rate this content?</p>
+<div style="font-size: 3rem; margin-top: 0;">
+  <span>🙁</span>
+  <span>😐</span>
+  <span>🙂</span>
+  <span>😀</span>
+</h1>
 `,
-    js: `
+  js: `
 // Emoji Challenge
 
 // Here's a hint about changing styles:
 document.querySelector("span:nth-of-type(2)").style.border = "solid red 2px";
 `,
-    jsSolution: `
+  jsSolution: `
     // Example using span:nth-of-type() to find the active emoji
 const moodEmojis = document.querySelectorAll("div span");
 const moodSelect = document.querySelector("input");
